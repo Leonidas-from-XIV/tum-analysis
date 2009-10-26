@@ -1,0 +1,42 @@
+% PREAMBLE
+
+\documentclass[12pt]{scrreprt}
+
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx,color}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm,mathdots,gauss}
+
+\usepackage{pxfonts}
+
+\usepackage{hyperref,float,bbding,stmaryrd}
+
+% amsthm conf
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Satz}
+\newtheorem{lemma}{Lemma}
+
+
+% macros
+\newcommand{\lecture}[1]{
+  \fbox{
+      \begin{minipage}{\textwidth}\centering
+        \textbf{Vorlesung vom #1}
+      \end{minipage}
+  }
+}
+
+% Style
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+\renewcommand{\theenumii}{\arabic{enumii}}
+\renewcommand{\labelenumii}{(\theenumii)}
+\allowdisplaybreaks
+
+% Meta
+\title{Analysis für Informatiker}
+\author{Lars Hupel, Michael Kerscher}
+\date{\today}

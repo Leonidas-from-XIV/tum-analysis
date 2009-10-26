@@ -1,0 +1,111 @@
+\chapter{Grundlagen: Zahlbegriff}
+
+\lecture{2009-10-20}
+
+
+\section{Zahldarstellung}
+\subsection{Natürliche Zahlen zu reelle Zahlen}
+diskret: $1,2,3,...$
+$\mathbb{N} = {1,2,3,...}$ Menge der natürlichen Zahlen
+\begin{definition}
+ Menge ist Zusammenfassung bestimmter wohlunterschiedener Objekte unserer Anschauung oder unserers Denkens
+\end{definition}
+
+Axiomensystem nach Peano
+\begin{enumerate}
+ \item $1 \in \mathbb{N}$ (Anfang)
+ \item $n \in \mathbb{N} \Rightarrow (n+1) \in \mathbb{N}$ (Nachfolger)
+ \item $n \neq m \Rightarrow (n+1) \neq (m+1)$
+ \item $n \in \mathbb{N} \Rightarrow (n+1) \neq 1$
+ \item $A \in \mathbb{N}: 1 \in A \land (\forall n: n \in A \Rightarrow (n+1) \in A) \Rightarrow A = \mathbb{N}$ (Vollständigkeitsaxiom, alle natürlichen Zahlen werden erfasst)
+\end{enumerate}
+
+\begin{enumerate}
+ \item Erweiterung zu $\mathbb{Z} = {...,-2,-1,0,1,2,...}$ ganze Zahlen. In $\mathbb{Z}$ Operationen $+,-$
+ \item Erweiterung zu $\mathbb{Q}$ rationale Zahlen durch $*,/$ $q=\frac{m}{n}; m \in \mathbb{Z}, n \in \mathbb{N}$
+$\mathbb{Q} = {x | x=\frac{m}{n}, m \in \mathbb{Z}, n \in \mathbb{N}}$
+Q ist dicht, d.h. zwischen $q_1, q_2$ liegt ein $\tilde{q}$
+ \item Erweiterung durch $\sqrt{}$ bzw. Quadrieren $x^2=a$
+$a=2 \Rightarrow x = \sqrt{a} \notin \mathbb{Q}, \sqrt{2}=1,4142...$ irrational
+Beweis: (indirekt)
+Aus $\sqrt{2}$ wäre Element in Q. $\sqrt{2}=\frac{p}{q}$ gekürzt ($p \in \mathbb{Z}, g \in \mathbb{N}$
+$2g^2=p^2 \Rightarrow p^2$ gerade $\Rightarrow p=2\hat{p}$ und $2g^2=4\hat{p}^2$
+$\Rightarrow g^2 = 2\hat{p}^2 \Rightarrow g=2\hat{g}$ 
+$\Rightarrow$ Widerspruch zur gekürzten Form: $\sqrt{2}=\frac{p}{q}=\frac{2\hat{p}}{2\hat{g}}$
+
+Aussage: $\sqrt{2}$ ist keine rationale Zahl.
+
+Beweistechnik war indirekt, z.z. Aussage A $\Rightarrow$ Aussage B
+indirekt: nicht Aussage B $\Rightarrow$ nicht Aussage A
+
+Beispiel: direkte Beweistechnik
+$p \in \mathbb{N}$ gerade $\Leftrightarrow p \Leftarrow 2 \hat{p} \Leftrightarrow p^2 = 4\hat{p}^2$ gerade
+$p \in \mathbb{N}$ ungerade $\Leftrightarrow p = 2 \hat{p}+1 \Leftrightarrow p^2 = (2\hat{p}+1)^2=4\hat{p}^2+4\hat{p}+1$ ungerade
+$\Rightarrow$ reelle Zahlen, formaler Weg siehe Buch F. Bornemann
+
+ \item reelle Zahlen
+  neue Kandidaten im Vergleich zu $\mathbb{Q}$
+\begin{itemize}
+ \item $\sqrt{}$-Bildung
+ \item $c = 0,\overline{b_1...b_k}$ periodische Zahl
+$c = \frac{b_1...b_k}{\underbrace{g...g}_{k-mal}} \in \mathbb{Q} \Rightarrow 10^k c -c = b_1 \ldots b_k$ periodischer Bruch
+
+neue periodische Zahlen, die nicht als Bruch darstellbar sind, wären z.b. $c=0.101001000100001...$
+ \item $\infty$-Summen, $e, \pi,\ldots$
+\end{itemize}
+
+\end{enumerate}
+
+\subsection{Maschinenzahlen $\mathbb{M}$}
+INTEGER (Assoziation: $\mathbb{Z}$, REAL (Assoziation: $\mathbb{R})$-Zahlen sind 2 Zypen unterschiedlicher Codierung
+
+4 Byte für INTEGER, 4,8,10 Byte für REAL
+zu Integer: 31 Bits für Mantisse, größte Zahl $\pm \underbrace{1\ldots1}_{31-mal}$
+
+entspricht Zahldarstellung: $2^0+2^1+\ldots+2^{30}=2^{31}-1$
+$\leadsto$ 10-er System: $2^{31}-1 \hat{=} x$ $2{10}\approx 10^3$
+Zahlbereich: -2Mrd. bis 2 Mrd
+
+zu REAL-4: Mantisse 23 Bits, Exponent 7 Bits
+
+$\pm 0.\underbrace{\_\_\_\_\_}_{wieviele Stellen}E\pm\underbrace{\_\_\_\_}_{wieviele Stellen}$
+
+Darstellung ist \emph{normalisiert} d.h. nach Dezimalpunkt keine 0-en
+IEEE 754 ($\hat{=}$ VDE
+\begin{itemize}
+ \item Exponentenspielraum: $1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^6 = 2^7 -1 = 127$
+  Exponent $10^{-127}$ bis $10{127}$
+ \item Länge der Maschine im 10-er System
+$1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^22=2^{23} \hat{=} 10^x$
+$2^{23}\hat{=}10^x, x=23 \log_10 2 = $
+$m \in \mathbb{M}, m=\pm 0.\_\_\_\_\_\_\_E\pm \_\_\_\_\_\_\_$ Lücke zwischen $-10^{-127}$ und $10^{_127}$ Faktor $10^7$ groß
+\end{itemize}
+
+\subsubsection{Rundungsfehler}
+
+Wesentlich mitbestimmt von F.L.Bauer, Samelson, Zenger aus der Informatik und R.Bukisch, Chr. Reinsch aus der Mathematik und Wilkinson.
+
+Hilfsmittel: Abbildung von den reellen Zahlen (Alltag) auf den Rechner
+
+Abb: rd. round, Rundung. rd: $\mathbb{R}\rightarrow\mathbb{M}$
+
+rd: $\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\} \rightarrow m_i$
+
+Bemerkung: Intervall-Arithmetik hat sich trotz Hardwareunterstützung \emph{nicht} bewährt: Intervallängen zu pessimistisch.
+
+Definition: Abbildung
+Vor(?): A,B Mengen
+$f: A \rightarrow B, x \mapsto f(x)$
+Die Abbildung ist eine Vorschrift, die jedem $x \in A$ ein element $x=f(x) \in B$ zuordnet
+
+Charakterisierung von Abbildungen
+\begin{itemize}
+ \item gehören zu verschiedenen Argumenten verschiedene Funktionswerte, heißt $f$ \emph{injektiv},
+$x_1,x_2 \in A, x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)$
+ \item Wertebereich $C \subseteq A$
+$f(C) = {f(x)|x\in C}$
+ \item $f$ \emph{surjektiv}, falls $f(A)=B$
+ \item Gilt $f$ injektiv und surjektiv, so heißt $f$ \emph{bijektiv}
+
+$f: A \mapsto B$ ist genau dann bijektiv, falls zu jedem $y \in B$ genau ein $x \in A $ existiert mit $y=f(x)$ in diesem Fall existiert eine Umkehrabbildung $f^{-1}: B \mapsto A$
+\end{itemize}
