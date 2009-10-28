@@ -18,10 +18,16 @@
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Satz}
 \newtheorem{lemma}{Lemma}
+\newtheorem{example}{Beispiel}
+\newtheorem{note}{Anmerkung}
+\newtheorem{proposition}{Behauptung}
 
 
 % macros
 \newcommand{\lecture}[1]{
+
+
+  \noindent
   \fbox{
       \begin{minipage}{\textwidth}\centering
         \textbf{Vorlesung vom #1}
@@ -30,9 +36,9 @@
 }
 
 % Style
-\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\theenumi}{\arabic{enumi}}
 \renewcommand{\labelenumi}{(\theenumi)}
-\renewcommand{\theenumii}{\arabic{enumii}}
+\renewcommand{\theenumii}{\alph{enumii}}
 \renewcommand{\labelenumii}{(\theenumii)}
 \allowdisplaybreaks
 
@@ -40,3 +46,8 @@
 \title{Analysis für Informatiker}
 \author{Lars Hupel, Michael Kerscher}
 \date{\today}
+
+% Lecturer shortcuts
+\newcommand{\induction}{Beweis per vollständiger Induktion \Checkmark}
+\newcommand{\imag}{\operatorname{i}}
+\newcommand{\euler}{\operatorname{e}}
