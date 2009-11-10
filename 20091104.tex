@@ -1,0 +1,281 @@
+% Neue Seite da sonst nur Lecture auf der alten stehenbleibt, falls sich etwas verschiebt und es nicht mehr passt wieder entfernen
+\newpage
+\lecture{2009-11-04}
+
+% re im vorher für geschweifte klammer
+
+\subsubsection*{Anwendung: Darstellung einer Geraden}
+
+Idee: Charakterisiere die Gerade durch ``Aufpunkt'' und ``Richtungsvektor''
+
+\begin{equation*}
+	\vec{x} = \vec{a} + \lambda \vec{b}
+\end{equation*}
+
+\begin{center}
+	\definecolor{ttttff}{rgb}{0.2,0.2,1}
+	\definecolor{qqqqff}{rgb}{0,0,1}
+	\definecolor{ffffff}{rgb}{1,1,1}
+	\definecolor{xdxdff}{rgb}{0.49,0.49,1}
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
+	\draw[->,color=black,dash pattern=on 3pt off 3pt] (0,0) -- (2.5,0);
+	\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+	\clip(-2,-0.5) rectangle (3,2.2);
+	\draw [->] (0,0) -- (-1.5,1.58);
+	\draw [->] (0,0) -- (1.4,1.2);
+	\draw [color=ttttff,domain=-2:3] plot(\x,{(-4.01--1.58*\x)/-1.5});
+	\fill [color=black] (0,0) circle (1.5pt);
+	\draw[color=black] (-0.74,0.92) node [anchor=west] {$\vec{b}$};
+	\draw[color=black] (0.7,0.82) node [anchor=south] {$\vec{a}$};
+	\draw[color=black] (2,1) node {$\lambda\vec{b}$};
+	\draw[color=black] (1.5,0) node [anchor=south] {$\vec{x}$};
+	\end{tikzpicture}
+\end{center}
+
+
+
+Erinnerung:
+\begin{center}
+	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.5cm,y=2.5cm]
+	\draw[->,color=black] (-0.5,0) -- (2,0);
+	\foreach \x in {,1}
+	\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+	\draw[->,color=black] (0,-0.5) -- (0,1.2);
+	\foreach \y in {}
+	\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+	\clip(-0.8,-0.8) rectangle (2.8,1.6);
+	\draw [domain=-0.5:2] plot(\x,{(--0.5--0.28*\x)/1});
+	\fill [color=black] (0,0.5) circle (1.5pt);
+	\draw[color=black] (0.16,0.78) node {$k$};
+	\fill [color=black] (1,0.78) circle (1.5pt);
+	\draw[color=black] (1,0.85) node [anchor=north west] {$y = mx + k$};
+
+	\draw[color=black] (2,0.08) node [anchor=north] {x};
+	\draw[color=black] (0,1) node [anchor=south west] {y};
+	\end{tikzpicture}
+\end{center}
+
+Zusammenhang:
+
+\begin{itemize}
+	\item k i.w. $\vec{a}$
+	\item m i.w. $\vec{b}$
+	\item x i.w. $\lambda$
+\end{itemize}
+
+Geradengleichung in Koordinaten:
+\begin{align*} % TODO: Richtig ausrichten
+	\binom{x}{y} = \binom{x}{mx+k} = &\binom{0}{k} + x& \binom{1}{m} \\
+	\downarrow& \downarrow& \downarrow \\
+	\vec{a}& \lambda& \vec{b}
+\end{align*}
+
+
+% Pfeile $\leadsto \vec{a}$
+
+Drehen eines Vektors $\leadsto$ Matrizenbeschreibung \\
+
+allgemein: Matrizen entsprechen linearen Abbildungen
+
+\begin{align*}
+&V, W: \text{ Vektorraum} \\
+f: &V \mapsto W  \text{ lineare Abbildung bijektiv zu Matrizen} \\
+&y = Ax \\
+f: &v \mapsto w \\
+&x \mapsto y
+\end{align*}
+
+$V, W$ als Vektorraum, $\mathbb{R}^{n} \mapsto$ A: (n x n)-Matrix \\
+A staucht, dehnt, rotiert Vektor x.
+
+% TODO: Diagonalen schöner
+\begin{align*}
+A \mapsto 	\begin{cases} 
+			(0 / 0) \text{ Diagonalgestalt} \\
+			(o.../0) \text{ Jordannormalform}
+		\end{cases}
+\end{align*}
+
+\subsubsection*{Zur Drehung}
+
+% TODO einfügen
+... Bild ...
+
+Gegeben:
+\begin{itemize}
+	\item $x, y$ d.h. $P$
+	\item $\alpha$
+\end{itemize}
+
+Wie sehen $u$, $v$ aus?
+
+\begin{align*}
+x =& \overline{OS} - \overline{RS} \\
+\cos \alpha &= \frac{\overline{OS}}{\alpha} \\
+\sin \alpha &= \frac{\overline{TQ}}{v} = \frac{\overline{RS}}{v}
+\end{align*}
+
+\begin{align*}
+\text{Ergebnis: } x &= u \cos \alpha - v \sin \alpha \\
+\text{analog: } &u \sin \alpha + v \cos \alpha
+\end{align*}
+
+\subsubsection*{Als Matrix-Vektor Notation}
+
+\begin{definition}
+	$ R_{\alpha} =
+	\begin{pmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & \cos \alpha
+ 	\end{pmatrix}$
+\end{definition}
+
+\begin{equation*}
+	\begin{pmatrix}
+		x \\
+		y
+ 	\end{pmatrix} = R_{\alpha} 
+ 	\begin{pmatrix}
+		u \\
+		v
+ 	\end{pmatrix}
+ 	\leadsto
+ 		\begin{pmatrix}
+		u \\
+		v
+ 	\end{pmatrix} = R_{\alpha}^{T}
+ 	\begin{pmatrix}
+		x \\
+		y
+ 	\end{pmatrix}
+\end{equation*}
+
+Weiterhin gilt:
+\begin{equation*}
+	R_{\alpha}^{-1} = R_{-\alpha} = R_{\alpha}^{T}
+\end{equation*}
+
+\begin{note}
+Drehung liefert Anlass für Matrix-Vektor Produkt und Matrix-Matrix Produkt
+\end{note}
+
+Zwei Drehungen um $\angle \alpha$ und $\angle \beta$
+\begin{equation*}
+	R_{\beta} R_{\alpha} = R_{\beta + \alpha}
+\end{equation*}
+
+Drehungen im $\mathbb{R}^{n}$ in der Ebene (i, j)
+
+Großes Bild.
+
+\subsubsection*{Anwendung in $\mathbb{R}^{2}$: Längenmessung/Abstand}
+
+\begin{equation*}
+	\vec{x} = 
+ 	\begin{pmatrix}
+		x_{1} \\
+		x_{2}
+ 	\end{pmatrix}
+\end{equation*}
+
+\begin{definition}
+	Länge von $\vec{x}$ als $|x| = \sqrt{x_1^2 + x_2^2}$
+\end{definition}
+
+kleines Bild
+
+Abstand zweier Vektoren entspricht der Länge des Differenzvektors $\vec{x} - \vec{y}$
+
+\begin{equation*}
+	|\vec{x} - \vec{y}| = \left|
+ 	\begin{array}{cc}
+		(x_1 - y_1)\\
+		(x_2 - y_2)
+ 	\end{array}\right| = 
+ 	\sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2}
+\end{equation*}
+
+\subsubsection*{Anwendung: Rechte Winkel}
+
+\begin{definition}
+\begin{equation*}
+	\vec{x} \perp \vec{y} \Leftrightarrow |\vec{x}|^2 + |\vec{y}|^2 = |\vec{x} - \vec{y}|^2
+\end{equation*}
+wegen
+\begin{align*}
+	|\vec{x}|^2 + |\vec{y}|^2 = (x_1 - y_1)^2 + (x_2 - y_2)^2 &= x_1^2 + x_2^2 + y_1^2 + y_2^2 - 2(x_1 y_1 + x_2 y_2) \\
+	\Rightarrow x_1 y_1 + x_2 y_2 &= 0 \\
+	S = x^T y &= 0
+\end{align*}
+\end{definition}
+
+\subsubsection*{Formale Beschreibung}
+\begin{definition} 
+Skalarprodukt $ x, y \in \mathbb{R}^2 $ \\
+Notation: $ <, > ansonsten (, ), x^T y$ o.ä. \\
+$<, >$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
+\end{definition}
+
+% TODO: mehr Platz
+d.h. \begin{itemize}
+	\item $ <x, y> = <y, x>$
+	\item $ <\lambda x_1 + \lambda x_2, y> = \lambda <x_1, y> + \lambda <x_2, y>$
+	\item $ <x, x> \geq 0 = 0 \text{falls} x = 0$
+\end{itemize}
+
+Das Skalarprodukt induziert eine Länge (Norm)
+
+\begin{equation*}
+	|| x || = \sqrt{<x, x>}
+\end{equation*}
+
+Wenn $V$ ein reeller Vektorraum mit Skalarprodukt ist dann bezeichnen wir ihn als \emph{euklidischen Vektorraum}
+
+\subsection{Ungleichung von Cauchy-Schwarz}
+Gegeben: $x, y \in \mathbb{R}^n$\\
+In kompakter Notation:
+\begin{equation*}
+	<x, y> \leq || x || || y ||
+\end{equation*}
+Ausgeschrieben:
+\begin{equation*}
+	\sum_{k=1}^n x_k y_k \leq \sqrt{\sum_{k=1}^n x_k^2} \sqrt{\sum_{k=1}^n y_k^2} 
+\end{equation*} 
+
+\begin{align*}
+	n = 1:& x_1 y_1 \leq x_1 y_1 \\
+	n = 2:& x_1 y_1 + x_2 y_2 \leq sqrt{x_1^2 + x_2^2} sqrt{y_1^2 + y_2^2} \\
+	\Rightarrow& (x_1 y_1 + x_2 y_2)^2 \leq (x_1^2 + x_2^2) (y_1^2 + y_2^2) \\
+	& 2 x_1 y_1 x_2 y_2 \leq x_1^2 y_2^2 - x_2^2 y_1^2 \\
+	\Rightarrow& (x_1 y_2 -  x_2 y_1)^2 \geq 0
+\end{align*}
+allg. Beweis: s. Bornemann
+
+\begin{definition}
+	Norm eines Vektors $ x \in \mathbb{R}^n $: \\
+	$ ||.||: \mathbb{R}^n \mapsto \mathbb{R} $ \\
+	Eigenschaften:
+	\begin{itemize}
+		\item $ || x || = 0 \Leftrightarrow x = 0 $
+		\item $ || \lambda x || = | \lambda | || x || $
+		\item $ || x + y || \leq || x || + || y || $
+	\end{itemize}
+\end{definition}
+
+Bei uns im $ \mathbb{R}^n $ ist $ || x ||_2 $ die euklidische Norm.
+
+$(1)$ und $(2)$ sind trivial, nur Dreiecksungleichung $(3)$ ist zu zeigen.
+
+\begin{align*}
+	|| x + y ||^2 =& || x ||^2 + 2<x, y> + || y ||^2 \\
+	\leq& || x ||^2 + 2 || x || || y || + || y ||^2 \\
+	=& (|| x || + || y ||)^2
+\end{align*}
+
+\begin{note}
+Zwei weitere Normen
+	\begin{itemize}
+		\item Maximumnorm $ || x ||_\infty = max \{ |x_k|, k=1..n\} $
+		\item $l^1$-Norm  $ || x ||_1 = \sum_{k=1}^n |x_k|$
+	\end{itemize}
+\end{note}
