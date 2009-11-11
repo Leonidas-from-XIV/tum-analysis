@@ -23,7 +23,7 @@ jetzt: vollständige Induktion
   \item $1+2+\ldots+n = \frac n 2 (n+1)$
     \begin{enumerate}
     \item Induktionsanfang: $n_0 = 1$, $1 = \frac 1 2 (1+1) = 1$
-    \item Induktionsschluss: \[\underbrace{1+2+\ldots+n}_{A_n} + (n+1) = \frac 1 2 (n+1) + (n+1) = \frac{n+1}2 (n+2)\]
+    \item Induktionsschluss: \begin{equation*}\underbrace{1+2+\ldots+n}_{A_n} + (n+1) = \frac 1 2 (n+1) + (n+1) = \frac{n+1}2 (n+2)\end{equation*}
     \end{enumerate}
   \item $1^2+2^2+\ldots+n^2 > \frac{n^3}3$
     \begin{align*}
@@ -45,12 +45,12 @@ Eng verwandt mit der vollständigen Induktion ist die Rekursion:
   \begin{itemize}
     \item Potenz: $a \in \mathbb{R}, n \in \mathbb{N}: a^0 = 1, a^{n+1} = a\cdot a^n$
     \item Fakultät: $n \in \mathbb{N}_0:$
-    \[ n! = \begin{cases} 1 & n = 0 \\ n \cdot (n-1)! & n \geq 1 \end{cases} \]
+    \begin{equation*} n! = \begin{cases} 1 & n = 0 \\ n \cdot (n-1)! & n \geq 1 \end{cases} \end{equation*}
   \end{itemize}
 \end{example}
 
 \begin{definition} Summensymbol:
-  \[ a_j \in \mathbb{R}: a_0 + a_1 + \ldots + a_n =: \sum_{j=0}^{n} \left( a_j \right) \]
+  \begin{equation*} a_j \in \mathbb{R}: a_0 + a_1 + \ldots + a_n =: \sum_{j=0}^{n} \left( a_j \right) \end{equation*}
 \end{definition}
 
 \subsection{Potenzen, Wurzel}
@@ -79,7 +79,7 @@ Hilfsmittel für Abschätzungen: Linearisierungen, Bernoulli-Ungleichung
 
 \begin{proposition}
   für alle $x > -1, x \neq 0$ und $n \in \mathbb{N}, n \geq 2$ gilt
-  \[ \underbrace{(1+x)^n}_\text{nichtlin. Term} > \underbrace{1+nx}_\text{lin. Term} \]
+  \begin{equation*} \underbrace{(1+x)^n}_\text{nichtlin. Term} > \underbrace{1+nx}_\text{lin. Term} \end{equation*}
 \end{proposition}
 
 \induction
@@ -90,7 +90,7 @@ Wunsch: in der Nähe von 1, d. h. $1+x$ für kleine $x$, soll der lineare Term d
 
 \begin{theorem}
  $q \in \mathbb{R}, n \in \mathbb{N}$
- \[ \sum_{k=0}^n \left( q^k\right) = \begin{cases}\frac{1-q^{n+1}}{1-q} & q \neq 1 \\ n+1 & q = 1\end{cases} \]
+ \begin{equation*} \sum_{k=0}^n \left( q^k\right) = \begin{cases}\frac{1-q^{n+1}}{1-q} & q \neq 1 \\ n+1 & q = 1\end{cases} \end{equation*}
 \end{theorem}
 
 \induction
@@ -135,17 +135,17 @@ Zusammenhang zwischen Addition von Zahlen und Potenzbildung: $(a+b)^n$
 Aufbau der Koeffizienten: ``Pascalsches Dreieck''
 
 \begin{definition} Binomialkoeffizient (``$n$ über $k$''):
- \[ n,k \in \mathbb{N}_0: {n \choose k} := \frac{n!}{k!(n-k)!}\]
+ \begin{equation*} n,k \in \mathbb{N}_0: {n \choose k} := \frac{n!}{k!(n-k)!}\end{equation*}
  (Bruch, aber ganzzahlig)
 \end{definition}
 
 \paragraph{rekursive Berechnung} $n,k \in \mathbb{N}, k < n$
-\[ {n+1 \choose k} = {n \choose k-1} + {n \choose k} \]
+\begin{equation*} {n+1 \choose k} = {n \choose k-1} + {n \choose k} \end{equation*}
 
 \noindent Beweis aus Definition/Pascalsches Dreieck
 
 \begin{proposition} Binomischer Lehrsatz:
- \[ x,y \in \mathbb{R}, n \in \mathbb{N} \Rightarrow \sum_{k=0}^n \left( {n \choose k} \;\cdot\; x^{n-k}y^k \right) \]
+ \begin{equation*} x,y \in \mathbb{R}, n \in \mathbb{N} \Rightarrow \sum_{k=0}^n \left( {n \choose k} \;\cdot\; x^{n-k}y^k \right) \end{equation*}
 \end{proposition}
 
 \noindent Beweis: 2. Übung
@@ -161,8 +161,8 @@ unbehagliche Situation $x^2+1=0$, in $\mathbb{R}$ nicht lösbar
 \paragraph{intuitiver Zugang} neues Symbol $\imag = \sqrt{-1}$, imaginäre Einheit $\imag$
 
 \begin{definition} komplexe Zahlen:
-  \[ a, b \in \mathbb{R}: z = \underbrace{a}_\text{Realteil} + \imag \underbrace{b}_\text{Imaginärteil} \]
-  \[ \mathbb{C} = \left\{ z : z = a+\imag b; a,b \in \mathbb{R}, \imag = \sqrt{-1} \right\} \]
+  \begin{equation*} a, b \in \mathbb{R}: z = \underbrace{a}_\text{Realteil} + \imag \underbrace{b}_\text{Imaginärteil} \end{equation*}
+  \begin{equation*} \mathbb{C} = \left\{ z : z = a+\imag b; a,b \in \mathbb{R}, \imag = \sqrt{-1} \right\} \end{equation*}
 \end{definition}
 
 \paragraph{anschauliche Darstellung}
