@@ -10,7 +10,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm,mathdots,gauss}
 \usepackage{capt-of}
-\usepackage{todonotes,ifthen}
+\usepackage{todonotes,ifthen,wasysym}
 
 %\usepackage{pxfonts}
 
@@ -58,7 +58,7 @@
   \ifthenelse{\equal{#1}{normal}}{\normalfont}{}
 }
 
-\newcommand{\flush}{\begin{flushleft}\end{flushleft}}
+\newcommand{\flush}{\begin{flushleft}\end{flushleft}\noindent}
 
 \newcommand{\lecture}[1]{
 
@@ -82,9 +82,9 @@
 % \newtheorem{example}{Beispiel}
 % \newtheorem{note}{Anmerkung}
 
-\newtheoremenvstar[normal]{definition}{Definition}{$\blacksquare$}
-\newtheoremenvstar[normal]{example}{Beispiel}{|}
-\newtheoremenvstar[normal]{note}{Anmerkung}{|}
+\newtheoremenvstar[normal]{definition}{Definition}{$\LHD$}
+\newtheoremenvstar[normal]{example}{Beispiel}{$\lhd$}
+\newtheoremenvstar[normal]{note}{Anmerkung}{$\lhd$}
 
 
 % Style
@@ -109,3 +109,6 @@
 \newcommand{\real}{\texttt{REAL}}
 
 \newcommand{\annotation}[1]{\emph{#1, Anm. d. Verfasser}}
+
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}

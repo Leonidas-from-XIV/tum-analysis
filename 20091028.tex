@@ -11,13 +11,16 @@
 \vspace{0.5 cm}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 \draw[->,color=black] (-0.5,0) -- (2.5,0);
+\draw[->,color=black] (0,0) -- (1,1);
+\draw[->,color=black] (0,0) -- (1,-1);
+
 \foreach \x in {,1,2}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (1.98,0.08) node [anchor=south west] { Re};
+\draw[color=black] (1.98,0.08) node [anchor=south west] { $\Re$};
 \draw[->,color=black] (0,-1.5) -- (0,2.5);
 \foreach \y in {-1,1,2}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.1,2.06) node [anchor=west] { Im};
+\draw[color=black] (0.1,2.06) node [anchor=west] { $\Im$};
 \clip(-0.5,-1.5) rectangle (2.5,2.5);
 \draw [dash pattern=on 2pt off 2pt] (0,1)-- (1,1);
 \draw [dash pattern=on 2pt off 2pt] (1,0)-- (1,1);
@@ -36,16 +39,18 @@
 \end{tikzpicture}
 % bild ende
 \end{minipage}
-  \begin{minipage}[htbp]{6cm}
+  \begin{minipage}[htbp]{8cm}
   
-Darstellung: $ z = a + \in b; a,b \in \mathbb{R}$ \\
-Realteil von $z$: $Re(z) = a$ \\
-Imaginärteil von $z$: $Im(z) = b$ 
+Darstellung: $ z = a + b\imag \in b; a,b \in \mathbb{R}$ \\
+Realteil von $z$: $\Re(z) = a$ \\
+Imaginärteil von $z$: $\Im(z) = b$ 
 \end{minipage}
 
-\begin{definition}
- $\overline{z} = a - \imag b$ Komplex konjugiertes von $z$
+\begin{definition}[komplex konjugierte Zahl von $z$]
+ \[ \overline{z} = a - \imag b \]
 \end{definition}
+
+%%% LARS: REVIEWSTATE
 
 \paragraph{Rechenoperationen}
 \begin{enumerate}
@@ -145,11 +150,11 @@ $$|z|^2 = z \cdot \overline{z} = a^2 + b^2$$
 \draw[->,color=black] (-0.5,0) -- (2.8,0);
 \foreach \x in {,1,2}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (2.28,0.08) node [anchor=south west] { Re};
+\draw[color=black] (2.28,0.08) node [anchor=south west] { $\Re$};
 \draw[->,color=black] (0,-0.5) -- (0,2.5);
 \foreach \y in {,1,2}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.1,2.06) node [anchor=west] { Im};
+\draw[color=black] (0.1,2.06) node [anchor=west] { $\Im$};
 \clip(-0.5,-0.5) rectangle (2.8,2.5);
 \draw [dash pattern=on 1pt off 1pt] (0,1)-- (1,1);
 \draw [dash pattern=on 1pt off 1pt] (1,0)-- (1,1);
@@ -170,8 +175,8 @@ $$|z|^2 = z \cdot \overline{z} = a^2 + b^2$$
 
 \item
 \begin{align*}
-Re(z) & = \frac{1}{2} (z+\overline{z}) \\
-Im(z) & = \frac{1}{2\imag} (z - \overline{z})
+\Re(z) & = \frac{1}{2} (z+\overline{z}) \\
+\Im(z) & = \frac{1}{2\imag} (z - \overline{z})
 \end{align*}
 
 \item
@@ -185,7 +190,7 @@ Im(z) & = \frac{1}{2\imag} (z - \overline{z})
 \begin{align*}
 |\overline{z}| & = |z| \\
 |z - w| & = |w - z| \\
--|z| & = \begin{cases} Re(z) \\ Im(z) \end{cases} \leq |z|
+-|z| & = \begin{cases} \Re(z) \\ \Im(z) \end{cases} \leq |z|
 \end{align*}
 
 \item Dreiecksungleichung
@@ -204,11 +209,11 @@ Im(z) & = \frac{1}{2\imag} (z - \overline{z})
 \draw[->,color=black] (-0.5,0) -- (3.5,0);
 \foreach \x in {,1,2,3}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (2.98,0.08) node [anchor=south west] { Re};
+\draw[color=black] (2.98,0.08) node [anchor=south west] { $\Re$};
 \draw[->,color=black] (0,-0.5) -- (0,3.5);
 \foreach \y in {,1,2,3}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.1,3.06) node [anchor=west] { Im};
+\draw[color=black] (0.1,3.06) node [anchor=west] { $\Im$};
 \clip(-0.5,-0.5) rectangle (3.5,3.5);
 \draw [color=evtftf,fill=evtftf,fill opacity=0.1] (2,2) circle (1cm);
 \draw [->] (2,2) -- (3,2);
@@ -225,11 +230,11 @@ $$ K_r(z_0) = \lbrace z \in \mathbb{C} \mid |z-z_0| \leq r \rbrace $$
 \draw[->,color=black] (-1,0) -- (1.5,0);
 \foreach \x in {-1,1}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (0.98,0.08) node [anchor=south west] { Re};
+\draw[color=black] (0.98,0.08) node [anchor=south west] { $\Re$};
 \draw[->,color=black] (0,-1) -- (0,1.5);
 \foreach \y in {-1,1}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.1,1.06) node [anchor=west] { Im};
+\draw[color=black] (0.1,1.06) node [anchor=west] { $\Im$};
 \clip(-1,-1) rectangle (1.5,1.5);
 \draw [line width=2pt,color=qqffqc] (0,-1) -- (0,1.25);
 \fill [color=qqqqff] (-1.72,6.3) circle (1.5pt);
@@ -240,7 +245,7 @@ analytisch:
 |z+1|^2 & = |z-1|^2 \\
 (z+1)(\overline{z}+1) & = (z-1)(\overline{z}-1) \\
 2(z+\overline{z}) & = 0 \\
-Re(z) & = 0
+\Re(z) & = 0
 \end{align*}
 \end{enumerate}
 
@@ -251,11 +256,11 @@ Re(z) & = 0
 \draw[->,color=black] (-1.5,0) -- (2.5,0);
 \foreach \x in {-1,1,2}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (1.98,0.08) node [anchor=south west] { Re};
+\draw[color=black] (1.98,0.08) node [anchor=south west] { $\Re$};
 \draw[->,color=black] (0,-0.5) -- (0,2.5);
 \foreach \y in {,1,2}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.1,2.06) node [anchor=west] { Im};
+\draw[color=black] (0.1,2.06) node [anchor=west] { $\Im$};
 \clip(-1.5,-0.5) rectangle (2.5,2.5);
 \draw [shift={(0,0)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:1.4) arc (0:45:1.4) -- cycle;
 \draw [->] (0,0) -- (1,1);
