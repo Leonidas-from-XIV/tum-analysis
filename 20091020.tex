@@ -30,7 +30,7 @@ $\mathbb{N} = \{1,2,3,...\}$ Menge der natürlichen Zahlen
  \item ...durch $\sqrt{}$ (Wurzelziehen) bzw. Quadrieren $x^2=a$
  \begin{equation*}a=2 \Rightarrow x = \sqrt{a} \notin \mathbb{Q}, \sqrt{2}=1,4142\ldots\text{ irrational}\end{equation*}
 
-\begin{proof} (indirekt)
+\begin{proof}[Beweis (indirekt)]
 Aus $\sqrt{2}$ wäre Element in Q. $\sqrt{2}=\frac{p}{q}$ gekürzt ($p \in \mathbb{Z}, g \in \mathbb{N}$
 $2g^2=p^2 \Rightarrow p^2$ gerade $\Rightarrow p=2\hat{p}$ und $2g^2=4\hat{p}^2$
 $\Rightarrow g^2 = 2\hat{p}^2 \Rightarrow g=2\hat{g}$ 
@@ -43,7 +43,7 @@ Beweistechnik war indirekt, z. z. Aussage $A$ $\Rightarrow$ Aussage $B$\\
 indirekt: ``nicht'' Aussage $B$ $\Rightarrow$ ``nicht'' Aussage $A$
 
 
-\begin{proof} (Beispiel: direkte Beweistechnik)\todo{Beispiel prüfen}
+\begin{proof}[Beispiel: direkte Beweistechnik]\todo{Beispiel prüfen}
 
 $p \in \mathbb{N}$ gerade $\Leftrightarrow p \Leftarrow 2 \hat{p} \Leftrightarrow p^2 = 4\hat{p}^2$ gerade\\
 $p \in \mathbb{N}$ ungerade $\Leftrightarrow p = 2 \hat{p}+1 \Leftrightarrow p^2 = (2\hat{p}+1)^2=4\hat{p}^2+4\hat{p}+1$ ungerade\\
@@ -71,7 +71,7 @@ $c = \cfrac{b_1 \;\ldots\; b_k}{\underbrace{g \;\ldots\; g}_{k\text{-mal}}} \in 
 31 Bits für Mantisse, größte Zahl $\pm \underbrace{1\ldots1}_{31\text{ Mal}}$ (im Zweiersystem)
 
 entspricht Zahldarstellung: $2^0+2^1+\ldots+2^{30}=2^{31}-1$ \\
-$\leadsto$ 10er-System: $2^{31}-1 \equals x$ $2{10}\approx 10^3$ \\
+$\leadsto$ 10er-System: $2^{31}-1 \equals x$, $2^{10}\approx 10^3$\\
 Zahlbereich: -2 Mrd. bis 2 Mrd
 
 \subsubsection*{\real-4}
@@ -82,42 +82,43 @@ $\pm 0.\underbrace{\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_}}_{
 
 Darstellung ist \emph{normalisiert}, d. h. nach Dezimalpunkt keine Nullen (IEEE 754 $\hat{=}$ VDE)
 
-\todo{Review\-state...}
-
 \begin{itemize}
  \item Exponentenspielraum: $1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^6 = 2^7 -1 = 127$
-  Exponent $10^{-127}$ bis $10{127}$
- \item Länge der Maschine im 10-er System
-$1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^22=2^{23} \hat{=} 10^x$
-$2^{23}\hat{=}10^x, x=23 \log_10 2 = $
-$m \in \mathbb{M}, m=\pm 0.\_\_\_\_\_\_\_E\pm \_\_\_\_\_\_\_$ Lücke zwischen $-10^{-127}$ und $10^{_127}$ Faktor $10^7$ groß
+  Exponent $10^{-127}$ bis $10^{127}$
+ \item Länge der Maschine im 10er-System:\\
+$1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^22=2^{23} \equals 10^x$\\
+$2^{23}\equals 10^x, x=23 \log_{10}(2) \approx 6,923 $ \todo{soll das hier stehen?}\\
+$m \in \mathbb{M}, m=\pm 0.\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_} e\pm \text{\ttfamily\_\_\_}\ldots\text{\ttfamily\_\_\_}$\\Lücke zwischen $-10^{-127}$ und $10^{-127}$ Faktor $10^7$ groß
 \end{itemize}
 
 \subsubsection{Rundungsfehler}
 
-Wesentlich mitbestimmt von F.L.Bauer, Samelson, Zenger aus der Informatik und R.Bukisch, Chr. Reinsch aus der Mathematik und Wilkinson.
-
+Wesentlich mitbestimmt von F. L. Bauer, Samelson, Zenger aus der Informatik und R. Bukisch und Chr. Reinsch aus der Mathematik und Wilkinson.\\
 Hilfsmittel: Abbildung von den reellen Zahlen (Alltag) auf den Rechner
 
-Abb: rd. round, Rundung. rd: $\mathbb{R}\rightarrow\mathbb{M}$
+\begin{definition}[Abbildung \emph{rd} bzw. \emph{round} (Rundung)]
+rd: $\mathbb{R}\rightarrow\mathbb{M}$\\
+rd: $\left\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\right\} \mapsto m_i$
+\end{definition}
 
-rd: $\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\} \rightarrow m_i$
+\begin{note}
+Intervall-Arithmetik hat sich trotz Hardwareunterstützung nicht bewährt: Intervallängen zu pessimistisch.
+\end{note}
 
-Bemerkung: Intervall-Arithmetik hat sich trotz Hardwareunterstützung \emph{nicht} bewährt: Intervallängen zu pessimistisch.
+\begin{definition}[Abbildung]
+Vorraussetzung: $A$, $B$ Mengen\todo{prüfen}
+\begin{equation}f: A \rightarrow B, x \mapsto f(x)\end{equation}
+Eine Abbildung ist eine Vorschrift, die jedem $x \in A$ ein Element $x=f(x) \in B$ zuordnet.
+\end{definition}
 
-Definition: Abbildung
-Vor(?): A,B Mengen
-$f: A \rightarrow B, x \mapsto f(x)$
-Die Abbildung ist eine Vorschrift, die jedem $x \in A$ ein element $x=f(x) \in B$ zuordnet
-
-Charakterisierung von Abbildungen
+\subsubsection*{Charakterisierung von Abbildungen}
 \begin{itemize}
- \item gehören zu verschiedenen Argumenten verschiedene Funktionswerte, heißt $f$ \emph{injektiv},
-$x_1,x_2 \in A, x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)$
- \item Wertebereich $C \subseteq A$
-$f(C) = {f(x)|x\in C}$
+ \item gehören zu verschiedenen Argumenten verschiedene Funktionswerte, heißt $f$ \emph{injektiv:}
+\[\forall x_1,x_2 \in A: x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)\]
+ \item Wertebereich $C \subseteq A$:
+\[ f(C) = \{f(x)|x\in C\} \]
  \item $f$ \emph{surjektiv}, falls $f(A)=B$
- \item Gilt $f$ injektiv und surjektiv, so heißt $f$ \emph{bijektiv}
+ \item $f$ injektiv und surjektiv $\Leftrightarrow$ $f$ \emph{bijektiv}
 
-$f: A \mapsto B$ ist genau dann bijektiv, falls zu jedem $y \in B$ genau ein $x \in A $ existiert mit $y=f(x)$ in diesem Fall existiert eine Umkehrabbildung $f^{-1}: B \mapsto A$
+$f: A \mapsto B$ ist genau dann bijektiv, falls zu jedem $y \in B$ genau ein $x \in A $ existiert mit $y=f(x)$. In diesem Fall existiert eine Umkehrabbildung $f^{-1}: B \mapsto A$.
 \end{itemize}

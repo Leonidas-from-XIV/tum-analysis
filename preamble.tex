@@ -10,18 +10,11 @@
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm,mathdots,gauss}
 \usepackage{capt-of}
+\usepackage{todonotes,ifthen}
 
 %\usepackage{pxfonts}
 
 \usepackage{hyperref,float}
-
-% amsthm conf
-\newtheorem{definition}{Definition}
-\newtheorem{theorem}{Satz}
-\newtheorem{lemma}{Lemma}
-\newtheorem{example}{Beispiel}
-\newtheorem{note}{Anmerkung}
-\newtheorem{proposition}{Behauptung}
 
 % tikz, geogebra colors
 \usepackage{pgf,tikz}
@@ -39,7 +32,33 @@
 
 % macros
 
-\usepackage{todonotes}
+\newcommand{\newtheoremenv}[3]{
+  \newtheorem{#1_thm}{#2}
+  \newenvironment{#1}{\begin{#1_thm}\normalfont}{\begin{flushright}#3\end{flushright}\end{#1_thm}}
+}
+
+\newcommand{\newtheoremenvstar}[4][default]{
+  \newtheorem*{#2_thm}{#3}
+  \newenvironment{#2}[1][]{\begin{#2_thm}[##1]\newtheoremselectfont{#1}}{\newtheoremstop{#4}\end{#2_thm}}
+}
+
+\newcommand{\newtheoremenvoldqed}{}
+
+\newcommand{\newtheoremstop}[1]{
+  \ifthenelse{\equal{#1}{}}{}{
+    \renewcommand{\newtheoremenvoldqed}{\qedsymbol}
+    \renewcommand{\qedsymbol}{#1}
+    \qed
+    \renewcommand{\qedsymbol}{\newtheoremenvoldqed}
+  }
+}
+
+\newcommand{\newtheoremselectfont}[1]{
+  \ifthenelse{\equal{#1}{default}}{}{}
+  \ifthenelse{\equal{#1}{normal}}{\normalfont}{}
+}
+
+\newcommand{\flush}{\begin{flushleft}\end{flushleft}}
 
 \newcommand{\lecture}[1]{
 
@@ -51,6 +70,22 @@
       \end{minipage}
   }
 }
+
+% amsthm conf
+\newtheorem{theorem}{Satz}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Behauptung}
+
+
+% \newtheorem{definition}{Definition}
+
+% \newtheorem{example}{Beispiel}
+% \newtheorem{note}{Anmerkung}
+
+\newtheoremenvstar[normal]{definition}{Definition}{$\blacksquare$}
+\newtheoremenvstar[normal]{example}{Beispiel}{|}
+\newtheoremenvstar[normal]{note}{Anmerkung}{|}
+
 
 % Style
 \renewcommand{\theenumi}{\arabic{enumi}}
@@ -68,7 +103,9 @@
 \newcommand{\induction}{Beweis per vollständiger Induktion}
 \newcommand{\imag}{\operatorname{i}}
 \newcommand{\euler}{\operatorname{e}}
-\newcommand{\equals}{\hat{=}}
+\newcommand{\equals}{\mathrel{\widehat{=}}}
 
 \newcommand{\integer}{\texttt{INTEGER}}
 \newcommand{\real}{\texttt{REAL}}
+
+\newcommand{\annotation}[1]{\emph{#1, Anm. d. Verfasser}}
