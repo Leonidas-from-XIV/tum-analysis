@@ -1,7 +1,7 @@
 \newpage
 \lecture{2009-11-03}
 
-Deutung für das Produkt zweier komplexer Zahlen:
+\subsubsection*{Deutung für das Produkt zweier komplexer Zahlen}
 \begin{align*}
 	z &= |z|(\cos \varphi + \imag \sin \varphi) \\
 	w &= |w|(\cos \psi + \imag \sin \psi) \\
@@ -42,7 +42,7 @@ Produkt $z \cdot w$: Produkt der Beträge und Addition der Winkel
 	\end{tikzpicture}
 \end{center}
 
-\paragraph{Formel von Moivre (Potenzbildung)}
+\subsubsection*{Formel von Moivre (Potenzbildung)}
 \begin{align*}
 	z &= |z|(\cos \varphi + \imag \sin \varphi) \\
 	z^2 &= |z|^2(\cos 2\varphi + \imag \sin 2\varphi) \\
@@ -50,25 +50,22 @@ Produkt $z \cdot w$: Produkt der Beträge und Addition der Winkel
 	z^n &= |z|^n(\cos n\varphi + \imag \sin n\varphi) \\
 	\text{für } |z| = 1 \Rightarrow z^n &= (\cos \varphi + \imag \sin \varphi)^n = \cos n\varphi + \imag \sin n\varphi \text{ (Formel von Moivre)}
 \end{align*}
-
-Rückwärts gelesen als "Wurzel ziehen"
+%
+Rückwärts gelesen als ``Wurzel ziehen''
 \begin{align*}
 	\left(\cos\frac{\psi}{n} + \imag \sin\frac{\psi}{n}\right)^n &= \cos \psi + \imag \sin \psi \\
 	\intertext{speziell: $\psi = 2\pi$}
 	\left(\cos\frac{2\pi}{n} + \imag \sin\frac{2\pi}{n}\right)^n &= \underbrace{\cos 2\pi}_{=1} + \underbrace{\imag \sin 2\pi}_{=0} = 1 \\
 \end{align*}
-Obiges ist eine Interpretation für $\sqrt[n]{1}$
+(obiges ist eine Interpretation für $\sqrt[n]{1}$)
 
-\begin{definition}
-	n-te Einheitswurzel $\omega_k$
+\begin{definition}[n-te Einheitswurzel $\omega_k$]
 	\begin{align*}
 		\omega_k &:= \cos\frac{2\pi k}{n} + \imag \sin\frac{2\pi k}{n} \\
 		\text{mit } k &= 0, 1, 2, \ldots, n - 1 \\
 		\Rightarrow \omega_k^n &= 1
 	\end{align*}
-	\begin{note}
-		$\cos 2\pi k = 1 \text{ und } \sin 2\pi k = 0$
-	\end{note}
+	(mit $\cos \left(2\pi k\right) = 1 \text{ und } \sin \left(2\pi k\right) = 0$)
 \end{definition}
 
 \begin{example}
@@ -112,11 +109,11 @@ Obiges ist eine Interpretation für $\sqrt[n]{1}$
 	\end{center}
 	$n = 6$ d.h. teile Einheitskreis (mit Unfang $2\pi$) in 6 Teile. 1 Teil $\equals \frac{2\pi}{6} = \frac\pi 3 (60^\circ)$ (hier: $k = 1 \ldots n$ (statt $0 \ldots n - 1$))
 \end{example}
-
-Ohne Beschränkung auf Länge 1:
+%
+\noindent Ohne Beschränkung auf Länge 1:
 \begin{gather*}
 	a = |a|(\cos \alpha + \imag \sin \alpha) \in \mathbb{C} \\
-	\Rightarrow z_n = \sqrt[n]{|a|}\left(\cos \frac{\alpha + 2\pi k}{n} + \imag \sin \frac{\alpha + 2\pi k}{n}\right) \text{ mit } k = 0\dotsc n - 1 "n-Wurzeln"
+	\Rightarrow z_n = \sqrt[n]{|a|}\left(\cos \frac{\alpha + 2\pi k}{n} + \imag \sin \frac{\alpha + 2\pi k}{n}\right) \text{ mit } k = 0\dotsc n - 1 \text{ $\ldots$``$n$-Wurzeln''}
 \end{gather*}
 \begin{note}
 	Ist das reelle $\sqrt{}$-ziehen eingebettet?
@@ -130,48 +127,46 @@ Ohne Beschränkung auf Länge 1:
 		x_2 &= \sqrt{|a|} \cdot (-1)
 	\end{align*}
 \end{note}
-\begin{note}
-	Euler-Formel: $\euler^{\imag \varphi} =\cos \varphi + \imag \sin \varphi$ (Basis für die Fast-Fourier-Transformation)
+\begin{note}[Euler-Formel]
+	\begin{equation*}\euler^{\imag \varphi} =\cos \varphi + \imag \sin \varphi\end{equation*}(Basis für die Fast-Fourier-Transformation)
 \end{note}
-\begin{note}
-	Interessante Gleichung:
-	\begin{equation*}
-		e^{2\pi\imag} = 1
-	\end{equation*}
-\end{note}
+\begin{note}Interessante Gleichung: $\euler^{2\pi\imag} = 1$\end{note}
 
 \section{Elementares aus $\mathbb{R}^2$ bzw. $\mathbb{R}^n$}
 
 \subsection{Kartesisches Koordinatensystem}
-\begin{definition}
-	Graph einer Funktion
+\begin{definition}[Graph einer Funktion]
 	\begin{align*}
 		f &: I \rightarrow \mathbb{R} \text{ mit }I \subseteq \mathbb{R} \\
 		G &: \{(x,y) | x \in I, y = f(x)\} \\
 		& \text{($I$: Definitionsbereich, $f(I)$: Wertebereich)}
 	\end{align*}
 \end{definition}
-\begin{note}
-	Darstellung einer Kurve im $\mathbb{R}$ (erweiterter Funktionsbegriff).
-	\begin{gather*}
-		\text{Kurve } C := \{(x, y) \in \mathbb{R}^2 | F(x, y) = 0\} \text{ (implizite Darstllung)} \\
-		\text{Achtung: keine Form } y = f(x) \text{ erforderlich}
-	\end{gather*}
-	\begin{example}
-		Kreislinie: $x^2 + y^2 = r^2$ ; $F(x,y) = x^2 + y^2 - r^2 = 0$
-	\end{example}
-	\begin{note}
-		\TeX Metafont: Kurve als Parameterdarstellung
-	\end{note}
-	\begin{equation*}
-		\text{Parameter }t \in I : C(t) = \left(\begin{aligned}x(t) \\ y(t)\end{aligned}\right)
-	\end{equation*}
-	Falls $t = x \rightarrow$ siehe Oben
-	\begin{equation*}
-		0 \leq t <2\pi: \left.\begin{aligned}x(t) &= r \cos t \\ y(t) &= r \sin t\end{aligned}\right\} \rightarrow\text{ andere Kreisdarstellung}
-	\end{equation*}
-	Wahl des Parameters $t$: "nahezu Lottospiel" (sprich nahezu beliebig). Beste Wahl: $t = s$ (Bogenlänge; ist im Allgemeinen ein implizites Problem.)
+
+\subsubsection*{Kurven}
+
+\begin{note}[Kurve]\flush
+      Darstellung einer Kurve im $\mathbb{R}$ (erweiterter Funktionsbegriff)
+      \begin{gather*}
+              \text{Kurve } C := \{(x, y) \in \mathbb{R}^2 | F(x, y) = 0\} \text{ (implizite Darstllung)} \\
+              \text{Achtung: keine Form } y = f(x) \text{ erforderlich}
+      \end{gather*}
 \end{note}
+\begin{example}
+        Kreislinie: $x^2 + y^2 = r^2$ ; $F(x,y) = x^2 + y^2 - r^2 = 0$
+\end{example}
+\begin{note}
+        \TeX\ \MF: Kurve als Parameterdarstellung
+\end{note}
+\begin{equation*}
+        \text{Parameter }t \in I : C(t) = \left(\begin{aligned}x(t) \\ y(t)\end{aligned}\right)
+\end{equation*}
+Falls $t = x \rightarrow$: siehe oben
+\begin{equation*}
+  0 \leq t <2\pi: \left.\begin{aligned}x(t) &= r \cos t \\ y(t) &= r \sin t\end{aligned}\right\} \rightarrow\text{ andere Kreisdarstellung}
+\end{equation*}
+Wahl des Parameters $t$: nahezu ``Lottospiel'' (d. h. beliebig). Beste Wahl: $t = s$ (Bogenlänge; ist im Allgemeinen ein implizites Problem.)
+
 
 \subsubsection*{Wiederholung: Trigonometrische Funktionen}
 \begin{center}
@@ -198,6 +193,8 @@ Im rechtwinkligen Dreieck gilt:
 	\item $a^2 + b^2 = c^2$
 	\item falls $c = 1 \Rightarrow \text{Bogenmaß}$
 \end{itemize}
+
+%%% LARS: REVIEWSTATE
 
 \paragraph*{Typische Werte:}
 \begin{center}
