@@ -11,6 +11,8 @@
 \usepackage{amsthm,mathdots,gauss}
 \usepackage{capt-of}
 \usepackage{todonotes,ifthen,wasysym,mflogo}
+\usepackage{stackrel}
+\usepackage{subfig}
 
 %\usepackage{pxfonts}
 
@@ -92,9 +94,26 @@
 \renewcommand{\labelenumii}{(\theenumii)}
 \allowdisplaybreaks
 
+% JP: Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
+% damit der erste Punkt nicht neben "Beispiel X" steht, sondern darunter.
+\makeatletter
+\let\@bspAlt\example
+\def\@bspAltI{\@bspAlt\leavevmode\newline\vspace*{-1.5em}}
+\def\@bspAltII{\@bspAlt}
+\renewcommand{\example}{\@ifnextchar\begin \@bspAltI \@bspAltII}
+\makeatother
+
+% JP: Mit folgendem neu definierten matrix-command, können die 
+% Elemente einer Matrix nun ausgerichtet werden [l,r,c]
+\makeatletter
+\renewcommand*\env@matrix[1][c]{\hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols #1}}
+\makeatother
+
 % Meta
 \title{Analysis für Informatiker}
-\author{Lars Hupel\\ Michael Kerscher\\ Markus Grimm\\ Andreas Heider}
+\author{Lars Hupel\\ Michael Kerscher\\ Markus Grimm\\ Andreas Heider \\ Janosch Peters}
 \date{\today}
 
 % Lecturer shortcuts
