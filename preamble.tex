@@ -58,15 +58,13 @@
   \ifthenelse{\equal{#1}{normal}}{\normalfont}{}
 }
 
+\newcommand{\ds}{\displaystyle}
 \newcommand{\flush}{\begin{flushleft}\end{flushleft}\noindent}
-
 \newcommand{\lecture}[1]{
-
-
   \noindent
   \fbox{
       \begin{minipage}{\textwidth}\centering
-        \textbf{Vorlesung vom #1}
+        \sffamily\textbf{Vorlesung vom #1}
       \end{minipage}
   }
 }
@@ -85,7 +83,7 @@
 \newtheoremenvstar[normal]{definition}{Definition}{$\LHD$}
 \newtheoremenvstar[normal]{example}{Beispiel}{$\lhd$}
 \newtheoremenvstar[normal]{note}{Anmerkung}{$\lhd$}
-
+\newtheoremenvstar[normal]{repetition}{Wiederholung}{$\lhd$}
 
 % Style
 \renewcommand{\theenumi}{\arabic{enumi}}

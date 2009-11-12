@@ -30,9 +30,7 @@ Idee: Charakterisiere die Gerade durch ``Aufpunkt'' und ``Richtungsvektor''
 	\draw[color=black] (1.5,0) node [anchor=south] {$\vec{x}$};
 	\end{tikzpicture}
 \end{center}
-
-
-
+%
 Erinnerung:
 \begin{center}
 	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.5cm,y=2.5cm]
@@ -49,31 +47,41 @@ Erinnerung:
 	\fill [color=black] (1,0.78) circle (1.5pt);
 	\draw[color=black] (1,0.85) node [anchor=north west] {$y = mx + k$};
 
-	\draw[color=black] (2,0.08) node [anchor=north] {x};
-	\draw[color=black] (0,1) node [anchor=south west] {y};
+	\draw[color=black] (2.1,0.08) node [anchor=north] {x};
+	\draw[color=black] (0.05,1) node [anchor=south west] {y};
 	\end{tikzpicture}
 \end{center}
-
+%
 Zusammenhang:
-
+%
 \begin{itemize}
-	\item k i.w. $\vec{a}$
-	\item m i.w. $\vec{b}$
-	\item x i.w. $\lambda$
+	\item $k \equals \vec{a}$
+	\item $m \equals \vec{b}$
+	\item $x \equals \lambda$
 \end{itemize}
-
+%
 Geradengleichung in Koordinaten:
-\begin{align*} % TODO: Richtig ausrichten
-	\binom{x}{y} = \binom{x}{mx+k} = &\binom{0}{k} + x& \binom{1}{m} \\
-	\downarrow& \downarrow& \downarrow \\
-	\vec{a}& \lambda& \vec{b}
-\end{align*}
+\begin{equation*}
+  \begin{matrix}
+    \ds\binom{x}{y} = \binom{x}{mx+k} = & \ds\binom{0}{k} & + & \ds x      & \cdot & \ds\binom{1}{m} \\
+                                        &    \downarrow   &   & \downarrow &       & \downarrow \\
+                                        &    \vec{a}      &   & \lambda    &       & \vec{b}
+  \end{matrix}
+\end{equation*}
+
+%%% DONE --lars
+% 
+% 
+% \begin{align*} % TODO: Richtig ausrichten
+% 	\binom{x}{y} = \binom{x}{mx+k} = &\binom{0}{k} + x& \binom{1}{m} \\
+% 	\downarrow& \downarrow& \downarrow \\
+% 	\vec{a}& \lambda& \vec{b}
+% \end{align*}
 
 
 % Pfeile $\leadsto \vec{a}$
 
-Drehen eines Vektors $\leadsto$ Matrizenbeschreibung \\
-
+\noindent Drehen eines Vektors $\longrightarrow$ Matrizenbeschreibung \\
 allgemein: Matrizen entsprechen linearen Abbildungen
 
 \begin{align*}
@@ -82,44 +90,42 @@ f: &V \mapsto W  \text{ lineare Abbildung bijektiv zu Matrizen} \\
 &y = Ax \\
 f: &v \mapsto w \\
 &x \mapsto y
-\end{align*}
+\end{align*}\todo{besseres Layout}
 
 $V, W$ als Vektorraum, $\mathbb{R}^{n} \mapsto$ A: (n x n)-Matrix \\
 A staucht, dehnt, rotiert Vektor x.
 
-% TODO: Diagonalen schöner
 \begin{align*}
 A \mapsto 	\begin{cases} 
 			(0 / 0) \text{ Diagonalgestalt} \\
 			(o.../0) \text{ Jordannormalform}
 		\end{cases}
-\end{align*}
+\end{align*}\todo{Diago\-nalen verschö\-nern}
 
-\subsubsection*{Zur Drehung}
+\subsubsection*{Drehung}
 
-% TODO einfügen
-... Bild ...
+\missingfigure{Bild}
 
 Gegeben:
 \begin{itemize}
-	\item $x, y$ d.h. $P$
+	\item $x, y$, d. h. $P$
 	\item $\alpha$
 \end{itemize}
-
+%
 Wie sehen $u$, $v$ aus?
-
+%
 \begin{align*}
-x =& \overline{OS} - \overline{RS} \\
+x &= \overline{OS} - \overline{RS} \\
 \cos \alpha &= \frac{\overline{OS}}{\alpha} \\
 \sin \alpha &= \frac{\overline{TQ}}{v} = \frac{\overline{RS}}{v}
 \end{align*}
-
+%
 \begin{align*}
 \text{Ergebnis: } x &= u \cos \alpha - v \sin \alpha \\
 \text{analog: } &u \sin \alpha + v \cos \alpha
 \end{align*}
 
-\subsubsection*{Als Matrix-Vektor Notation}
+\subsubsection*{Matrix-Vektor-Notation}
 
 \begin{definition}
 	$ R_{\alpha} =
@@ -148,24 +154,24 @@ x =& \overline{OS} - \overline{RS} \\
 		y
  	\end{pmatrix}
 \end{equation*}
-
+%
 Weiterhin gilt:
 \begin{equation*}
 	R_{\alpha}^{-1} = R_{-\alpha} = R_{\alpha}^{T}
 \end{equation*}
 
 \begin{note}
-Drehung liefert Anlass für Matrix-Vektor Produkt und Matrix-Matrix Produkt
+Drehung liefert Anlass für Matrix-Vektor-Produkt und Matrix-Matrix-Produkt
 \end{note}
 
-Zwei Drehungen um $\angle \alpha$ und $\angle \beta$
+\noindent Zwei Drehungen um $\angle \alpha$ und $\angle \beta$
 \begin{equation*}
 	R_{\beta} R_{\alpha} = R_{\beta + \alpha}
 \end{equation*}
+%
+Drehungen im $\mathbb{R}^{n}$ in der Ebene $(i, j)$
 
-Drehungen im $\mathbb{R}^{n}$ in der Ebene (i, j)
-
-Großes Bild.
+\missingfigure{Großes Bild.}
 
 \subsubsection*{Anwendung in $\mathbb{R}^{2}$: Längenmessung/Abstand}
 
@@ -177,13 +183,14 @@ Großes Bild.
  	\end{pmatrix}
 \end{equation*}
 
-\begin{definition}
-	Länge von $\vec{x}$ als $|x| = \sqrt{x_1^2 + x_2^2}$
+\begin{definition}Länge von $\vec{x}$ als $|x| = \sqrt{x_1^2 + x_2^2}$
 \end{definition}
 
-kleines Bild
+\missingfigure{kleines Bild}
 
+\begin{note}
 Abstand zweier Vektoren entspricht der Länge des Differenzvektors $\vec{x} - \vec{y}$
+\end{note}
 
 \begin{equation*}
 	|\vec{x} - \vec{y}| = \left|
@@ -196,7 +203,7 @@ Abstand zweier Vektoren entspricht der Länge des Differenzvektors $\vec{x} - \v
 
 \subsubsection*{Anwendung: Rechte Winkel}
 
-\begin{definition}
+\begin{theorem}
 \begin{equation*}
 	\vec{x} \perp \vec{y} \Leftrightarrow |\vec{x}|^2 + |\vec{y}|^2 = |\vec{x} - \vec{y}|^2
 \end{equation*}
@@ -206,12 +213,14 @@ wegen
 	\Rightarrow x_1 y_1 + x_2 y_2 &= 0 \\
 	S = x^T y &= 0
 \end{align*}
-\end{definition}
+\end{theorem}
+
+%%% LARS REVIEWSTATE
 
 \subsubsection*{Formale Beschreibung}
-\begin{definition} 
-Skalarprodukt $ x, y \in \mathbb{R}^2 $ \\
-Notation: $ <, > ansonsten (, ), x^T y$ o.ä. \\
+\begin{definition}[Skalarprodukt]\flush
+$ x, y \in \mathbb{R}^2 $ \\
+Notation: $ <, >; (, ); x^T y$ o. ä. \\
 $<, >$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
 \end{definition}
 

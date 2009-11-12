@@ -145,30 +145,33 @@ Rückwärts gelesen als ``Wurzel ziehen''
 
 \subsubsection*{Kurven}
 
-\begin{note}[Kurve]\flush
-      Darstellung einer Kurve im $\mathbb{R}$ (erweiterter Funktionsbegriff)
+\begin{definition}[Kurve in $\mathbb{R}$, erweiterter Funktionsbegriff]\flush
       \begin{gather*}
-              \text{Kurve } C := \{(x, y) \in \mathbb{R}^2 | F(x, y) = 0\} \text{ (implizite Darstllung)} \\
+              C := \{(x, y) \in \mathbb{R}^2 \;|\; F(x, y) = 0\} \text{ (implizite Darstllung)} \\
               \text{Achtung: keine Form } y = f(x) \text{ erforderlich}
       \end{gather*}
-\end{note}
-\begin{example}
-        Kreislinie: $x^2 + y^2 = r^2$ ; $F(x,y) = x^2 + y^2 - r^2 = 0$
+\end{definition}
+\begin{example}[Kreislinie]
+        \[ x^2 + y^2 = r^2; \;\; F(x,y) = x^2 + y^2 - r^2 = 0 \]
 \end{example}
-\begin{note}
-        \TeX\ \MF: Kurve als Parameterdarstellung
+\begin{note}[Parameterdarstellung]\flush
+  \begin{itemize}
+    \item
+          \TeX-\MF: Kurve als Parameterdarstellung
+          \begin{equation*}
+                  \text{Parameter }t \in I : C(t) = \left(\begin{aligned}x(t) \\ y(t)\end{aligned}\right)
+          \end{equation*}
+    \item falls $t = x$: siehe oben, entspricht Funktion
+    \item andere Kreisdarstellung:
+      \begin{equation*}
+        0 \leq t <2\pi: \left.\begin{aligned}x(t) &= r \cos t \\ y(t) &= r \sin t\end{aligned}\right\}
+      \end{equation*}
+    \item Wahl des Parameters $t$: nahezu ``Lottospiel'' (d. h. beliebig). Beste Wahl: $t = s$ (Bogenlänge; ist im Allgemeinen ein implizites Problem.)
+  \end{itemize}
+  \todo{hier fehlt noch etwas Struktur}
 \end{note}
-\begin{equation*}
-        \text{Parameter }t \in I : C(t) = \left(\begin{aligned}x(t) \\ y(t)\end{aligned}\right)
-\end{equation*}
-Falls $t = x \rightarrow$: siehe oben
-\begin{equation*}
-  0 \leq t <2\pi: \left.\begin{aligned}x(t) &= r \cos t \\ y(t) &= r \sin t\end{aligned}\right\} \rightarrow\text{ andere Kreisdarstellung}
-\end{equation*}
-Wahl des Parameters $t$: nahezu ``Lottospiel'' (d. h. beliebig). Beste Wahl: $t = s$ (Bogenlänge; ist im Allgemeinen ein implizites Problem.)
 
-
-\subsubsection*{Wiederholung: Trigonometrische Funktionen}
+\begin{repetition}[Trigonometrische Funktionen]\flush\todo{anderer Font für Wiederholungen (da außerhalb des Stoffs)}
 \begin{center}
 	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
 		\draw[color=black] (0,0) -- (3,0);
@@ -194,9 +197,6 @@ Im rechtwinkligen Dreieck gilt:
 	\item falls $c = 1 \Rightarrow \text{Bogenmaß}$
 \end{itemize}
 
-%%% LARS: REVIEWSTATE
-
-\paragraph*{Typische Werte:}
 \begin{center}
 	\begin{tabular}[h]{|c||c|c|c|c|c|}
 		\hline
@@ -204,35 +204,38 @@ Im rechtwinkligen Dreieck gilt:
 		$\cos \alpha$ & $1$ & $\frac 1 2 \sqrt{3}$ & $\frac 1 2 \sqrt{2}$ & $\frac 1 2$ & $0$ \\ \hline
 		$\sin \alpha$ & $0$ & $\frac 1 2$ & $\frac 1 2 \sqrt{2}$ & $\frac 1 2 \sqrt{3}$ & $1$ \\ \hline
 	\end{tabular}
+	\captionof{table}{Typische Werte}
 \end{center}
 
-\paragraph*{Graphen:}
+\subsubsection*{Graphen}
 \annotation{die Graphen von Sinus und Kosinus sollten bekannt sein}
 
-\paragraph{Eigenschaften:}
+\subsubsection*{Eigenschaften}
 \begin{itemize}
 	\item $\sin x$, $\cos x$ sind $2\pi$-periodisch, d.h. $\sin(x + 2\pi k) = \sin x$; $\cos(x + 2\pi k) = \cos x$ mit $k \in \mathbb{Z}$
 	\item $\cos x$ ist eine gerade Funktion: $\cos(-\alpha) = \cos\alpha$
 	\item $\sin x$ ist eine ungerade Funktion: $\sin(-\alpha) = -\sin\alpha$
 \end{itemize}
 
+\end{repetition}
+
 \subsection{Vektorrechnung im $\mathbb{R}^2$ (Winkel, Längen)}
-\begin{definition}
-	Vektor $\vec{x} = \begin{pmatrix}x_1 \\ x_2\end{pmatrix}$
+\begin{definition}[Vektor]
+	\[\vec{x} = \begin{pmatrix}x_1 \\ x_2\end{pmatrix}\]
 \end{definition}
-Die folgenden Darstellungen sind äquivalent (weil eine Bijektion existiert):
+\noindent Die folgenden Darstellungen sind äquivalent (weil eine Bijektion existiert):
 \begin{itemize}
 	\item Zahlenpaar im $\mathbb{R}^2$
 	\item Punkt im $\mathbb{R}^2$
 	\item Vektor im $\mathbb{R}^2$
 	\item Pfeil im $\mathbb{R}^2$
 \end{itemize}
-
+%
 Standardvektorraum ist der $\mathbb{R}^2$ bzw. $\mathbb{R}^n$ über dem Zahlenkörper $\mathbb{R}$.
 
-\paragraph*{Rechnen}
+\subsubsection*{Rechnen}
 \begin{itemize}
-	\item Addition 2er Vektoren $\vec{x} + \vec{y} = \begin{pmatrix}x_1 \\ x_2\end{pmatrix} + \begin{pmatrix}y_1 \\ y_2\end{pmatrix} = \begin{pmatrix}x_1 + y_1 \\ x_2 + y_2\end{pmatrix}$
+	\item Addition zweier Vektoren $\vec{x} + \vec{y} = \begin{pmatrix}x_1 \\ x_2\end{pmatrix} + \begin{pmatrix}y_1 \\ y_2\end{pmatrix} = \begin{pmatrix}x_1 + y_1 \\ x_2 + y_2\end{pmatrix}$
 	\item skalare Multiplikation ($\lambda \in \mathbb{R}$): $\lambda \vec{x} = \lambda \begin{pmatrix}x_1 \\ x_2\end{pmatrix} = \begin{pmatrix}\lambda x_1 \\ \lambda x_2\end{pmatrix}$
 \end{itemize}
 \begin{note}
