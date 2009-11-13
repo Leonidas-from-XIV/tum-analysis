@@ -1,8 +1,6 @@
 \newpage
 \lecture{2009-11-04}
 
-% re im vorher für geschweifte klammer
-
 \subsubsection*{Anwendung: Darstellung einer Geraden}
 
 Idee: Charakterisiere die Gerade durch ``Aufpunkt'' und ``Richtungsvektor''
@@ -12,10 +10,6 @@ Idee: Charakterisiere die Gerade durch ``Aufpunkt'' und ``Richtungsvektor''
 \end{equation*}
 
 \begin{center}
-	\definecolor{ttttff}{rgb}{0.2,0.2,1}
-	\definecolor{qqqqff}{rgb}{0,0,1}
-	\definecolor{ffffff}{rgb}{1,1,1}
-	\definecolor{xdxdff}{rgb}{0.49,0.49,1}
 	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
 	\draw[->,color=black,dash pattern=on 3pt off 3pt] (0,0) -- (2.5,0);
 	\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
@@ -69,42 +63,77 @@ Geradengleichung in Koordinaten:
   \end{matrix}
 \end{equation*}
 
-%%% DONE --lars
-% 
-% 
-% \begin{align*} % TODO: Richtig ausrichten
-% 	\binom{x}{y} = \binom{x}{mx+k} = &\binom{0}{k} + x& \binom{1}{m} \\
-% 	\downarrow& \downarrow& \downarrow \\
-% 	\vec{a}& \lambda& \vec{b}
-% \end{align*}
-
-
-% Pfeile $\leadsto \vec{a}$
-
 \noindent Drehen eines Vektors $\longrightarrow$ Matrizenbeschreibung \\
 allgemein: Matrizen entsprechen linearen Abbildungen
 
 \begin{align*}
-&V, W: \text{ Vektorraum} \\
-f: &V \mapsto W  \text{ lineare Abbildung bijektiv zu Matrizen} \\
-&y = Ax \\
-f: &v \mapsto w \\
-&x \mapsto y
-\end{align*}\todo{besseres Layout}
-
+	&V, W: \text{ Vektorraum} \\
+	&\begin{matrix}
+		f: & V & \mapsto  & W & \text{ lineare Abbildung bijektiv zu Matrizen} \\
+		f: & v & \mapsto  & w & y = Ax \\
+		   & \downarrow & & \downarrow \\ 
+		   & x &\mapsto   & y
+	\end{matrix}
+\end{align*}
 $V, W$ als Vektorraum, $\mathbb{R}^{n} \mapsto$ A: (n x n)-Matrix \\
 A staucht, dehnt, rotiert Vektor x.
 
 \begin{align*}
 A \mapsto 	\begin{cases} 
-			(0 / 0) \text{ Diagonalgestalt} \\
-			(o.../0) \text{ Jordannormalform}
+			\begin{pmatrix} d_1 & & 0 \\  & \ddots & \\ 0 & & d_n \end{pmatrix} \text{ Diagonalgestalt} \\
+			\begin{pmatrix}
+			J_1 &          & 0   \\
+			    & \ddots &     \\ 
+			  0 &          & J_k \end{pmatrix} \text{ mit } J_i= \begin{pmatrix} \lambda_i & 1 &  &  & 0 \\  & \lambda_i & 1 &  &  \\ && \ddots{} & \ddots{}\\ &&& \lambda_i & 1 \\ 0 &  & &  & \lambda_i \end{pmatrix}  \text{ Jordannormalform}
 		\end{cases}
-\end{align*}\todo{Diago\-nalen verschö\-nern}
+\end{align*}
 
 \subsubsection*{Drehung}
 
-\missingfigure{Bild}
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+\draw[->,color=black] (-2,0) -- (4,0);
+\draw[->,color=black] (0,-1) -- (0,4);
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-2,-1) rectangle (4,4);
+\draw [shift={(1.01,3.36)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (-90:0.6) arc (-90:-40.31:0.6) -- cycle;
+\draw [shift={(0,0)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:0.6) arc (0:47.74:0.6) -- cycle;
+\draw [->] (0,0) -- (-2.9,2.46);
+\draw [->] (0,0) -- (2.98,3.28);
+\draw [dash pattern=on 3pt off 3pt] (2.17,0) -- (2.17,2.36);
+\draw [dash pattern=on 3pt off 3pt,domain=-1.16:1.16] plot(\x,{(--6.69--3.28*\x)/2.98});
+\draw [dash pattern=on 3pt off 3pt,domain=1.16:2.17] plot(\x,{(-12.24--2.46*\x)/-2.9});
+\draw [dash pattern=on 3pt off 3pt] (1.01,0) -- (1.01,3.36);
+\draw [dash pattern=on 3pt off 3pt,domain=0:1.16] plot(\x,{(--56.61-0*\x)/16.84});
+\fill [color=qqqqff] (-2.9,2.46) circle (1.5pt);
+\draw[color=qqqqff] (-2.74,2.74) node {$A$};
+\draw[color=black] (-1.22,1.34) node {$\vec{v}$};
+\draw[color=black] (1.5,1.86) node {$\vec{u}$};
+\fill [color=black] (2.17,2.38) circle (1.5pt);
+\draw[color=black] (2.4,2.36) node {$Q$};
+\draw[color=black] (2.06,6.16) node {$a_1$};
+\draw[color=black] (3.16,6.16) node {$b$};
+\draw[color=black] (-1.88,6.16) node {$c$};
+\fill [color=uququq] (1.01,3.36) circle (1.5pt);
+\draw[color=uququq] (1.16,3.64) node {$P$};
+\draw[color=black] (1.24,6.16) node {$d$};
+\fill [color=xdxdff] (3.56,6.16) circle (1.5pt);
+\draw[color=xdxdff] (3.7,6.22) node {$F$};
+\fill [color=xdxdff] (8.1,-2.65) circle (1.5pt);
+\draw[color=xdxdff] (8.26,-2.36) node {$G$};
+\fill [color=xdxdff] (1.01,-3.88) circle (1.5pt);
+\draw[color=xdxdff] (1.2,-3.6) node {$H$};
+\draw[color=qqwuqq] (1.16,3) node {$\alpha$};
+\draw[color=black] (-4.14,3.22) node {$e$};
+\draw[color=qqwuqq] (0.4,0.19) node {$\alpha$};
+\fill [color=uququq] (0,3.36) circle (1.5pt);
+\draw[color=uququq] (0.16,3.64) node {$y$};
+\fill [color=uququq] (1.01,0) circle (1.5pt);
+\draw[color=uququq] (1.18,-0.3) node {$x, R$};
+\fill [color=uququq] (2.17,0) circle (1.5pt);
+\draw[color=uququq] (2.3,-0.3) node {$S$};
+\end{tikzpicture}
+\end{center}
 
 Gegeben:
 \begin{itemize}
@@ -171,7 +200,17 @@ Drehung liefert Anlass für Matrix-Vektor-Produkt und Matrix-Matrix-Produkt
 %
 Drehungen im $\mathbb{R}^{n}$ in der Ebene $(i, j)$
 
-\missingfigure{Großes Bild.}
+\begin{equation*}
+	R_{\alpha} =
+	\bordermatrix{
+		&		&	i 			&	& j	\cr
+		&	\begin{smallmatrix} 1 & & \\ &\ddots & & \\ & & 1 \end{smallmatrix} & & & & 0 \cr
+	i	&		&	\cos \alpha	&	&	-\sin \alpha \cr
+		&		&	\vdots			& \begin{smallmatrix} 1 & & \\ &\ddots & & \\ & & 1 \end{smallmatrix} & \vdots \cr
+	j	&		&	\sin \alpha	&	&	-\cos \alpha \cr
+		&	0	&					&	&	& \begin{smallmatrix} 1 & & \\ &\ddots & & \\ & & 1 \end{smallmatrix}
+	}
+\end{equation*}
 
 \subsubsection*{Anwendung in $\mathbb{R}^{2}$: Längenmessung/Abstand}
 
@@ -186,7 +225,21 @@ Drehungen im $\mathbb{R}^{n}$ in der Ebene $(i, j)$
 \begin{definition}Länge von $\vec{x}$ als $|x| = \sqrt{x_1^2 + x_2^2}$
 \end{definition}
 
-\missingfigure{kleines Bild}
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.5cm,y=1.5cm]
+\draw[->,color=black] (-0.3,0) -- (2.5,0);
+\draw[->,color=black] (0,-0.3) -- (0,1.7);
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-0.5,-0.5) rectangle (2.5,1.7);
+\draw [->] (0,0) -- (2,1.36);
+\draw [dash pattern=on 3pt off 3pt] (2,1.36)-- (2,0);
+\draw [dash pattern=on 3pt off 3pt] (2,1.36)-- (0,1.36);
+\draw[color=black] (1.04,0.9) node {$\vec{x}$};
+\draw[color=black] (2,0) node [anchor=north] {$x_1$};
+\draw[color=black] (0,1.36) node [anchor=east] {$x_2$};
+
+\end{tikzpicture}
+\end{center}
 
 \begin{note}
 Abstand zweier Vektoren entspricht der Länge des Differenzvektors $\vec{x} - \vec{y}$
@@ -219,16 +272,17 @@ wegen
 
 \subsubsection*{Formale Beschreibung}
 \begin{definition}[Skalarprodukt]\flush
-$ x, y \in \mathbb{R}^2 $ \\
-Notation: $ <, >; (, ); x^T y$ o. ä. \\
-$<, >$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
+	\begin{itemize}
+		\item $ x, y \in \mathbb{R}^2 $
+		\item Notation: $ <, >; (, ); x^T y$ o. ä.
+		\item $<, >$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
+	\end{itemize}
 \end{definition}
 
-% TODO: mehr Platz
 d.h. \begin{itemize}
 	\item $ <x, y> = <y, x>$
 	\item $ <\lambda x_1 + \lambda x_2, y> = \lambda <x_1, y> + \lambda <x_2, y>$
-	\item $ <x, x> \geq 0 = 0 \text{falls} x = 0$
+	\item $ <x, x> \geq 0 = 0 \text{ falls } x = 0$
 \end{itemize}
 
 Das Skalarprodukt induziert eine Länge (Norm)
@@ -261,7 +315,7 @@ allg. Beweis: s. Bornemann
 
 \begin{definition}
 	Norm eines Vektors $ x \in \mathbb{R}^n $: \\
-	$ ||.||: \mathbb{R}^n \mapsto \mathbb{R} $ \\
+	\begin{equation*} ||.||: \mathbb{R}^n \mapsto \mathbb{R} \end{equation*}
 	Eigenschaften:
 	\begin{itemize}
 		\item $ || x || = 0 \Leftrightarrow x = 0 $
@@ -272,12 +326,12 @@ allg. Beweis: s. Bornemann
 
 Bei uns im $ \mathbb{R}^n $ ist $ || x ||_2 $ die euklidische Norm.
 
-$(1)$ und $(2)$ sind trivial, nur Dreiecksungleichung $(3)$ ist zu zeigen.
+$(1)$ und $(2)$ sind trivial, nur die Dreiecksungleichung $(3)$ ist zu zeigen.
 
 \begin{align*}
-	|| x + y ||^2 =& || x ||^2 + 2<x, y> + || y ||^2 \\
-	\leq& || x ||^2 + 2 || x || || y || + || y ||^2 \\
-	=& (|| x || + || y ||)^2
+	|| x + y ||^2 &= || x ||^2 + 2<x, y> + || y ||^2 \\
+	&\leq || x ||^2 + 2 || x || || y || + || y ||^2 \\
+	&= (|| x || + || y ||)^2
 \end{align*}
 
 \begin{note}
