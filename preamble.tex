@@ -13,14 +13,21 @@
 \usepackage{todonotes,ifthen,wasysym,mflogo}
 \usepackage{stackrel}
 \usepackage{subfig}
+\usepackage{hyperref,float}
+
+
+%%% fonts
 
 %\usepackage{pxfonts}
 
-\usepackage{hyperref,float}
+%%% tikz
 
-% tikz, geogebra colors
 \usepackage{pgf,tikz}
+
 \usetikzlibrary{arrows}
+
+%%% geogebra
+
 % geogebra farbcodes unschoen, aber zu aufwendig um die haendisch auszubessern -.-
 \definecolor{qqqqff}{rgb}{0,0,1}
 \definecolor{xdxdff}{rgb}{0.49,0.49,1}
@@ -33,33 +40,48 @@
 \definecolor{ttttff}{rgb}{0.2,0.2,1}
 \definecolor{ffffff}{rgb}{1,1,1}
 
-% macros
+%%% amsthm macros
 
+\makeatletter
 \newcommand{\newtheoremenv}[3]{
-  \newtheorem{#1_thm}{#2}
-  \newenvironment{#1}{\begin{#1_thm}\normalfont}{\begin{flushright}#3\end{flushright}\end{#1_thm}}
+  \newtheoremenv@selectfont{default}
+  \newtheorem{#1thm}{#2}
+  \newenvironment{#1}[1][]{\begin{#1thm}[##1]\newtheoremenv@autoflush}{\newtheoremenv@foot{#3}\end{#1thm}}
 }
 
 \newcommand{\newtheoremenvstar}[4][default]{
-  \newtheorem*{#2_thm}{#3}
-  \newenvironment{#2}[1][]{\begin{#2_thm}[##1]\newtheoremselectfont{#1}}{\newtheoremstop{#4}\end{#2_thm}}
+  \newtheoremenv@selectfont{#1}
+  \newtheorem*{#2thm}{#3}
+  \newenvironment{#2}[1][]{\begin{#2thm}[##1]\newtheoremenv@autoflush}{\newtheoremenv@foot{#4}\end{#2thm}}
 }
 
-\newcommand{\newtheoremenvoldqed}{}
+\newcommand{\newtheoremenv@oldqed}{}
 
-\newcommand{\newtheoremstop}[1]{
+\newcommand{\newtheoremenv@foot}[1]{
   \ifthenelse{\equal{#1}{}}{}{
-    \renewcommand{\newtheoremenvoldqed}{\qedsymbol}
+    \renewcommand{\newtheoremenv@oldqed}{\qedsymbol}
     \renewcommand{\qedsymbol}{#1}
     \qed
-    \renewcommand{\qedsymbol}{\newtheoremenvoldqed}
+    \renewcommand{\qedsymbol}{\newtheoremenv@oldqed}
   }
 }
 
-\newcommand{\newtheoremselectfont}[1]{
-  \ifthenelse{\equal{#1}{default}}{}{}
-  \ifthenelse{\equal{#1}{normal}}{\normalfont}{}
+\newcommand{\newtheoremenv@selectfont}[1]{
+  \ifthenelse{\equal{#1}{default}}{\theoremstyle{ourthmstyle_default}}{}
+  \ifthenelse{\equal{#1}{normal}}{\theoremstyle{ourthmstyle_normal}}{}
 }
+
+% JP: Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
+% damit der erste Punkt nicht neben "Beispiel X" steht, sondern darunter.
+
+% LH: Auf beliebige amsthm-Umgebungen erweitert
+\newcommand{\newtheoremenv@flush}{\leavevmode\newline\vspace*{-1.5em}}
+\newcommand{\newtheoremenv@noflush}{}
+\newcommand{\newtheoremenv@autoflush}{\@ifnextchar\begin \newtheoremenv@flush \newtheoremenv@noflush}
+
+\makeatother
+
+%%% common macros
 
 \newcommand{\ds}{\displaystyle}
 \newcommand{\flush}{\begin{flushleft}\end{flushleft}\noindent}
@@ -67,42 +89,58 @@
   \noindent
   \fbox{
       \begin{minipage}{\textwidth}\centering
-        \sffamily\textbf{Vorlesung vom #1}
+        \sffamily\large Vorlesung vom #1
       \end{minipage}
   }
 }
 
-% amsthm conf
-\newtheorem{theorem}{Satz}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Behauptung}
+%%% amsthm styles
 
+% LH: Anpassung von AMS-Theorem an den Style der Überschriften
+% von http://en.wikibooks.org/w/index.php?title=LaTeX/Theorems&oldid=1645789
+\newtheoremstyle{ourthmstyle_default} % means AMS default (itseries)
+{ }% measure of space to leave above the theorem. E.g.: 3pt
+{ }% measure of space to leave below the theorem. E.g.: 3pt
+{\normalfont\itshape}% name of font to use in the body of the theorem
+{ }% measure of space to indent
+{\normalfont\sffamily\bfseries}% name of head font
+{}% punctuation between head and body
+{ }% space after theorem head; " " = normal interword space
+{}% Manually specify head
 
-% \newtheorem{definition}{Definition}
+\newtheoremstyle{ourthmstyle_normal} % means 'normalfont'
+{ }% measure of space to leave above the theorem. E.g.: 3pt
+{ }% measure of space to leave below the theorem. E.g.: 3pt
+{\normalfont}% name of font to use in the body of the theorem
+{ }% measure of space to indent
+{\normalfont\sffamily\bfseries}% name of head font
+{}% punctuation between head and body
+{ }% space after theorem head; " " = normal interword space
+{}% Manually specify head
 
-% \newtheorem{example}{Beispiel}
-% \newtheorem{note}{Anmerkung}
+%%% amsthm conf
+
+\newtheoremenv{theorem}{Satz}{}
+\newtheoremenv{lemma}{Lemma}{}
+\newtheoremenv{proposition}{Behauptung}{}
 
 \newtheoremenvstar[normal]{definition}{Definition}{$\LHD$}
 \newtheoremenvstar[normal]{example}{Beispiel}{$\lhd$}
 \newtheoremenvstar[normal]{note}{Anmerkung}{$\lhd$}
 \newtheoremenvstar[normal]{repetition}{Wiederholung}{$\lhd$}
 
-% Style
+%%% enumeration style
+
 \renewcommand{\theenumi}{\arabic{enumi}}
 \renewcommand{\labelenumi}{(\theenumi)}
 \renewcommand{\theenumii}{\alph{enumii}}
 \renewcommand{\labelenumii}{(\theenumii)}
+
+%%% style
+
 \allowdisplaybreaks
 
-% JP: Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
-% damit der erste Punkt nicht neben "Beispiel X" steht, sondern darunter.
-\makeatletter
-\let\@bspAlt\example
-\def\@bspAltI{\@bspAlt\leavevmode\newline\vspace*{-1.5em}}
-\def\@bspAltII{\@bspAlt}
-\renewcommand{\example}{\@ifnextchar\begin \@bspAltI \@bspAltII}
-\makeatother
+%%% matrix column alignment
 
 % JP: Mit folgendem neu definierten matrix-command, können die 
 % Elemente einer Matrix nun ausgerichtet werden [l,r,c]
@@ -112,12 +150,8 @@
   \array{*\c@MaxMatrixCols #1}}
 \makeatother
 
-% Meta
-\title{Analysis für Informatiker}
-\author{Lars Hupel\\ Michael Kerscher\\ Markus Grimm\\ Andreas Heider \\ Janosch Peters}
-\date{\today}
+%%% lecturer shortcuts
 
-% Lecturer shortcuts
 \newcommand{\induction}{Beweis per vollständiger Induktion}
 \newcommand{\imag}{\operatorname{i}}
 \newcommand{\euler}{\operatorname{e}}
