@@ -46,6 +46,8 @@
 
 %%% amsthm macros
 
+%%% TODO: use xkeyval to simplify usage ;)
+
 \makeatletter
 \newcommand{\newtheoremenv}[3]{
   \newtheoremenv@selectfont{default}
@@ -71,8 +73,7 @@
 }
 
 \newcommand{\newtheoremenv@selectfont}[1]{
-  \ifthenelse{\equal{#1}{default}}{\theoremstyle{ourthmstyle_default}}{}
-  \ifthenelse{\equal{#1}{normal}}{\theoremstyle{ourthmstyle_normal}}{}
+  \theoremstyle{ourthmstyle_#1}
 }
 
 % JP: Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
@@ -136,6 +137,8 @@
 
 \allowdisplaybreaks
 \bibliographystyle{babalpha}
+
+\pagestyle{headings}
 
 \lstset{language=Lisp, numbers=left, numberstyle=\tiny\ttfamily, stepnumber=1, numbersep=5pt, frame=none, backgroundcolor=\color{lightbluegray}, captionpos=b,
 basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt }

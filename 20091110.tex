@@ -164,9 +164,9 @@ besser: \emph{Hornerschema} (\( \approx \) 1800)
 \]
 
 
-\begin{lstlisting}[caption="`Codierung des Hornerschemas"'] 
+\begin{lstlisting}[caption=Codierung des Hornerschemas] 
 p := a[n];
-for k := $n$ - 1 to 0 do
+for k := n - 1 to 0 do
 	p := p * x + a[k];
 print(x,p);
 \end{lstlisting}
@@ -210,7 +210,7 @@ l-fache Nullstellen:
 		&p(x)=a_nx^k+\ldots+a_1x+a_0=a_nx^n\left(1+\frac{a_n-1}{a_n\cdot x}+\ldots+\frac{a_1}{a_n\cdot x^{n-1}}+\frac{a_0}{a_n\cdot x^n}\right), \\
 		&\text{wobei } a_n\neq0 \text{ sowie } x\neq0 
 \end{align*}
-Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_nx^n \) \newline ``Wie verhält sich eine Funktion, wenn x über alle Maßen wächst?''
+Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_nx^n \) \newline "`Wie verhält sich eine Funktion, wenn x über alle Maßen wächst?"'
 
 \begin{definition}[Rationale Funktion]
 	\[
@@ -240,7 +240,7 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 	
 	\item[2. Fragestellung:] Möglichst gutes Approximieren einer unbekannten Funktion \( f(x) \). Von \( f \) sind Messwerte bekannt.
 	
-	\item[3. Fragestellung:] ``Schöne Bilder'', Buchstaben, etc. zeichnen. (\TeX)
+	\item[3. Fragestellung:] "`Schöne Bilder"', Buchstaben, etc. zeichnen. (\TeX)
 \end{description}
 
 \begin{theorem}[Gut gestelltes Problem]
