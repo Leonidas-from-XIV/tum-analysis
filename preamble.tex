@@ -16,7 +16,7 @@
 \usepackage{listings}
 \usepackage{hyperref,float}
 \usepackage{ziffer}
-
+\usepackage[subfigure]{tocloft}
 
 %%% fonts
 
@@ -87,14 +87,6 @@
 
 \newcommand{\ds}{\displaystyle}
 \newcommand{\flush}{\begin{flushleft}\end{flushleft}\noindent}
-\newcommand{\lecture}[1]{
-  \noindent
-  \fbox{
-      \begin{minipage}{\textwidth}\centering
-        \sffamily\large Vorlesung vom #1
-      \end{minipage}
-  }
-}
 
 %%% amsthm styles
 
@@ -142,6 +134,10 @@
 
 \allowdisplaybreaks
 
+\makeatletter
+\renewcommand{\@todonotes@todolistname}{Aufgabenliste}
+\makeatother
+
 %%% matrix column alignment
 
 % JP: Mit folgendem neu definierten matrix-command, können die 
@@ -151,6 +147,24 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols #1}}
 \makeatother
+
+%%% list of lectures
+
+\newcommand{\listlecturename}{Vorlesungsverzeichnis}
+\newlistof{lectures}{lec}{\listlecturename}
+
+\newcommand{\lecture}[1]{
+
+  \addcontentsline{lec}{lectures}{#1}
+  \noindent
+  \fbox{
+      \begin{minipage}{\textwidth}\centering
+        \sffamily\large Vorlesung vom #1
+      \end{minipage}
+  }
+}
+
+
 
 %%% lecturer shortcuts
 
