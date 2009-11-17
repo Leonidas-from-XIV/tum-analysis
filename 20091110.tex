@@ -1,0 +1,243 @@
+\lecture{2009-11-10}
+
+\chapter{Funktionen, Stetigkeit, Differenzierbarkeit}
+
+\section{Funktionen, Polynome}
+\subsection{Grundbegriffe zu Funktionen}
+	Reelwertige Funktion $f:D \rightarrow \mathbb{R}, D \subseteq \mathbb{R}$
+
+\begin{example}
+	\begin{itemize}
+			\item{
+			Lineare Funktion $f(x)=ax+b$ \newline
+		    Gerade durch $(0,b)$ und $(-\frac{b}{a},0)$
+		
+			Erinnerung:
+			\begin{center}
+				\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.5cm,y=2.5cm]
+				\draw[->,color=black] (-0.5,0) -- (2,0);
+				\foreach \x in {,1}
+				\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+				\draw[->,color=black] (0,-0.5) -- (0,1.2);
+				\foreach \y in {}
+				\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+				\clip(-0.8,-0.8) rectangle (2.8,1.6);
+				\draw [domain=-0.5:1] plot(\x,{(--0.25--0.8*\x)/1});
+				
+				\draw[color=black] (-0.4, 0.15) node {$(\frac{b}{a},0)$};
+				\fill [color=black] (-0.3125,0) circle (1.5pt);
+				
+				\draw[color=black] (0.25,0.20) node {$(0,b)$};<
+				\fill [color=black] (0,0.25) circle (1.5pt);
+
+				\draw[color=black] (2,0.08) node [anchor=north] {x};
+				\draw[color=black] (0,1) node [anchor=south west] {y};
+				\end{tikzpicture}
+			\end{center}
+			}
+	\item{
+	Quadratische Funktion (Parabel)
+	\begin{align*}
+		f(x) &= ax^2 +bx+c \\
+		&= a(x^2+\frac{b}{a}x+\frac{b^2}{4a^2})+c-\frac{b^2}{4a} &\\
+		&= a(x+\frac{b}{2a})^2+c - \frac{b^2}{4a} &\\
+		&= \underbrace{(x-x_0)^2}_{\parbox{20mm}{\tiny Scheitelpunkt in X-richtung verschoben}}
+		+\underbrace{y_0}_{\parbox{20mm}{\tiny Scheitelpunkt in Y-richtung verschoben}}
+		& x_0 = -\frac{b}{2a} \hspace{10mm} y_0=c-\frac{b^2}{4a}
+	\end{align*}
+	}
+	\end{itemize}
+\end{example}
+
+\subsubsection{Eigenschaften von Funktionen}
+\begin{itemize}
+	
+	\item Symmetrie
+	\[
+	\begin{matrix}[l]
+		&\text{Gerade:}		&f(-x) = f(x)	&\text{Beispiele:}	&f(x) = x^2 	&f(x) = cos(x) \\
+		&\text{Ungerade:}	&f(-x) = -f(x) &\text{Beispiele:} &f(x) = x^{2n+1}	&f(x) = sin(x)
+	\end{matrix}
+	\]
+	
+	\item Monotonie \newline \(f:D\rightarrow \mathbb{R}\) heisst
+	\begin{itemize}
+		\item monoton wachsend, wenn \(x_1<x_2 \implies f(x_1) \leq f(x_2)\)
+		\item streng monoton wachsend, wenn \(x_1<x_2 \implies f(x_1) < f(x_2)\)
+	\end{itemize}
+	\begin{figure}[h]
+	\subfloat[Monoton]
+	{
+	\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
+		\draw[blue,domain=0:1] plot ({\x},{\x*\x*\x}) node[above] 
+		{};
+		\draw[blue,domain=-1:0] plot ({\x},{0}) node[above] 
+	    {};
+		\draw[blue,domain=-2:-1] plot ({\x},{(\x+1)^3}) node[above] 
+		{};
+	\end{tikzpicture}
+	}
+	\subfloat[Streng monoton]
+	{
+		\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
+			\draw[blue,domain=-2:0.5] plot ({\x},{exp(\x)}) node[above] 
+			{};
+		\end{tikzpicture}
+	}
+\end{figure}
+	
+	
+\end{itemize}
+
+\subsubsection{Operationen}
+\( f,g: D \rightarrow \mathbb{R} \)
+\begin{itemize}
+	\item \((f \stackrel[\cdot]{+}{-} g)(x) = f(x)  \stackrel[\cdot]{+}{-} g(x) \)
+	\item \(a \in \mathbb{R}, (af)(x)=af(x)\)
+	\item \(g \neq 0, (\frac{f}{g})(x)=\frac{f(x)}{g(x)}\)
+	\item 	Komposition / Hintereinanderausführung\newline
+	\begin{align*} &f:I\rightarrow\mathbb{R}  g:D\rightarrow\mathbb{R} g(D) \subseteq I h:D\rightarrow\mathbb{R} \\ &h = f \circ g  \text{ ist definiert durch } h(x) = f( g(x) )
+	\end{align*}
+	Bemerkung: \(f \circ g \) im Allgemeinen \( \neq g \circ f \)
+	\begin{align*}
+		f(x) &= cos(x) g(x) &= 1-x^2, D &= I=\mathbb{R} \\
+		(f \circ g)(x) &= f(g(x)) &= f(1-x^2) &= cos(1-x^2) \\
+		(g \circ f)(x) &= g(f(x)) &= g(cos(x)) &= 1-cos^2x = sin^2x 
+	\end{align*}	
+\end{itemize}
+
+\subsection{Polynome und rationale Funktionen} % (fold)
+\label{sub:polyFunk}
+
+Eine Funktion \( p:\mathbb{R} \rightarrow \mathbb{R} \) heißt Polynom vom Grade n, falls p die Darstellung besitzt:
+\begin{align*}
+	&p(x)=a_0+a_1x+\ldots+a_n x^n = \sum_{k=0}^{n} a_kx^k\\
+	&\text{Monome }x^k, k=0,\ldots,n; \\
+	&\text{Polynomkoeffizienten }a_0,\ldots,a_n,a_n \neq 0
+\end{align*}
+
+\subsubsection{Operationen} % (fold)
+\label{ssub:polyOp}
+
+\[
+	\sum_{k=0}^{n}a_kx^k \stackrel{+}{-} 	\sum_{k=0}^{n}b_kx^k = \sum_{k=0}^{n}(a_k \stackrel{+}{-} b_k)x^k
+\]
+Umordnung möglich da \( n \) endlich.
+% subsubsection operationen (end)
+
+\subsubsection{Verbindung zur Linearen Algebra} % (fold)
+\label{ssub:polyLinAlg}
+\( x^0,x^1,\ldots,x^n \) Basis der Polynome vom Grade \( \leq n \) \newline
+\( span\{x^,\ldots,x^n\}=\Pi_n \) Vektorraum im Reellen der Polynome vom Grade \( \leq n \text{ über } \Pi \)
+
+% subsubsection Verbindung zur Linearen Algebra (end)
+
+\subsubsection{Evaluieren von Polynomen} % (fold)
+\label{ssub:evaluieren_von_polynomen}
+
+\[
+	p(x)=a_0+a_1x+\ldots+a_nx^n
+\]
+Naiv:
+\begin{itemize}
+	\item \( n \) Multiplikationen \( a_kx^k \)
+	\item \( (n-1) \) Potenzen als Multiplikation \( x^k=x(x^{k-1}) \)
+	\item \( n \) Additionen
+\end{itemize}
+
+Besser: Hornerschema (\( \sim \)1800)
+\[
+	p(x)=(\ldots((a_nx+a_{n-1})x+a_{n-2})x\ldots)x+a_0
+\]
+
+
+\lstset{language=Pascal}
+\begin{lstlisting}[frame=single,mathescape=true,caption="Codierung des Hornerschemas"] 
+p:=a_n;
+for k := n - 1 to 0 do
+	p := p * x + $a_k$;
+print(x,p);
+\end{lstlisting}
+Bei dieser Codierung des Hornerschemas wird nur ein Speicherplatz für \( p \) belegt.
+
+% subsubsection evaluieren_von_polynomen (end)
+
+\subsubsection{Polynom-Nullstellen} % (fold)
+\label{ssub:polynom_nullstellen}
+
+\begin{definition}
+				Als Nullstelle einer Funktion \( f:D\rightarrow\mathbb{R} \) wird jede Lösung \( \hat{x} \in D \) der Gleichung \( f(\hat{x})=0 \) bezeichnet.
+\end{definition}
+\noindent Speziell die Polynome \( b \in \mathbb{R} \) haben genau dann eine Nullstelle, falls der Linearfaktor \( (x-b) \) abspaltbar ist, d.h.
+
+\[
+	p(x)=(x-b)r(x) \qquad grad(r)=n-1
+\]
+l-fache Nullstellen:
+\[
+	p(x)=(x-b)^lq(x) \qquad grad(q)=n-l
+\]
+\begin{theorem}[Fundamentalsatz der Algebra]\flush
+	p zerfällt über \( \mathbb{C} \) in n Linearfaktoren mit Vielfachheiten gezählt.
+\end{theorem}
+
+\noindent Bemerkung:	
+\begin{align*}
+	n &= 2 \rightarrow \text{quadratische Gleichung} \\
+	n &= 3 \rightarrow \text{Cardano} \\
+	n &= 4 \rightarrow \text{auch noch analytisch lösbar} \\
+	n &> 4 \rightarrow \text{nicht mehr analytisch / nur noch iterativ lösbar}
+\end{align*}
+% subsubsection polynom_nullstellen (end)
+
+\subsubsection{Wachstum der Polynome} % (fold)
+\label{ssub:wachstum_der_polynome}
+
+\begin{align*}
+		&p(x)=a_nx^k+\ldots+a_1x+a_0=a_nx^n(1+\frac{a_n-1}{a_n\cdot x}+\ldots+\frac{a_1}{a_n\cdot x^{n-1}}+\frac{a_0}{a_n\cdot x^n}) \\
+		&\text{wobei } a_n\neq0 \text{ sowie } x\neq0 
+\end{align*}
+Asymptotisches Verhalten: \( x \rightarrow \pm \infty:p(x)\rightarrow a_nx^n \) \newline "`Wie verhält sich eine Funktion, wenn x über alle Maßen wächst?"'
+
+\begin{definition}[Rationale Funktion]
+	\[
+			r(x)=\frac{p(x)}{g(x)} \qquad p,q \text{ sind Polynome}
+	\]
+\end{definition}
+\noindent Die Nullstelle des Nenners (\( g(x)=0 \)) nennt man Polstelle. Die Division von Polynomen kann man mit dem Euklidischen Algorithmus durchführen (siehe auch F.L. Bauer, D.Knuth).
+
+% subsubsection wachstum_der_polynome (end)
+
+\subsubsection{Polynominterpolation} % (fold)
+\label{ssub:polynominterpolation}
+
+\begin{description}
+	\item[1. Fragestellung:] Man hat \( 2n(n+1) \) Meßdaten durch die ein Polynom konstruiert werden soll.
+	\begin{figure}[h]
+	\begin{tikzpicture}[scale=0.1, x=9cm, y=0.03cm]
+		\draw[blue,domain=-6:6] plot ({\x},36*{\x}-12*{\x}^2+3*{\x}^3) node[above] 
+		{};
+		\fill [color=black] (0,0) circle (30pt);
+		\fill [color=black] (1,27) circle (30pt);
+		\fill [color=black] (-1,-51) circle (30pt);
+		\fill [color=black] (2,48) circle (30pt);
+		\fill [color=black] (-2,-144) circle (30pt);
+	\end{tikzpicture}
+	\caption{Konstruktion eines Polynoms durch Stützpunkte/Meßdaten}
+	\end{figure}
+	
+	\item[2. Fragestellung:] Approximiere eine unbekannte Funktion \( f(x) \) möglichst gut. Von \( f \) sind Meßwerte bekannt.
+	
+	\item[3. Fragestellung:] "`Schöne Bilder"', Buchstaben, etc zeichnen. (\TeX)
+\end{description}
+
+\begin{theorem}[Gut gestelltes Problem]
+	\begin{itemize}
+		\item eine Lösung existiert
+		\item eine Lösung ist eindeutig
+		\item kleine Änderungen der Daten bedingen kleine Änderungen der Lösung
+	\end{itemize}
+	
+\end{theorem}
+% subsubsection polynominterpolation (end)
+% subsection Polynome und rationale Funktionen (end)
