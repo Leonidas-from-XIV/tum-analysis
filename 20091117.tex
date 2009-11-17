@@ -1,0 +1,151 @@
+\newpage
+\lecture{2009-11-17}
+
+\todo[inline]{könnte redundant zur vorheringen Vorlesung sein}
+\begin{note}
+ Falls eine Folge monoton und beschränkt ist, dann ist der Grenzwert die kleinste obere/untere Schranke. (Im Prinzip wäre man fertig, aber Folgen wie $a_n = \frac{(-1)^n}{n^2}$ würden nicht erfasst. $\leadsto$ Formalisierung erforderlich
+\end{note}
+
+\paragraph*{1. Schritt:} $\varepsilon$-Charakterisierung des Grenzwertes $\alpha$ \\
+zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\varepsilon}$
+\paragraph*{2. Schritt:}
+  \begin{equation*}
+    \forall \varepsilon > 0\; \exists n_\varepsilon \;\forall n \geq n_\varepsilon: \;\left|a_n-\alpha\right| < \varepsilon
+  \end{equation*}
+
+\begin{definition}[Grenzwert]
+  Eine Zahl $\alpha$ heißt Grenzwert (\emph{Limes}) einer Folge $a_n$, falls gilt:
+  \begin{equation*}
+    \forall \varepsilon > 0\; \exists n_\varepsilon \in \mathbb{N} \;\forall n \geq n_\varepsilon:\; \left| a_n - \alpha \right| < \varepsilon
+  \end{equation*}
+  Symbol: $\displaystyle\alpha = \liminfty{a_n}$\\
+  Eine Folge heißt \emph{konvergent}, falls sie einen Grenzwert besitzt.
+\end{definition}
+
+\begin{note}[rekursiv definierte Folge]
+  das $n$-te Folgenelement berechnet sich aus den Vorgängern
+\end{note}
+
+\begin{example}[rekursiv definierte Folge]
+  Evakuierungspumpe: $p_n$ aus $p_{n-1}$ und $p_0$
+\end{example}
+
+\begin{note}[Grenzwert in drei Schritten]
+  \begin{enumerate}
+   \item beschränkt
+   \item monoton
+   \item Grenzwert berechnen durch Einsetzen $\displaystyle p^\ast = \liminfty{p_n}$
+  \end{enumerate}
+\end{note}
+
+\begin{example}[Evakuierungspumpe]
+  \[ p_n = \frac{p_{n-1}V+p_0R}{V+R+Z} \]
+  \begin{enumerate}
+    \item nach unten durch $0$ beschränkt
+    \item monoton fallende Folge
+    \item[$\Rightarrow$] es existiert ein Infimum $\inf p_n$ $\equals$ Grenzwert
+    \item
+      \begin{equation*}
+        \liminfty{p_n} = \frac{\liminfty{p_{n-1}V}+p_0R}{V+R+Z} \Rightarrow
+        p^\ast = \frac{p^\ast V+p_0R}{V+R+Z} = \frac{p_0R}{R+Z}
+      \end{equation*}
+  \end{enumerate}
+\end{example}
+
+\subsubsection*{Begriffe}
+
+\emph{Konvergenz} -- es existiert ein Grenzwert\\
+\emph{Divergenz} -- es existiert kein Grenzwert\\
+\emph{Nullfolge} -- es existiert ein Grenzwert, dieser ist $0$
+
+\subsubsection*{Rechenregeln für Nullfolgen}
+
+\begin{note}
+  konvergente Folge $a_n$ mit Grenzwert $\alpha \neq 0$ kann in Nullfolge transformiert werden: $b_n = a_n - \alpha$ ist Nullfolge
+\end{note}
+
+\begin{enumerate}
+  \item $a_n, b_n$ Nullfolgen $\Rightarrow$ $a_n+b_n$ Nullfolge
+  \item $a_n$ Nullfolge, $b_n$ beschränkt $\Rightarrow$ $a_n\cdot b_n$ Nullfolge
+  \item $\left|b_n\right| < \left|a_n\right|$, $a_n$ Nullfolge  $\Rightarrow$ $b_n$ Nullfolge
+\end{enumerate}
+
+\begin{lemma}[Eindeutigkeit des Grenzwerts]
+  Jede Folge $a_n$ hat höchstens einen Grenzwert.
+\end{lemma}
+\begin{proof}
+  Angenommen, es existieren zwei Grenzwerte $\widehat a$ und $\overline a$, dann gilt nach Definition:
+  \begin{align*}
+    \left| a_n - \widehat a \right| &< \varepsilon \text{ für alle $n \geq N_1(\varepsilon)$} \\
+    \left| a_n - \overline a \right| &< \varepsilon \text{ für alle $n \geq N_2(\varepsilon)$}
+    \intertext{wähle $n \geq \max(N_1(\varepsilon),N_2(\varepsilon))$}
+    \left| \widehat a - \overline a \right| &= \left| \widehat a - a_n + a_n - \overline a \right| \\
+    & \leq \underbrace{\left| \widehat a - a_n \right|}_{< \varepsilon} + \underbrace{\left| a_n - \overline a \right|}_{< \varepsilon} \\
+    & < \varepsilon + \varepsilon = 2\varepsilon
+  \end{align*}
+  $\Rightarrow \overline a = \widehat a$, da $\varepsilon$ beliebig klein aber $> 0$
+\end{proof}
+
+\begin{example}[Anwendungen]
+\begin{enumerate}
+  \item\label{ex:polynomlimes}
+    \[
+      \liminfty{x^n} = \begin{cases}
+                          0 & \text{für $\left|x\right| < 1$ (Nullfolge)} \\
+                          1 & \text{für $x=1$} \\
+                          \infty & \text{für $x>1$} \\
+                          \text{unbest.} & \text{für $x \leq -1$}
+                       \end{cases}
+    \]
+  \item
+    \begin{align*}
+      a_n = \sqrt{n+1} - \sqrt n &\xrightarrow[n \rightarrow \infty]{} \infty - \infty = \text{?}\\
+      &= \frac{(\sqrt{n+1}-\sqrt n)(\sqrt{n+1}+\sqrt n)}{\sqrt{n+1}+\sqrt n}\\
+      &= \frac{n+1-n}{\sqrt{n+1}+\sqrt n}\\
+      &= \frac 1 {\sqrt{n+1} + \sqrt n}\\
+      &\xrightarrow[n \rightarrow \infty]{} 0
+    \end{align*}
+  \item geometrische Reihe
+    \begin{equation*}
+      s_n = 1 + x + \ldots + x^n = \begin{cases}
+                                     \frac{1-x^{n+1}}{1-x} & \text{ für } x \neq 1 \\
+                                     n + 1 & \text{ für } x = 1
+                                   \end{cases}
+    \end{equation*}
+    aus Beispiel \ref{ex:polynomlimes}: nur konvergent für $\left| x \right| < 1$\\
+    für $\left| x \right| < 1$:
+    \begin{equation*}
+      \liminfty{s_n} = \liminfty{\frac{1-x^{n+1}}{1-x}} = \frac{1-\displaystyle\liminfty{x^{n+1}}}{1-x} = \frac 1 {1-x}
+    \end{equation*}
+  \item harmonische Reihe\\
+    Folge $s_n = \displaystyle 1 + \frac 1 2 + \frac 1 3 + \ldots + \frac 1 n$ ist divergent, denn
+    \begin{align*}
+      s_{2k+1} &= 1 + \frac 1 2 + \left( \frac 1 3 + \frac 1 4 \right) + \left( \frac 1 5 + \ldots \frac 1 8 \right) + \ldots + \left(\frac 1 {2^k+1} + \ldots + \frac 1 {2^{k+1}}\right) \\
+      &\geq 1 + \frac 1 2 + 2 \cdot \frac 1 4 + 4 \cdot \frac 1 8 + \ldots + 2^k \cdot\frac 1 {2^{k+1}}\\
+      &= \frac{k+3} 2 \\
+      \Rightarrow \liminfty[k]{s_{2k+1}} &= \infty
+    \end{align*}
+    %
+    \begin{note}
+      Mantissenlänge (Zahldarstellung) und Taktzahl müssen so abgestimmt sein, dass ein unerfahrenere Nutzer in ca. 1 Tag Rechenzeit keine Konvergenz der harmonsichen Reihe erzielt (bisheriger Standard $R \ast 8$ nicht mehr ausreichend).
+    \end{note}
+  \item Eulersche Zahl $\euler = 2,71828\ldots$
+    \begin{equation*}
+      \euler := \sum\limits_{k=0}^\infty \left( \frac 1 {k!} \right) \rightarrow \text{ Grenzwert der Zahlenfolge}
+    \end{equation*}
+    \begin{enumerate}
+      \item nach oben beschränkt
+        \begin{align*}
+          0 &\leq 1 + \frac 1 {1!} + \ldots + \frac 1 {n!} \\
+          &\leq 1+1+\frac 1 2 + \ldots + \frac 1 {2^n}
+        \end{align*}
+      \item monoton wachsend
+        \begin{equation*}
+          b_{n+1} = 1 + \frac 1 {1!} + \ldots + \frac 1 {(n+1)!} = b_n + \frac 1 {(n+1)!} > b_n
+        \end{equation*}
+      \item[$\Rightarrow$] konvergent, Grenzwert $\leq 3$
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{example}
