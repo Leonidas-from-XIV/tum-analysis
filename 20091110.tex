@@ -63,10 +63,14 @@
 	\item Monotonie \newline \(f:D\rightarrow \mathbb{R}\) heißt
 	\begin{itemize}
 		\item \emph{monoton wachsend}, wenn \(x_1<x_2 \implies f(x_1) \leq f(x_2)\)
-		\item \emph{streng monoton wachsend}, wenn \(x_1<x_2 \implies f(x_1) < f(x_2)\)
-	\end{itemize}
-	
-       \begin{figure}[h]
+		\item \emph{streng monoton wachsend}, 
+			  wenn \(x_1<x_2 \implies f(x_1) < f(x_2)\)
+	\end{itemize}		
+\end{itemize}
+
+%JP: Sehr hässliche Lösung, aber subfloats und Listen mögen sich nunmal nicht.
+\begin{figure}[h]
+	\advance\leftskip+2cm
 	\subfloat[Monoton]
 	{
 	\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
@@ -77,18 +81,18 @@
 		\draw[blue,domain=-2:-1] plot ({\x},{(\x+1)^3}) node[above] 
 		{};
 	\end{tikzpicture}
-	}
-	\subfloat[Streng monoton]
-	{
-		\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
-			\draw[blue,domain=-2:0.5] plot ({\x},{exp(\x)}) node[above] 
-			{};
-		\end{tikzpicture}
-	}
+}
+\subfloat[Streng monoton]
+{
+	\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
+		\draw[blue,domain=-2:0.5] plot ({\x},{exp(\x)}) node[above] 
+		{};
+	\end{tikzpicture}
+}
+\caption{Beispiele für monoton wachsende Funktionen}
 \end{figure}
-\todo{correct indentation of figure env}
-	
-\end{itemize}
+%\todo{Listeneinzug auch auf die Bilder anwenden}
+
 \end{definition}
 
 \begin{definition}[Operationen]
@@ -160,11 +164,11 @@ besser: \emph{Hornerschema} (\( \approx \) 1800)
 \]
 
 
-\begin{lstlisting}[language=Pascal,captionpos=b,frame=single,mathescape=true,caption=Codierung des Hornerschemas] 
-p := $a_n$;
+\begin{lstlisting}[caption="`Codierung des Hornerschemas"'] 
+p := a[n];
 for k := $n$ - 1 to 0 do
-	p := p * $x$ + $a_k$;
-print($x$,p);
+	p := p * x + a[k];
+print(x,p);
 \end{lstlisting}
 Bei dieser Codierung des Hornerschemas wird nur ein Speicherplatz für \( p \) belegt.
 
@@ -213,8 +217,7 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 			r(x)=\frac{p(x)}{g(x)} \qquad p,q \text{ sind Polynome}
 	\]
 \end{definition}
-\noindent Die Nullstelle des Nenners (\( g(x)=0 \)) nennt man Polstelle. Die Division von Polynomen kann man mit dem Euklidischen Algorithmus durchführen (siehe auch F. L. Bauer, D. Knuth).\todo{bib}
-
+\noindent Die Nullstelle des Nenners (\( g(x)=0 \)) nennt man Polstelle. Die Division von Polynomen kann man mit dem Euklidischen Algorithmus durchführen (siehe auch \cite{bauerFaktPoly} und \cite{knuthPolynoms}).
 % subsubsection wachstum_der_polynome (end)
 
 \subsubsection*{Polynominterpolation} % (fold)

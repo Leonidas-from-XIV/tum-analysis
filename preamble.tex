@@ -7,6 +7,7 @@
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage[german]{babelbib}
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm,mathdots,gauss}
 \usepackage{capt-of}
@@ -41,6 +42,7 @@
 \definecolor{ffqqff}{rgb}{1,0,1}
 \definecolor{ttttff}{rgb}{0.2,0.2,1}
 \definecolor{ffffff}{rgb}{1,1,1}
+\definecolor{lightbluegray}{rgb}{0.9,0.9,1.0}
 
 %%% amsthm macros
 
@@ -133,6 +135,11 @@
 %%% style
 
 \allowdisplaybreaks
+\bibliographystyle{babalpha}
+
+\lstset{language=Lisp, numbers=left, numberstyle=\tiny\ttfamily, stepnumber=1, numbersep=5pt, frame=none, backgroundcolor=\color{lightbluegray}, captionpos=b,
+basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt }
+
 
 \makeatletter
 \renewcommand{\@todonotes@todolistname}{Aufgabenliste}
