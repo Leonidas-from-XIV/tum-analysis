@@ -268,76 +268,76 @@ wegen
 \end{align*}
 \end{theorem}
 
-%%% LARS REVIEWSTATE
-
 \subsubsection*{Formale Beschreibung}
 \begin{definition}[Skalarprodukt]\flush
 	\begin{itemize}
 		\item $ x, y \in \mathbb{R}^2 $
-		\item Notation: $ <, >; (, ); x^T y$ o. ä.
-		\item $<, >$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
+		\item Notation: ``$ \left<, \right>$''; ``$(, )$''; ``$x^T y$'' o. ä.
+		\item $\left<, \right>$: $\mathbb{R}^n \times \mathbb{R}^n \mapsto \mathbb{R}$ pos. def. symm. Bilinearform
 	\end{itemize}
 \end{definition}
 
-d.h. \begin{itemize}
-	\item $ <x, y> = <y, x>$
-	\item $ <\lambda x_1 + \lambda x_2, y> = \lambda <x_1, y> + \lambda <x_2, y>$
-	\item $ <x, x> \geq 0 = 0 \text{ falls } x = 0$
+\noindent d. h. \begin{itemize}
+	\item $ \left<x, y\right> = \left<y, x\right>$
+	\item $ \left<\lambda x_1 + \lambda x_2, y\right> = \lambda \left<x_1, y\right> + \lambda \left<x_2, y\right>$
+	\item $ \left<x, x\right> \geq 0 = 0 \text{ falls } x = 0$
 \end{itemize}
-
-Das Skalarprodukt induziert eine Länge (Norm)
-
+%
+Das Skalarprodukt induziert eine Länge (Norm):
 \begin{equation*}
-	|| x || = \sqrt{<x, x>}
+	\left\| x \right\| = \sqrt{\left<x, x\right>}
 \end{equation*}
-
-Wenn $V$ ein reeller Vektorraum mit Skalarprodukt ist dann bezeichnen wir ihn als \emph{euklidischen Vektorraum}
+%
+\begin{definition}[euklidischer Vektorraum]
+  Ein reeller Vektorraum mit Skalarprodukt heißt \emph{euklidischer Vektorraum}.
+\end{definition}
 
 \subsection{Ungleichung von Cauchy-Schwarz}
-Gegeben: $x, y \in \mathbb{R}^n$\\
-In kompakter Notation:
+gegeben: $x, y \in \mathbb{R}^n$\\
+in kompakter Notation:
 \begin{equation*}
-	<x, y> \leq || x || || y ||
+	\left<x, y\right> \leq \left\| x \right\| \left\| y \right\|
 \end{equation*}
-Ausgeschrieben:
+ausgeschrieben:
 \begin{equation*}
 	\sum_{k=1}^n x_k y_k \leq \sqrt{\sum_{k=1}^n x_k^2} \sqrt{\sum_{k=1}^n y_k^2} 
 \end{equation*} 
 
 \begin{align*}
-	n = 1:& x_1 y_1 \leq x_1 y_1 \\
-	n = 2:& x_1 y_1 + x_2 y_2 \leq sqrt{x_1^2 + x_2^2} sqrt{y_1^2 + y_2^2} \\
-	\Rightarrow& (x_1 y_1 + x_2 y_2)^2 \leq (x_1^2 + x_2^2) (y_1^2 + y_2^2) \\
-	& 2 x_1 y_1 x_2 y_2 \leq x_1^2 y_2^2 - x_2^2 y_1^2 \\
-	\Rightarrow& (x_1 y_2 -  x_2 y_1)^2 \geq 0
+\intertext{$n=1$:}
+	x_1 y_1 &\leq x_1 y_1
+\intertext{$n=2$:}
+	x_1 y_1 + x_2 y_2 &\leq \sqrt{x_1^2 + x_2^2} \sqrt{y_1^2 + y_2^2} \\
+	(x_1 y_1 + x_2 y_2)^2 &\leq (x_1^2 + x_2^2) (y_1^2 + y_2^2) \\
+	2 x_1 y_1 x_2 y_2 &\leq x_1^2 y_2^2 - x_2^2 y_1^2 \\
+	(x_1 y_2 -  x_2 y_1)^2 &\geq 0
 \end{align*}
-allg. Beweis: s. Bornemann
+allgemeiner Beweis: siehe Bornemann \todo{Literatur\-angabe per bib}
 
-\begin{definition}
-	Norm eines Vektors $ x \in \mathbb{R}^n $: \\
-	\begin{equation*} ||.||: \mathbb{R}^n \mapsto \mathbb{R} \end{equation*}
+\begin{definition}[Norm eines Vektors]\flush
+	$ x \in \mathbb{R}^n $: \\
+	\begin{equation*} \left\| \;\cdot\; \right\|: \mathbb{R}^n \mapsto \mathbb{R} \end{equation*}
 	Eigenschaften:
 	\begin{itemize}
-		\item $ || x || = 0 \Leftrightarrow x = 0 $
-		\item $ || \lambda x || = | \lambda | || x || $
-		\item $ || x + y || \leq || x || + || y || $
+		\item $ \left\| x \right\| = 0 \Leftrightarrow x = 0 $
+		\item $ \left\| \lambda x \right\| = | \lambda | \cdot \left\| x \right\| $
+		\item $ \left\| x + y \right\| \leq \left\| x \right\| + \left\| y \right\| $
 	\end{itemize}
 \end{definition}
-
-Bei uns im $ \mathbb{R}^n $ ist $ || x ||_2 $ die euklidische Norm.
-
-$(1)$ und $(2)$ sind trivial, nur die Dreiecksungleichung $(3)$ ist zu zeigen.
-
-\begin{align*}
-	|| x + y ||^2 &= || x ||^2 + 2<x, y> + || y ||^2 \\
-	&\leq || x ||^2 + 2 || x || || y || + || y ||^2 \\
-	&= (|| x || + || y ||)^2
-\end{align*}
-
+%
 \begin{note}
-Zwei weitere Normen
+  Im $ \mathbb{R}^n $ ist $ \left\| x \right\|_2 $ die euklidische Norm.\\
+  Die ersten beiden Eigenschaften sind trivial, nur die Dreiecksungleichung ist zu zeigen:
+    \begin{align*}
+	\left\| x + y \right\|^2 &= \left\| x \right\|^2 + 2\cdot \left<x, y\right> + \left\| y \right\|^2 \\
+	&\leq \left\| x \right\|^2 + 2 \cdot \left\| x \right\| \cdot \left\| y \right\| + \left\| y \right\|^2 \\
+	&= (\left\| x \right\| + \left\| y \right\|)^2
+    \end{align*}
+\end{note}
+
+\begin{note}[zwei weitere Normen]
 	\begin{itemize}
-		\item Maximumnorm $ || x ||_\infty = max \{ |x_k|, k=1..n\} $
-		\item $l^1$-Norm  $ || x ||_1 = \sum_{k=1}^n |x_k|$
+		\item Maximumnorm $ \left\| x \right\|_\infty = \max \left( \left\{ \left|x_k\right|\!; k=1 \ldots n\right\} \right)$
+		\item $\ell^1$-Norm  $ \left\| x \right\|_1 = \sum_{k=1}^n \left|x_k\right|$
 	\end{itemize}
 \end{note}
