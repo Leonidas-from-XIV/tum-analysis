@@ -114,18 +114,19 @@ $x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$. Nenner $x\neq9 
   \draw[->,color=black] (-5,0) -- (15,0); % Linie+Pfeil des Zahlenstrahls
   \foreach \x in {-5,...,14}
   \draw[shift={(\x,0)},color=black] (0,0.2) -- (0,-0.2); % Zahlenmarkierungen
-  \foreach \x in {-2,0,9}
+  \foreach \x in {-2,0,12/5,9}
   \draw[shift={(\x,0)},color=black] (0,0.3) -- (0,-0.3) node[below] {\footnotesize $\x$}; % Zahlen
-  \draw [line width=2pt,color=evtftf] (-5,0) -- (-2,0); % Markierung links
-  \draw [line width=2pt,color=evtftf] (9,0) -- (15,0); % Markierung rechts
+  \draw [-),ultra thick,color=orange] (-5,0) -- (-2,0); % Markierung links
+  \draw [)-(,ultra thick,color=red](12/5,0) -- (9,0); % Markierung mitte
+  \draw [)-,ultra thick,color=purple] (9,0) -- (15,0); % Markierung rechts
  \end{tikzpicture}
 
 \end{center}
 
 \begin{align*}
-M_1 &= \{x \in \mathbb{R} | x < -2\} \\
-M_2 &= \{x \in \mathbb{R} | -2 < x < 9\} \\
-M_3 &= \{x \in \mathbb{R} | x > 9\}
+\color{orange}M_1\color{black} &= \{x \in \mathbb{R} | x < -2\} \\
+\color{red}M_2\color{black} &= \{x \in \mathbb{R} | -2 < x < 9\} \\
+\color{purple}M_3\color{black} &= \{x \in \mathbb{R} | x > 9\}
 \end{align*}
 
 \begin{itemize}
@@ -137,18 +138,19 @@ x<-2 &\Rightarrow x+2<0 \Rightarrow \frac{2}{x+2}<0
 ganz $M_1$ zulässig
  \item Diskussion von $M_2: -2<x<9$
 \begin{align*}
-\Rightarrow &x+2 > 0 \\
-&x-9<0 \textrm{d.h.} |x-9|=9-x \\
-\textrm{zu prüfen:}
-\frac{3}{9-x} > \frac{2}{x+2} \textrm{Betrag weg} \\
-3x+6 > 18-2x \\
-x > \frac{12}{5} = 2 \frac{2}{5}
-\textrm{erlaubt:} \frac{12}{5}<x<9
+\Rightarrow x+2 &> 0 \\
+x-9&<0 \Rightarrow |x-9|=9-x \\
+\textrm{zu prüfen:} \\
+\frac{3}{9-x} &> \frac{2}{x+2} \textrm{ (Betrag entfernt)} \\
+3x+6 &> 18-2x \\
+x &> \frac{12}{5} = 2 \frac{2}{5} \\
 \end{align*}
+erlaubt: $\frac{12}{5}<x<9$
+
  \item Diskussion von $M_3: x>9$
 \begin{align*}
- \Rightarrow \underbrace{|x-9|}_{>0} = x-9 \\
-\frac{3}{x-9} > \frac{2}{x+2}
+ \Rightarrow \overbrace{|x-9|}^{>0} = x-9 \\
+\frac{3}{x-9} > \frac{2}{x+2} \\
 \Rightarrow x>-24
 \end{align*}
 $M_3$ zulässig

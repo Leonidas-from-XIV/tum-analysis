@@ -24,14 +24,14 @@ $\mathbb{N} = \{1,2,3,...\}$ Menge der natürlichen Zahlen
 
 \begin{enumerate}
  \item ...zu $\mathbb{Z} = \{\ldots,-2,-1,0,1,2,\ldots\}$ ganze Zahlen. In $\mathbb{Z}$ Operationen $+,-$
- \item ...zu $\mathbb{Q}$ rationale Zahlen durch $*,/$ $q=\frac{m}{n}; m \in \mathbb{Z}, n \in \mathbb{N}$
+ \item ...zu $\mathbb{Q}$ rationale Zahlen durch $*,/$, $q=\frac{m}{n}; m \in \mathbb{Z}, n \in \mathbb{N}$
   \begin{equation*}\mathbb{Q} = \left\{x | x=\frac{m}{n}, m \in \mathbb{Z}, n \in \mathbb{N} \right\}\end{equation*}
   $\mathbb{Q}$ ist dicht, d.h. zwischen $q_1, q_2$ liegt ein $\tilde{q}$
  \item ...durch $\sqrt{}$ (Wurzelziehen) bzw. Quadrieren $x^2=a$
  \begin{equation*}a=2 \Rightarrow x = \sqrt{a} \notin \mathbb{Q}, \sqrt{2}=1,4142\ldots\text{ irrational}\end{equation*}
 
 \begin{proof}[Beweis (indirekt)]
-Aus $\sqrt{2}$ wäre Element in Q. $\sqrt{2}=\frac{p}{q}$ gekürzt ($p \in \mathbb{Z}, g \in \mathbb{N}$
+Aus $\sqrt{2} \in \mathbb{Q} \Rightarrow \sqrt{2}=\frac{p}{q}$ gekürzt ($p \in \mathbb{Z}, g \in \mathbb{N}$
 $2g^2=p^2 \Rightarrow p^2$ gerade $\Rightarrow p=2\hat{p}$ und $2g^2=4\hat{p}^2$
 $\Rightarrow g^2 = 2\hat{p}^2 \Rightarrow g=2\hat{g}$ 
 $\Rightarrow$ Widerspruch zur gekürzten Form: $\sqrt{2}=\frac{p}{q}=\frac{2\hat{p}}{2\hat{g}}$
@@ -43,9 +43,9 @@ Beweistechnik war indirekt, z. z. Aussage $A$ $\Rightarrow$ Aussage $B$\\
 indirekt: "`nicht"' Aussage $B$ $\Rightarrow$ "`nicht"' Aussage $A$
 
 
-\begin{proof}[Beispiel: direkte Beweistechnik]\todo{Beispiel prüfen}
+\begin{proof}[Beispiel: direkte Beweistechnik]
 
-$p \in \mathbb{N}$ gerade $\Leftrightarrow p \Leftarrow 2 \hat{p} \Leftrightarrow p^2 = 4\hat{p}^2$ gerade\\
+$p \in \mathbb{N}$ gerade $\Leftrightarrow p = 2 \hat{p} \Leftrightarrow p^2 = 4\hat{p}^2$ gerade\\
 $p \in \mathbb{N}$ ungerade $\Leftrightarrow p = 2 \hat{p}+1 \Leftrightarrow p^2 = (2\hat{p}+1)^2=4\hat{p}^2+4\hat{p}+1$ ungerade\\
 $\Rightarrow$ reelle Zahlen, formaler Weg siehe \cite[S. 9ff]{bornemann}
 \end{proof}
