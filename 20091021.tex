@@ -109,7 +109,18 @@ Abstandsmessung $|x-a| \leq \epsilon$\todo{unklar}
 % $x\in \mathbb{R}$ gesucht mit $\frac{3}{x-9} \leq \frac{2}{x+2}$. Nenner $x\neq9 \land x\neq -2$
 $x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$. Nenner $x\neq9 \land x\neq -2$
 
-\missingfigure{Zahlenstrahl mit Markierung von -2 nach links und Markierung von 9 nach rechts}
+\begin{center}
+ \begin{tikzpicture}[line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+  \draw[->,color=black] (-5,0) -- (15,0); % Linie+Pfeil des Zahlenstrahls
+  \foreach \x in {-5,...,14}
+  \draw[shift={(\x,0)},color=black] (0,0.2) -- (0,-0.2); % Zahlenmarkierungen
+  \foreach \x in {-2,0,9}
+  \draw[shift={(\x,0)},color=black] (0,0.3) -- (0,-0.3) node[below] {\footnotesize $\x$}; % Zahlen
+  \draw [line width=2pt,color=evtftf] (-5,0) -- (-2,0); % Markierung links
+  \draw [line width=2pt,color=evtftf] (9,0) -- (15,0); % Markierung rechts
+ \end{tikzpicture}
+
+\end{center}
 
 \begin{align*}
 M_1 &= \{x \in \mathbb{R} | x < -2\} \\
