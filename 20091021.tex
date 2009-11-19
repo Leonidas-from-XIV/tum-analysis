@@ -80,12 +80,12 @@ Betrag $|a|, a \in \mathbb{R}$\\
 
 \subsubsection*{Rechenregeln für Beträge}
 
-\begin{itemize}
+\begin{enumerate}
  \item $-|a|\leq a \leq |a|$
  \item $-|a| = |a|$
  \item $|ab| = |a||b|$
  \item $\displaystyle\left|\frac{a}{b}\right| = \frac{|a|}{|b|}, b\neq 0$
-\end{itemize}
+\end{enumerate}
 
 \subsubsection*{Anwendung: Dreiecksungleichung}
 zu zeigen: $|a+b| \leq |a|+|b|$
@@ -114,15 +114,15 @@ $x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$. Nenner $x\neq9 
   \draw[->,color=black] (-5,0) -- (15,0); % Linie+Pfeil des Zahlenstrahls
   \foreach \x in {-5,...,14}
   \draw[shift={(\x,0)},color=black] (0,0.2) -- (0,-0.2); % Zahlenmarkierungen
-  \foreach \x in {-2,0,12/5,9}
+  \foreach \x in {-2,0,9}
   \draw[shift={(\x,0)},color=black] (0,0.3) -- (0,-0.3) node[below] {\footnotesize $\x$}; % Zahlen
-  \draw [-),ultra thick,color=orange] (-5,0) -- (-2,0); % Markierung links
-  \draw [)-(,ultra thick,color=red](12/5,0) -- (9,0); % Markierung mitte
+  \draw [-(,ultra thick,color=orange] (-5,0) -- (-2,0); % Markierung links
+  \draw [)-(,ultra thick,color=red](-2,0) -- (9,0); % Markierung mitte
   \draw [)-,ultra thick,color=purple] (9,0) -- (15,0); % Markierung rechts
  \end{tikzpicture}
 
 \end{center}
-
+\vspace{-.8cm}
 \begin{align*}
 \color{orange}M_1\color{black} &= \{x \in \mathbb{R} | x < -2\} \\
 \color{red}M_2\color{black} &= \{x \in \mathbb{R} | -2 < x < 9\} \\

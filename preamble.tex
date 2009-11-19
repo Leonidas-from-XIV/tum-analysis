@@ -84,6 +84,11 @@
 \newcommand{\newtheoremenv@noflush}{}
 \newcommand{\newtheoremenv@autoflush}{\@ifnextchar\begin \newtheoremenv@flush \newtheoremenv@noflush}
 
+\let\proof@old\proof
+\def\proof@autoflush{\proof@old\leavevmode\newline\vspace*{-1.5em}} 
+\def\proof@noflush{\proof@old} 
+\renewcommand{\proof}{\@ifnextchar\begin \proof@autoflush \proof@noflush} 
+
 \makeatother
 
 %%% common macros
@@ -165,6 +170,7 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 
 \newcommand{\lecture}[1]{
 
+  \phantomsection
   \addcontentsline{lec}{lectures}{#1}
   \noindent
   \fbox{
@@ -186,7 +192,7 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \newcommand{\integer}{\texttt{INTEGER}}
 \newcommand{\real}{\texttt{REAL}}
 
-\newcommand{\annotation}[1]{\emph{#1, Anm. d. Verfasser}}
+\newcommand{\annotation}[1]{\footnote{#1, Anm. d. Verfasser}}
 
 \renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
 \renewcommand{\Im}{\ensuremath{\operatorname{Im}}}

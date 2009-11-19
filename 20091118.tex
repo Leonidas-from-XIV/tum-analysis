@@ -1,0 +1,156 @@
+\newpage
+\lecture{2009-11-18}
+
+\noindent weitere Darstellung von von $\euler$:
+\begin{equation*}
+  \euler = \liminfty{\left(1+\frac 1 n\right)^n}\text{ (langsam konvergent)}
+\end{equation*}
+%
+Weg zur Einführung der $\euler$-Funktion:
+\begin{equation*}
+  \text{z. z.} \forall x \in \mathbb{R}\; \left( 1 + \frac x n \right)^n \text{ konvergent}
+\end{equation*}
+Beweis siehe \cite[S. 32]{bornemann}
+
+\begin{note}
+  Bisher wurde in allen Definitionen und Erläuterungen Kenntnis eines Grenzwerts vorausgesetzt.\\
+  Frage: Reichen Folgenelemente eventuell aus?\\
+  Antwort: Cauchy'sche Folge
+\end{note}
+
+\begin{definition}[Cauchy-Folge]
+  Die Folge $a_n$ heißt Cauchy-Folge, falls
+  \[ \forall \varepsilon > 0\; \exists N(\varepsilon)\; \forall n,m \geq N\; |a_n-\underbrace{a_m}_{\text{Grenzwert } \alpha}| < \varepsilon \]
+\end{definition}
+
+\begin{proposition}
+  $a_n$ konvergent $\Leftrightarrow$ $a_n$ ist Cauchyfolge
+\end{proposition}
+
+\begin{proof}
+  \begin{itemize}
+    \item[$(\Rightarrow)$]
+      \begin{align*}
+        \left| a_n - a_m \right| &= \left| a_n - \alpha + \alpha - a_m \right| \text{ (Grenzwert $\alpha$ existiert)}\\
+        &\leq \left| a_n - \alpha\right| + \left| a_m - \alpha \right|
+        \intertext{mit $n,m \geq N(\varepsilon)$}
+        &=\varepsilon+\varepsilon = 2\varepsilon
+      \end{align*}
+      setze $\overline N (\varepsilon) = \displaystyle\frac{N(\varepsilon)} 2 \Rightarrow < 2$
+    \item[$(\Leftarrow)$] 1780-1860\\
+      Beweisidee:
+      \begin{itemize}
+        \item Beschränktheit der Cauchy-Folge
+        \item $\frac 1 n, 1+\frac 1 n, 2+\frac 1 n, \frac 2 n, 1+\frac 2 n, 2+\frac 2 n, \ldots$
+              \annotation{abwechselnd die Folgeglieder der Folgen $\frac 1 n$, $1+\frac 1 n$ und $2+\frac 1 n$}\\
+              mehrere Kandidaten für Grenzwerte -- Häufungspunkte
+              \annotation{Häufungspunkt wird ähnlich wie der Grenzwert definiert; jedoch brauchen nicht \emph{alle}, sondern nur \emph{unendlich viele} Folgeglieder in der $\varepsilon$-Umgebung liegen}
+        \item Teilfolge, die gegen den Häufungspunkt konvergiert
+        \item Bolzano-Weierstraß: Jede beschränkte Folge besitzt mindestens einen Häufungspunkt; eine konvergente Teilfolge ist auswählbar
+        \item eindeutiger Grenzwert für Cauchy-Folge $\limsup$ bzw. $\liminf$
+        \item Beweis siehe \cite[S. 29ff]{bornemann}
+      \end{itemize}
+  \end{itemize}
+\end{proof}
+
+\subsection{Stetige Funktionen}
+
+Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
+"`gutmütige"' Funktionen $f: I \to \mathbb{R}$, die einen Grenzprozess übertragen
+
+\subsubsection*{formal}
+\begin{equation*}
+  \left.
+  \begin{matrix}[rll]
+    \text{linksseitiger Grenzwert} & x \longrightarrow a^+ & \displaystyle\lim_{x \rightarrow a^+} f(x) = c \\*[5mm]
+    \text{rechtsseitiger Grenzwert} & x \longrightarrow a^- & \displaystyle\lim_{x \rightarrow a^-} f(x) = c
+  \end{matrix}
+  \right\}\Rightarrow \text{stetig}
+\end{equation*}
+
+\begin{definition}[Stetigkeit]
+  $f: I \to \mathbb{R}$ heißt stetig in $x_0 \in I$, falls \begin{equation*} \lim_{x\rightarrow x_0} f(x) = f(x_0). \end{equation*} (alle denkbaren Folgen, die gegen $x_0$ konvergieren, sind zugelassen)
+
+  $f$ heißt stetig, falls $f$ stetig in allen $x_0 \in I$ ist.
+\end{definition}
+
+\subsubsection*{anschaulich}
+"`Zeichnen ohne den Stift abzusetzen"'
+
+\missingfigure{zwei Beispiele}
+
+\subsubsection*{Unstetigkeiten}
+
+\missingfigure{Sprünge, Lücken, Polstellen}
+
+\begin{theorem}[$\delta-\epsilon$-Charakterisierung analog zur Folgenkonvergenz]
+  Für $f: I \to \mathbb{R}, x_0 \in I$ sind äquivalent:
+  \begin{enumerate}
+    \item $f$ stetig in $x_0$ (d. h. $\displaystyle\lim_{x\rightarrow x_0} f(x) = f(x_0)$)
+    \item
+      \begin{equation*}
+        \forall \varepsilon > 0\; \exists \delta > 0\; \forall x \in I\; \left(
+          \underbrace{\left| x-x_0\right| < \delta}_{\text{Definitionsbereich}} \Rightarrow
+          \underbrace{\left| f(x)-f(x_0)\right| < \epsilon}_{\text{Wertebereich}}
+        \right)
+      \end{equation*}
+  \end{enumerate}
+\end{theorem}
+
+\missingfigure{Visualisierung $2\varepsilon$, $2\delta$}
+
+\begin{example}
+  \begin{itemize}
+    \item $\sin(\frac 1 x)$: unstetig
+    \item $x \cdot \sin(\frac 1 x)$: stetig ergänzbar an der Stelle 0, da Nullfolge $\cdot$ beschränkte Folge = Nullfolge (siehe Rechenregeln auf Seite \pageref{ssub:nullfolgen})
+  \end{itemize}
+  \missingfigure{Plots von sin}
+\end{example}
+
+\subsubsection*{Rechenregeln stetiger Funktionen}
+
+$f, g: I \to \mathbb{R}$ stetig
+
+\begin{enumerate}
+  \item $f\pm g$ stetig
+  \item $\alpha \in \mathbb{R}$: $\alpha \cdot f$ stetig
+  \item $f \cdot g$ stetig (Produkt der Funktionswerte)
+  \item $g(x) \neq 0$: $\frac f g$ stetig
+  \item Komposition/Hintereinanderausführung
+    \begin{equation*}
+      g(I) \subseteq I: \qquad (f \circ g)(x) = f(g(x)) \text{ stetig}
+    \end{equation*}
+\end{enumerate}
+%
+Beweise per $\delta-\epsilon$-Charakterisierung, siehe \cite{bornemann}
+
+\subsubsection*{Folgerungen}
+
+  \begin{enumerate}
+    \item jedes Polynom $p(x) = a_0 + a_1 x + \ldots + a_n x^n$ ist stetig\\
+      Argumentation:
+      \begin{itemize}
+        \item[] $f(x) = x$ stetig
+        \item[$\Rightarrow$] $x^2, \ldots, x^k$ stetig
+        \item[$\Rightarrow$] $a_k x^k, \ldots, a_1 x$ stetig
+        \item[$\Rightarrow$] Summe stetig
+      \end{itemize}
+    \item jede rationale Funktion $r(x) = \frac{p(x)}{q(x)}$ ist bis auf Nullstellen im Nenner stetig
+  \end{enumerate}
+
+\subsubsection*{Eigenschaften stetiger Funktionen}
+
+$f$ stetig auf dem Intervall $\left[a,b\right]$
+  \begin{enumerate}
+    \item $f$ ist beschränkt
+      \begin{note}
+        Zentral hierbei ist, dass es sich um ein abgeschlossenes Intervall handeln muss.
+
+        Bsp.: $f(x) = \frac 1 x$, halboffenes Intervall $\left]0,1\right]$, $\displaystyle\lim_{x\rightarrow 0^+} = \infty$ $\Rightarrow$ Polstelle $\Rightarrow$ nicht beschränkt
+      \end{note}
+    \item $f$ nimmt Minimum/Maximum in diesem Intervall an (Extremwertsatz)
+    \item falls $f(a) < 0$ und $f(b) > 0$, dann existiert ein $x^\ast$ mit $f(x^\ast) = 0$ (Zwischenwertsatz)
+    
+      (Beweis per Bisektionsverfahren, Intervallhalbierung)
+  \end{enumerate}
+\missingfigure{Grafiken}

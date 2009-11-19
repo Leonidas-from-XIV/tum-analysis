@@ -1,7 +1,6 @@
 \newpage
 \lecture{2009-11-17}
 
-\todo[inline]{könnte redundant zur vorherigen Vorlesung sein}
 \begin{note}
  Falls eine Folge monoton und beschränkt ist, dann ist der Grenzwert die kleinste obere/untere Schranke. (Im Prinzip wäre man fertig, aber Folgen wie $a_n = \frac{(-1)^n}{n^2}$ würden nicht erfasst. $\leadsto$ Formalisierung erforderlich
 \end{note}
@@ -54,11 +53,14 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
 
 \subsubsection*{Begriffe}
 
-\emph{Konvergenz} -- es existiert ein Grenzwert\\
-\emph{Divergenz} -- es existiert kein Grenzwert\\
-\emph{Nullfolge} -- es existiert ein Grenzwert, dieser ist $0$
+\begin{description}
+  \item[Konvergenz] es existiert ein Grenzwert
+  \item[Divergenz] es existiert kein Grenzwert
+  \item[Nullfolge] es existiert ein Grenzwert, dieser ist $0$
+\end{description}
 
 \subsubsection*{Rechenregeln für Nullfolgen}
+\label{ssub:nullfolgen}
 
 \begin{note}
   konvergente Folge $a_n$ mit Grenzwert $\alpha \neq 0$ kann in Nullfolge transformiert werden: $b_n = a_n - \alpha$ ist Nullfolge
@@ -127,7 +129,7 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
     \end{align*}
     %
     \begin{note}
-      Mantissenlänge (Zahldarstellung) und Taktzahl müssen so abgestimmt sein, dass ein unerfahrenere Nutzer in ca. 1 Tag Rechenzeit keine Konvergenz der harmonsichen Reihe erzielt (bisheriger Standard $R \ast 8$ nicht mehr ausreichend).
+      Mantissenlänge (Zahldarstellung) und Taktzahl müssen so abgestimmt sein, dass ein unerfahrenere Nutzer in ca. 1 Tag Rechenzeit keine Konvergenz der harmonischen Reihe erzielt (bisheriger Standard $R \ast 8$ nicht mehr ausreichend).
     \end{note}
   \item Eulersche Zahl $\euler = 2,71828\ldots$
     \begin{equation*}
