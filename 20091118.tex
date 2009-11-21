@@ -80,8 +80,8 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
 \begin{center}
 \begin{tikzpicture}[]
  \draw[->,semithick] (-3,0) -- (3,0);
- \draw (-2,0.2) -- (-2,-0.2) node[below] {$a$};
- \draw (2,0.2) -- (2,-0.2) node[below] {$b$};
+ \draw (-2,0.15) -- (-2,-0.15) node[below] {$a$};
+ \draw (2,0.15) -- (2,-0.15) node[below] {$b$};
  \draw[domain=-2:2] plot [id=stetig_a, samples=50] function {0.1*(x**3)+1};
  \node at (0,1.7) {$f(x)$};
 \end{tikzpicture}
@@ -92,27 +92,34 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
  \draw (2,0.2) -- (2,-0.2) node[below] {$b$};
  \draw (-2,1) -- (-1.7,0.7) -- (-1.5,2.2) -- (-1.1,0.3) -- (0,1.3) -- (0.7,0.7) -- (1.2,3) -- (2,0.5);
  \node at (0,1.7) {$f(x)$};
- \node at (4,2) {``Ecken erlaubt``};
+ \node at (4,2) {"`Ecken erlaubt"'};
 \end{tikzpicture}
 \end{center}
 
 
 \subsubsection*{Unstetigkeiten}
 
-\begin{center}
+\begin{figure}[h]\centering
+
+  \subfloat[Sprünge]{
+  
 \begin{tikzpicture}[]
  \draw[->,semithick] (-0.5,0) -- (3.5,0);
  \draw [)-|] (0,1) -- (1,1);
  \draw [)-|] (1,2) -- (2,2);
  \draw [)-|] (2,3) -- (3,3);
- \node at (0,-1) {Sprünge};
+ %\node at (0,-1) {Sprünge};
 \end{tikzpicture}
+  }
+  \subfloat[Lücken]{
 \begin{tikzpicture}[]
  \draw[->,semithick] (-2.3,0) -- (2.3,0);
  \draw[domain=-2:0] plot [id=stetig_b1, samples=50] function {0.1*(x**3)+1};
  \draw[domain=0.5:2] plot [id=stetig_b2, samples=50] function {0.1*(x**3)+1.2};
- \node at (0,-1) {Lücken};
+ %\node at (0,-1) {Lücken};
 \end{tikzpicture}
+  }
+  \subfloat[Polstellen]{
 \begin{tikzpicture}[]
  \draw[->,semithick] (-2.3,0) -- (2.3,0);
  \draw (0,0.2) -- (0,-0.2) node[below] {$0$};
@@ -121,9 +128,10 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
  \draw[domain=-0.95:0.95] plot [id=stetig_c2, samples=30] function {(0.1*x)/((x+1)*(x-1))};
  \draw [ dashed](1,1) -- (1,-1);
  \draw[domain=1.05:2] plot [id=stetig_c3, samples=30] function {(0.1*x)/((x+1)*(x-1))};
- \node at (0,-1) {Polstellen};
+ %\node at (0,-1) {Polstellen};
 \end{tikzpicture}
-\end{center}
+  }
+\end{figure}
 
 
 \begin{theorem}[$\delta-\epsilon$-Charakterisierung analog zur Folgenkonvergenz]
@@ -151,32 +159,32 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
  \draw [dashed] (0,0.9) -- (0.45,0.9) -- (0.45,0);
  \draw[domain=0:2.2] plot [id=stetig_d, samples=50] function {0.6*((x-1)**3)+1};
  \draw [|<->|] (2,1.1) -- (2,0.9) node [right] {\footnotesize $2\varepsilon$};
- \draw [|<->|] (1.55,-0.7) -- (0.45,-0.7) node[below right] {$2*\sigma$};
+ \draw [|<->|] (1.55,-0.7) -- (0.45,-0.7) node[below right] {$\;\;2\sigma$};
 \end{tikzpicture}
 \end{center}
 
 
 
 \begin{example}
-  \begin{center}
   \begin{itemize}
-   \item $\sin(\frac 1 x)$: unstetig
+    \item $\sin(\frac 1 x)$: unstetig
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
+        \draw[->,semithick] (0,-1.1) -- (0,1.1) node[left]{y};
+        \draw[domain=-2:2] plot [id=sin_a, samples=400] function {sin(1/x)};
+      \end{tikzpicture}
+    \end{center}
 
-   \begin{tikzpicture}
-     \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
-     \draw[->,semithick] (0,-1.1) -- (0,1.1) node[left]{y};
-     \draw[domain=-2:2] plot [id=sin_a, samples=400] function {sin(1/x)};
-   \end{tikzpicture}
-
-   \item $x \cdot \sin(\frac 1 x)$: stetig ergänzbar an der Stelle 0, da Nullfolge $\cdot$ beschränkte Folge = Nullfolge (siehe Rechenregeln auf Seite \pageref{ssub:nullfolgen})
-
-   \begin{tikzpicture}
-     \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
-     \draw[->,semithick] (0,-1.1) -- (0,1.1) node[left]{y};
-     \draw[domain=-2:2] plot [id=sin_b, samples=400] function {x*sin(1/x)};
-   \end{tikzpicture}
+    \item $x \cdot \sin(\frac 1 x)$: stetig ergänzbar an der Stelle 0, da Nullfolge $\cdot$ beschränkte Folge = Nullfolge (siehe Rechenregeln auf Seite \pageref{ssub:nullfolgen})
+    \begin{center}
+      \begin{tikzpicture}
+        \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
+        \draw[->,semithick] (0,-1.1) -- (0,1.1) node[left]{y};
+        \draw[domain=-2:2] plot [id=sin_b, samples=400] function {x*sin(1/x)};
+      \end{tikzpicture}
+    \end{center}
   \end{itemize}
-  \end{center}
 \end{example}
 
 \subsubsection*{Rechenregeln stetiger Funktionen}
