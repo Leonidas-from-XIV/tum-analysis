@@ -100,19 +100,21 @@
 \begin{itemize}
 	\item \((f \stackrel[\ast]{+}{-} g)(x) = f(x)  \stackrel[\ast]{+}{-} g(x) \)
 	\item \(a \in \mathbb{R}, (af)(x)=af(x)\)
-	\item \(\displaystyle g \neq 0, \left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}\)
+	\item für \(\displaystyle g \neq 0 \text{ gilt }\quad \left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}\)
 	\item 	Komposition (Hintereinanderausführung)
-	\begin{align*} &f:I\rightarrow\mathbb{R};  g:D\rightarrow\mathbb{R}; g(D) \subseteq I; h:D\rightarrow\mathbb{R} \\ &h = f \circ g  \text{ ist definiert durch } h(x) = f( g(x) )
+	\begin{align*} &f:I\rightarrow\mathbb{R}\qquad  g:D\rightarrow\mathbb{R}\qquad g(D) \subseteq I\qquad h:D\rightarrow\mathbb{R} \\ &h = f \circ g  \text{ ist definiert durch } h(x) = f( g(x) )
 	\end{align*}
 \end{itemize}
 
 \end{definition}
 
 \begin{note} \(f \circ g \) im Allgemeinen \( \neq g \circ f \)
-	\begin{align*}
-		f(x) &= \cos(x) g(x) &= 1-x^2, D &= I=\mathbb{R} \\
-		(f \circ g)(x) &= f(g(x)) &= f(1-x^2) &= \cos(1-x^2) \\
-		(g \circ f)(x) &= g(f(x)) &= g(\cos(x)) &= 1-\cos^2x = \sin^2x 
+	\[
+			f(x) = \cos(x)\qquad g(x) = 1-x^2 \qquad D = I=\mathbb{R}
+	\]
+		\begin{align*}
+		(f \circ g)(x) &= f(g(x)) = f(1-x^2) = \cos(1-x^2) \\
+		(g \circ f)(x) &= g(f(x)) = g(\cos(x)) = 1-\cos^2x = \sin^2x 
 	\end{align*}	
 \end{note}
 
