@@ -3,34 +3,31 @@
 \section{Differenzierbarkeit}
 \subsection{Ableitungsbegriff}
 
-\begin{description}
-	\item[Bisher:]Stetige Funktion, die den Grenzprozess im Definitionsbereich auf den Wertebereich überträgt.
-	\item[Frage:]Ist es \emph{lokal} möglich eine Funktion \( f(x) \) genauer zu beschreiben? 
-\end{description}
+bisher: Stetige Funktion, die den Grenzprozess im Definitionsbereich auf den Wertebereich überträgt.\\
+Frage: Ist es \emph{lokal} möglich eine Funktion \( f(x) \) genauer zu beschreiben? 
 
-\noindent Wie sieht eine Funktion \( p(x) \) bzw. eine Gerade aus, die \( f(x) \) in \( x_0 \) möglichst gut beschreibt?
+Wie sieht eine Funktion \( p(x) \) bzw. eine Gerade aus, die \( f(x) \) in \( x_0 \) möglichst gut beschreibt?
 \[
 p(x)=ax+b 
 \]
-\begin{figure}[h]
-	\begin{center}
+\begin{center}
+  \centering
 \begin{tikzpicture}[scale=0.7, x=2cm, y=2cm]
 	\draw[blue,domain=-2:2] plot ({\x},{(\x)^2}) node[above]{\( f(x)=x^2 \)};
-	\draw[red,domain=-2:2] plot ({\x},{3}) node[above]{\( p_1 \)};
-	\draw[red,domain=-2:0.5] plot ({\x},{(-\x)})  node[above]{\( p_2 \)}; 
-	\draw[green,domain=0:2.5] plot ({\x},{2*(\x)-1}) node[above]{\( p(x) \)};
+	\draw[red,domain=-2:2.2] plot ({\x},{3}) node[anchor=mid west]{\( p_1 \)};
+	\draw[red,domain=-2:0.5] plot ({\x},{(-\x)}) node[anchor=north west]{\( p_2 \)}; 
+	\draw[green,domain=0:2.3] plot ({\x},{2*(\x)-1}) node[anchor=south west]{\( p \)};
 \end{tikzpicture}
+  \captionof{figure}{Die Geraden \( p_1(x) \) bzw. \( p_2(x) \) aus der Interpolation sind keine guten Repräsentanten. \(p(x)\) als Tangente in \(f(x_0)\) liegt hingegen gut.}
+  \label{fig:Approximierung}
 \end{center}
-\caption{Die Geraden \( p_1(x) \) bzw. \( p_2(x) \) aus der Interpolation sind keine guten Repräsentanten. \(p(x)\) als Tangente in \(f(x_0)\) liegt hingegen gut!}
-\label{Approximierung}
-\end{figure}
+% LH: Polynominterpolation aus zwei Punkten -> Gerade
+%\todo{JP:Welche Interpolation ist gemeint?}
 
-\todo{JP:Welche Interpolation ist gemeint?}
-
-\noindent Die Konstruktion der Geraden \( p(x) \), die die Funktion \( f(x) \) in der Nähe von \( x_0 \) gut beschreibt:
+\noindent Konstruktion der Geraden \( p(x) \), die die Funktion \( f(x) \) in der Nähe von \( x_0 \) gut beschreibt:
 
 \[
-	f:D\rightarrow\mathbb{R} \qquad D\subset\mathbb{R} \qquad x_0 \in D
+	f:D\rightarrow\mathbb{R} \qquad D\subseteq\mathbb{R} \qquad x_0 \in D
 \]
 
 \begin{description}
@@ -43,100 +40,131 @@ p(x)=ax+b
 	\end{align*}
 	\item[2. Forderung] \( d(x)=f(x)-p(x) \) soll in der Nähe von \( x_0 \) möglichst klein werden. Damit gilt \( d(x) = f(x) -f(x_0)-a(x-x_0) \)
 	\item[1. Versuch] \( f(x) \) stetig  
-	\[\lim_{x\rightarrow x_0} d(x)=\lim_{x\rightarrow x_0}(\underbrace{f(x)-f(x_0)}_{\rightarrow 0}-a\underbrace{(x-x_0)}_{\rightarrow 0})=0\]Dies ist nichts Neues, da die Information von \( a \) durch den Faktor\( (x-x_0) \) verdeckt wird.
+	\[\lim_{x\rightarrow x_0} d(x)=\lim_{x\rightarrow x_0}(\underbrace{f(x)-f(x_0)}_{\rightarrow 0}-a\underbrace{(x-x_0)}_{\rightarrow 0})=0\]Dies ist nichts Neues, da die Information von \( a \) durch den Faktor \( (x-x_0) \) verdeckt wird.
 	\item[2. Versuch] Forderung an Parameter \( a \in \mathbb{R} \)
 	\[
-		\lim_{x\rightarrow x_0}\frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0}\stackrel{!}{=}0
+		\lim_{x\rightarrow x_0}\left(\frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0}\right)\stackrel{!}{=}0
 	\]
 	Die Division durch \( x-x_0 \) neutralisiert den Faktor \( a \).
 \end{description}
 
 \begin{definition}[Lineare Approximierbarkeit]
-	\( f:D \rightarrow \mathbb{R} \) heißt linear approximierbar (Gerade) in \( x_0 \in D \), falls ein \( a \in \mathbb{R} \) existiert mit \( \frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0}=0 \)
+	\( f:D \to \mathbb{R} \) heißt linear approximierbar in \( x_0 \in D \), falls ein \( a \in \mathbb{R} \) existiert mit
+        \[ \lim_{x\rightarrow x_0}\left(\frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0}\right)=0 \]
 \end{definition}
-\noindent Bemerkungen
 
-\begin{itemize}
-	\item Die Herleitung ist auch auf \( \mathbb{R}^n \) übertragbar.
-	\item \( f \) heißt auch \emph{differenzierbar} in \( x_0 \)
-\end{itemize}
+\begin{note}
+  \begin{itemize}
+    \item Die Herleitung ist auch auf \( \mathbb{R}^n \) übertragbar.
+    \item \( f \) heißt auch \emph{differenzierbar} in \( x_0 \)
+  \end{itemize}
+\end{note}
+
 \begin{example} 
 \[
 f(x)=x^2 \qquad x_0=1 \implies f(x_0)=1
 \]
 \begin{align*}
-	\frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0} &= \frac{x^2-1-a(x-1)}{x-1} \\ &= \frac{(x-1)(x+1)-a(x-1)}{x-1} \\&= x+1-a \qquad \\ x \rightarrow 1 \implies a&=2 \text{ damit Grenzwert gleich }0\text{ ist.}
+  \frac{f(x)-f(x_0)-a(x-x_0)}{x-x_0} &= \frac{x^2-1-a(x-1)}{x-1} \\
+  &= \frac{(x-1)(x+1)-a(x-1)}{x-1} \\
+  &= x+1-a
+\intertext{nach Def. der linearen Approximierbarkeit -- Grenzwertbildung}
+  0 &= \lim_{x \rightarrow x_0} \left(x+1-a\right) \\
+  &= \left(x+1-a\right) \\
+  \implies a &= 2
 \end{align*}
 \end{example}
 	
-
 \begin{definition}[1. Ableitung]
 	\( f:D\rightarrow \mathbb{R} \) heißt differenzierbar in \( x_0 \in D \) falls obiger Grenzwert existiert.
 \end{definition}
-\noindent Bemerkung: Die durch \( f \) und \( x_0 \) festgelegte Zahl \( a \) heißt 1. Ableitung von \( f \) in \( x_0 \).
+\begin{note}
+  Die durch \( f \) und \( x_0 \) festgelegte Zahl \( a \) heißt 1. Ableitung von \( f \) in \( x_0 \).
 
-\begin{align*}
-	f'(x_0) = \dot{f}(x_0) = \lim_{x\rightarrow x_0}\frac{f(x)-f(x_0)}{x-x_0} =:\text{"`Differentialquotient"'}
-\end{align*}
-Bemerkung: Graph von \( p(x) \) läßt sich deuten als Tangente an \( f \) im Punkt \( x_0 \) (siehe \ref{Approximierung}).
+
+\begin{equation*}
+	f'(x_0) = \dot{f}(x_0) = \lim_{x\rightarrow x_0}\left(\frac{f(x)-f(x_0)}{x-x_0}\right) =:\text{ "`Differentialquotient"'}
+\end{equation*}
+
+\end{note}
+
+\begin{note}
+  Graph von \( p(x) \) lässt sich deuten als Tangente an \( f \) im Punkt \( x_0 \) (siehe \ref{fig:Approximierung})
+\end{note}
 
 \begin{example}[Einfache Differentiationsgleichung \( f(x)=x^n \)]
-\[
-	\frac{f(x)-f(x_0)}{x-x_0} 
-	=\frac{x^n-x_0^n}{x-x_0}
-	= \sum_{k=0}^{n-1}x_0^kx^{n-1-k}
-	= \lim_{x \rightarrow x_0} \sum_{k=0}^{n-1}x_0^kx_0^{n-1-k} 
-	= \sum_{k=0}^{n-1}x_0^kx_0^{n-1} = nx^{n-1} 
-\]
+\begin{align*}
+	\lim_{x \rightarrow x_0} \left(\frac{f(x)-f(x_0)}{x-x_0} \right)
+	&= \lim_{x \rightarrow x_0} \left(\frac{x^n-x_0^n}{x-x_0}\right) \\
+	&= \lim_{x \rightarrow x_0} \left(\sum_{k=0}^{n-1}x_0^kx^{n-1-k}\right) \\
+	&= \sum_{k=0}^{n-1}x_0^kx_0^{n-1-k} \\
+	&= \sum_{k=0}^{n-1}x_0^kx_0^{n-1} = nx^{n-1} 
+\end{align*}
 
 \[
-	f(x)=x^n \quad \text{allg.} \forall x_0 \in \mathbb{R} \quad f'(x)=nx^{n-1}
+	f(x)=x^n \quad \text{allg.: } \forall x_0 \in \mathbb{R} \quad f'(x)=nx^{n-1}
 \]
 \end{example}
-\noindent Die Idee von Leibnitz: Approximiere die Steigung der Tangente in \( x_0 \) durch Sekanten.
+\noindent Idee von Leibniz: approximiere die Steigung der Tangente in \( x_0 \) durch Sekanten
 
-
-\[	\text{Grenzprozeß } x \rightarrow x_0 \]
+\[	\text{Grenzprozess } x \rightarrow x_0 \]
 \[	\Leftrightarrow \]
-\[	\text{Sekantensteigung } \hat{=} \text{ Tangentensteigung} \]
+\[	\text{Sekantensteigung } \equals \text{ Tangentensteigung} \]
 \[	\Leftrightarrow \]
 \[	\text{Differentialquotient} \leftrightarrow \text{Differenzenquotient} \]
 \[	\frac{f(x)-f(x_0)}{x-x_0} \rightarrow \frac{\Delta f}{\Delta x}\]
-Bezeichnungen:
-\[
-	f'(x_0) \qquad \frac{df}{dx}(x_0) \qquad \left.\frac{df}{dx}\right|_{x=x_0}
-\]
 
-setze \( x = x_0; \frac{f(x)-f(x_0)}{x-x_0} = \frac{f(x_0+h)-f(x_0)}{h}\)
-\todo{JP:Zusammenhang ist mir unklar.}
+\subsubsection*{Bezeichnungen}
+\begin{equation*}
+	f'(x_0) \qquad \frac{\diff f}{\diff x}(x_0) \qquad \left.\frac{\diff f}{\diff x}\right|_{x=x_0}
+\end{equation*}
+%
+setze \( x = x_0 \):
+\begin{equation*}
+  \lim_{x \rightarrow x_0}\left(\frac{f(x)-f(x_0)}{x-x_0}\right) = \lim_{h \rightarrow 0}\left(\frac{f(x_0+h)-f(x_0)}{h}\right)
+\end{equation*}
+% LH: man geht von x->x0 über zu h->0
+%\todo{JP:Zusammenhang ist mir unklar.}
 
 \subsection{Rechenregeln für Funktionen}
 \label{sec:rechenregeln_f_funktionen}
 
-\begin{theorem}[1. Aussage]
-	Jede in \( x_0 \in D \) differenzierbare Funktion \( f \) ist stetig in \( x_0\).
-	\[ \lim_{x->x_0} (f(x)-f(x_0)-\underbrace{f'(x_0)}_{\in \mathbb{R} \text{ und fest} }\underbrace{(x-x_0)}_{\rightarrow 0}) = 0 \]
+\begin{theorem}[Differenzierbarkeit $\Rightarrow$ Stetigkeit]
+  Jede in \( x_0 \in D \) differenzierbare Funktion \( f \) ist stetig in \( x_0\).
+\end{theorem}
+\begin{proof}
+  \[ \lim_{x \rightarrow x_0} (f(x)-f(x_0)-\underbrace{f'(x_0)}_{\in \mathbb{R} \text{ und fest} }\underbrace{(x-x_0)}_{\longrightarrow 0}) = 0 \]
+\end{proof}
+
+\begin{theorem}[Stetigkeit $\not\Rightarrow$ Differenzierbarkeit]
+  Nicht jede stetige Funktion ist differenzierbar.
 \end{theorem}
 
+\begin{example}
 \[	f(x)=|x| \qquad \text{ in } x_0=0 \text{ hat die Funktion eine "`Spitze"' } \]
-\[	\text{Formal: } \frac{f(x_0+h)-f(x_0)}{h} \implies \lim_{h \rightarrow 0}\frac{|h|}{h}  \]
-	% Am Schluss folgt dann noch die Fallunterscheidung.
+\[	\text{formal: } \lim_{h \rightarrow 0}\frac{f(x_0+h)-f(x_0)}{h} = \lim_{h \rightarrow 0}\frac{|h|}{h}  \]
+  Fallunterscheidung:
+  \begin{itemize}
+    \item von links \[\displaystyle\lim_{h \rightarrow 0^-}\frac{|h|}{h} = -1\]
+    \item von rechts \[\displaystyle\lim_{h \rightarrow 0^+}\frac{|h|}{h} = 1\]
+  \end{itemize}
 
-	\begin{figure}[h]
-		\begin{center}
-	\begin{tikzpicture}[scale=0.7, x=2cm, y=2cm]
-		\draw[blue,domain=-2:2] plot ({\x},{(abs(\x))}) node[above]{\( f(x)=|x|\)};
-	\end{tikzpicture}
-	\end{center}
-	\caption{Die Betragsfunktion \( f(x)=|x| \)}
-	\label{Betragsfunktion}
-	\end{figure}
+\end{example}
 
-
-\begin{theorem}[2. Aussage]
-	Nicht jede stetige Funktion ist differenzierbar.
-
-\end{theorem}
+\begin{center}
+  \begin{tikzpicture}[scale=0.7, x=2cm, y=2cm]
+    \draw[->,color=black] (-2.5,0) -- (2.5,0);
+    \foreach \x in {-2,-1,1,2}
+    \draw[semithick,shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+    \draw[->,color=black] (0,-0.5) -- (0,2.5);
+    \foreach \y in {,1,2}
+    \draw[semithick,shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+    \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+    \draw[blue,samples=200,domain=-2:2] plot ({\x},{(abs(\x))}) node[above]{\( f(x)=|x|\)};
+  \end{tikzpicture}
+  \captionof{figure}{Betragsfunktion \( f(x)=|x| \)}
+  \label{fig:Betragsfunktion}
+\end{center}
 
 \subsubsection*{Einfache differenzierbare Funktionen}
 \begin{enumerate}
@@ -145,42 +173,60 @@ setze \( x = x_0; \frac{f(x)-f(x_0)}{x-x_0} = \frac{f(x_0+h)-f(x_0)}{h}\)
 	\item \(f(x)=x^2 \implies f'(x)=2x \)\newline
 		  \(f(x)=x^n \implies f'(x)=nx^{n-1} \)
 	\item \( f(x)=\sqrt{x} \qquad x>0 \implies f'(x)=\frac{1}{2\sqrt{x}} \)
+	 \begin{proof}
+	   \[ x_0>0 \qquad \lim_{x \rightarrow x_0}\frac{\sqrt{x}-\sqrt{x_0}}{x-x_0} =
+            \lim_{x \rightarrow x_0}\frac{1}{\sqrt{x}+\sqrt{x_0}}=\frac{1}{2\sqrt{x_0}} \]
+	 \end{proof}
+
 \end{enumerate}
-Zu (4):
-\[
-x_0>0 \qquad \frac{\sqrt{x}-\sqrt{x_0}}{x-x_0} =\lim_{x \rightarrow x_0}\frac{1}{\sqrt{x}+\sqrt{x_0}}=\frac{1}{2\sqrt{x_0}}
-\]
+
+
 % Graph der Wurzelfunktion mit der Bemerkung das x_0=0 nicht diffbar ist
-\begin{figure}[ht]
-	\begin{center}
+\begin{center}
 \begin{tikzpicture}[scale=0.7, x=2cm, y=2cm]
-	\draw[->,color=black] (-0.5,0) -- (2,0);
-	\foreach \x in {,1}
+	\draw[->,semithick,color=black] (-0.5,0) -- (3.5,0);
+	\foreach \x in {,1,2,3}
 	\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
 	
-	\draw[->,color=black] (0,-0.5) -- (0,2);
+	\draw[->,semithick,color=black] (0,-0.5) -- (0,2);
 	\foreach \y in {,1}
 	\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-	\draw[blue,domain=0:3] plot ({\x},{(sqrt(\x))}) node[above]{\( f(x)=\sqrt{x}\)};
+	\draw[blue,domain=0:3,samples=200] plot ({\x},{(sqrt(\x))}) node[above]{\( f(x)=\sqrt{x}\)};
 \end{tikzpicture}
-\end{center}
-\caption{Die Wurzelfunktion ist in \( x_0=0 \) nicht differenzierbar.}
+\captionof{figure}{Wurzelfunktion: an der Stelle \( x_0=0 \) nicht differenzierbar}
 \label{Wurzelfunktion}
-\end{figure}
+\end{center}
+
 
 \subsubsection*{Rechenregeln} % (fold)
 \label{sub:rechenregeln}
 
-\( f,g:D\rightarrow\mathbb{R} \) für alle \( x \in D \) differenzierbar-
+\( f,g:D\rightarrow\mathbb{R} \) für alle \( x \in D \) differenzierbar
 
 \begin{enumerate}
-	\item \( f \stackrel{+}{-} g \) differenzierbar mit \( (f(x)\stackrel{+}{-}g(x))'=f'(x)\stackrel{+}{-}g'(x) \)
-	\item \( c \cdot f \) differenzierbar, \( c \ in \mathbb{R} \qquad (c \cdot f(x))'=c\cdot f'(x) \)
-	\item Produktregel \( (f(x)g(x))' = f'(x)g(x)+f(x)+g'(x) \)
-	\item Quotientenregel \( (g(x) \neq 0) \qquad (\frac{f(x)}{g(x)})'=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2} \newline\text{Speziell:} (\frac{1}{g(x)})'=-\frac{g'(x)}{g(x)^2}\)
+	\item \( f \pm g \) differenzierbar mit \( (f(x)\pm g(x))'=f'(x)\pm g'(x) \)
+	\item \( c \cdot f \) differenzierbar, \( c \in \mathbb{R} \), \( (c \cdot f(x))'=c\cdot f'(x) \)
+	\item Produktregel \( (f(x) \cdot g(x))' = f'(x) \cdot g(x)+f(x) \cdot g'(x) \)
+	\item Quotientenregel \( (g(x) \neq 0) \qquad (\frac{f(x)}{g(x)})'=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2} \newline
+          \text{Speziell: } \left(\frac{1}{g(x)}\right)'=-\frac{g'(x)}{g(x)^2}\)
 \end{enumerate}
 
-Zu (3) \( \frac{(fg)(x_0+h)-(fg)(x_0)}{h}=\frac{1}{h} \)
-\todo{Herleitung zu (3) und (4) fehlen noch.}
+\begin{proof}
+  \begin{enumerate}
+    \item trivial
+    \item trivial
+    \item Herleitung:
+      \begin{align*}
+        (f\cdot g)'(x) &= \lim_{h \rightarrow 0}\frac{(f \cdot g)(x_0+h)-(f \cdot g)(x_0)}{h}\\
+        &= \lim_{h \rightarrow 0}\frac{f(x_0+h) g(x_0+h) - f(x_0)  g(x_0)} h \\
+        &= \lim_{h \rightarrow 0}\frac{f(x_0+h) g(x_0+h) \color{blue}- f(x_0) g(x_0+h)\color{black} - f(x_0)  g(x_0) \color{blue}+ f(x_0)  g(x_0+h)\color{black}} h\\
+        &= \lim_{h \rightarrow 0}\frac{(f(x_0+h) - f(x_0))\cdot g(x_0+h) + (g(x_0+h) - g(x_0)) \cdot f(x_0) } h\\
+        &= \lim_{h \rightarrow 0}\frac{f(x_0+h) - f(x_0)} h \cdot g(x_0+h) + \frac{g(x_0+h) - g(x_0)} h \cdot f(x_0)\\
+        &= f'(x_0) \cdot g(x_0) + g'(x_0) \cdot f(x_0)
+      \end{align*}
+    \item \todo{Herleitung fehlt}
+  \end{enumerate}
+\end{proof}
+
 % subsubsection rechenregeln (end)
 % subsection rechenregeln_für_funktionen (end)
