@@ -1,0 +1,247 @@
+\lecture{2009-11-25}
+
+\subsubsection*{Folgerungen}
+
+\begin{enumerate}
+	\item Polynome sind überall differenzierbar \\
+	\begin{align*}
+		p(x) &= a_0 + a_1 x + \dots + a_n x^n \\
+		\Rightarrow p'(x) &= a_1 + 2 a_2 x + 3 a_3 x^2 + \dots + n a_n x^{n-1}
+	\end{align*}
+	(Berechnung von Polynom und Ableitung gleichzeitig über vernetztes Hornerschema möglich)
+	\item Rationale Funktionen sind bis auf Polstellen differenzierbar
+	\begin{align*}
+		r(x) &= \frac{p(x)}{q(x)} \\
+		\left( \frac{1}{x} \right)' &= -\frac{1}{x^2} \\
+		\left( \frac{1}{x^n} \right)' &= -\frac{n}{x^{n+1}} \hspace{10px} (x \neq 0)
+	\end{align*}
+	Herleitung:
+	\begin{align*}
+		\left( \frac{1}{x} \right)' &= \lim\limits_{h \rightarrow 0} \frac{\frac{1}{x_0+h} - \frac{1}{x_0}}{h} \\
+		&= \lim\limits_{h \rightarrow 0} \frac{1}{h} \left( \frac{x_0 - x_0 - h}{x_0 (x_0+h)} \right) \\
+		&= - \lim\limits_{h \rightarrow 0} \frac{1}{x_0 (x_0 + h)} \\
+		&= -\frac{1}{x^2}
+	\end{align*}
+\end{enumerate}
+
+\subsubsection*{Trigonometrische Funktionen}
+\begin{enumerate}
+	\item $ (\sin x)' = \cos x $
+	\item $ (\cos x)' = - \sin x $
+	\item $ (\tan x)' = \frac{1}{\cos^2 x} $
+\end{enumerate}
+
+\begin{proof}
+\todo{Verweis besser?} zu (1):
+\begin{equation*}
+	\frac{\sin (x_0 + h) - \sin x_0}{h}
+\end{equation*}
+
+Additionstheoreme:
+\begin{equation*}
+\sin(x+y) = \sin x \cos y + \sin y \cos x
+\end{equation*}
+
+\begin{align*}
+	&\frac{\sin x_0 \cos h + \sin h \cos x_0 - \sin x_0}{h} \\
+	= &\sin x_0 \underbrace{\frac{\cos h - 1}{h}}_{\xrightarrow{h \rightarrow 0} 0} + \cos x_0 \underbrace{\frac{\sin h}{h}}_{\xrightarrow{h \rightarrow 0} 1} \\
+	\xrightarrow{h \rightarrow 0} &\cos x_0
+\end{align*}
+
+Zu zeigen über:
+\begin{itemize}
+	\item Dreiecke
+	\item Potenzreihen
+		\begin{align*}
+			\cos x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} \dots \\
+			\sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!} \dots
+		\end{align*}
+\end{itemize}
+\end{proof}
+
+\begin{proof}
+zu (2): Additionstheorem $\cos (x_0 + h)$
+\end{proof}
+\begin{proof}
+zu (3): $ \tan x = \frac{\sin x}{\cos x} $
+\end{proof}
+
+\subsubsection*{Kettenregel (Chain Rule)}
+Anwendung bei Neuronalen Netzen: Lernregeln $\equals$ Kettenregeln \\
+$f, g$ seien differenzierbar \\
+Komposition/Hintereinanderausführung
+\begin{equation*}
+	(f \circ g)(x) = f(g(x))
+\end{equation*}
+\begin{equation*}
+	g: I \rightarrow \mathbb{R}, f: D \rightarrow \mathbb{R}, g(I) \in D
+\end{equation*}
+\begin{equation*}
+	(f \circ g)' (x_0) = \underbrace{f'(g(x_0))}_{\text{äußere Ableitung}} \underbrace{g'(x_0)}_{\text{innere Ableitung}}
+\end{equation*}
+Kurzform:
+\begin{equation*}
+	\frac{\mathrm d (f \circ g)}{\mathrm dx} = \frac{\mathrm df}{\mathrm dg} \frac{\mathrm dg}{\mathrm dx}
+\end{equation*}
+Beweisidee (nicht sauber, da der Nenner eventuell 0 wird):
+\begin{align*}
+	& \frac{(f \circ g)(x_0 + h) - (f \circ g)(x_0)}{h} \\
+	&= \frac{f(g(x_0 + h)) - f(g(x_0))}{h} \\
+	&= \begin{matrix}[cc]
+	&\frac{f(g(x_0 + h)) - f(g(x_0))}{g(x_0 + h) - g(x_0)} &\frac{g(x_0 + h) - g(x_0)}{h} \xrightarrow{h \rightarrow 0} \\
+	& \downarrow & \downarrow \\
+	&f'(g)(x_0) & g'(x_0)
+	\end{matrix}
+\end{align*}
+\todo{Schöner ausrichten}
+
+\begin{example}
+	Kubische Hermite Polynome
+	\begin{equation*}
+		p(t): t = \frac{x-x_0}{h}
+	\end{equation*}
+	
+	\begin{enumerate}
+		\item
+		\begin{align*}
+			h(x) &= (x^2 + 3x + 1)^4\\
+			f(x) &= x^4 &\text{äußere Funktion} \\
+			g(x) &= x^2 + 3x + 1 &\text{innere Funktion} \\
+			\\
+			h'(x) &= \underbrace{4 (x^2 + 3x + 1)^3}_{\parbox{16mm}{\centering\tiny \text{äußere Ableitung} f'(g)}} \underbrace{(2x + 3)}_{\parbox{16mm}{\centering\tiny \text{innere Ableitung} g'(x)}}
+		\end{align*}
+		
+		\item
+		\begin{align*}
+			h(x) &= \sqrt{x^3 + \sqrt{x^5}} \\
+			f(x) &= \sqrt{x} & \text{äußere Funktion}\\
+			g(x) &= x^3 + \sqrt{x^5} & \text{1. innere Funktion} \\
+			k(x) &= \sqrt{x^5} & \text{2. innere Funktion}
+		\end{align*}
+		
+		\begin{align*}
+			h'(x) &= \frac{\mathrm dh}{\mathrm dx} = 
+			\frac{\mathrm df}{\mathrm dg}\frac{\mathrm dg}{\mathrm dx} =
+			\frac{1}{2\sqrt{g(x)}} \left( 3x^2 + \frac{\mathrm d}{\mathrm dx} \left( \sqrt(x^5) \right)\right) \\
+			\\
+			\frac{\mathrm dh}{\mathrm dx} \sqrt{x^5} &= \underbrace{\frac{1}{2\sqrt{x^5}}}_{\frac{1}{2k(x)}} 5x^4
+		\end{align*}
+	\end{enumerate}
+\end{example}
+
+\subsubsection*{Höhere Ableitungen}
+\begin{definition}
+	(rekursiv)
+	\begin{align*}
+		f&: D \rightarrow R \text{beliebig oft differenzierbar} \\
+		f^{(0)}(x) &:= f(x) \\
+		(k >= 0) \hspace{10px} f^{(k+1)}(x) &:= \frac{\mathrm d}{\mathrm dx} \left( f^{(k)}(x) \right)
+	\end{align*}
+\end{definition}
+	
+\begin{equation*}
+\begin{array}{llll}
+	& f \\
+	\text{1. Ableitung} & f' &= \frac{\mathrm d}{\mathrm dx}f & \text{Geschwindigkeit} \\
+	\text{2. Ableitung} & f'' &= \frac{\mathrm d}{\mathrm dx}f' & \text{Beschleunigung} \\
+	\text{3. Ableitung} & f''' &= \frac{\mathrm d}{\mathrm dx}f'' & \leadsto \text{ Autobahnausfahrt}
+\end{array}
+\end{equation*}
+
+\subsection{Schwingungsgleichung - Gewöhnliche Differentialgleichung}
+Siehe \cite[Kap. 8]{bornemann}
+
+\todo{Wenn keine weiteren Items in der nächsten Vorlesung kommen itemize wieder ausbauen}
+\begin{itemize}
+	\item Schwingung einer Feder
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1, x=1cm, y=1cm]
+			\draw (0.3,1) -- (5,1);
+			\draw (1,1) -- (1.5, 1.5);
+			\draw (2,1) -- (2.5, 1.5);
+			\draw (3,1) -- (3.5, 1.5);
+			\draw (4,1) -- (4.5, 1.5);
+
+			\draw[o-] (2.5, 1) -- (2.5, 0.5);
+			\draw[decorate,decoration={coil,segment length=4pt}] (2.5, 0.5) -- (2.5, -2);
+			\draw (2.5, -2) -- (2.5, -2.5);
+
+			\draw (2, -2.5) rectangle (3, -3.5);
+
+			\draw (5.5, 1) rectangle (6, -4.5);
+
+			\draw[o->] (3, -3) -- (5.5, -3);
+
+			\draw (5.5, -3) -- (6, -3) node [right] {$s = 0$};
+
+			\draw[->] (6.5, -2.5) -- (6.5, -1.5);
+			\draw[->] (6.5, -3.5) -- (6.5, -4.5);
+
+			\draw (5.5, -4.5) node [below] {Meßskala};
+		\end{tikzpicture}
+	\end{center}
+	Anfangsauslenkung führt zu einer Schwingung (ohne Schwerkraft) \\
+	Weg-Zeit Diagramm
+	\begin{itemize}
+		\item Eichung: $t = 0$
+		\item Ruhelage $ s = 0$ 
+		\item Anfangsgeschwindigkeit $v \neq 0$
+		\item Weg $s(t)$
+		\item Geschwindigkeit $\dot s(t)$
+		\item Beschleunigung $\ddot s(t)$
+	\end{itemize}
+	Kräftegleichgewicht:
+	\begin{itemize}
+		\item Newton-Kraft: $k_1 = m \ddot s(t)$
+		\item Federgesetz: $k_2$ entspricht Auslenkung $k_2 = D s(t)$
+	\end{itemize}
+	
+	\subsubsection*{Prinzip D'Alembert}
+	"`Summe aller Kräfte"' = 0 \\
+	\begin{align*}
+		k_1 + k_2 &= 0 \\
+		m \ddot s + D s &= 0 \\
+		\Rightarrow \ddot s(t) + \frac{D}{m} s(t) &= 0
+	\end{align*}
+	
+	\begin{equation*}
+		k = \sqrt{\frac{D}{m}} \text{Frequenz: $s^{-1}$}
+	\end{equation*}
+	
+	Schwingungsgleichung:
+	\begin{equation*}
+		\ddot s(t) + k^2 s(t) = 0
+	\end{equation*}
+	\todo{Kasten um Schwingungsgleichung und DGL}
+	
+	Aufgabe: Suche $s(t)$, welches obige Gleichung erfüllt unter den Anfangsbedingungen $s(0) = 0$, $ \dot s(0) = v_0$ \\
+	\begin{definition}
+	Eine Verknüpfung einer unbekannter Funktion $s(t)$ mit ihren Ableitungen heißt \emph{Gewöhnliche Differentialgleichung}
+	\end{definition}
+	
+	\begin{equation*}
+		\left.
+		\begin{matrix}[rl]
+			\ddot s + k^2 s = 0 & \text{2. Ableitung} \\
+			s(0) = 0, \dot s(0) = v_0 & \text{lineares System}
+		\end{matrix}
+		\right\}
+		\text{lineare DGL 2. Ordnung}
+	\end{equation*}
+	
+	allgemein:
+	\begin{align*}
+		\dot y(t) &= f(t, y) \\
+		y(t_0) &= y_0
+	\end{align*}
+	
+	Dgl: 
+	\begin{equation*}
+		\begin{matrix}
+			f: &I& \hspace{-10px}\times \mathbb{R}^{(n)} \rightarrow \mathbb{R}^{(n)} \\
+			& \downarrow & \\
+			& t &
+		\end{matrix}
+	\end{equation*}
+\end{itemize}
