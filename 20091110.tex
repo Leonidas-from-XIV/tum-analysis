@@ -1,6 +1,5 @@
-\chapter{Funktionen, Stetigkeit, Differenzierbarkeit}
-
 \lecture{2009-11-10}
+\chapter{Funktionen, Stetigkeit, Differenzierbarkeit}
 
 \section{Funktionen, Polynome}
 \subsection{Grundbegriffe zu Funktionen}
@@ -227,7 +226,7 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 
 \begin{description}
 	\item[1. Fragestellung:] Es gibt \( 2n(n+1) \) Messdaten, durch die ein Polynom konstruiert werden soll.
-	\begin{figure}[h]
+	\begin{center}
 	\begin{tikzpicture}[scale=0.1, x=9cm, y=0.03cm]
 		\draw[blue,domain=-6:6] plot ({\x},36*{\x}-12*{\x}^2+3*{\x}^3) node[above] 
 		{};
@@ -237,8 +236,8 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 		\fill [color=black] (2,48) circle (30pt);
 		\fill [color=black] (-2,-144) circle (30pt);
 	\end{tikzpicture}
-	\caption{Konstruktion eines Polynoms durch Stützpunkte/Messdaten}
-	\end{figure}
+	\captionof{figure}{Konstruktion eines Polynoms durch Stützpunkte/Messdaten}
+	\end{center}
 	
 	\item[2. Fragestellung:] Möglichst gutes Approximieren einer unbekannten Funktion \( f(x) \). Von \( f \) sind Messwerte bekannt.
 	

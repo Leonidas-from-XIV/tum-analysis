@@ -157,6 +157,22 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \renewcommand{\@todonotes@todolistname}{Aufgabenliste}
 \makeatother
 
+\makeatletter
+
+\renewcommand\bibsection{%
+  \chapter*{\bibname}%
+\@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}%
+}% 
+
+\newcommand{\chapter@after}{}
+
+\let\chapter@old\chapter
+\newcommand{\chapter@my}[1]{\chapter@old{#1} \chapter@after \renewcommand{\chapter@after}{}}
+\newcommand{\chapter@mystar}[1]{\chapter@old*{#1} \chapter@after \renewcommand{\chapter@after}{}}
+\renewcommand{\chapter}{\@ifstar \chapter@mystar \chapter@my}
+
+\makeatother
+
 %%% matrix column alignment
 
 % JP: Mit folgendem neu definierten matrix-command, können die 
@@ -172,17 +188,37 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \newcommand{\listlecturename}{Vorlesungsverzeichnis}
 \newlistof{lectures}{lec}{\listlecturename}
 
-\newcommand{\lecture}[1]{
+\newcommand{\marginnote}[1]{\marginpar{\raggedright
+  #1\par}}
 
+\makeatletter
+
+\newcommand{\lecture@title}[1]{
   \phantomsection
   \addcontentsline{lec}{lectures}{#1}
-  \noindent
-  \fbox{
-      \begin{minipage}{\textwidth}\centering
-        \sffamily\large Vorlesung vom #1
-      \end{minipage}
-  }
+  \marginnote{\sffamily\footnotesize\color{blue} Vorlesung #1}
 }
+
+% \newcommand{\lecture@title}[1]{
+%   \phantomsection
+%     \addcontentsline{lec}{lectures}{#1}
+%     \noindent
+%     \fbox{
+%         \begin{minipage}{\textwidth}\centering
+%           \sffamily\large Vorlesung vom #1
+%         \end{minipage}
+%   }
+% }
+% 
+\newcommand{\lecture@after}[1]{\renewcommand{\chapter@after}{\lecture@title{#1}}}
+
+\newcommand{\lecture}[1]{
+  \@ifnextchar\chapter
+    {\lecture@after{#1}}
+    {\lecture@title{#1}}
+}
+
+\makeatother
 
 %%% lecturer shortcuts
 
