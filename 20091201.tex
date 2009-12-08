@@ -1,35 +1,37 @@
 \lecture{2009-12-01}
 
-\paragraph{Übersicht}
+\subsubsection*{Übersicht}
 
 \begin{itemize}
-	\item $\ddot s + k^2s = 0$ ist eine Differentialgleichung (Dgl.) und "`verknüpft"' Funktionswerte und Ableitungen der unbekannten (gesuchten) Funktion $s(t)$.
-	\item Da nur eine unabhängige Variable (hier die Zeit $t$) existiert handelt es sich um eine gewöhnliche Differentialgleichung (ODE, ordinary differential equation).
-	\item Da nur die Anfangswerte $s(0)$ und $\dot s(0)$ gegeben sind ist es ein Anfangswerteproblem (AWP) oder englisch initial value problem (IVP).
+	\item $\ddot s + k^2s = 0$ ist Differentialgleichung (Dgl.) und "`verknüpft"' Funktionswerte und Ableitungen der unbekannten (gesuchten) Funktion $s(t)$
+	\item Da nur eine unabhängige Variable (hier die Zeit $t$) existiert handelt es sich um eine gewöhnliche Differentialgleichung (\emph{ODE} -- ordinary differential equation).
+	\item Da nur die Anfangswerte $s(0)$ und $\dot s(0)$ gegeben sind, ist es ein Anfangswerteproblem \emph{(AWP)} (engl. \emph{IVP} -- initial value problem).
 	\begin{note}
-		Existieren mehrere unabhängige Variablen ($x, y, z \in \mathbb{R}^3, t \in \mathbb{R}^+$) handelt es sich um eine partielle Differentialgleichung (partial diffenrential equation, PDE).
-		\begin{example}
-			\begin{itemize}
-				\item Wärmeleitung: $u_t = \alpha^2 u_{xx}$\annotation{Zur Notation: $u_{xx} \equals \frac{\partial^2}{\partial x^2}u(x,t)$, $u_t$ entsprechend.}
-				\item Wellengleichung: $u_{tt} = c^2 u_{xx}$
-				\item Laplace-Gleichung: $\Delta u = u_{xx} + u_{yy} + u_{zz} = f(t, u)$
-			\end{itemize}
-		\end{example}
+		Existieren mehrere unabhängige Variablen ($x, y, z \in \mathbb{R}^3, t \in \mathbb{R}^+$), handelt es sich um eine partielle Differentialgleichung (\emph{PDE} -- partial differential equation).
 	\end{note}
+	\begin{example}
+		\begin{itemize}
+			\item Wärmeleitung: $u_t = \alpha^2 u_{xx}$\annotation{zur Notation: $u_{xx} \equals \frac{\partial^2}{\partial x^2}u(x,t)$, $u_t$ entsprechend.}
+			\item Wellengleichung: $u_{tt} = c^2 u_{xx}$
+			\item Laplace-Gleichung: $\Delta u = u_{xx} + u_{yy} + u_{zz} = f(t, u)$
+		\end{itemize}
+	\end{example}
 	\item $\ddot s + k^2s = 0$ ist eine Dgl. zweiter Ordnung, da die höchste enthaltene Ableitung zweiter Ordnung ist.
 \end{itemize}
 
-\paragraph{Fragen}
+\subsubsection*{Fragen}
 \begin{enumerate}
-	\item Wie berechne ich \underline{eine} Lösung?
-	\item Wie berechne ich \underline{alle} Lösungen?
+	\item Wie berechne ich \emph{eine} Lösung?
+	\item Wie berechne ich \emph{alle} Lösungen?
 	\item Definitionsbereich einer Lösung?
 \end{enumerate}
-Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE"'-Welt hingegen 1 - 20 Jahre zur Lösung.
+Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE-Welt"' hingegen 1-20 Jahre zur Lösung.
+
+%%% LARS: REVIEWSTATE
 
 \paragraph{Spezielle Herangehensweise:} $\ddot s(t) + k^2s(t) = 0 \rightarrow$ Technik des intelligenten Ratens!
 
-\subparagraph{Für $k = 1$}
+\subparagraph{für $k = 1$}
 \begin{align*}
 	& \ddot s + s = 0 \\
 	\rightarrow &\text{ geraten: z. B. $s_1(t) = \sin(t)$, $s_2(t) = \cos(t)$}\\
@@ -49,16 +51,16 @@ Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE"'-Wel
 	\end{aligned} \right\}\ddot s(t) + k^2s(t) = 0
 \end{align*}
 
-\subsubsection{Schwingungsgleichung in $\mathbb{C}$: $\ddot s + k^2s = 0$}
+\subsubsection*{Schwingungsgleichung in $\mathbb{C}$: $\ddot s + k^2s = 0$}
 
-\paragraph{Euler-Formel: $\euler^{i\varphi} = \cos \varphi + i \sin \varphi$}
+\paragraph{Euler-Formel: $\euler^{\imag\varphi} = \cos \varphi + \imag \sin \varphi$}
 \begin{align*}
-	\frac{d}{d\varphi}\euler^{i\varphi} &= \frac{d}{d\varphi}(\cos \varphi + i \sin \varphi) = -\sin \varphi + i\cos \varphi \\
-	\frac{d}{d\varphi}\euler^{ik\varphi} &= \frac{d}{d\varphi}(\cos k\varphi + i \sin k\varphi) =\\ &= -k\sin k\varphi + ik\cos k\varphi = ik(\cos k\varphi + i\sin k\varphi) = ik\euler^{ik\varphi} \\
-	\frac{d^2}{d\varphi^2}(\euler^{ik\varphi} &= i^2k^2\euler^{ik\varphi} = -k^2 \euler^{ik\varphi} \\
-	S(t) &= C_1s_1(t) + C_2s_2(t) = C_1\euler{ikt} + C_2\euler{-ikt} \\&\text{ mit $C_1 = c_1 + ic_2$ und $C_2 = d_1 + id_2$}
+	\frac{d}{d\varphi}\euler^{\imag\varphi} &= \frac{d}{d\varphi}(\cos \varphi + \imag \sin \varphi) = -\sin \varphi + \imag\cos \varphi \\
+	\frac{d}{d\varphi}\euler^{\imag k\varphi} &= \frac{d}{d\varphi}(\cos k\varphi + \imag \sin k\varphi) =\\ &= -k\sin k\varphi + \imag k\cos k\varphi = \imag k(\cos k\varphi + \imag\sin k\varphi) = \imag k\euler^{\imag k\varphi} \\
+	\frac{d^2}{d\varphi^2}\euler^{\imag k\varphi} &= \imag^2k^2\euler^{\imag k\varphi} = -k^2 \euler^{\imag k\varphi} \\
+	S(t) &= C_1s_1(t) + C_2s_2(t) = C_1\euler^{\imag kt} + C_2\euler^{-\imag kt} \\&\text{ mit $C_1 = c_1 + \imag c_2$ und $C_2 = d_1 + \imag d_2$}
 \end{align*}
-Es gilt: $s(t) = Re(S(t))$ (Umrechnung in der Übung)
+Es gilt: $s(t) = \Re(S(t))$
 
 \subsection{Anwendung der Differentiation}
 \begin{wrapfigure}{r}{0.45\textwidth}
@@ -75,26 +77,27 @@ Ziel: Kurvendiskussion von $f: I \rightarrow \mathbb{R}$ (differenzierbar)
 	Im Inneren: waagrechte Tangente $f(x_0) = 0$ charakterisiert lokales Extremum (notwendige Bedingung).
 \end{definition}
 \begin{note}
-	$f(x) = x^3 \leadsto f'(0) = 0$ aner kein lokales Extremum
+	$f(x) = x^3 \leadsto f'(0) = 0$, jedoch kein lokales Extremum
 \end{note}
 
-\subsubsection{Satz von Rolle}
+\subsubsection*{Satz von Rolle}
 \begin{wrapfigure}{r}{0.4\textwidth}
- 	\begin{center}
-		\includegraphics[width=0.4\textwidth]{include/20091201-2.pdf}
-	\end{center}
+ 	\centering
+	\includegraphics[width=0.4\textwidth]{include/20091201-2.pdf}
 \end{wrapfigure}
 Gegeben: $f:[a, b] \rightarrow \mathbb{R}$ sei differenzierbar und es gilt $f(a) = f(b)$.
+
 Es gilt: Es existiert ein $x_0$ mit $a < x_0 < b : f'(x_0) = 0$ oder $f$ ist konstant. Umgangssprachlich: "`$f$ ist entweder konstant oder besitzt ein Extremum."'
+
 Uminterpretation: Sekantensteigung an Intervallenden: Es existiert ein $x_0$ mit gleicher Tangentensteigung.
 
-\subsubsection{1. Mittelwertsatz der Integralrechnung (1. MWS)}
+\subsubsection*{1. Mittelwertsatz der Integralrechnung (1. MWS)}
 \begin{wrapfigure}{l}{0.4\textwidth}
- 	\begin{center}
-		\includegraphics[width=0.4\textwidth]{include/20091201-3.pdf}
-	\end{center}
+ 	\centering
+	\includegraphics[width=0.4\textwidth]{include/20091201-3.pdf}
 \end{wrapfigure}
 Vorraussetzung $f(a) = f(b)$ entfällt, aber es gilt: $f:[a,b] \rightarrow \mathbb{R}$ sei differenzierbar.
+
 Es existiert ein $x_0$ mit $a < x_0 < b$ so dass die Sekantensteigung an den Endpunkten parallel zur Tangentensteigung in $x_0$ ist.
 \begin{equation*}
 	f'(x_0) = \frac{f(b) - f(a)}{b - a}
@@ -121,17 +124,17 @@ Folgerung für Differentialgleichungen:
 	$\Rightarrow$ Konstante löst allgemein: $\dot s = 0 \Rightarrow s = c$.
 \end{proof}
 
-\subsubsection{Monotone Funktionen}
+\subsubsection*{Monotone Funktionen}
 \begin{enumerate}
 	\item $f'(x) \geq 0 \Rightarrow f$ ist monoton wachsend
 	\item $f'(x) \leq 0 \Rightarrow f$ ist monoton fallend
 \end{enumerate}
 \begin{example}
-	z. z. $f'(x_0) < 0 \Rightarrow x_1 > x_2 \Rightarrow f(x_1) < f(x_2)$
-	$\frac{f(x_1) - f(x_2)}{\underbrace{x_1 - x_2}_{> 0}} = f'(x_0) < 0$
+	z. z. \[f'(x_0) < 0 \Rightarrow x_1 > x_2 \Rightarrow f(x_1) < f(x_2)\]
+	\[\cfrac{f(x_1) - f(x_2)}{\underbrace{x_1 - x_2}_{> 0}} = f'(x_0) < 0\]
 \end{example}
 
-\subsubsection{Wendepunkte}
+\subsubsection*{Wendepunkte}
 \begin{note}
 	Die zweite Ableitung von $f$ beschreibt die Krümmung.
 \end{note}

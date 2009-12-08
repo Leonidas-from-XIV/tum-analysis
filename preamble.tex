@@ -205,7 +205,7 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \newcommand{\lecture}[1]{
   \@ifnextchar\chapter
     {\lecture@after{#1}}
-    {\lecture@title{#1}}
+    {\pagebreak[3]\lecture@title{#1}\nopagebreak}
 }
 
 \makeatother
