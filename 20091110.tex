@@ -10,7 +10,7 @@
 			\item{
 			Lineare Funktion $f(x)=ax+b$ \newline
 		    Gerade durch $(0,b)$ und $\left(-\frac{b}{a},0\right)$
-		
+
 			Erinnerung:
 			\begin{center}
 				\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.5cm,y=2.5cm]
@@ -22,10 +22,10 @@
 				\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
 				\clip(-0.8,-0.8) rectangle (2.8,1.6);
 				\draw [domain=-0.5:1] plot(\x,{(--0.25--0.8*\x)/1});
-				
-				\draw[color=black] (-0.4, 0.15) node {$(\frac{b}{a},0)$};
+
+				\draw[color=black] (-0.4, 0.15) node {$(-\frac{b}{a},0)$};
 				\fill [color=black] (-0.3125,0) circle (1.5pt);
-				
+
 				\draw[color=black] (0.25,0.20) node {$(0,b)$};<
 				\fill [color=black] (0,0.25) circle (1.5pt);
 
@@ -50,7 +50,7 @@
 
 \begin{definition}[Eigenschaften von Funktionen]
 \begin{itemize}
-	
+
 	\item Symmetrie
 	\[
 	\begin{matrix}[l]
@@ -58,13 +58,13 @@
 		&\text{ungerade:}	&f(-x) = -f(x) &             &f(x) = x^{2n+1};	&f(x) = \sin(x)
 	\end{matrix}
 	\]
-	
+
 	\item Monotonie \newline \(f:D\rightarrow \mathbb{R}\) heißt
 	\begin{itemize}
 		\item \emph{monoton wachsend}, wenn \(x_1<x_2 \implies f(x_1) \leq f(x_2)\)
-		\item \emph{streng monoton wachsend}, 
+		\item \emph{streng monoton wachsend},
 			  wenn \(x_1<x_2 \implies f(x_1) < f(x_2)\)
-	\end{itemize}		
+	\end{itemize}
 \end{itemize}
 
 %JP: Sehr hässliche Lösung, aber subfloats und Listen mögen sich nunmal nicht.
@@ -73,18 +73,18 @@
 	\subfloat[Monoton]
 	{
 	\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
-		\draw[blue,domain=0:1] plot ({\x},{\x*\x*\x}) node[above] 
+		\draw[blue,domain=0:1] plot ({\x},{\x*\x*\x}) node[above]
 		{};
-		\draw[blue,domain=-1:0] plot ({\x},{0}) node[above] 
+		\draw[blue,domain=-1:0] plot ({\x},{0}) node[above]
 	    {};
-		\draw[blue,domain=-2:-1] plot ({\x},{(\x+1)^3}) node[above] 
+		\draw[blue,domain=-2:-1] plot ({\x},{(\x+1)^3}) node[above]
 		{};
 	\end{tikzpicture}
 }
 \subfloat[Streng monoton]
 {
 	\begin{tikzpicture}[scale=1, x=2cm, y=2cm]
-		\draw[blue,domain=-2:0.5] plot ({\x},{exp(\x)}) node[above] 
+		\draw[blue,domain=-2:0.5] plot ({\x},{exp(\x)}) node[above]
 		{};
 	\end{tikzpicture}
 }
@@ -113,8 +113,8 @@
 	\]
 		\begin{align*}
 		(f \circ g)(x) &= f(g(x)) = f(1-x^2) = \cos(1-x^2) \\
-		(g \circ f)(x) &= g(f(x)) = g(\cos(x)) = 1-\cos^2x = \sin^2x 
-	\end{align*}	
+		(g \circ f)(x) &= g(f(x)) = g(\cos(x)) = 1-\cos^2x = \sin^2x
+	\end{align*}
 \end{note}
 
 
@@ -134,7 +134,7 @@ Eine Funktion \( p:\mathbb{R} \rightarrow \mathbb{R} \) heißt Polynom vom Grade
 \[
   \sum_{k=0}^{n}  a_kx^k  \pm
   \sum_{k=0}^{n}  b_kx^k  =
-  \sum_{k=0}^{n}  (a_k \pm b_k)x^k 
+  \sum_{k=0}^{n}  (a_k \pm b_k)x^k
 \]
 Umordnung möglich, da \( n \) endlich.
 % subsubsection operationen (end)
@@ -165,7 +165,7 @@ besser: \emph{Hornerschema} (\( \approx \) 1800)
 \]
 
 
-\begin{lstlisting}[caption=Codierung des Hornerschemas] 
+\begin{lstlisting}[caption=Codierung des Hornerschemas]
 p := a[n];
 for k := n - 1 to 0 do
 	p := p * x + a[k];
@@ -209,7 +209,7 @@ $\ell$-fache Nullstellen:
 
 \begin{align*}
 		&p(x)=a_nx^k+\ldots+a_1x+a_0=a_nx^n\left(1+\frac{a_n-1}{a_n\cdot x}+\ldots+\frac{a_1}{a_n\cdot x^{n-1}}+\frac{a_0}{a_n\cdot x^n}\right), \\
-		&\text{wobei } a_n\neq0 \text{ sowie } x\neq0 
+		&\text{wobei } a_n\neq0 \text{ sowie } x\neq0
 \end{align*}
 Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_nx^n \) \newline "`Wie verhält sich eine Funktion, wenn x über alle Maßen wächst?"'
 
@@ -228,7 +228,7 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 	\item[1. Fragestellung:] Es gibt \( 2n(n+1) \) Messdaten, durch die ein Polynom konstruiert werden soll.
 	\begin{center}
 	\begin{tikzpicture}[scale=0.1, x=9cm, y=0.03cm]
-		\draw[blue,domain=-6:6] plot ({\x},36*{\x}-12*{\x}^2+3*{\x}^3) node[above] 
+		\draw[blue,domain=-6:6] plot ({\x},36*{\x}-12*{\x}^2+3*{\x}^3) node[above]
 		{};
 		\fill [color=black] (0,0) circle (30pt);
 		\fill [color=black] (1,27) circle (30pt);
@@ -238,9 +238,9 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 	\end{tikzpicture}
 	\captionof{figure}{Konstruktion eines Polynoms durch Stützpunkte/Messdaten}
 	\end{center}
-	
+
 	\item[2. Fragestellung:] Möglichst gutes Approximieren einer unbekannten Funktion \( f(x) \). Von \( f \) sind Messwerte bekannt.
-	
+
 	\item[3. Fragestellung:] "`Schöne Bilder"', Buchstaben, etc. zeichnen. (\TeX)
 \end{description}
 
@@ -250,7 +250,8 @@ Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_
 		\item die Lösung ist eindeutig
 		\item kleine Änderungen der Daten bedingen kleine Änderungen der Lösung
 	\end{itemize}
-	
+
 \end{theorem}
 % subsubsection polynominterpolation (end)
 % subsection Polynome und rationale Funktionen (end)
+
