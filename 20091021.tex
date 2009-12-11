@@ -3,7 +3,7 @@
 \subsection{Ungleichungen, Betrag-Kalkül-Teil}
 
 \begin{definition}[Ungleichung]
-Unter einer Ungleichung für reelle Zahlen $x,y$ verstehen wir einen Größenvergleich
+Unter einer Ungleichung für reelle Zahlen $x,y$ versteht man einen Größenvergleich
 
   \begin{table}[h]
     \centering
@@ -18,8 +18,8 @@ Unter einer Ungleichung für reelle Zahlen $x,y$ verstehen wir einen Größenver
 
 \subsubsection*{Abschätzung}
 
-"`$x<y$"' heißt Größe von $x$ durch Größe von $y$ abschätzen\\
-Regelwerk für Abschätzungen (Anordnungsaxiome) $\leadsto$ Zahlengerade.
+"`$x<y$"' heißt: Größe von $x$ durch Größe von $y$ abschätzen\\
+Regelwerk für Abschätzungen (Anordnungsaxiome) $\leadsto$ Zahlengerade
 
 \begin{enumerate}
  \item $x \leq y, a\leq b \Rightarrow x+a \leq y+b$
@@ -97,7 +97,7 @@ zu zeigen: $|a+b| \leq |a|+|b|$
   \end{align*}
 \end{proof}
 
-Abstandsmessung $|x-a| \leq \epsilon$\todo{unklar}
+%Abstandsmessung $|x-a| \leq \epsilon$\todo{unklar}
 
 \subsubsection*{Rechenbeispiel}
 
@@ -106,7 +106,7 @@ Abstandsmessung $|x-a| \leq \epsilon$\todo{unklar}
 %%% angepasst, dass die Lösungsmenge nun korrekt sein sollte.
 %%% --janosch
 % $x\in \mathbb{R}$ gesucht mit $\frac{3}{x-9} \leq \frac{2}{x+2}$. Nenner $x\neq9 \land x\neq -2$
-$x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$. Nenner $x\neq9 \land x\neq -2$
+$x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$, Nenner $x\neq9 \land x\neq -2$
 
 \begin{center}
  \begin{tikzpicture}[line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
@@ -166,15 +166,30 @@ Ergebnis: $\{x|x<-2, \frac{12}{5}<x<9, 9<x\}$
   \item Geradenschnitt
 
     \begin{center}
-      \includegraphics[width=0.8\textwidth]{include/geo_betraege.pdf}
-      \captionof{figure}{geometrische Interpretation von $ |x|+|y| \leq 1$}
+      \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+        \fill[color=blue!15] (-2,0) -- (0,-1) -- (2,0) -- (0,1);
+        
+        \draw[->,color=black] (-4.5,0) -- (4.5,0);
+        \foreach \x in {-2,-1,1,2}
+        \draw[shift={(2*\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+        \foreach \x in {-1,0,1,2}
+        \draw[shift={(2*\x-1,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x,5$};
+        \draw[->,color=black] (0,-3.5) -- (0,3.5);
+        \foreach \y in {-3,-2,-1,1,2,3}
+        \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+        
+        \draw[color=blue] (-2,-2) -- (4,1);
+        \draw[color=blue] (-4,-1) -- (2,2);
+        \draw[color=blue] (-4,1) -- (2,-2);
+        \draw[color=blue] (-2,2) -- (4,-1);
+      \end{tikzpicture}
+      \begin{equation*}
+        M = \{(x,y)\;|\; |x|+|y| \leq 1 \}; x,y \in \mathbb{R}
+      \end{equation*}
     \end{center}
 
-    \begin{equation*}
-    M = \{(x,y)\;|\; |x|+|y| \leq 1 \}; x,y \in \mathbb{R}
-    \end{equation*}
     \begin{align*}
-    |x|+|y| \leq 1 \Rightarrow &x \geq 0, y \geq 0: x+y \leq 1 \Rightarrow y \leq 1-x \\
+    |x|+|y| \leq 1 \implies &x \geq 0, y \geq 0: x+y \leq 1 \Rightarrow y \leq 1-x \\
             &x \geq 0, y < 0: x-y \leq 1 \Rightarrow y \geq -1+x \\
             &x < 0, y \geq 0: -x+y \leq 1 \Rightarrow y \leq 1+x \\
             &x < 0, y < 0: -x-y \leq 1 \Rightarrow y \geq -1-x \\

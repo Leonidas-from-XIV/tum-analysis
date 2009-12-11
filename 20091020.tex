@@ -60,14 +60,17 @@ $c = \cfrac{b_1 \;\ldots\; b_k}{\underbrace{g \;\ldots\; g}_{k\text{-mal}}} \in 
 \end{enumerate}
 
 \subsection{Maschinenzahlen $\mathbb{M}$}
-\integer-Zahlen (Assoziation: $\mathbb{Z}$), \real-Zahlen (Assoziation: $\mathbb{R})$ sind 2 Typen unterschiedlicher Codierung
 
+\begingroup
+\newcommand{\integer}{\texttt{INTEGER}}
+\newcommand{\real}{\texttt{REAL}}
+
+\integer-Zahlen (Assoziation: $\mathbb{Z}$), \real-Zahlen (Assoziation: $\mathbb{R})$ sind 2 Typen unterschiedlicher Codierung\\
 4 Byte für \integer; 4, 8, 10 Byte für \real
 
 \subsubsection*{\integer}
 
-31 Bits für Mantisse, größte Zahl $\pm \underbrace{1\ldots1}_{31\text{ Mal}}$ (im Zweiersystem)
-
+31 Bits für Mantisse, größte Zahl $\pm \underbrace{1\ldots1}_{31\text{ Mal}}$ (im Zweiersystem)\\
 entspricht Zahldarstellung: $2^0+2^1+\ldots+2^{30}=2^{31}-1$ \\
 $\leadsto$ 10er-System: $2^{31}-1 \equals x$, $2^{10}\approx 10^3$\\
 Zahlbereich: -2 Mrd. bis 2 Mrd
@@ -76,20 +79,21 @@ Zahlbereich: -2 Mrd. bis 2 Mrd
 
 Mantisse 23 Bits, Exponent 7 Bits
 
-$\pm 0.\underbrace{\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_}}_{\text{Mantisse}}e\pm\underbrace{\text{\ttfamily\_\_\_}\ldots\text{\ttfamily\_\_\_}}_{\text{Exponent}}$
-
-Darstellung ist \emph{normalisiert}, d. h. nach Dezimalpunkt keine Nullen (IEEE 754 $\hat{=}$ VDE)
+\begin{equation*}
+\pm 0.\underbrace{\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_}}_{\text{Mantisse}}e\pm\underbrace{\text{\ttfamily\_\_\_}\ldots\text{\ttfamily\_\_\_}}_{\text{Exponent}}
+\end{equation*}
+Darstellung ist \emph{normalisiert}, d. h. nach Dezimalpunkt keine Nullen (IEEE 754 $\equals$ VDE)
 
 \begin{itemize}
  \item Exponentenspielraum: $1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^6 = 2^7 -1 = 127$
   Exponent $10^{-127}$ bis $10^{127}$
  \item Länge der Maschine im 10er-System:\\
 $1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^22=2^{23} \equals 10^x$\\
-$2^{23}\equals 10^x, x=23 \log_{10}(2) \approx 6,923 $ \todo{soll das hier stehen?}\\
+$2^{23}\equals 10^x, x=23 \log_{10}(2) \approx 6,923 $\\
 $m \in \mathbb{M}, m=\pm 0.\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_} e\pm \text{\ttfamily\_\_\_}\ldots\text{\ttfamily\_\_\_}$\\Lücke zwischen $-10^{-127}$ und $10^{-127}$ Faktor $10^7$ groß
 \end{itemize}
 
-\subsubsection{Rundungsfehler}
+\subsubsection*{Rundungsfehler}
 
 Wesentlich mitbestimmt von F. L. Bauer, Samelson, Zenger aus der Informatik und R. Bukisch und Chr. Reinsch aus der Mathematik und Wilkinson.\\
 Hilfsmittel: Abbildung von den reellen Zahlen (Alltag) auf den Rechner
@@ -100,23 +104,24 @@ rd: $\left\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\right\} \map
 \end{definition}
 
 \begin{note}
-Intervall-Arithmetik hat sich trotz Hardwareunterstützung nicht bewährt: Intervallängen zu pessimistisch.
+Intervall-Arithmetik hat sich trotz Hardwareunterstützung nicht bewährt, da die Intervallängen zu pessimistisch waren.
 \end{note}
 
-\begin{definition}[Abbildung]
-Vorraussetzung: $A$, $B$ Mengen\todo{prüfen}
-\begin{equation}f: A \rightarrow B, x \mapsto f(x)\end{equation}
+\begin{definition}[Abbildung] $A$, $B$ Mengen
+\begin{equation*}f: A \rightarrow B, x \mapsto f(x)\end{equation*}
 Eine Abbildung ist eine Vorschrift, die jedem $x \in A$ ein Element $x=f(x) \in B$ zuordnet.
 \end{definition}
 
 \subsubsection*{Charakterisierung von Abbildungen}
 \begin{itemize}
- \item gehören zu verschiedenen Argumenten verschiedene Funktionswerte, heißt $f$ \emph{injektiv:}
+ \item gehören zu verschiedenen Argumenten verschiedene Funktionswerte, heißt $f$~\emph{injektiv:}
 \[\forall x_1,x_2 \in A: x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)\]
  \item Wertebereich $C \subseteq A$:
 \[ f(C) = \{f(x)|x\in C\} \]
- \item $f$ \emph{surjektiv}, falls $f(A)=B$
+ \item $f$ heißt \emph{surjektiv}, falls $f(A)=B$
  \item $f$ injektiv und surjektiv $\Leftrightarrow$ $f$ \emph{bijektiv}
 
-$f: A \mapsto B$ ist genau dann bijektiv, falls zu jedem $y \in B$ genau ein $x \in A $ existiert mit $y=f(x)$. In diesem Fall existiert eine Umkehrabbildung $f^{-1}: B \mapsto A$.
+$f: A \to B$ ist genau dann bijektiv, falls zu jedem $y \in B$ genau ein $x \in A $ existiert mit $y=f(x)$. In diesem Fall existiert eine Umkehrabbildung $f^{-1}:~B \to A$.
 \end{itemize}
+
+\endgroup
