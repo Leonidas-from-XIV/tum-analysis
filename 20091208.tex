@@ -82,7 +82,8 @@ Definition $g(x) = \liminfty{\left( 1+\frac x n\right)^n}$, stetig differenzierb
   \item Definitionsbereich, Wertebereich
   \item Symmetrien (gerade, ungerade)
   \item Stetigkeit, Polstellen
-  \item Nullstellen (siehe \todo{Referenz auf 7.8 bzw. 2.3.8})
+  \item Nullstellen% (siehe \todo{Referenz auf 7.8 bzw. 2.3.8})
+  % LH: Referenz wäre sinnlos, in 7.8 geht es um Umkehrfunktionen
   \item $f'$ berechnen, $f' = 0$ Nullstellen
   \item Extremwerte: innere Extrema, Randextrema, Monotoniebereiche
   \item $f''$ berechnen, $f'' = 0$ Nullstellen
@@ -92,3 +93,36 @@ Definition $g(x) = \liminfty{\left( 1+\frac x n\right)^n}$, stetig differenzierb
 \end{enumerate}
 
 \subsection{Gewöhnliche Differentialgleichungen -- 2. Teil}
+
+\begin{example}[Hund springt in Eisbach und driftet ab]
+  \begin{itemize}
+    \begingroup
+    \newcommand{\kmh}{\ensuremath{\,\textstyle \frac{\text{km}}{\text{h}}}}
+    \item $v_0$ maximale Geschwindigkeit des Wasser
+      \begin{equation*} v_0 = 6 \kmh \end{equation*}
+      Wahl: Parabelprofil
+      \begin{equation*} v_\text{F}(x) = v_0 \cdot \left( 1 - \frac{x^2}{a^2} \right) \end{equation*}
+      \begin{equation*} v(a) = v(-a) = 0 \end{equation*}
+    \item Hund: konstante Eigengeschwindigkeit
+      \begin{align*}
+        v_H &= 2 \kmh \\
+        v_H &\parallel \text{$x$-Achse}
+      \end{align*}
+    \item Fragen: Welche Bahn schwimmt der Hund? Wie groß ist seine Abdrift $b$?
+      \begin{equation*} \left. \tan \alpha = \frac{v_\text{F}}{v_\text{H}} = y'(x) \quad\right\rangle\quad y'(x) = \frac{v_0}{v_\text{H}} \cdot \left( 1 - \frac{x^2}{a^2}\right)\end{equation*}
+    \item Erraten der Lösung
+      \begin{equation*}
+      y(x) = c + \frac{v_0}{v_\text{H}} \cdot \left( 1 - \frac{x^3}{3a^2}\right)
+      \end{equation*}
+    \item Abdrift
+      \begin{align*}
+        b = \underbrace{y(a)}_{\parbox{16mm}{\centering\scriptsize landet der Hund}} -\underbrace{y(-a)}_{\parbox{16mm}{\centering\scriptsize startet der Hund}} &= \ds\frac{v_0}{v_\text{H}} \cdot \underbrace{\left( \left( a - \frac{a^3}{3a^2}\right) - \left( -a + \frac{a^3}{3a^2}\right) \right)}_{2a - \frac 2 3 a} \\
+        &= \ds\frac 4 3 \cdot \frac{v_0}{v_\text{H}}\cdot  a
+      \end{align*}
+      in Zahlen:
+      \begin{equation*}
+        b = \frac 4 3 \cdot \frac {6 \kmh}{2 \kmh} - 4 \,\text{m} = 16 \,\text{m}
+      \end{equation*}
+    \endgroup
+  \end{itemize}
+\end{example}
