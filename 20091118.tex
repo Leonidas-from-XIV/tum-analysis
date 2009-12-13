@@ -19,7 +19,7 @@ Beweis siehe \cite[S. 32]{bornemann}
 
 \begin{definition}[Cauchy-Folge]
   Die Folge $a_n$ heißt Cauchy-Folge, falls
-  \[ \forall \varepsilon > 0\; \exists N(\varepsilon)\; \forall n,m \geq N\; |a_n-\underbrace{a_m}_{\text{Grenzwert } \alpha}| < \varepsilon \]
+  \[ \forall \varepsilon > 0\; \exists N(\varepsilon)\; \forall n,m \geq N\; |\; a_n-\underbrace{a_m}_{\parbox{8mm}{\centering\scriptsize Grenz\-wert~$\alpha$}}\!| < \varepsilon \]
 \end{definition}
 
 \begin{proposition}
@@ -31,11 +31,12 @@ Beweis siehe \cite[S. 32]{bornemann}
     \item[$(\Rightarrow)$]
       \begin{align*}
         \left| a_n - a_m \right| &= \left| a_n - \alpha + \alpha - a_m \right| \text{ (Grenzwert $\alpha$ existiert)}\\
-        &\leq \left| a_n - \alpha\right| + \left| a_m - \alpha \right|
-        \intertext{mit $n,m \geq N(\varepsilon)$}
-        &=\varepsilon+\varepsilon = 2\varepsilon
+        &\leq \left| a_n - \alpha\right| + \left| a_m - \alpha \right|, \text{ mit $n,m \geq N(\varepsilon)$}\\
+        &<\varepsilon+\varepsilon = 2\varepsilon
+        \intertext{setze $\overline N (\varepsilon) = N\left(\frac \varepsilon 2\right)$, damit}
+        \left| a_n - a_m \right| &< \varepsilon
       \end{align*}
-      setze $\overline N (\varepsilon) = \displaystyle\frac{N(\varepsilon)} 2 \Rightarrow < 2$
+        %< \varepsilon$
     \item[$(\Leftarrow)$] 1780-1860\\
       Beweisidee:
       \begin{itemize}
