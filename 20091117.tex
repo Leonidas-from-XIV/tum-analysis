@@ -137,8 +137,9 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
     \begin{enumerate}
       \item nach oben beschränkt
         \begin{align*}
-          0 &\leq 1 + \frac 1 {1!} + \ldots + \frac 1 {n!} \\
-          &\leq 1+1+\frac 1 2 + \ldots + \frac 1 {2^n}
+          0 &\leq 1 + \frac 1 {1!} + \ldots + \frac 1 {n!}
+        \intertext{wobei $\frac 1 {k!} = \frac 1 {1 \cdot 2 \cdot \ldots \cdot k} \leq \frac 1 {1 \cdot 2 \cdot \ldots \cdot 2} = \frac 1 {2^k}$, damit:}
+          &\leq 1+\underbrace{1+\frac 1 2 + \ldots + \frac 1 {2^n}}_{\text{geometrische Reihe mit } q=\frac 1 2}
         \end{align*}
       \item monoton wachsend
         \begin{equation*}
