@@ -63,11 +63,6 @@ Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE-Welt"
 Es gilt: $s(t) = \Re(S(t))$
 
 \subsection{Anwendung der Differentiation}
-\begin{wrapfigure}{r}{0.45\textwidth}
- 	\begin{center}
-		\includegraphics[width=0.45\textwidth]{include/20091201-1.pdf}
-	\end{center}
-\end{wrapfigure}
 Ziel: Kurvendiskussion von $f: I \rightarrow \mathbb{R}$ (differenzierbar)
 \begin{definition}
 	Lokales Maximum von $f$ in $x_0$ (im Inneren)
@@ -76,32 +71,41 @@ Ziel: Kurvendiskussion von $f: I \rightarrow \mathbb{R}$ (differenzierbar)
 	\end{equation*}
 	Im Inneren: waagrechte Tangente $f(x_0) = 0$ charakterisiert lokales Extremum (notwendige Bedingung).
 \end{definition}
+
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{include/20091201-1.pdf}
+	\captionof{figure}{Nullstellen und Extrema}
+\end{center}
+
 \begin{note}
 	$f(x) = x^3 \leadsto f'(0) = 0$, jedoch kein lokales Extremum
 \end{note}
 
 \subsubsection*{Satz von Rolle}
-\begin{wrapfigure}{r}{0.4\textwidth}
+Voraussetzung: $f:[a, b] \rightarrow \mathbb{R}$ sei differenzierbar und es gilt $f(a) = f(b)$.
+\begin{wrapfigure}[7]{r}[1cm]{0.4\textwidth}
  	\centering
 	\includegraphics[width=0.4\textwidth]{include/20091201-2.pdf}
 \end{wrapfigure}
-Gegeben: $f:[a, b] \rightarrow \mathbb{R}$ sei differenzierbar und es gilt $f(a) = f(b)$.
 
-Es gilt: Es existiert ein $x_0$ mit $a < x_0 < b : f'(x_0) = 0$ oder $f$ ist konstant. Umgangssprachlich: "`$f$ ist entweder konstant oder besitzt ein Extremum."'
+\begin{theorem}
+Es existiert ein $x_0$ mit $a < x_0 < b : f'(x_0) =~0$ oder $f$ ist konstant. Umgangssprachlich: "`$f$ ist entweder konstant oder besitzt ein Extremum."'
+\end{theorem}
 
-Uminterpretation: Sekantensteigung an Intervallenden: Es existiert ein $x_0$ mit gleicher Tangentensteigung.
+\noindent Uminterpretation: Sekantensteigung an Intervallenden: Es existiert ein $x_0$ mit gleicher Tangentensteigung.
 
 \subsubsection*{1. Mittelwertsatz der Integralrechnung (1. MWS)}
-\begin{wrapfigure}{l}{0.4\textwidth}
- 	\centering
-	\includegraphics[width=0.4\textwidth]{include/20091201-3.pdf}
-\end{wrapfigure}
-Vorraussetzung $f(a) = f(b)$ entfällt, aber es gilt: $f:[a,b] \rightarrow \mathbb{R}$ sei differenzierbar.
+Voraussetzung $f(a) = f(b)$ entfällt, aber es gilt: $f:[a,b] \rightarrow \mathbb{R}$ sei differenzierbar.
 
-Es existiert ein $x_0$ mit $a < x_0 < b$ so dass die Sekantensteigung an den Endpunkten parallel zur Tangentensteigung in $x_0$ ist.
+\begin{theorem}
+Es existiert ein $x_0$ mit $a < x_0 < b$ so, dass die Sekantensteigung an den Endpunkten parallel zur Tangentensteigung in $x_0$ ist.
 \begin{equation*}
 	f'(x_0) = \frac{f(b) - f(a)}{b - a}
 \end{equation*}
+\end{theorem}
+\begin{center}
+	\includegraphics[width=0.4\textwidth]{include/20091201-3.pdf}
+\end{center}
 \begin{proof}
 	Wende Satz von Rolle an auf:
 	\begin{align*}

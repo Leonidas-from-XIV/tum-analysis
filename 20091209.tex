@@ -1,16 +1,14 @@
 \lecture{2009-12-09}
 
 % EISBACH %
-$y'(x) = f(x)$ einfache Differentialgleichung, da $f$ nur Funktion von $x$ und nicht von $y$ ist. 
+\noindent $y'(x) = f(x)$ einfache Differentialgleichung, da $f$ nur Funktion von $x$ und nicht von $y$ ist. 
 Daher ist das Erraten der Lösung als Integral möglich.
 
-$$\leadsto y(x) = \int_{-a}^{+a} \! f(x) \, dx$$
-
+\begin{equation*}\leadsto y(x) = \int_{-a}^{+a} \! f(x) \, \diff x\end{equation*}
 Allgemeines Anfangswertproblem:
-$$\dot y(t) = f(t, y) \qquad y \in \mathbb{R}^n \qquad y(t_0) = y_0$$
-
+\begin{equation*}\dot y(t) = f(t, y) \qquad y \in \mathbb{R}^n \qquad y(t_0) = y_0\end{equation*}
 Eisbach allg. AWP linear 1.Ordnung/Typs.
-$$y'(x) = p(x)\cdot y + q(x)\qquad y \in \mathbb{R}^1 $$
+\[ y'(x) = p(x)\cdot y + q(x)\qquad y \in \mathbb{R}^1 \]
 
 \subsection{Umkehrfunktionen}
 $f: I \to \mathbb{R}$ stetig (evtl. auch etwas weniger stückweise stetig oder auch etwas mehr differenzierbar)
@@ -33,7 +31,7 @@ $f: I \to \mathbb{R}$ stetig (evtl. auch etwas weniger stückweise stetig oder a
     \end{equation*}
 \end{definition}
 
-\subsubsection*{Beispiele}
+\begin{example}
 \begin{enumerate}
     \item $f(x)=ax + b \implies g(y) = \frac{1}{a} \cdot (y-b) $
     \begin{center}
@@ -66,7 +64,7 @@ $f: I \to \mathbb{R}$ stetig (evtl. auch etwas weniger stückweise stetig oder a
         \end{tikzpicture}
     \end{center}
 \end{enumerate}
-
+\end{example}
 offensichtlich \todo{Graph}: (streng) monotone Funktionen erlauben Umkehrung 
 
 monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
@@ -91,59 +89,60 @@ monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
         $
 \end{enumerate}
 
-\subsubsection*{Beispiel Umkehrfunktion}
+\begin{example}[Umkehrfunktionen]
 \begin{enumerate}
 
     \item n-te Wurzel für rationale Exponenten:\\
-        bisher $y = \sqrt[n]{x} \quad n \in \mathbb{N} \Leftrightarrow y^n = \left. x \right\{
-            \begin{array}{l}
-                x \geq 0 \text{ n gerade} \\
-                x < 0 \text{ n ungerade}
-            \end{array}
+        bisher $y = \sqrt[n]{x} \quad n \in \mathbb{N} \Leftrightarrow y^n = x \quad
+            \begin{cases}
+                x \geq 0 & \text{$n$ gerade} \\
+                x < 0 & \text{$n$ ungerade}
+            \end{cases}
         $\\
         Umschreibung:
-        $$\sqrt[n]{x} = x^{\frac{1}{n}}$$
+        \[\sqrt[n]{x} = x^{\frac{1}{n}}\]
         Potenzbildung:
-        $$x^{\frac{m}{n}} := (x^{\frac{1}{n}})^m$$
+        \[x^{\frac{m}{n}} := \left(x^{\frac{1}{n}}\right)^m\]
         Ableitung:
         \begin{align*}
             f(x)=x^n \qquad g(x) = x^{\frac{1}{n}}\\
-            g'(x)=\frac{1}{n \cdot (x^{\frac{1}{n}})^{n-1}}=\frac{1}{n} \cdot x^{(\frac{1}{n}-1)}
+            g'(x)=\frac{1}{n \cdot \left(x^{\frac{1}{n}}\right)^{n-1}}=\frac{1}{n} \cdot x^{\left(\frac{1}{n}-1\right)}
         \end{align*}
         Kettenregel: Exponent $\frac{m}{n}$ zu berechnen:\\
-        $$ \frac{d}{dx}x^{\frac{m}{n}} = \frac{m}{n} \cdot x^{(\frac{m}{n}-1)}$$
+        \[ \frac{\diff}{\diff x}x^{\frac{m}{n}} = \frac{m}{n} \cdot x^{\left(\frac{m}{n}-1\right)}\]
     \item Arkus-Funktion:\\
-        trigonometrische Funktionen sind nicht \underline{global} umkehrbar!\\
+        trigonometrische Funktionen sind nicht \emph{global} umkehrbar\\
         Umkehrung möglich in $-\frac{\pi}{2} \leq x \leq \frac{\pi}{2}$
         \begin{definition}[Umkehrfunktion von $\sin x$]
         Die Umkehrfunktion von $\sin x$ in $[-\frac{\pi}{2}, \frac{\pi}{2}]$ ist $\arcsin x\,:[-1,1]\to[-\frac{\pi}{2}, \frac{\pi}{2}]$
         \end{definition}
         Ableitung:
-        $$\frac{d}{dx}\arcsin x=\frac{1}{\underbrace{\cos}_{f'}(\underbrace{\arcsin x}_{g})}$$
+        \[\frac{\diff}{\diff x}\arcsin x=\frac{1}{\underbrace{\cos}_{f'}(\underbrace{\arcsin x}_{g})}\]
         Mit Pythagoras $1=\sin^2 x+\cos^2 x \implies \cos x=\sqrt{1-\sin^2 x}$ (wegen Abschnitt "`$+\sqrt{\,}$"') folgt:
-        $$\frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1-sin^2(\arcsin x)}} = \frac{1}{\sqrt{1-x^2}}$$
+        \[\frac{\diff}{\diff x}\arcsin x = \frac{1}{\sqrt{1-\sin^2(\arcsin x)}} = \frac{1}{\sqrt{1-x^2}}\]
         Analog für $\cos x, \tan x, \cot x$:
         % note: Sinus und Cosinus dürften bekannt sein -> habe die Graphen weggelassen
         \begin{align*}
             \arccos x&: [-1,1]\to[0,\pi]\\
-            \frac{d}{dx} \arccos x &= \frac{-1}{\sqrt{1-x^2}}\\
-            \frac{d}{dx} \arctan x &= \frac{1}{1+x^2}
+            \frac{\diff}{\diff x} \arccos x &= \frac{-1}{\sqrt{1-x^2}}\\
+            \frac{\diff}{\diff x} \arctan x &= \frac{1}{1+x^2}
         \end{align*}
 
 \end{enumerate}
+\end{example}
 
 \subsection{Exponentialfunktion, Logarithmusfunktion}
 \subsubsection*{Eigenschaften von $\euler^x$}
 \begin{itemize}
-    \item Definiert aus Grenzwert $\lim_{n \to \infty}(1+\frac{x}{n})^n =: \euler^x = \exp(x)$
-    \item Ableitung $\frac{d}{dx}\euler^x = \euler^x$ (hebt $\euler^x$ aus allen $f(x)$ heraus)
+    \item Definiert aus Grenzwert $\ds\lim_{n \to \infty}\left(1+\frac{x}{n}\right)^n =: \euler^x = \exp(x)$
+    \item Ableitung $\frac{\diff}{\diff x}\euler^x = \euler^x$ (hebt $\euler^x$ aus allen $f(x)$ heraus)
     \item Positivität: $\euler^0 = 1 \qquad \euler^x > 0 \, \forall x \in \mathbb{R}$
-            $$\euler^1=\euler=2,718281828459... \text{Euler'sche Zahl}$$
-    \item Wachstum: $\lim_{n \to \infty} \euler^x = \infty$
-            $$\lim_{n \to -\infty} \euler^x = \lim_{n \to \infty} \frac{1}{\euler^x} = 0$$
+            \[\euler^1=\euler=2,718281828459... \text{Euler'sche Zahl}\]
+    \item Wachstum: $\ds\lim_{n \to \infty} \euler^x = \infty$
+            \[\lim_{n \to -\infty} \euler^x = \lim_{n \to \infty} \frac{1}{\euler^x} = 0\]
     \item Vergleich mit Wachstum von $x^n$:
         \begin{align*}
-            \lim_{n \to \infty} \frac{\euler^x}{x^n} = (\frac{\infty}{\infty}) = \lim_{n \to \infty}\frac{\euler^x}{n\cdot x^{n-1}} = (\frac{\infty}{\infty}) = ... =  \lim_{n \to \infty}\frac{\euler^x}{n!} = \infty
+            \lim_{n \to \infty} \frac{\euler^x}{x^n} = \left(\frac{\infty}{\infty}\right) = \lim_{n \to \infty}\frac{\euler^x}{n\cdot x^{n-1}} = \left(\frac{\infty}{\infty}\right) = \ldots =  \lim_{n \to \infty}\frac{\euler^x}{n!} = \infty
         \end{align*}
         "`$\euler$-Funktion wächst schneller als jede Potenz von $x^n$"' (L'Hospital, Seite \pageref{theorem:hospital})
     \item Umkehrbarkeit: $\euler^x$ ist monoton $\implies \euler^x$ ist umkehrbar
@@ -163,7 +162,7 @@ monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
 \end{center}
 
 \begin{definition}[Logarithmus Naturalis]
-    Die Umkehrfunktion von $\euler^x$ ist der natürliche Logarithmus $\ln x$
+    Die Umkehrfunktion von $\euler^x$ ist der natürliche Logarithmus $\ln x$.
     \begin{align*}
         \ln 1 = 0 \qquad \ln \euler = 1\\
         0 < x < 1 &\implies \ln x < 0\\
@@ -190,18 +189,18 @@ monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
 \subsubsection*{Rechenregeln}
 \begin{enumerate}
     \item $\ln(x\cdot y) = \ln x + \ln y$
-    \item $\ln(\frac{x}{y}) = \ln x - \ln y \quad (y \neq 0)$
+    \item $\ln\left(\frac{x}{y}\right) = \ln x - \ln y \quad (y \neq 0)$
 \end{enumerate}
 
 \subsubsection*{Allgemeine Potenzen zu $x^\alpha$ für $\alpha \in \mathbb{R}$}
 Idee: allgemeine Potenzfunktion $a^x$ mit $ a > 0,\, x \in \mathbb{R}$:
-$$ a^x = \exp(\ln a^x) = \exp (x \ln a) = \euler^{x \ln a}$$
+\begin{equation*} a^x = \exp(\ln a^x) = \exp (x \ln a) = \euler^{x \ln a}\end{equation*}
 Berechne $x^\alpha$ und die Ableitung ($x > 0$):
-$$ \frac{d}{dx} x^\alpha = \frac{d}{dx} \euler^{\alpha \ln x} = \alpha \underbrace{\euler^{\alpha \ln x}}_{x^\alpha} \cdot \frac{1}{x} = \alpha \cdot x^\alpha \cdot \frac{1}{x} = \alpha \cdot x^{\alpha-1}$$
+\[ \frac{\diff}{\diff x} x^\alpha = \frac{\diff}{\diff x} \euler^{\alpha \ln x} = \alpha \underbrace{\euler^{\alpha \ln x}}_{x^\alpha} \cdot \frac{1}{x} = \alpha \cdot x^\alpha \cdot \frac{1}{x} = \alpha \cdot x^{\alpha-1}\]
 \subsubsection*{Rechenregeln}
 \begin{enumerate}
     \item $a^x \cdot a^y = a^{(x+y)}$
-    \item $(a^x)^y = a^(x\cdot y)$
+    \item $(a^x)^y = a^{\left(x\cdot y\right)}$
     \item $(a\cdot b)^x = a^x \cdot b^x$
     \item $\ln(a^x) = x \cdot \ln a \quad | a > 0$
 \end{enumerate}
@@ -222,4 +221,3 @@ $$ \frac{d}{dx} x^\alpha = \frac{d}{dx} \euler^{\alpha \ln x} = \alpha \underbra
      \node[color=red] at (-0.7,2.2) {$\cosh x$};
     \end{tikzpicture}
 \end{center}
-Umkehrfunktion \todo{nächste Vorlesung?}
