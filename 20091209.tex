@@ -1,0 +1,225 @@
+\lecture{2009-12-09}
+
+% EISBACH %
+$y'(x) = f(x)$ einfache Differentialgleichung, da $f$ nur Funktion von $x$ und nicht von $y$ ist. 
+Daher ist das Erraten der Lösung als Integral möglich.
+
+$$\leadsto y(x) = \int_{-a}^{+a} \! f(x) \, dx$$
+
+Allgemeines Anfangswertproblem:
+$$\dot y(t) = f(t, y) \qquad y \in \mathbb{R}^n \qquad y(t_0) = y_0$$
+
+Eisbach allg. AWP linear 1.Ordnung/Typs.
+$$y'(x) = p(x)\cdot y + q(x)\qquad y \in \mathbb{R}^1 $$
+
+\subsection{Umkehrfunktionen}
+$f: I \to \mathbb{R}$ stetig (evtl. auch etwas weniger stückweise stetig oder auch etwas mehr differenzierbar)
+
+\begin{definition}[Umkehrbarkeit]
+    $f$ heißt umkehrbar über $D \subseteq I$, falls für alle $y \in f(D)$ gilt:
+    Die Gleichung $y=f(x)$ hat genau eine Lösung $x$
+    \begin{equation*}
+        \left.
+        \begin{array}{r}
+            g:\underbrace{f(D)}_{\subseteq \mathbb{R}} \to D x= g(y) \Leftrightarrow y=f(x) \\
+            g: \text{Umkehrfunktion zu }f: g=f^{-1}
+        \end{array}
+        \right\}
+        \begin{array}{l}
+            g \circ f = f \circ g = id\\
+            g(f(x)) = x\\
+            f(g(y)) = y
+        \end{array}
+    \end{equation*}
+\end{definition}
+
+\subsubsection*{Beispiele}
+\begin{enumerate}
+    \item $f(x)=ax + b \implies g(y) = \frac{1}{a} \cdot (y-b) $
+    \begin{center}
+        \begin{tikzpicture}[]
+         \draw[->,semithick] (-2.5,0) -- (2.5,0) node[below]{x};
+         \draw[->,semithick] (0,-0.5) -- (0,3) node[left]{y};
+         \draw[domain=-2:2] plot [id=umkehr_a, samples=50] function {0.6*x+1};
+         \node at (1.5,0.5) {$y=a\cdot x + b$};
+        \end{tikzpicture}
+    \end{center}
+    \item
+        $
+            \left.
+            y=f(x)=x^2 \implies
+            \right\{
+            \begin{array}{l}
+            x \geq 0: g(y) = +\sqrt{y}\\
+            x < 0: g(y) = -\sqrt{y}
+            \end{array}
+        $
+    \begin{center}
+        \begin{tikzpicture}[]
+         \draw[->,semithick] (-2.5,0) -- (2.5,0) node[below]{x};
+         \draw[->,semithick] (0,-0.5) -- (0,4.25) node[left]{y};
+         \draw [dashed] (-1,0) -- (-1,1) -- (1,1) -- (1,0);
+         \draw (-1,0) -- (-1,-0.2) node[below] {$\hat{x}$};
+         \draw (1,0) -- (1,-0.2) node[below] {$x$};
+         \draw[domain=-2:2] plot [id=umkehr_b, samples=50] function {x**2};
+         \node at (0.7,2) {$y=x^2$};
+        \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+
+offensichtlich \todo{Graph}: (streng) monotone Funktionen erlauben Umkehrung 
+
+monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
+
+\subsubsection*{Hauptsatz zu Umkehrfunktionen}
+\begin{enumerate}
+    \item Jede streng monotone Funktion $f(x)$ ist umkehrbar.
+    \item $f$ und $g=f^{-1}$ gegeben $\implies$ Graph von $g$ ist symmetrisch zu Graph von $f$ bzgl. $y=x$. (siehe Skizzen)
+    \item
+        $
+            \left.
+            \begin{array}{l}
+            f:I \to \mathbb{R} \text{ differenzierbar und umkehrbar}\\
+            g:f(I) \to \mathbb{R} \text{ Umkehrfunktion}\\
+            \text{es gilt: g differenzierbar und } g'(x) = \frac{1}{f'(g(x))}
+            \end{array}
+            \right\}
+            \begin{array}{l}
+            \text{Kettenregel } f(g(x)) = x\\
+            \text{differenziere } f'(g(x)) \cdot g'(x) = 1
+            \end{array}
+        $
+\end{enumerate}
+
+\subsubsection*{Beispiel Umkehrfunktion}
+\begin{enumerate}
+
+    \item n-te Wurzel für rationale Exponenten:\\
+        bisher $y = \sqrt[n]{x} \quad n \in \mathbb{N} \Leftrightarrow y^n = \left. x \right\{
+            \begin{array}{l}
+                x \geq 0 \text{ n gerade} \\
+                x < 0 \text{ n ungerade}
+            \end{array}
+        $\\
+        Umschreibung:
+        $$\sqrt[n]{x} = x^{\frac{1}{n}}$$
+        Potenzbildung:
+        $$x^{\frac{m}{n}} := (x^{\frac{1}{n}})^m$$
+        Ableitung:
+        \begin{align*}
+            f(x)=x^n \qquad g(x) = x^{\frac{1}{n}}\\
+            g'(x)=\frac{1}{n \cdot (x^{\frac{1}{n}})^{n-1}}=\frac{1}{n} \cdot x^{(\frac{1}{n}-1)}
+        \end{align*}
+        Kettenregel: Exponent $\frac{m}{n}$ zu berechnen:\\
+        $$ \frac{d}{dx}x^{\frac{m}{n}} = \frac{m}{n} \cdot x^{(\frac{m}{n}-1)}$$
+    \item Arkus-Funktion:\\
+        trigonometrische Funktionen sind nicht \underline{global} umkehrbar!\\
+        Umkehrung möglich in $-\frac{\pi}{2} \leq x \leq \frac{\pi}{2}$
+        \begin{definition}[Umkehrfunktion von $\sin x$]
+        Die Umkehrfunktion von $\sin x$ in $[-\frac{\pi}{2}, \frac{\pi}{2}]$ ist $\arcsin x\,:[-1,1]\to[-\frac{\pi}{2}, \frac{\pi}{2}]$
+        \end{definition}
+        Ableitung:
+        $$\frac{d}{dx}\arcsin x=\frac{1}{\underbrace{\cos}_{f'}(\underbrace{\arcsin x}_{g})}$$
+        Mit Pythagoras $1=\sin^2 x+\cos^2 x \implies \cos x=\sqrt{1-\sin^2 x}$ (wegen Abschnitt "`$+\sqrt{\,}$"') folgt:
+        $$\frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1-sin^2(\arcsin x)}} = \frac{1}{\sqrt{1-x^2}}$$
+        Analog für $\cos x, \tan x, \cot x$:
+        % note: Sinus und Cosinus dürften bekannt sein -> habe die Graphen weggelassen
+        \begin{align*}
+            \arccos x&: [-1,1]\to[0,\pi]\\
+            \frac{d}{dx} \arccos x &= \frac{-1}{\sqrt{1-x^2}}\\
+            \frac{d}{dx} \arctan x &= \frac{1}{1+x^2}
+        \end{align*}
+
+\end{enumerate}
+
+\subsection{Exponentialfunktion, Logarithmusfunktion}
+\subsubsection*{Eigenschaften von $\euler^x$}
+\begin{itemize}
+    \item Definiert aus Grenzwert $\lim_{n \to \infty}(1+\frac{x}{n})^n =: \euler^x = \exp(x)$
+    \item Ableitung $\frac{d}{dx}\euler^x = \euler^x$ (hebt $\euler^x$ aus allen $f(x)$ heraus)
+    \item Positivität: $\euler^0 = 1 \qquad \euler^x > 0 \, \forall x \in \mathbb{R}$
+            $$\euler^1=\euler=2,718281828459... \text{Euler'sche Zahl}$$
+    \item Wachstum: $\lim_{n \to \infty} \euler^x = \infty$
+            $$\lim_{n \to -\infty} \euler^x = \lim_{n \to \infty} \frac{1}{\euler^x} = 0$$
+    \item Vergleich mit Wachstum von $x^n$:
+        \begin{align*}
+            \lim_{n \to \infty} \frac{\euler^x}{x^n} = (\frac{\infty}{\infty}) = \lim_{n \to \infty}\frac{\euler^x}{n\cdot x^{n-1}} = (\frac{\infty}{\infty}) = ... =  \lim_{n \to \infty}\frac{\euler^x}{n!} = \infty
+        \end{align*}
+        "`$\euler$-Funktion wächst schneller als jede Potenz von $x^n$"' (L'Hospital)
+    \item Umkehrbarkeit: $\euler^x$ ist monoton $\implies \euler^x$ ist umkehrbar
+\end{itemize}
+
+\begin{center}
+    \begin{tikzpicture}[]
+     \draw[->,semithick] (-2.5,0) -- (3,0) node[below]{x};
+     \draw[->,semithick] (0,-0.5) -- (0,4) node[left]{y};
+     
+     \draw[domain=-2.5:1.3] plot [id=euler, samples=400] function { exp(x)};
+     \node at (2,1.5) {$y = \euler^x$};
+     \draw (-2pt,1) -- (2pt,1) node[left] {1};
+     \draw (1,2pt) -- (1,-2pt) node[below] {1};
+     \draw (-1,2pt) -- (-1,-2pt) node[below] {-1};
+    \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Logarithmus Naturalis]
+    Die Umkehrfunktion von $\euler^x$ ist der natürliche Logarithmus $\ln x$
+    \begin{align*}
+        \ln 1 = 0 \qquad \ln \euler = 1\\
+        0 < x < 1 &\implies \ln x < 0\\
+        x > 1 &\implies \ln x > 0\\
+        \frac{d}{dx}\ln x = \frac{1}{\underbrace{\exp}_{f'}\underbrace{(\ln x)}_{g}} = \frac{1}{x}
+    \end{align*}
+\end{definition}
+
+\begin{center}
+    \begin{tikzpicture}[]
+     \draw[->,semithick] (-0.5,0) -- (5.5,0) node[below]{x};
+     \draw[->,semithick] (0,-2.5) -- (0,2.5) node[left]{y};
+     
+     \draw[domain=0.1:5] plot [id=log_ln, samples=400] function { log(x)};
+     \node at (2,1.5) {$y = \ln x$};
+     \draw [dash pattern=on 1pt off 1pt] (0,1)-- (2.718,1);
+     \draw [dash pattern=on 1pt off 1pt] (2.718,0)-- (2.718,1);
+     \draw (-2pt,1) -- (2pt,1) node[left] {1};
+     \draw (1,2pt) -- (1,-2pt) node[below] {1};
+     \draw (2.718,2pt) -- (2.718,-2pt) node[below] {$\euler$};
+    \end{tikzpicture}
+\end{center}
+
+\subsubsection*{Rechenregeln}
+\begin{enumerate}
+    \item $\ln(x\cdot y) = \ln x + \ln y$
+    \item $\ln(\frac{x}{y}) = \ln x - \ln y \quad (y \neq 0)$
+\end{enumerate}
+
+\subsubsection*{Allgemeine Potenzen zu $x^\alpha$ für $\alpha \in \mathbb{R}$}
+Idee: allgemeine Potenzfunktion $a^x$ mit $ a > 0,\, x \in \mathbb{R}$:
+$$ a^x = \exp(\ln a^x) = \exp (x \ln a) = \euler^{x \ln a}$$
+Berechne $x^\alpha$ und die Ableitung ($x > 0$):
+$$ \frac{d}{dx} x^\alpha = \frac{d}{dx} \euler^{\alpha \ln x} = \alpha \underbrace{\euler^{\alpha \ln x}}_{x^\alpha} \cdot \frac{1}{x} = \alpha \cdot x^\alpha \cdot \frac{1}{x} = \alpha \cdot x^{\alpha-1}$$
+\subsubsection*{Rechenregeln}
+\begin{enumerate}
+    \item $a^x \cdot a^y = a^{(x+y)}$
+    \item $(a^x)^y = a^(x\cdot y)$
+    \item $(a\cdot b)^x = a^x \cdot b^x$
+    \item $\ln(a^x) = x \cdot \ln a \quad | a > 0$
+\end{enumerate}
+
+\begin{definition}[Hyperbelfunktion]
+    \begin{align*}
+        \sinh x = \frac{\euler^x - \euler^{-x}}{2}\\
+        \cosh x = \frac{\euler^x + \euler^{-x}}{2}
+    \end{align*}
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}[]
+     \draw[->,semithick] (-2.5,0) -- (2.5,0) node[below]{x};
+     \draw[->,semithick] (0,-2) -- (0,3.5) node[left]{y};
+     \draw[blue,domain=-1.3:1.8] plot [id=sinh, samples=50] function { sinh(x)};
+     \draw[red,domain=-1.8:1.8] plot [id=cosh, samples=50] function { cosh(x)};
+     \node[color=blue] at (1.5,0.6) {$\sinh x$};
+     \node[color=red] at (-0.7,2.2) {$\cosh x$};
+    \end{tikzpicture}
+\end{center}
+Umkehrfunktion \todo{nächste Vorlesung?}
