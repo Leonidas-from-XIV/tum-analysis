@@ -5,7 +5,7 @@ Es gilt:
 	\cosh^2 x - \sinh^2 x = 1
 \end{equation*}
 
-\subsubsection{Umkehrfunktionen}
+\subsubsection*{Umkehrfunktionen}
 
 \begin{equation*}
 	\left.
@@ -18,15 +18,15 @@ Es gilt:
 
 \paragraph{Explizite Angabe von $\arsinh x$}
 \begin{align*}
-	y &= \sinh x = \frac{\euler^x - \euler^{-x}}{2} \text{Auflösen nach $x$}\\
-	\Rightarrow 2y &= \euler^x - \euler^{-x} | \cdot \euler^x \\
-	\Rightarrow \euler^{x^2} - 2y\euler^x &= 1(-\euler^x + \euler^x) \\
-	\Rightarrow (\euler^x - y)^2 &= 1 + y^2 \\
-	\Rightarrow \euler^x &= y + \sqrt{1 + y^2} \\
-	\Rightarrow x &= \ln (y + \sqrt{1 + y^2}) = arsinh x
+	y &= \sinh x = \frac{\euler^x - \euler^{-x}}{2} \text{ Auflösen nach $x$}\\
+	\implies 2y &= \euler^x - \euler^{-x} \quad| \cdot \euler^x \\
+	\implies \euler^{x^2} - 2y\euler^x &= 1(-\euler^x + \euler^x) \\
+	\implies (\euler^x - y)^2 &= 1 + y^2 \\
+	\implies \euler^x &= y + \sqrt{1 + y^2} \\
+	\implies x &= \ln (y + \sqrt{1 + y^2}) = \arsinh x
 \end{align*}
 
-\paragraph{Folgerung: }
+\paragraph{Folgerung}
 \begin{multline*}
 	\frac{\diff}{\diff x} \arsinh x = \frac{1}{x + \sqrt{1 + x^2}}\left(1 + \frac{1 \cdot 2x}{2\sqrt{1 + x^2}}\right) = \frac{1}{x + \sqrt{1 + x^2}} \left(1 + \frac{x}{\sqrt{1 + x^2}} \right) = \\
 	= \frac{1}{x + \sqrt{1 + x^2}} \left(\frac{\sqrt{1 + x^2} + x}{\sqrt{1 + x^2}}\right) = \frac{1}{\sqrt{1 + x^2}}
@@ -44,8 +44,7 @@ Einer der ersten Schritte der Kurvendiskussion ist die Nullstellenbestimmung.
 	Jeder Fixpunkt $x^*$ von $f$ ist Nullstelle der Funktion $g(x) = f(x) - x$. \\
 	Umgekehrt: Jede Nullstelle von $f$ ist Fixpunkt von $g(x) = f(x) + x$.
 \end{lemma}
-\begin{definition}
-	Einstellige Fixpunktiteration:
+\begin{definition}[Einstellige Fixpunktiteration]\flush
 	\begin{equation*}
 		x_{n + 1} = f(x_n) \qquad n \geq 0 \quad \text{zu gegebenem $x_0$}
 	\end{equation*}
@@ -68,19 +67,19 @@ Einer der ersten Schritte der Kurvendiskussion ist die Nullstellenbestimmung.
 	\end{center}
 \end{enumerate}
 
-\begin{definition}
+\begin{definition}[Lipschitz-Stetigkeit]
 	Eine stetig differenzierbare Funktion $f: [a, b] \rightarrow \mathbb{R}$ heißt Lipschitz-stetig auf $[a, b]$, falls eine Lipschitz-Konstante $L$ existiert, mit
 	\begin{equation*}
 		|f(x_1) - f(x_2)| \leq L |x_1 - x_2| \qquad x_1, x_2 \in [a, b]
 	\end{equation*}
-	$f$ heißt kontrahierend, falls $L < 1$
-	\begin{note}
-		Aus dem 1. MWS folgt: $L = \underset{x \in ]a, b[}{\max} |f'(x)|$
-	\end{note}
+	$f$ heißt \emph{kontrahierend}, falls $L < 1$.
 \end{definition}
+\begin{note}
+	Aus dem 1. MWS folgt: $L = \underset{x \in ]a, b[}{\max} |f'(x)|$
+\end{note}
 
-\subsection{Fixpunktesatz nach Banach}
-Wesentliche Vorraussetzung: $f$ ist kontrahierend $\Rightarrow x_{n + 1} = f(x_n)$ is konvergent!
+\subsection{Fixpunktsatz von Banach}
+Wesentliche Voraussetzung: $f$ ist kontrahierend $\implies x_{n + 1} = f(x_n)$ ist konvergent
 \begin{wrapfigure}[10]{r}{0.4\textwidth}
  	\centering
 	\includegraphics[width=0.4\textwidth]{include/20091215-4.pdf}
@@ -93,12 +92,11 @@ Wesentliche Vorraussetzung: $f$ ist kontrahierend $\Rightarrow x_{n + 1} = f(x_n
 		n \leq 0\:&:\:x_{n + 1} = x_n - \frac{f(x_n)}{f'(x_n)}
 		\intertext{(Schnittgleichung: Tangente $\leftrightarrow$ x-Achse)}
 	\end{align*}
-	\begin{note}
-		Das Newton-Verfahren ist (im Wesentlichen als einziges Verfahren) auf $\mathbb{R}^n$ verallgemeinerbar:
-		\begin{align*}
-			x_{n + 1} &= x_n + \Delta x_n \\
-			\Diff f(x_n) \Delta x_n &= -f(x_n) \\
-			\Delta x_n &= -\Diff f^{-1}(x_n) f(x_n)
-		\end{align*}
-	\end{note}
+
+	Das Newton-Verfahren ist (im Wesentlichen als einziges Verfahren) auf $\mathbb{R}^n$ verallgemeinerbar:
+	\begin{align*}
+		x_{n + 1} &= x_n + \Delta x_n \\
+		\Diff f(x_n) \Delta x_n &= -f(x_n) \\
+		\Delta x_n &= -\Diff f^{-1}(x_n) f(x_n)
+	\end{align*}
 \end{note}
