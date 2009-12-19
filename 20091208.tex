@@ -102,8 +102,8 @@ Definition $g(x) = \liminfty{\left( 1+\frac x n\right)^n}$, stetig differenzierb
   
     % x-Achse
     \draw[->] (-5,0) -- (5,0) node[below] {$x$};
-    \draw (-4,0.2) -- (-4,-0.2) node[below right] {$a$};
-    \draw (4,0.2) -- (4,-0.2) node[below left] {$b$};
+    \draw (-4,0.2) -- (-4,-0.2) node[below right] {$-a$};
+    \draw (4,0.2) -- (4,-0.2) node[below left] {$a$};
     
     % y-Achse
     \draw[->] (0,-1) -- (0,19) node[left] {$y$};
@@ -126,7 +126,7 @@ Definition $g(x) = \liminfty{\left( 1+\frac x n\right)^n}$, stetig differenzierb
       \draw[->] (\x,0) -- (\x,\y);
     
     % Abdriftsfunktion
-    \draw[domain=-4:4] plot [id=abdrift, samples=50] function {3*(x-(x**3)/(3*4**2))+8} node[right] {Abdrift};
+    \draw[domain=-4:4] plot [id=abdrift, samples=50] function {3*(x-(x**3)/(3*4**2))+8} node[right] {Abdrift} node[above left] {b};
   \end{tikzpicture}
 \end{wrapfigure}
 % Derbster Hack aller Zeiten:
