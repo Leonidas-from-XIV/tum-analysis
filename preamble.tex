@@ -33,6 +33,8 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations}
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.fractals}
+\usetikzlibrary{decorations.footprints}
 
 %%% geogebra
 
@@ -90,9 +92,9 @@
 \newcommand{\newtheoremenv@autoflush}{\@ifnextchar\begin \newtheoremenv@flush \newtheoremenv@noflush}
 
 \let\proof@old\proof
-\def\proof@autoflush{\proof@old\leavevmode\newline\vspace*{-1.5em}} 
-\def\proof@noflush{\proof@old} 
-\renewcommand{\proof}{\@ifnextchar\begin \proof@autoflush \proof@noflush} 
+\def\proof@autoflush{\proof@old\leavevmode\newline\vspace*{-1.5em}}
+\def\proof@noflush{\proof@old}
+\renewcommand{\proof}{\@ifnextchar\begin \proof@autoflush \proof@noflush}
 
 \makeatother
 
@@ -163,7 +165,7 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \renewcommand\bibsection{%
   \chapter*{\bibname}%
 \@mkboth{\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}%
-}% 
+}%
 
 \newcommand{\chapter@after}{}
 
@@ -176,7 +178,7 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 
 %%% matrix column alignment
 
-% JP: Mit folgendem neu definierten matrix-command, können die 
+% JP: Mit folgendem neu definierten matrix-command, können die
 % Elemente einer Matrix nun ausgerichtet werden [l,r,c]
 \makeatletter
 \renewcommand*\env@matrix[1][c]{\hskip -\arraycolsep
@@ -230,3 +232,4 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 \newcommand{\arsinh}{\ensuremath{\operatorname{arsinh}}}
 \newcommand{\arcosh}{\ensuremath{\operatorname{arcosh}}}
 \newcommand{\artanh}{\ensuremath{\operatorname{artanh}}}
+
