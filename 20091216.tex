@@ -1,7 +1,7 @@
 \lecture{2009-12-16}
-\chapter{Reihen, Potenzreihen, Taylorreihen}
+\section{Reihen, Potenzreihen, Taylorreihen}
 
-\section{Schneeflockenkurve nach Koch, Reihen}
+\subsection{Schneeflockenkurve nach Koch, Reihen}
 
 Passend zu Weihnachten: Konstruktion einer Schneeflocke mit $\infty$-großem Umfang, aber endlicher Fläche
 
@@ -88,7 +88,7 @@ Auflösen der 2-Term-Rekursion:
     U_n &= 4 + \sum_{k=1}^{n-2} \left( \frac{4}{3} \right)^k
 \end{align*}
 
-\section{Begriffe zu Reihen}
+\subsection{Begriffe zu Reihen}
 
 Idee: führe die Form $\ds\sum_{k=0}^{\infty} a_k$ auf Folgen zurück
 
@@ -106,9 +106,9 @@ die $n$-te Partialsumme der Reihe $\sum_{k=1}^{\infty} a_k$
 Eine Reihe $\sum_{k=1}^{\infty} a_k$ heißt konvergent (divergent) falls die Folge der Partialsummen konvergent (divergent) ist.
 \end{definition}
 
-\noindent Für Konvergenz/Divergenz-Untersuchungen haben wir \emph{nur} ein \emph{zentrales Werkzeug}: die geometrische Reihe
+\noindent Für Konvergenz/Divergenz-Untersuchungen haben wir \emph{nur} ein \emph{zentrales Werkzeug}: die geometrische Reihe.
 \begin{equation*}
-    \sum_{k=1}^{\infty} x^k =
+    \sum_{k=1}^{\infty} x^{k-1} = \sum_{k=0}^{\infty} x^k =
     \begin{cases}
         \frac{1}{1-x} & |x| \le 1 \quad\text{Konvergenz}\\
         \infty & |x| \geq 1 \quad\text{Divergenz}
@@ -143,7 +143,7 @@ Eine Reihe $\sum_{k=1}^{\infty} a_k$ heißt konvergent (divergent) falls die Fol
     \item \begin{equation*}a_k \leq b_k \implies \sum_{k=1}^{\infty} a_k \leq \sum_{k=1}^{\infty} b_k \end{equation*}
 \end{enumerate}
 
-\section{Konvergenzkriterien}
+\subsection{Konvergenzkriterien}
 
 Idee: Vergleiche gegebene Reihe mit einer geometrischen Reihe\\
 Folgen: $ (a_n)_{n \in \mathbb{N}} $, $ (b_n)_{n \in \mathbb{N}} $: $ 0 \leq a_n \leq b_n$
