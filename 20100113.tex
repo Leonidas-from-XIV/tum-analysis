@@ -1,0 +1,55 @@
+\lecture{2010-01-13}
+
+% In der Vorlesung wurde einiges aus der letzten Vorlesung wiederholt. 
+% Eventuell sollten wir Sachen die wirklich 1:1 doppelt vorkommen aus diesem Mitschrieb streichen
+
+\section{Erinnerung}
+\begin{itemize}
+	\item Koch'sche Schneeflockenkurve
+	\item Reihe \( \sum_{k=0}^{\infty} a_k \) als Folge der Partialsummen \( (s_n)_{n \in \mathbb{N} } \quad s_n := \sum_{k=0}^{\infty}a_k \)
+	\item Folgentheorie: Konvergenz, Divergenz
+	\item Zentral: Geometrische Reihe \[
+		|x|<1 \qquad \sum_{k=1}^{\infty} x^{k-1} = \frac{1}{-x+1} \qquad \left(\frac{1-x^n}{1-x}\right)^{\infty\rightarrow n}
+	\]
+	\item Notwendig für Reihenkonvergenz: Folge \( (a_k)_{k \in \mathbb{N}} \) ist Nullfolge
+	\item Leider ist dies nicht hinreichend, denn \( \sum_{k=1}^{\infty} \frac{1}{k} \) divergiert ( \(\sum_{k=1}^{\infty}\frac{1}{k^{1+\delta}} \quad   \delta > 0 \) konvergiert) und \( a_k = \frac{1}{k} \) ist Nullfolge
+	\item Rechenregeln: \( \pm, \cdot, \) 
+	\todo{Dritte Operation fehlt. Konnte ich nicht entziffern.}
+\end{itemize}
+
+\section{Konvergenzkriterien}
+\subsection{1. Idee: Majoranten/Minorantenkriterium}
+	
+\begin{align*}
+	& 0 \leq a_n < b_n & \\
+	& \sum_{k=0}^{\infty}b_k \quad\text{konvergiert} &\implies \sum_{k=0}^{\infty} a_k \quad\text{konvergiert} \qquad \text{"`Majorante"'} \\
+	& \sum_{k=0}^{\infty}a_k \quad\text{divergiert} &\implies \sum_{k=0}^{\infty} b_k \quad\text{konvergiert} \qquad \text{"`Minorante"'}
+\end{align*}
+
+\subsubsection{Fazit}
+Versuche ich Konvergenz zu zeigen, konstruiere ich eine bekannte Majorante.\newline
+Versuche ich Divergenz zu zeigen, konstruiere ich eine bekannte Minorante. \newline
+
+\noindent Einziges Werkzeug: Gemoetrische Reihe
+
+\subsection{2. Idee: Vergleiche $ \sum a_k $ mit $x^k$}
+Ab festem \( k_0 \):
+\begin{align*}
+	&0 \leq a_k \leq x^k \qquad k \geq k_0 \\
+	\implies &0 \leq \sqrt[k]{a_k} \leq x
+\end{align*}
+
+\noindent Allgemein:
+\begin{align*}
+	&0 \leq \lim_{k\rightarrow\infty} \sqrt[k]{a_k} \leq x \\
+	&0 < x < 1 \implies \text{Konvergenz}
+\end{align*}
+
+\subsection{3. Idee: Bilde Quotienten} % (fold)
+\label{sub:3_idee}
+
+\[
+	\frac{a_{n+1}}{a_n} \leq x < 1 \implies a_{n+1} \leq a_n x
+\]
+
+% subsection 3_idee (end)
