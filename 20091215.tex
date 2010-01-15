@@ -20,7 +20,8 @@ Es gilt:
 \begin{align*}
 	y &= \sinh x = \frac{\euler^x - \euler^{-x}}{2} \text{ Auflösen nach $x$}\\
 	\implies 2y &= \euler^x - \euler^{-x} \quad| \cdot \euler^x \\
-	\implies \euler^{x^2} - 2y\euler^x &= 1(-\euler^x + \euler^x) \\
+	\implies 2y \euler^x &= \euler^x \euler^x - \underbrace{\euler^x \euler^{-x}}_{=1} \\
+	\implies \euler^{2x} - 2y\euler^x &= 1 \\
 	\implies (\euler^x - y)^2 &= 1 + y^2 \\
 	\implies \euler^x &= y + \sqrt{1 + y^2} \\
 	\implies x &= \ln (y + \sqrt{1 + y^2}) = \arsinh x
