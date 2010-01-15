@@ -3,7 +3,8 @@
 % In der Vorlesung wurde einiges aus der letzten Vorlesung wiederholt. 
 % Eventuell sollten wir Sachen die wirklich 1:1 doppelt vorkommen aus diesem Mitschrieb streichen
 
-\section{Erinnerung}
+\subsubsection*{Erinnerung}
+\todo[inline]{redundant -- in entsprechende Textstellen einarbeiten}
 \begin{itemize}
 	\item Koch'sche Schneeflockenkurve
 	\item Reihe \( \sum_{k=0}^{\infty} a_k \) als Folge der Partialsummen \( (s_n)_{n \in \mathbb{N} } \quad s_n := \sum_{k=0}^{\infty}a_k \)
@@ -17,8 +18,8 @@
 	\todo{Dritte Operation fehlt. Konnte ich nicht entziffern.}
 \end{itemize}
 
-\section{Konvergenzkriterien}
-\subsection{1. Idee: Majoranten/Minorantenkriterium}
+\subsection*{Konvergenzkriterien}
+\subsubsection*{1. Idee: Majoranten-/Minorantenkriterium}
 	
 \begin{align*}
 	& 0 \leq a_n < b_n & \\
@@ -26,13 +27,13 @@
 	& \sum_{k=0}^{\infty}a_k \quad\text{divergiert} &\implies \sum_{k=0}^{\infty} b_k \quad\text{konvergiert} \qquad \text{"`Minorante"'}
 \end{align*}
 
-\subsubsection{Fazit}
-Versuche ich Konvergenz zu zeigen, konstruiere ich eine bekannte Majorante.\newline
-Versuche ich Divergenz zu zeigen, konstruiere ich eine bekannte Minorante. \newline
+\minisec{Fazit}
+Versucht man Konvergenz zu zeigen, konstruiert man eine bekannte Majorante.\newline
+Versucht man Divergenz zu zeigen, konstruiert man eine bekannte Minorante. \newline
 
-\noindent Einziges Werkzeug: Gemoetrische Reihe
+\noindent Einziges Werkzeug: Geometrische Reihe
 
-\subsection{2. Idee: Vergleiche $ \sum a_k $ mit $x^k$}
+\subsubsection*{2. Idee: Vergleiche $ \sum a_k $ mit $x^k$}
 Ab festem \( k_0 \):
 \begin{align*}
 	&0 \leq a_k \leq x^k \qquad k \geq k_0 \\
@@ -45,7 +46,7 @@ Ab festem \( k_0 \):
 	&0 < x < 1 \implies \text{Konvergenz}
 \end{align*}
 
-\subsection{3. Idee: Bilde Quotienten} % (fold)
+\subsubsection*{3. Idee: Bilde Quotienten} % (fold)
 \label{sub:3_idee}
 
 \[
