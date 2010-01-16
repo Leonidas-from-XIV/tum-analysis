@@ -4,7 +4,7 @@
 % Eventuell sollten wir Sachen die wirklich 1:1 doppelt vorkommen aus diesem Mitschrieb streichen
 
 \subsubsection*{Erinnerung}
-\todo[inline]{redundant -- in entsprechende Textstellen einarbeiten}
+\todo[inline]{redundant -- in entsprechende Textstellen einarbeiten} 
 \begin{itemize}
 	\item Koch'sche Schneeflockenkurve
 	\item Reihe \( \sum_{k=0}^{\infty} a_k \) als Folge der Partialsummen \( (s_n)_{n \in \mathbb{N} } \quad s_n := \sum_{k=0}^{\infty}a_k \)
@@ -15,11 +15,11 @@
 	\item Notwendig für Reihenkonvergenz: Folge \( (a_k)_{k \in \mathbb{N}} \) ist Nullfolge
 	\item Leider ist dies nicht hinreichend, denn \( \sum_{k=1}^{\infty} \frac{1}{k} \) divergiert ( \(\sum_{k=1}^{\infty}\frac{1}{k^{1+\delta}} \quad   \delta > 0 \) konvergiert) und \( a_k = \frac{1}{k} \) ist Nullfolge
 	\item Rechenregeln: \( \pm, \cdot, \) 
-	\todo{Dritte Operation fehlt. Konnte ich nicht entziffern.}
+	\todo[inline]{Dritte Operation fehlt. Konnte ich nicht entziffern.}
 \end{itemize}
 
 \subsection*{Konvergenzkriterien}
-\subsubsection*{1. Idee: Majoranten-/Minorantenkriterium}
+\subsubsection*{Idee: Majoranten/Minorantenkriterium}
 	
 \begin{align*}
 	& 0 \leq a_n < b_n & \\
@@ -27,13 +27,13 @@
 	& \sum_{k=0}^{\infty}a_k \quad\text{divergiert} &\implies \sum_{k=0}^{\infty} b_k \quad\text{konvergiert} \qquad \text{"`Minorante"'}
 \end{align*}
 
-\minisec{Fazit}
+\subsubsection{Fazit}
 Versucht man Konvergenz zu zeigen, konstruiert man eine bekannte Majorante.\newline
 Versucht man Divergenz zu zeigen, konstruiert man eine bekannte Minorante. \newline
 
 \noindent Einziges Werkzeug: Geometrische Reihe
 
-\subsubsection*{2. Idee: Vergleiche $ \sum a_k $ mit $x^k$}
+\subsubsection*{Idee: vergleiche $ \sum a_k $ mit $x^k$}
 Ab festem \( k_0 \):
 \begin{align*}
 	&0 \leq a_k \leq x^k \qquad k \geq k_0 \\
@@ -46,11 +46,149 @@ Ab festem \( k_0 \):
 	&0 < x < 1 \implies \text{Konvergenz}
 \end{align*}
 
-\subsubsection*{3. Idee: Bilde Quotienten} % (fold)
-\label{sub:3_idee}
+\subsubsection{Idee: bilde Quotienten} % (fold)
+\label{sub:bilde_quotienten}
 
 \[
 	\frac{a_{n+1}}{a_n} \leq x < 1 \implies a_{n+1} \leq a_n x
 \]
+Rekursiv:
 
+\[
+	a_{n+1} \leq a_nx \leq a_{n-1}x^2\leq \ldots \leq a_1x^{n+1} \implies a_n \leq a_1x^n
+\]
+
+\begin{theorem}[Wurzelkriterium]
+		Ist eine Folge \( (a_n)_{n \in \mathbb{N}} \) gegeben mit \( 0 \leq a_n \) und existiert \( r = \lim_{n\rightarrow\infty} \sqrt[n]{a_n} \), so gilt
+		\begin{enumerate}
+			\item \( r < 1 \implies \quad \text{Konvergenz} \)
+			\item \( r > 1 \implies \quad \text{Divergenz} \)
+			\item \( r = 1 \implies \quad \text{Nicht entscheidbar} \)
+		\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Quotientenkriterium]
+	Ist eine Folge \( (a_n)_{n \in \mathbb{N} } \) gegeben mit \( 0 \leq a_n \) und existiert \( s = \lim_{n\rightarrow\infty} \frac{a_{n+1}}{a_n} \), so gilt
+	\begin{enumerate}
+		\item \( s < 1 \implies \quad \text{Konvergenz} \)
+		\item \( s > 1 \implies \quad \text{Divergenz} \)
+		\item \( s = 1 \implies \quad \text{Nicht entscheidbar} \)
+	\end{enumerate}
+\end{theorem}
 % subsection 3_idee (end)
+
+\subsubsection{Idee: alternierende Reihen} % (fold)
+\label{sub:idee_alternierende_reihen}
+
+\begin{definition}[Alternierende Reihe]
+	Eine Reihe, deren Elemente wechselnde Vorzeichen haben, heißt alternierende Reihe.
+	\[
+		(a_n)_{n \in \mathbb{N} } \quad a_n \geq 0 \quad \sum_{k=1}^\infty (-1)^{k-1}a_k
+	\]
+\end{definition}
+
+\begin{theorem}[Leibnitz-Kriterium]
+	Bilden \( (a_n)_{n\in \mathbb{N}} \) eine monoton fallende Nullfolge (\( a_n>a_{n+1} \)), so ist die alternierende Reihe konvergent.
+\end{theorem}
+
+% Das hier ist eigentlich nur eine "Beweis-Idee", kein formaler Beweis
+\begin{proof}
+	Betrachte Partialsummen mit geraden bzw. ungeraden Indizes.
+	\[
+		S_{2n+2} = S_{2n} + \underbrace{a_{2n+1}-a_{2n+2}}_{>0} > S_{2n} \quad \text{"`Monoton wachsend"'}
+	\]
+	
+	\[
+		S_{2n+1} = S_{2n-1} + \underbrace{-a_{2n}+a_{2n+1}}_{<0} < S_{2n-1} \quad \text{"`Monoton fallend"'}
+	\]
+	
+	\noindent \( S_{2n} \) ist oben durch \( S_1 \) beschränkt. \newline
+	\noindent \( S_{2n+1} \) ist unten durch \( S_2 \) beschränkt. \newline\newline
+	\noindent Grenzwert = Konvergenz \( S_{n+2}\rightarrow S_{n+1} \)
+\end{proof}
+
+\subsubsection{Bemerkung zu alternierenden Reihen (Datenverarbeitung)} % (fold)
+\label{ssub:bemerkung_zu_alternierenden_reihen_datenverarbeitung_}
+Es gelte \[ s=\sum_{k=1}^\infty (-1)^{k-1}a_k \] 
+
+\noindent In der Praxis relevant: \( 0<(-1)^n(S-S_n) < a_{n+1} \). D.h. falls ich die Reihe nach \( n \) Termen abbreche, ist der Fehler stets kleiner als der letzte Reihenterm. Bis ca. 1985 war dies u.A. für die Implementierung von sin(x) wichtig.
+\[
+	x \in \mathbb{M} \quad x \rightarrow 2\pi \rightarrow \frac{\pi}{2} \rightarrow \ldots
+\]
+
+% subsubsection bemerkung_zu_alternierenden_reihen_datenverarbeitung_ (end)
+% subsection 4_idee_alternierende_reihen (end)
+
+\subsection{Absolut konvergente Reihen} % (fold)
+\label{sub:absolut_konvergente_reihen}
+
+Bisherige Notation war \( a_n \geq 0 \). Erweiterung auf beliebige reelle bzw. komplexe \( a_n \). 
+
+\begin{definition}[Absolut konvergente Reihe]
+	Sei \( (a_n)_{n\in\mathbb{N}} \) eine beliebige Zahlenfolge in \( \mathbb{R} \) bzw. in \( \mathbb{C} \), dann heisst die zugehörige Reihe \( \sum_{k=0}^\infty a_k \) absolut konvergent, falls \( \sum_{k=0}^\infty |a_k| \) konvergiert.
+\end{definition}
+
+\noindent Bemerkung: Definition ist sehr krass.
+\[
+	\sum_{k=1}^\infty(-1)^{k-1}\frac{1}{k} \quad \text{konvergent, aber nicht absolut konvergent}
+\]
+Allgemein:
+\[
+	\sum_{k=1}^\infty a_k\leq|\sum a_k| \leq \sum|a_k|
+\]
+\[
+	\sum_{k=1}^\infty a_k\geq-|\sum a_k| \geq -\sum|a_k|
+\]
+\noindent Jede absolut konvergente Reihe ist implizit eine konvergente Reihe! (nicht umgekehrt!)
+
+\begin{example}
+	\[
+		\sum_{k=1}^\infty \frac{1}{k^2}z^k \qquad |z|\leq1
+	\]
+	Versuche Konvergenz über absolute Konvergenz und Majorantenkriterium nachzuweisen.
+	\[
+		0 \leq \left|\frac{z^k}{k^2}\right|=\frac{|z^k|}{k^2}\leq\frac{1}{k^2}\qquad \text{da} |z|\leq1
+	\]
+	Frage: Ist \( \sum\frac{1}{k^2} \) eine Majorante?
+	
+	\begin{enumerate}
+		\item Versuch: Quotientenkriterium 
+		\[
+		   s=\lim_{k\rightarrow\infty}\frac{a_{k+1}}{a_k}
+			=\lim_{k\rightarrow\infty}\frac{\frac{1}{(k+1)^2}}{\frac{1}{k^2}}
+			=\lim_{k\rightarrow\infty}\frac{n^2}{(k+1)^2}
+			=\lim_{k\rightarrow\infty}\left(1-\frac{1}{(k+1)}\right)^2 
+			= 1 
+		\]
+		\[
+			s = 1 \implies \text{nicht entscheidbar} 
+		\]
+		\item Versuch: Wurzelkriterium
+		\[
+		   r=\lim_{k\rightarrow\infty}\sqrt[k]{\frac{1}{k^2}}
+			=\lim_{k\rightarrow\infty}\frac{1}{(\sqrt[k]{k})^2}
+			= 1 \implies  \text{nicht entscheidbar}
+		\]
+		\item Versuch: Finde eine weitere Majorante zur möglichen Majorante \( \sum\frac{1}{k^2} \)
+		\[
+			\frac{1}{k^2}= \frac{1}{k\cdot k}\leq \frac{1}{k-1}\cdot\frac{1}{k} \qquad \text{Bemerkung:}\frac{1}{k} \text{ divergiert (Minnorant)}
+		\]
+		Ist \( \sum\frac{1}{k(k-1)} \) konvergent? Umformung:
+		\(
+			\frac{1}{k(k-1)}=\frac{1}{k-1}-\frac{1}{k}
+		\)
+		\[
+			\sum_{k=2}^\infty\frac{1}{(k-1)k}=\sum_{k=2}^\infty(\frac{1}{k-1}-\frac{1}{k}) \qquad \text{"`Teleskopsumme"'}
+		\]
+		Bilde Partialsummen
+		\[
+			S_n=\sum_{k=2}^n(\frac{1}{k-1}-\frac{1}{k})=(1-{\color{red}\frac{1}{2}})+({\color{red}\frac{1}{2}}-{\color{blue}\frac{1}{3}})+({\color{blue}\frac{1}{3}}-\frac{1}{4})+\ldots+(\frac{1}{n-1}-\frac{1}{n})=1-\frac{1}{n}
+		\]
+	\end{enumerate}
+	Ergebnis: Folge der Partialsummen \( S_n = 1- \frac{1}{n}\) ist konvergent: \( lim_{n\rightarrow\infty} S_n=1 \implies \sum\frac{1}{k(k-1)} \) ist konvergenter Majorant zu \( \sum\frac{1}{k^2} \).
+\end{example}
+% subsection absolut_konvergente_reihen (end)
+
+
+
+
