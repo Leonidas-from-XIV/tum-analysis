@@ -7,11 +7,13 @@
 \subsection{Konvergenzkriterien}
 \subsubsection*{Idee: Majoranten-/Minorantenkriterium}
 	
-\begin{align*}
-	& 0 \leq a_n < b_n & \\
-	& \sum_{k=0}^{\infty}b_k \quad\text{konvergiert} &\implies \sum_{k=0}^{\infty} a_k \quad\text{konvergiert} \qquad \text{"`Majorante"'} \\
-	& \sum_{k=0}^{\infty}a_k \quad\text{divergiert} &\implies \sum_{k=0}^{\infty} b_k \quad\text{konvergiert} \qquad \text{"`Minorante"'}
-\end{align*}
+$0 \leq a_n < b_n$
+\[
+\begin{array}{lcll}
+	\ds\sum_{k=0}^{\infty}b_k\quad\text{konvergiert}&\implies&\ds\sum_{k=0}^{\infty} a_k \quad\text{konvergiert} & \text{"`Majorante"'} \\
+	\ds\sum_{k=0}^{\infty}a_k \quad\text{divergiert}&\implies&\ds\sum_{k=0}^{\infty} b_k \quad\text{divergiert} & \text{"`Minorante"'}
+\end{array}
+\]
 
 \begin{example}[Konvergenz]
     Die Reihe \[ \sum_{k=1}^{\infty} \frac{\sin^2 \left( k^3 + 5 \right) }{3^k + 1} \] ist konvergent, da
