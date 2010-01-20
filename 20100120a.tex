@@ -1,0 +1,164 @@
+\lecture{2010-01-20 Teil 1}
+
+\subsection{Potenzreihen $ \sum_{k=0}^\infty \left( a_k x^k \right) $}
+\label{sec:potenzreihen}
+
+\begin{enumerate}
+
+   \item Großer Umordnungssatz \\
+   Ist die Reihe $ \sum_{k=0}^\infty \left( a_k \right) $ konvergent, so folgt für jede ungeordnete Reihe: $ \sum_{k=0}^\infty \left( a_k \right) $ konvergiert mit 
+   \begin{equation*}
+   \sum_{k=0}^\infty \left( a_{\sigma_k} \right) = \sum_{k=0}^\infty \left( a_k \right)
+   \end{equation*}
+   wobei $\sigma_k$ eine Permutation der Indizes $\{0,\ldots, k,\ldots, \infty\}$
+
+   \item Produkte von Reihen \\
+   Voraussetzung: Reihen $\sum a_k, \sum b_k$ seien absolut konvergent.\\
+   Behauptung ($\sigma, \mu $ Permutationen):
+   \begin{equation*}
+      \sum_{k=0}^\infty \left( a_{\sigma_k} b_{\mu_k} \right) = \left(\sum_{k=0}^{\infty} a_k \right)\cdot \left(\sum_{k=0}^{\infty} b_k \right)
+   \end{equation*}
+
+   \item Cauchy-Produkt zweier Reihen \\
+   Voraussetzung: Reihen $\sum a_k, \sum b_k $ seien absolut konvergent.\\
+   \begin{align*}
+      \left(\sum_{k=0}^\infty  a_k \right)\cdot\left(\sum_{k=0}^\infty  b_k\right) &= \sum_{n=0}^k \cdot \left(\sum_{k=0}^n  a_k b_{n-k} \right) \\
+      &= \underbrace{(a_0 b_0)}_{n=0} + \underbrace{(a_0 b_1 + a_1 + b_0)}_{n=1} + \underbrace{(a_0 b_2 + a_1 b_1 + a_2 b_0)}_{n=2} + \ldots
+   \end{align*}
+
+\end{enumerate}
+
+\begin{definition}[Potenzreihe]
+   Eine Potenzreihe ist eine unendliche Reihe der Form
+   \begin{equation*}
+   \sum_{k=0}^\infty a_k x^k
+   \end{equation*}
+\end{definition} 
+
+\subsubsection*{Fragen}
+
+\begin{itemize}
+   \item Für welche $x$ ist die Reihe konvergent?
+   \item Welchen Wert nimmt die Reihe an?
+   \item Auswertung \checkmark (Horner-Schema)
+   \item \ref{sub:Taylorpolynome}, \ref{sub:Restglieddarstellung} Funktionswert als Potenzreihe.
+\end{itemize}
+
+\subsubsection*{Konvergenz-Frage}
+
+\begin{itemize}
+
+   \item $x = 0$ konvergent, aber uninteressant
+   
+   \item für welche $x$ haben wir absolute Konvergenz?\\
+   Erwartung: \\
+   \begin{tabular}{cc}
+      in $\mathbb{R}$ & in $\mathbb{C}$ \\
+      \begin{minipage}[t]{.5\textwidth}
+         \begin{center}
+            \begin{tikzpicture}[line join=round,>=triangle 45,x=1.2cm,y=1cm]
+              \draw[->,color=black] (-2,0) -- (2,0);
+              \foreach \x in {-1,0,1}
+              \draw[shift={(\x,0)},color=black] (0,0.3) -- (0,-0.3);
+                    
+              \draw[ultra thick,color=orange] (-2,0) -- (-1,0);
+              \draw[ultra thick,color=blue](-1,0) -- (1,0);
+              \draw[ultra thick,color=orange] (1,0) -- (1.9,0);
+              \draw[color=orange] (-1.5,0.6) node {Dvgz.};
+              \draw[color=blue]   (0,   0.6) node {Kvgz.};
+              \draw[color=orange] (1.5, 0.6) node {Dvgz.};
+              \draw[<->] (-1,-0.5) -- (1,-0.5);
+              \draw (0,-0.5) node[below] {R};
+              
+             \end{tikzpicture}
+          \end{center}
+     \end{minipage} &
+     \begin{minipage}[t]{.4\textwidth}
+      \begin{center}
+       \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+         \draw[->,color=black] (-1.5,0) -- (1.5,0);
+         \draw[->,color=black] (0,-1.5) -- (0,1.5);
+         \draw[color=black] (1.5,0.1) node [anchor=south west] { $\Re$};
+         \draw[color=black] (0.1,1.5) node [anchor=west] { $\Im$};
+         
+         \draw[color=evtftf,fill=evtftf,fill opacity=0.1] (0,0) circle (1cm);
+         \draw[->, color=blue] (0,0) -- (0.7,0.7);
+         \draw[color=blue] (1,1) node {$R$};
+         \draw[color=orange] (1.5,-1) node {Dvgz.};
+       \end{tikzpicture}
+       Konvergenzkreis mit Radius $R$ (Konvergenzradius)
+     \end{center}
+     \end{minipage}
+  \end{tabular}
+   \flush
+   Antwort nach Cauchy-Hadamard (Wurzelkriterium \pageref{theorem:Wurzelkriterium}):\\
+   \begin{equation*}
+   \sqrt[n]{|a_k x^n|} \leadsto R = \frac{1}{\limsup_{n \to \infty} \sqrt[n]{a_n}}
+   \end{equation*}
+   Ergebnis: Potenzreihe ist konvergent, falls $|x| < R$
+
+\end{itemize}
+
+\begin{example}[Harmonische Reihe $\sum_{k=1}^\infty a_k = \sum_{k=1}^\infty \frac{1}{k}$ ist divergent!]\flush
+
+   Potenzreihe $\sum_{k=1}^\infty a_k x^k = \sum_{k=1}^\infty \frac{x^k}{k}$
+   \begin{align*}
+      \begin{array}{ccrl}
+         |x| & > & 1 & \text{Divergenz, da Minorante divergent.}\\
+         x & = & 1 & \text{Divergenz, harmonische Reihe.}\\
+         x & = & -1 & \text{Konvergenz, Leibnitz Reihe.}\\
+         |x| & < & 1 & \text{Konvergenz } (\leadsto \ln(1+x) = \sum\left((-1)^\nu \cdot \frac{x^\nu}{\nu}\right))
+      \end{array}
+   \end{align*}
+   \begin{center}
+   \begin{tikzpicture}[line join=round,>=triangle 45,x=2cm,y=1cm]
+     \draw[->,color=black] (-2,0) -- (2,0); % Linie+Pfeil des Zahlenstrahls
+     \foreach \x in {-1,0,1}
+     \draw[shift={(\x,0)},color=black] (0,0.3) -- (0,-0.3) node[below] {\footnotesize $\x$}; % Zahlen
+           
+     \draw [ultra thick,color=orange] (-2,0) -- (-1,0); % Markierung links
+     \draw [[-,ultra thick,color=blue](-1,0) -- (1,0); % Markierung mitte
+     \draw [[-,ultra thick,color=orange] (1,0) -- (1.9,0); % Markierung rechts
+     \draw[color=orange] (-1.5,0.6) node {Dvgz.};
+     \draw[color=blue]   (0,   0.6) node {Kvgz.};
+     \draw[color=orange] (1.5, 0.6) node {Dvgz.};
+     
+    \end{tikzpicture}
+  \end{center}
+   
+   
+\end{example}
+
+\subsection{Potenzreihen spezieller Funktionen}
+
+
+Funktionsgleichung $f(x+y)=f(x) \cdot f(y)$ (*) \\
+Suche Funktion $f$ mit Eigenschaft (*)\\
+Normierung: $\underbrace{f(0) = 1, f'(0) = 1}_{\euler^x}$\\
+Idee: Suche Lösung von (*) in Form einer Potenzreihe:\\
+$f(x) = \sum_{k=0}^{\infty} a_k x^k \leadsto $ suche $a_k$, bestimme $R$ (Konvergenzradius)\\
+Umsetzung:
+\begin{align*}
+   f(x+y) = \sum_{n=0}^\infty a_n \underbrace{(x+y)^n}_{\text{Binom.}} &= \underbrace{\left( \sum_{n=0}^\infty a_n x^n \right) \cdot \left( \sum_{n=0}^\infty a_n y^n \right)}_{\text{Cauchy-Produkt}} = f(x) \cdot f(y) \\
+   \sum_{n=0}^\infty \left( a_n \cdot \sum_{k=0}^\infty {n \choose k} x^k y^{n-k}\right) &= \sum_{n=0}^\infty \sum_{k=0}^\infty a_k a_{n-k} x^k y^{n-k}
+\end{align*}
+
+Da die Potenzen $x^k, y^{n-k}$ passen (auf beiden Seiten), können die Koeffizienten abgeglichen werden:\\
+per Induktion: $a_n = \frac{1}{n!}$\\
+Mit Normierung $f(x) = \euler^x$\\
+\begin{proof}[Induktionsbeweis]
+   Normierung: $a_0 = \frac{1}{0!}$\, $a_1=\frac{1}{1!}$\\
+   Induktionsschritt: $n-1 \to n$
+   \begin{align*} % Sehr grausamer und unuebersichtlicher Code
+      a_n \cdot \sum_{k=0}^n {n \choose k} x^k y^{n-k} &= \sum_{k=0}^n a_k a_{n-k} x^k y^{n-k}\\
+      a_n \left(\underbrace{\color{red}{n \choose 0} y^n}_{k=0} + \underbrace{\color{blue}{n \choose n} x^n}_{k=n} \right) + a_n \sum_{k=1}^{n-1} {n \choose k} x^k y^{n-k} &= \underbrace{\color{red}a_n y^n}_{k=0} + \sum_{k=1}^{n-1}\underbrace{a_k a_{n-k}}_{\substack{Ind.Ann:\\ a_k = \frac{1}{k!}}} x^k y^{n-k} + \underbrace{\color{blue}a_n x^n}_{k=n}\\
+      a_n \sum_{k=1}^{n-1} {n \choose k} x^k y^{n-k} &= \sum_{k=1}^{n-1} \frac{1}{k!} \frac{1}{(n-k)!} x^k y^{n-k}
+   \end{align*}
+   Forderung:
+   \begin{align*}
+      \forall x,y: \sum_{k-1}^{n-1} \left(\underbrace{a_n {n \choose k} - \frac{1}{k!} \frac{1}{(n-k)!}}_{\Rightarrow 0 \text{(Forderung)}} \right)x^k y^{n-k} &= 0 \\
+      a_n {n \choose k} - \frac{1}{k!} \frac{1}{(n-k)!} &= 0\\
+      \frac{a_n n!}{k! (n-k)!} - \frac{1}{k!} \frac{1}{(n-k)!} &= 0\\
+      \Rightarrow a_n &= \frac{1}{n!}
+   \end{align*}
+\end{proof}
