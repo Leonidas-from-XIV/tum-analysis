@@ -1,0 +1,159 @@
+\lecture{2010-01-19 (Thema vorgezogen)}
+
+\subsection{Approximation durch Taylorpolynome}
+
+Vorteile: Polynome sind bestens bekannt und gut auf einem Rechner implementierbar (Horner-Schema)\\
+Fragen: Lassen sich Funktionen durch Polynome gut darstellen? Wie sieht ein Polynom aus, welches eine gegebene Funktion gut darstellt (approximiert)?
+
+\subsubsection*{1. Antwort: Lagrange-Interpolationspolynome}
+
+\todo{Grafik}
+
+eher globale Sicht, oszilliert stark
+
+\subsubsection*{2. Antwort: "`lokale Sicht"'}
+
+Ableitungsbegriff: lokale Approximation einer Funktion durch eine Gerade ($\equals$ Steigung)\\
+weitere Daten: Krümmung (2. Ableitung), höhere Ableitungen an Stelle $x_0$\\\\
+formalisiert:
+\begin{itemize}
+  \item $f: [a,b] \to \mathbb{R}$ beliebig oft stetig differenzierbar
+  \item Entwicklungspunkt $x_0$: $a < x_0 < b$
+  \item Polynom $p$
+\end{itemize}
+\noindent
+\begin{tabular}{ll}
+  \begin{minipage}[b]{.5\textwidth}
+    Forderung
+    \[
+      \underbrace{\begin{array}{rcl}
+        f(x_0) &=& p(x_0) \\
+        f'(x_0) &=& p'(x_0) \\
+        &\vdots& \\
+        f^{(n)}(x_0) &=& p^{(n)}(x_0)
+      \end{array}}_{\text{Lsg.: Taylorpolynom}}
+    \]
+  \end{minipage} &
+  \fbox{\begin{minipage}[b]{.4\textwidth}
+    Erinnerung: Lagrange-Polynom
+    \[
+      \begin{array}{rcl}
+        f(x_0) &=& p(x_0) \\
+        f(x_1) &=& p(x_1) \\
+        &\vdots& \\
+        f(x_n) &=& p(x_n)
+      \end{array}
+    \]
+  \end{minipage}}
+\end{tabular}
+
+\begin{theorem}[$n$-tes Taylorpolynom] Es sei $f: [a,b] \to \mathbb{R}$ $(n+1)$-fach stetig differenzierbar, $a < x_0 < b$ und $f^{(\nu)}(x_0) = p^{(\nu)}(x_0)$ für $\nu = 1, \ldots, n$. Dann gilt:
+  \[ p_n(x) = \sum_{\nu = 0}^n \left( \frac{f^{(\nu)}(x_0)}{\nu !} \cdot (x - x_0)^\nu \right)\]
+\end{theorem}
+
+\begin{note}
+  Man wählt $x_0$ so, dass $f^{(\nu)}(x_0)$ einfach berechenbar ist.
+\end{note}
+
+
+\begin{example}
+  \begin{enumerate}
+    \item $f(x) = \euler^x$
+      \[ f^{(\nu)}(x) = \euler^x \quad \nu = 0, \ldots, n \]
+      \begin{itemize}
+        \item $x_0 = 0$
+          \[ f^{(\nu)}(0) = 1 \quad \nu = 0, \ldots, n \]
+          \[ p_n(x) = \sum_{\nu = 0}^n \frac{x^\nu}{\nu !} = 1 + \frac x {1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots + \frac{x^n}{n!} \]
+          \todo{Grafik}
+        \item $x_0 = 1$
+          \[ f^{(\nu)}(1) = e \quad \nu = 0, \ldots, n \]
+          \[ p_n(x) = \sum_{\nu = 0}^n \left( \frac{(x-1)^\nu}{\nu !} \euler \right)\annotation{\text{für $x = 1$ und $\nu = 0$ ist der Zähler $(1-1)^0 = 0^0 = 1$}} \]
+      \end{itemize}
+    \item Trigonometrische Funktionen $\sin$ bzw. $\cos$ mit $x_0 = 0$
+      \[ \sin^{(k)}(x) = 
+        \begin{cases}
+          (-1)^m \cdot \cos x & k = 2m+1 \\
+          (-1)^m \cdot \sin x & k = 2m
+        \end{cases}
+      \]
+      \[ \sin 0 = 0 \quad \cos 0 = 1 \]
+      \begin{itemize}
+        \item $\sin$
+          \[ p_{2m+1}(x) = x - \frac{x^3}{5!} + \frac{x^5}{7!} - \ldots + (-1)^m \frac{x^{2m+1}}{(2m+1)!} \]
+        \item $\cos$
+          \[ p_{2m}(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \ldots + (-1)^m \frac{x^{2m}}{(2m)!} \]
+      \end{itemize}
+  \end{enumerate}
+\end{example}
+
+\begin{note}\todo{Kontext zur nächsten Vorlesung prüfen}
+  \begin{itemize}
+    \item nach Abschnitt \ref{sec:potenzreihen} (Seite \pageref{sec:potenzreihen}) sind alle 3 Reihen ($\euler^x$, $\sin x$, $\cos x$) konvergent für alle $x \in \mathbb{R}$ (falls $n, m \rightarrow \infty$).
+    \item Euler-Formel $\euler^{\imag x} = \cos x + \imag \sin x$ ist ablesbar
+  \end{itemize}
+\end{note}
+
+\subsection{Restglieddarstellung, Taylorreihe}
+
+Problem: Wie groß ist die Abweichung der gegebenen Funktion $f$ und des konstruierten Taylorpolynoms?\\
+Restglied: $R_{n+1}(x) = f(x) - p_n(x)$\\
+Praxis: Restglied-Abschätzungen gesucht
+%
+\begin{example}[Berechnung des $\sin$]
+  \[ \text{Eingabe: } x \in \mathbb{R} \]
+  \[ \downarrow \text{\footnotesize Periodizität} \]
+  \[ 0 \leq x \leq 2 \pi \]
+  \[ \downarrow \text{\footnotesize Symmetrie} \]
+  \[ 0 \leq x \leq \frac \pi 2 \]
+  \[ \downarrow \text{\footnotesize Additionstheorem $\sin 3x$} \]
+  \[ 0 \leq x \leq \frac \pi 6 \]
+  \begin{center} Berechnung bis $\sim\ds \frac{x^9}{9!}$ $\leadsto$ $R_{n+1} \approx 10^{-6}$ \end{center}
+\end{example}
+
+\begin{theorem}[Taylorformel]
+  Für jede auf einem offenen Intervall $I \subseteq \mathbb{R}$ $(n+1)$-fach stetig differenzierbare Funktion $f$ gilt
+  \[ f(x) = \sum_{\nu = 0}^n \left( \frac{f^{(\nu)}(x_0)}{\nu !} \cdot (x - x_0)^\nu \right) + R_{n+1}(x), \text{ wobei}\]
+  \[ R_{n+1}(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} (x-x_0)^{n+1} \quad\text{Restglied nach Lagrange}\]
+  $\xi$: Zwischenstelle im Intervall $I$ ($x_0 < \xi < x$)
+\end{theorem}
+
+\noindent Beweis: siehe Kapitel Integration\todo{Referenz}
+
+\begin{note}
+  Eine andere Darstellung von $\xi$ ist $\xi = x_0 + \vartheta (x - x_0)$ mit $0 < \vartheta < 1$.\\
+  $\xi$ ist nicht gegeben, aber $\left| f^{(n+1)}(\xi)\right|$ ist abschätzbar (wegen: $f^{(n+1)}$ stetig in $[x_0,x]$ $\implies$ es existiert ein Maximum).
+\end{note}
+
+\begin{example}[Logarithmus]
+  $\ln 1 = 0$ ist bekannt $\leadsto$ sinnvoller Entwicklungspunkt $x_0 = 1$; bzw. es ist günstiger das Intervall zu verschieben, so dass $x_0 = 0$ Entwicklungspunkt ist $\leadsto$ Betrachtung von $\ln (1+x)$
+  \[ f(x) = \ln (1+x) = \sum_{\nu = 0}^n \left( \frac{f^{(\nu)}(0)}{\nu !} x^\nu \right) + \frac{x^{n+1}}{(n+1)!} f^{(n+1)}(\xi) \]
+  \begin{align*}
+    f(x) &= \ln (1+x) & f(0) &= \ln 1 \\
+    f'(x) &= \frac 1 {1+x} & f'(0) &= 1 \\
+    &\vdots & &\vdots \\
+    f^{(\nu)}(x) &= (-1)^{\nu-1} (\nu - 1)! \frac 1 {(1+x)^\nu} & f^{(\nu)}(0) &= (-1)^{\nu-1} (\nu -1)!
+  \end{align*}
+  Taylorpolynom
+  \[
+    p_n(x) = f(0) + \sum_{\nu = 1}^{n} \left( \frac{(-1)^{\nu-1} (\nu -1)!}{\nu !} x^\nu \right)
+    = \sum_{\nu = 1}^{n} \left( \frac{(-1)^{\nu-1} x^\nu}{\nu} \right)
+  \]
+  Taylorformel
+  \[
+    \ln (1+x) = \underbrace{\sum_{\nu = 1}^{n} \left( \frac{(-1)^{\nu-1} x^\nu}{\nu} \right)}_{\parbox{4cm}{\centering\footnotesize $p_n(x)$\\Leibniz-Kriterium}} + \underbrace{(-1)^n \frac{x^{n+1}}{n+1} \frac 1 {(1+\xi)^{n+1}}}_{\parbox{5cm}{\centering \footnotesize $R_{n+1}(\xi)$\\fällt sehr langsam $\sim \frac 1 {n+1}$}}
+  \]
+\end{example}
+
+\begin{definition}[Taylorreihe]
+  \[ p(x) = \sum_{\nu = 0}^\infty \left( \frac{f^{(\nu)}(x_0)}{\nu !} \cdot (x - x_0)^\nu \right) \]
+  (unter der Voraussetzung, dass $f$ beliebig oft stetig differenzierbar ist)
+\end{definition}
+
+\begin{note}
+  Taylorreihe und $f(x)$ hängen meistens zusammen. Gegenbeispiel:
+  \begin{align*}
+    f(x) &= \euler^{-\frac 1 {x^2}}\\
+    p(x) &\equiv 0 \text{ zu } x_0 = 0 
+  \end{align*}
+  \todo[inline]{Plot von f und p}
+\end{note}
