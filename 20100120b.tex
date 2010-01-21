@@ -1,38 +1,36 @@
 \lecture{2010-01-20 Teil 2}
-% Führe das Beispiel aus der letzten Vorlesung natlos fort.
-\begin{equation*}
-D=\mathbb{R}\setminus \{0\}
-\end{equation*}
-$f(0)$ wird stetig ergänzt.
-\begin{proposition}
-  $\forall \nu$ gilt: $f^{(\nu)}(0) = 0$
+% Führe das Beispiel aus der letzten Vorlesung nahtlos fort.
+\noindent $D=\mathbb{R}\setminus \{0\}$, $f(0)$ wird stetig ergänzt
+\begin{proposition}\label{prop:equiv_zero}
+  $\forall \nu$ gilt: $f^{(\nu)}(0) = 0$, damit $p(x) \equiv 0 \text{ zu } x_0 = 0$
 \end{proposition}
+\todo[inline]{Plot von f und p}
 
-\begin{proof}[per Induktion]\flush
-   \begin{align*}
-      \begin{array}{ll}
-         \nu = 1: & f'(x) = \euler^{-\frac{1}{x^2}}\frac{\mathrm d}{\mathrm dx}(-\frac{1}{x^2}) = \frac{2}{x^3}f(x) \\
-         & f'(0) \text{stetig ergänzen zu 0} \\
-         \nu = n+1: & \text{Annahme: } f^{(\nu)}(x) = q_\nu(x)\cdot f(x) \\
-         & \nu=1\ldots n \quad q_\nu(x) \quad \text{rat. Funktion.}\\
-         & f^{(n+1)}(x) = (\frac{\mathrm d}{\mathrm dx} q_n(x))\cdot f(x) + \frac{2}{x^3} q_n(x) f(x)= q_{n+1}(x)f(x)
-      \end{array}
-   \end{align*}
+\begin{proof}
+  \begin{itemize}
+    \item Induktionsvoraussetzung, $\nu = 1$
+      \[ f'(x) = \euler^{-\frac{1}{x^2}}\cdot \frac{\diff}{\diff x}\left(-\frac{1}{x^2}\right) = \frac{2}{x^3}\cdot f(x) \]
+      $f'(0)$ stetig ergänzbar zu $0$, da $\ds\lim_{x \rightarrow 0} f'(x) = 0$
+    \item Induktionsschritt, $\nu = n + 1$\\
+      Annahme: $f^{(\nu)}(x) = q_\nu(x)\cdot f(x)$\\
+      $\nu=1\ldots n \quad q_\nu(x)$ rationale Funktion
+      \[
+        f^{(n+1)}(x) = \left(\frac{\diff}{\diff x} q_n(x)\right)\cdot f(x) + \frac{2}{x^3} \cdot q_n(x) \cdot f(x)= q_{n+1}(x) \cdot f(x)
+      \]
+  \end{itemize}
 \end{proof}
-Ergebnis: $f^{(\nu)}(x) = q_\nu(x)\cdot f(x)$, $q_\nu$ rationale Funktion.
+\noindent Ergebnis: $f^{(\nu)}(x) = q_\nu(x)\cdot f(x)$, $q_\nu$ rationale Funktion\\
 Verhalten in $x_0 = 0$:
 \begin{align*}
-\begin{array}{rlc}
    \lim_{x\rightarrow \infty} \frac{\euler^x}{x^n} & = \infty & \forall n \in \mathbb{N}\\
    \lim_{x\rightarrow \infty} \frac{x^n}{\euler^x} & = 0 & \forall n \in \mathbb{N}\\
    \lim_{x\rightarrow 0} \frac{\euler^{-\frac{1}{x^2}}}{x^n} & = 0 & \leadsto f^{(n)}(0) = 0
-   \end{array}
 \end{align*}
-$\leadsto$ Taylorreihe $f \equiv 0 \neq \euler^{-\frac{1}{x^2}}$\\
-Offen: Konvergenz Taylorreihe zu $f(x)$?\\
-Taylorformel entählt Restglied $R_\nu(x)$. Bildet die Folge der Restglieder $(R_\nu(x))_{\nu \in \mathbb{N}}$ eine Nullfolge, so konvergiert die Taylorreihe (als Grenzwert der Taylorpolynome) gegen $f(x)$.
+$\leadsto$ Behauptung \ref{prop:equiv_zero}: Taylorreihe $f \equiv 0 \neq \euler^{-\frac{1}{x^2}}$\\
+offen: Konvergenz Taylorreihe zu $f(x)$\\
+Die Taylorformel enthält das Restglied $R_\nu(x)$. Bildet die Folge der Restglieder $(R_\nu(x))_{\nu \in \mathbb{N}}$ eine Nullfolge, so konvergiert die Taylorreihe (als Grenzwert der Taylorpolynome) gegen $f(x)$.
 
-Bemerkung: für $f(x) = \euler^{-\frac{1}{x^2}}$ bilden $R_\nu(x)$ keine Nullfolge.
+\begin{note}Für $f(x) = \euler^{-\frac{1}{x^2}}$ bilden die Folgenglieder $R_\nu(x)$ keine Nullfolge.\end{note}
 
 \todo[inline]{Anmerkung Landausymbole}
 %\begin{note}
