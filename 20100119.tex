@@ -8,7 +8,14 @@ Fragen: Lassen sich Funktionen durch Polynome gut darstellen? Wie sieht ein Poly
 
 \subsubsection*{1. Antwort: Lagrange-Interpolationspolynome}
 
-\todo{Grafik}
+\begin{tikzpicture}
+  \draw [->] (-4,0) -- (4,0);
+  \draw[red,domain=-3.2:3.2] plot [id=todo_some_id_a, samples=500] function {exp(-(x*2)**2)};
+  \draw[blue,domain=-3.2:3.2] plot [id=todo_some_id_b, samples=500] function {(36 - x**2 *(-7 + x**2)**2)/36};
+  \foreach \x/\y in {-3/0,-2/0,-1/0,0/1,1/0,2/0,3/0}
+    \draw (\x,\y) circle (0.1);
+\end{tikzpicture}
+
 
 eher globale Sicht, oszilliert stark
 
@@ -65,7 +72,16 @@ formalisiert:
         \item $x_0 = 0$
           \[ f^{(\nu)}(0) = 1 \quad \nu = 0, \ldots, n \]
           \[ p_n(x) = \sum_{\nu = 0}^n \frac{x^\nu}{\nu !} = 1 + \frac x {1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots + \frac{x^n}{n!} \]
-          \todo{Grafik}
+          
+\begin{tikzpicture}
+  \draw [->] (-3,0) -- (3.5,0) node [left] {$y$};
+  \draw [->] (0,-0.5) -- (0,3) node [right] {$x$};
+  \draw (-0.2,1) -- (0.2,1) node [right] {\footnotesize $1$};
+  \draw[domain=-2:1.3] plot [id=todo_some_id, samples=50] function {exp(x)} node [right] {$e^x$};
+  \draw[domain=-1:1.5] plot [id=todo_some_id2] function {1+x} node [right] {$p_1(x)$};
+\end{tikzpicture}
+
+
         \item $x_0 = 1$
           \[ f^{(\nu)}(1) = e \quad \nu = 0, \ldots, n \]
           \[ p_n(x) = \sum_{\nu = 0}^n \left( \frac{(x-1)^\nu}{\nu !} \euler \right)\annotation{\text{für $x = 1$ und $\nu = 0$ ist der Zähler $(1-1)^0 = 0^0 = 1$}} \]
