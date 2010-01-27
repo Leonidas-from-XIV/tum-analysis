@@ -1,0 +1,172 @@
+\lecture{2010-01-27}
+
+\section{Bestimmtes Integral}
+\label{sub:bestInt}
+
+\begin{itemize}
+	\item anschaulich: Arbeit, die verrichtet wird \( \hat{=} \) Fläche unter dem Kraftverlauf
+	\item allg. Maßtheorie – Integralbegriffe: 
+	\begin{itemize}
+		\item deterministisch: Riemann-, Lebesgue-Integral
+		\item stochastisch: It\={o}-,Stratonovich Kalkül
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Vorraussetzung}
+
+Gegeben ist eine beschränkte (notwendige Voraussetzung) Funktion \( f:[a,b]\rightarrow \mathbb{R} \). D.h. es existiert \(  m, M \in \mathbb{R} \quad m \leq f(x) \leq M \)
+
+\begin{note}
+	Wäre \( f \) stetig (oder differenzierbar), dann wäre f sowieso beschränkt, da f auf einem abgeschlossenem Interval \( [a,b] \) definiert ist.
+\end{note}
+
+\todo[inline]{Plot einer unstetigen Funktion fehlt}
+
+Erlaubtes \( f(x) \):
+\begin{itemize}
+	\item \( f \) darf Sprünge und Lücken haben – allerdings nicht zu viele (Signalverarbeitung)
+	\item pathologisches \( f \) : \( f(x) = x \quad x \in \mathbb{Q} \quad x \in \mathbb{R}\backslash\mathbb{Q} \)
+\end{itemize}
+
+\subsubsection{Intervallunterteilung  (Zerlegung $ Z $ ) }
+
+\begin{align*}
+	h &= \frac{1}{n} (b-a) \\
+	x_k &= a+k \cdot h \quad k=0,\ldots,n \\
+	a &= x_0<x_1<x_2<\ldots<x_n=b 
+\end{align*}
+Die Stützstellen sind dabei Äquidistant (aus Bequemlichkeit). Betrachtet man nun \(f\) in den Teilintervallen \( [x_{k-1},x_k] \), so gilt aufgrund der Beschränktheit der Funktion: \( m_k \leq f \leq M_k \) auf \( [x_{k-1},x_k] \)
+\begin{align*}
+	m_k &= \inf f(x) \\
+	M_k &= \sup f(x)
+\end{align*}
+
+\begin{note}
+	Ist \( f \) stetig, gilt:
+	\begin{align*}
+		x_{n-1} \leq x \leq x_k \\
+		m_k &= \min f(x) \\
+		M_k &= \max f(x)
+	\end{align*}	
+\end{note}
+
+\begin{definition}[Untersumme von f zur Zerlegung Z]
+	\[
+		U(f, Z)= \sum_{k=0}^nm_k(x_k-x_{k-1}) \qquad \text{einbeschriebenes Rechteck}
+	\]
+\end{definition}
+
+
+\begin{definition}[Obersumme von f zur Zerlegung Z]
+	\[
+		O(f, Z)= \sum_{k=0}^nM_k(x_k-x_{k-1})  \qquad \text{umbeschriebenes Rechteck}
+	\]
+\end{definition}
+
+\begin{itemize}
+	\item Es gilt: \( U(f,Z) \leq O(f,Z) \), denn
+	\[ O(f,Z)- U(f,Z)=\sum_{k=1}^n(\underbrace{M_k-m_k}_{\geq0})(\underbrace{x_n-x_{k-1}}_{>0}) \geq 0 \]
+	\item Verfeinerung der Zerlegung liefert die feinere Unterteilung \( Z^\star \). 
+	\[ U(f,Z) \leq U(f, Z^\star) \leq O(f,Z^\star) \leq O(f,Z) \]
+	\item Grenzprozess \( n \rightarrow \infty \): Zerlegungsfolgen \( (Z_s)_{s\in\mathbb{N}} \implies \) 
+	\begin{align*}
+		U &= \sup U(f,Z_j) \qquad \text{größte einbeschriebene Rechtecksfläche}\\
+		O &= \sup O(f,Z_j) \qquad \text{größte umbeschriebene Rechtecksfläche}
+	\end{align*}
+\end{itemize}
+
+\begin{definition}[Integrierbarkeit]
+	Sei \( f[a,b] \rightarrow \mathbb{R} \) beschränkt, so gilt
+	\begin{align*}
+		U &= \sup U(f,Z_j)\\
+		O &= \inf O(f,Z_j)\\
+		U &= O \implies \text{f ist integrabel}
+	\end{align*}
+	Die Zahl \( U = O \) heißt Integral von f über \( [a,b] \)
+\end{definition}
+
+\begin{note}
+	\( f \geq 0 \): Integral \( \hat{=} \) Flächeninhalt
+\end{note}
+
+\subsubsection{Bezeichnung}
+\begin{align*}
+	f&: \text{Integrand} \\
+	x&: \text{Integrationsvariable}\\
+	a,b&: \text{untere/obere Integrationsgrenze}\\	
+	\int_a^b \,\mathrm{d}x &:\text{Integrationssymbol}
+\end{align*}
+
+\begin{example}[f(x)=x in \lbrack0,b\rbrack]
+	\[
+		\int_0^b f(x) \,\mathrm{d}x = \int_0^b x \,\mathrm{d}x = I_f = b \cdot b \cdot \frac{1}{2} = \frac{1}{2} b^2
+	\]
+\end{example}
+\todo[inline]{Plot der funktion f(x)=x fehlt.}
+
+
+\subsection{Riemann-Formalismus}
+Testfall:
+\begin{align*}
+	Z_n &= {0,\frac{b}{n},\frac{2b}{n},\ldots,\frac{(n-1)b}{n}} \\
+	\quad h &= \frac{b}{n} \quad x_k=h \cdot k \quad k=0,\ldots,n \qquad \text{(Äquidistante Stützstellen)} 
+\end{align*}
+
+\begin{align*}
+	U(f,Z_n) 
+	&= \sum_{k=1}^n m_k(x_k-x_{k-1}) \\
+	&= \sum_{k=1}^n x_{k-1}(x_k-x_{k-1}) \\
+	&= \sum_{k=1}^n (k-1)h \cdot h = \left( \frac{b}{n} \right)^2 \sum_{k=1}^n (k-1) \\
+	&= \frac{b^2}{n^2} \frac{n}{2}(n-1) = \frac{b^2}{2}(1-\frac{1}{n}) \\
+	\\
+	O(f,Z_n)
+	&=\sum_{k=1}^n M_k(x_k-x_{k-1}) = \sum_{k=1}^n x_k(\underbrace{x_k-x_{k-1}}_{h}) = \sum_{k=1}^n k \cdot h \cdot h \\
+	&= \left(\frac{b^2}{n^2}\right)\sum_{k=1}^n k = \frac{b^2}{n^2} \cdot \frac{n}{2}(n+1) = \frac{b^2}{2}(1+\frac{1}{n}) \\
+	&\implies \underbrace{ \frac{b^2}{2}(1-\frac{1}{n}) }_{U(f,Z_n)}\leq I_f \leq \underbrace{\frac{b^2}{2}(1+\frac{1}{n})}_{O(f,Z_n)}
+\end{align*}
+
+Grenzfall \( n \rightarrow \infty : I_f = \frac{1}{2}b^2 \implies f(x) = x \) ist ein Integral.
+
+\begin{note}
+	\begin{itemize}
+		\item gleiche Technik für \( \int_0^b x^p\,\mathrm{d}x= \frac{b^{p+1}}{p+1}, p \geq 1 \).
+		\newline Achtung: Differentiation \( \frac{x^{p+1}}{p+1} \rightarrow \underbrace{x^p}_{=\text{Integrand}} \)
+		\item monotone Funktion \( \rightarrow \) integrabel
+		\item stetige (meist reicht auch differenzierbare) Funktion \( \rightarrow \) integrabel.
+	\end{itemize}	
+\end{note} 
+
+\subsection{Numerische Quadratur}
+Approximiere den Wert des Integrals. Stammfunktion-Suche über symbolische Verarbeitung (MAPLE, Bronstein)
+
+\begin{itemize}
+	\item Brutal: \( y(t) = \int_0^t f(x) \,\mathrm{d}x \implies \text{Differientialgleichung} \quad \dot{y} = f(t) \) \newline \( \rightarrow \) ODE Software MATLAB/MATHEMATICA
+	\item Besser: Qudraturformeln
+\end{itemize}
+
+\subsubsection{Verfahren 1: Rechteckregel $[a,b]$}
+\begin{align*}
+	x_k &= a+ k \frac{b-a}{n} \qquad h= \frac{b-a}{n} \qquad \text{(Äquidistante Stützstellen)} \\
+	t_k &= x_{k-1}+\frac{1}{2}(x_k-x_{k-1})= \frac{1}{2}(x_k+x_{k-1})
+\end{align*}
+
+\todo[inline]{Grafik zur Qudratur fehlt.}
+
+\[ \int_a^b f(x) \,\mathrm{d}x \dot{=} \underbrace{\frac{b-a}{n} \sum_{k=1}^n f(t_k)}_{\text{Auf Rechner auswerten!}} \]
+
+\subsubsection{Praxis}
+
+Auswertungsreihe: \( n=8, 16, 32, 64, \ldots \) \newline
+Vergleiche \( I_8,I_{16}, I_{32}, \ldots\) auf stehende führende Dezimale!
+
+\begin{align*}
+	I_8 &= \underline{1},0578 \\
+	I_{16} &= \underline{1,2}569 \\
+	I_{32} &= \underline{1,24}87 \\
+	I_{64} &= \underline{1,249}3 \\
+\end{align*}
+
+
+
+
+
