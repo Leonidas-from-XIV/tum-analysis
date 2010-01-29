@@ -133,7 +133,22 @@ Die Stützstellen sind dabei Äquidistant (aus Bequemlichkeit). Betrachtet man n
 		\int_0^b f(x) \,\mathrm{d}x = \int_0^b x \,\mathrm{d}x = I_f = b \cdot b \cdot \frac{1}{2} = \frac{1}{2} b^2
 	\]
 \end{example}
-\todo[inline]{Plot der funktion f(x)=x fehlt.}
+
+
+\begin{center}
+	\definecolor{myblue}{HTML}{92dcec}
+    \begin{tikzpicture}[]
+		\draw[->,semithick] (-0.5,0) -- (5,0) node[below]{x};
+		\draw[->,semithick] (0,-0.5) -- (0,5) node[left]{y};
+
+		\draw[domain=0:4, fill=myblue] plot [id=easy_func, samples=100] function { x } -- (4,0);
+		\draw [dash pattern=on 1pt off 1pt] (4,0)-- (4,4);
+		\node at (4.3,2) {$b$};
+		\node at (1.8,3) {$f(x)=x$};
+		\node at (2.5,1.3) {$I_f$};
+		
+	\end{tikzpicture}
+\end{center}
 
 
 \subsection{Riemann-Formalismus}
@@ -181,7 +196,30 @@ Approximiere den Wert des Integrals. Stammfunktion-Suche über symbolische Verar
 	t_k &= x_{k-1}+\frac{1}{2}(x_k-x_{k-1})= \frac{1}{2}(x_k+x_{k-1})
 \end{align*}
 
-\todo[inline]{Grafik zur Qudratur fehlt.}
+
+\begin{center}
+	\definecolor{myblue}{HTML}{92dcec}
+    \begin{tikzpicture}[]
+		\draw[->,semithick] (-0.5,0) -- (5.5,0) node[below]{x};
+		\draw[->,semithick] (0,-1) -- (0,2.5) node[left]{y};
+
+		\draw[fill=myblue!30] (1,0) rectangle (2,1.7917); 
+		\draw[fill=myblue!30] (2,0) rectangle (3,0.6931);
+		\draw[fill=myblue!30] (3,0) rectangle (4,-1.3862);
+
+		\draw[domain=1:3.5] plot [id=blubb, samples=100] function { 2*log(4-x) };
+		\draw[domain=3.5:5] plot [id=blubb2, samples=100] function { 2*log(x-3) };
+		
+		\draw (1,2pt) -- (1,-2pt) node[below] {\(x_0=a\)};
+		\draw (2,2pt) -- (2,-2pt) node[below] {\(x_1\)};
+		\draw (3,2pt) -- (3,-2pt) node[below left] {\(x_2\)};
+		\draw (4,2pt) -- (4,-2pt) node[below right] {\(x_3\)};
+
+	\end{tikzpicture}
+\end{center}
+
+\todo[inline]{Das letzte Rechteck scheint mir falsch gezeichnet, so stands aber an der Tafel.}
+
 
 \[ \int_a^b f(x) \,\mathrm{d}x \dot{=} \underbrace{\frac{b-a}{n} \sum_{k=1}^n f(t_k)}_{\text{Auf Rechner auswerten!}} \]
 
