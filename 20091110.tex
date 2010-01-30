@@ -165,7 +165,7 @@ besser: \emph{Hornerschema} (\( \approx \) 1800)
 \]
 
 
-\begin{lstlisting}[caption=Codierung des Hornerschemas]
+\begin{lstlisting}
 p := a[n];
 for k := n - 1 to 0 do
 	p := p * x + a[k];
@@ -208,17 +208,17 @@ $\ell$-fache Nullstellen:
 \label{ssub:wachstum_der_polynome}
 
 \begin{align*}
-		&p(x)=a_nx^k+\ldots+a_1x+a_0=a_nx^n\left(1+\frac{a_n-1}{a_n\cdot x}+\ldots+\frac{a_1}{a_n\cdot x^{n-1}}+\frac{a_0}{a_n\cdot x^n}\right), \\
+		&p(x)=a_nx^n+\ldots+a_1x+a_0=a_nx^n\left(1+\frac{a_n-1}{a_n\cdot x}+\ldots+\frac{a_1}{a_n\cdot x^{n-1}}+\frac{a_0}{a_n\cdot x^n}\right), \\
 		&\text{wobei } a_n\neq0 \text{ sowie } x\neq0
 \end{align*}
 Asymptotisches Verhalten: \( x \longrightarrow \pm \infty:p(x)\longrightarrow a_nx^n \) \newline "`Wie verhält sich eine Funktion, wenn x über alle Maßen wächst?"'
 
 \begin{definition}[Rationale Funktion]
 	\[
-			r(x)=\frac{p(x)}{g(x)} \qquad p,q \text{ sind Polynome}
+			r(x)=\frac{p(x)}{q(x)} \qquad p,q \text{ sind Polynome}
 	\]
 \end{definition}
-\noindent Die Nullstelle des Nenners (\( g(x)=0 \)) nennt man Polstelle. Die Division von Polynomen kann man mit dem Euklidischen Algorithmus durchführen (siehe auch \cite{bauerFaktPoly} und \cite{knuthPolynoms}).
+\noindent Die Nullstelle des Nenners (\( q(x)=0 \)) nennt man Polstelle. Die Division von Polynomen kann man mit dem Euklidischen Algorithmus durchführen (siehe auch \cite{bauerFaktPoly} und \cite{knuthPolynoms}).
 % subsubsection wachstum_der_polynome (end)
 
 \subsubsection*{Polynominterpolation} % (fold)

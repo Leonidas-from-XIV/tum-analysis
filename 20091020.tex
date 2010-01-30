@@ -87,20 +87,20 @@ Darstellung ist \emph{normalisiert}, d. h. nach Dezimalpunkt keine Nullen (IEEE 
 \begin{itemize}
  \item Exponentenspielraum: $1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^6 = 2^7 -1 = 127$
   Exponent $10^{-127}$ bis $10^{127}$
- \item Länge der Maschine im 10er-System:\\
-$1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^22=2^{23} \equals 10^x$\\
+ \item Länge der Mantisse im 10er-System:\\
+$1\cdot 2^0+1\cdot2^1+\ldots+1\cdot2^{22}=2^{23}-1 \equals 10^x$\\
 $2^{23}\equals 10^x, x=23 \log_{10}(2) \approx 6,923 $\\
 $m \in \mathbb{M}, m=\pm 0.\text{\ttfamily\_\_\_\_\_}\ldots\text{\ttfamily\_\_\_\_\_} e\pm \text{\ttfamily\_\_\_}\ldots\text{\ttfamily\_\_\_}$\\Lücke zwischen $-10^{-127}$ und $10^{-127}$ Faktor $10^7$ groß
 \end{itemize}
 
 \subsubsection*{Rundungsfehler}
 
-Wesentlich mitbestimmt von F. L. Bauer, Samelson, Zenger aus der Informatik und R. Bukisch und Chr. Reinsch aus der Mathematik und Wilkinson.\\
+wesentlich mitbestimmt von F. L. Bauer, Samelson, Zenger aus der Informatik und R. Bukisch und Chr. Reinsch aus der Mathematik und Wilkinson\\
 Hilfsmittel: Abbildung von den reellen Zahlen (Alltag) auf den Rechner
 
 \begin{definition}[Abbildung \emph{rd} bzw. \emph{round} (Rundung)]
 rd: $\mathbb{R}\rightarrow\mathbb{M}$\\
-rd: $\left\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\right\} \mapsto m_i$
+\[ \text{rd: } \left\{x|x \in [\frac{m_{i-1}+m_i}{2},\frac{m_{i}+m_{i+1}}{2}[\right\} \mapsto m_i \]
 \end{definition}
 
 \begin{note}
