@@ -1,8 +1,5 @@
 \lecture{2010-01-27}
 
-\section{Bestimmtes Integral}
-\label{sub:bestInt}
-
 \begin{itemize}
 	\item anschaulich: Arbeit, die verrichtet wird \( \hat{=} \) Fläche unter dem Kraftverlauf
 	\item allg. Maßtheorie – Integralbegriffe: 
@@ -12,7 +9,7 @@
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{Vorraussetzung}
+\subsubsection*{Voraussetzung}
 
 Gegeben ist eine beschränkte (notwendige Voraussetzung) Funktion \( f:[a,b]\rightarrow \mathbb{R} \). D.h. es existiert \(  m, M \in \mathbb{R} \quad m \leq f(x) \leq M \)
 
@@ -59,7 +56,7 @@ Erlaubtes \( f(x) \):
 	\item pathologisches \( f \) : \( f(x) = x \quad x \in \mathbb{Q} \quad x \in \mathbb{R}\backslash\mathbb{Q} \)
 \end{itemize}
 
-\subsubsection{Intervallunterteilung  (Zerlegung $ Z $ ) }
+\subsubsection*{Intervallunterteilung  (Zerlegung $Z$)}
 
 \begin{align*}
 	h &= \frac{1}{n} (b-a) \\
@@ -120,7 +117,7 @@ Die Stützstellen sind dabei Äquidistant (aus Bequemlichkeit). Betrachtet man n
 	\( f \geq 0 \): Integral \( \hat{=} \) Flächeninhalt
 \end{note}
 
-\subsubsection{Bezeichnung}
+\subsubsection*{Bezeichnung}
 \begin{align*}
 	f&: \text{Integrand} \\
 	x&: \text{Integrationsvariable}\\
@@ -151,7 +148,7 @@ Die Stützstellen sind dabei Äquidistant (aus Bequemlichkeit). Betrachtet man n
 \end{center}
 
 
-\subsection{Riemann-Formalismus}
+\subsubsection*{Riemann-Formalismus}
 Testfall:
 \begin{align*}
 	Z_n &= {0,\frac{b}{n},\frac{2b}{n},\ldots,\frac{(n-1)b}{n}} \\
@@ -182,7 +179,7 @@ Grenzfall \( n \rightarrow \infty : I_f = \frac{1}{2}b^2 \implies f(x) = x \) is
 	\end{itemize}	
 \end{note} 
 
-\subsection{Numerische Quadratur}
+\subsubsection*{Numerische Quadratur}
 Approximiere den Wert des Integrals. Stammfunktion-Suche über symbolische Verarbeitung (MAPLE, Bronstein)
 
 \begin{itemize}
@@ -190,7 +187,7 @@ Approximiere den Wert des Integrals. Stammfunktion-Suche über symbolische Verar
 	\item Besser: Qudraturformeln
 \end{itemize}
 
-\subsubsection{Verfahren 1: Rechteckregel $[a,b]$}
+\minisec{Verfahren 1: Rechteckregel $[a,b]$}
 \begin{align*}
 	x_k &= a+ k \frac{b-a}{n} \qquad h= \frac{b-a}{n} \qquad \text{(Äquidistante Stützstellen)} \\
 	t_k &= x_{k-1}+\frac{1}{2}(x_k-x_{k-1})= \frac{1}{2}(x_k+x_{k-1})
