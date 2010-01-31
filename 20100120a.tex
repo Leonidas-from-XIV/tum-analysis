@@ -137,7 +137,7 @@ $\ds f(x) = \sum_{k=0}^{\infty} a_k x^k \leadsto $ suche $a_k$, bestimme $R$ (Ko
 Umsetzung:
 \begin{align*}
    f(x+y) = \sum_{n=0}^\infty a_n \underbrace{(x+y)^n}_{\text{Binom.}} &= \underbrace{\left( \sum_{n=0}^\infty a_n x^n \right) \cdot \left( \sum_{n=0}^\infty a_n y^n \right)}_{\text{Cauchy-Produkt}} = f(x) \cdot f(y) \\
-   \sum_{n=0}^\infty \left( a_n \cdot \sum_{k=0}^\infty {n \choose k} x^k y^{n-k}\right) &= \sum_{n=0}^\infty \sum_{k=0}^\infty a_k a_{n-k} x^k y^{n-k}
+   \sum_{n=0}^\infty \left( a_n \cdot \sum_{k=0}^\infty {n \choose k} x^k y^{n-k}\right) &= \sum_{n=0}^\infty \sum_{k=0}^k a_k a_{n-k} x^k y^{n-k}
 \end{align*}
 %
 Da die Potenzen $x^k, y^{n-k}$ passen (auf beiden Seiten), können die Koeffizienten per Induktion abgeglichen werden: $a_n = \frac{1}{n!}$\\
