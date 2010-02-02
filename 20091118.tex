@@ -96,9 +96,6 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
 \end{tikzpicture}
 \end{center}
 
-
-\subsubsection*{Unstetigkeiten}
-
 \begin{figure}[h]\centering
 
   \subfloat[Sprünge]{
@@ -131,10 +128,11 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
  %\node at (0,-1) {Polstellen};
 \end{tikzpicture}
   }
+  \caption{Unstetigkeiten}
 \end{figure}
 
 
-\begin{theorem}[$\delta-\epsilon$-Charakterisierung analog zur Folgenkonvergenz]
+\begin{theorem}[$\delta-\epsilon$-Charakterisierung analog zur Folgenkonvergenz]\label{thm:delta_epsilon}
   Für $f: I \to \mathbb{R}, x_0 \in I$ sind äquivalent:
   \begin{enumerate}
     \item $f$ stetig in $x_0$ (d. h. $\displaystyle\lim_{x\rightarrow x_0} f(x) = f(x_0)$)
@@ -167,7 +165,7 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
 
 \begin{example}
   \begin{itemize}
-    \item $\sin(\frac 1 x)$: unstetig
+    \item $\sin\left(\frac 1 x\right)$: unstetig
     \begin{center}
       \begin{tikzpicture}
         \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
@@ -176,7 +174,7 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
       \end{tikzpicture}
     \end{center}
 
-    \item $x \cdot \sin(\frac 1 x)$: stetig ergänzbar an der Stelle 0, da Nullfolge $\cdot$ beschränkte Folge = Nullfolge (siehe Rechenregeln auf Seite \pageref{ssub:nullfolgen})
+    \item $x \cdot \sin\left(\frac 1 x\right)$: stetig ergänzbar an der Stelle $0$, da Nullfolge $\cdot$ beschränkte Folge = Nullfolge (siehe Rechenregeln auf Seite \pageref{ssub:nullfolgen})
     \begin{center}
       \begin{tikzpicture}
         \draw[->,semithick] (-2.1,0) -- (2.1,0) node[below]{x};
