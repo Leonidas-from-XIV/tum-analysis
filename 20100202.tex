@@ -1,0 +1,71 @@
+\lecture{2010-02-02}
+
+\begin{theorem}[Eigenschaften des Riemann-Integrals]
+  Seien $f$ und $g$ integrierbar über $[a,b]$.
+  \begin{enumerate}
+    \item Additivität \[ \int\limits_a^b f(x)\,\diff x = \int\limits_a^c f(x)\,\diff x + \int\limits_c^b f(x)\, \diff x \]
+    \item Verschiebung \[ \int\limits_a^b f(x)\,\diff x = \int\limits_{a+c}^{b+c} f(x-c)\,\diff x \]
+    \item Streckung  \[ \int\limits_a^b f(x)\,\diff x = \int\limits_{ka}^{kb} f\left(\frac x k\right)\,\diff x \]
+    \item Orientierung \[ \int\limits_a^b f(x)\,\diff x = - \int\limits_b^a f(x)\,\diff x \]
+    \item \emph{lineares Funktional}\todo{umstruk\-turieren}\ $\int: C^0[a,b] \to \mathbb{R}$
+      \[ \int\limits_a^b (f+g)(x)\,\diff x = \int\limits_a^b f(x)\,\diff x + \int\limits_a^b g(x)\,\diff x \]
+      \[ \lambda \in \mathbb{R}: \quad \int\limits_a^b \lambda f(x)\,\diff x  = \lambda \int\limits_a^b f(x)\,\diff x \]
+    \item $(f \cdot g)$ (Produkt) ist integrierbar
+    \item $\left| f \right|$ ist integrierbar mit
+      \[ \left| \int\limits_a^b f(x)\,\diff x\right| = \int\limits_a^b \left| f(x) \right| \,\diff x \]
+    \item $f(x) \geq 0$ auf $[a,b]$ $\implies$ $\ds \int\limits_a^b f(x)\,\diff x \geq 0$
+    \item $f(x) \geq g(x)$ auf $[a,b]$ $\implies$ $\ds \int\limits_a^b f(x)\,\diff x \leq \int\limits_a^b g(x)\,\diff x$
+    \item $m \leq f(x) \leq M$ auf $[a,b]$ $\implies$ $\ds m(b-a) \leq \int\limits_a^b f(x)\,\diff x \leq M(b-a)$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{Stammfunktion, Hauptsatz}
+
+Ziel: Zusammenhang zwischen Differential- und Integralrechnung\\
+Hinweis: $\int\limits_0^b x^n\,\diff x = \frac{b^{n+1}}{n+1} \leadsto$ Ableitung $x^n$
+
+\begin{definition}[Stammfunktion $F$]
+  Sei $f: [a,b] \to \mathbb{R}$ integrierbar (damit beschränkt). Dann ist die Stammfunktion
+  \[ F(x) = \int\limits_a^x f(t)\,\diff t \]
+\end{definition}
+
+\begin{theorem}[Hauptsatz der Differential- und Integralrechnung]
+  \begin{enumerate}
+    \item $F$ ist stetig
+    \item $f$ stetig in $x_0$ $\implies$ $F$ differenzierbar in $x_0$ mit $F'(x_0) = f(x_0)$
+    \item $\ds \int\limits_a^b f(t)\,\diff t = F(x)\big|_a^b = F(b) - F(a)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $f$ integrierbar $\implies$ $f$ beschränkt, d. h. es existiert ein $L \in \mathbb R$ mit $\left|f(x)\right| \leq L$ in $a\leq x \leq b$
+      \begin{align*}
+        \left| F(x) - F(y) \right| &= \left| \int\limits_a^y f(t)\,\diff t - \int\limits_a^x f(t)\,\diff t \right|\\
+        &= \left| \int\limits_x^y f(t)\,\diff t \right |\\
+        &\leq \int\limits_x^y \left| f(t) \right| \,\diff t\\
+        &\leq \int\limits_x^y L\,\diff t\\
+        &= L\cdot (y-x)
+      \end{align*}
+      Sei nun $\delta = y-x$. Wähle $\varepsilon = \frac \delta L$, dann folgt mittels Satz \ref{thm:delta_epsilon} (Seite \pageref{thm:delta_epsilon}) die Behauptung, da:
+      \[ \left| y - x \right| < \delta \implies \left| F(y) - F(x) \right| < \varepsilon \]
+      Ergebnis: $F$ ist stetig
+      \todo[inline]{der vorletzte Schritt war versehen mit "`da $y \geq x$ bzw. $y \leq x$"' -- prüfen}
+    \item Differentialquotient
+      \begin{align*}
+        \left| \underbrace{\frac{F(x)-F(x_0)}{x-x_0}}_{= \frac{\Delta F}{\Delta x}} - f(x_0) \right|
+        &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x f(t)\,\diff t - \textcolor{blue}{f(x_0)} \right|\\
+        &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x f(t)\,\diff t - \textcolor{blue}{\frac 1 {x-x_0} \int\limits_{x_0}^x f(x_0)\,\diff t} \right| \\
+        &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x \left( f(t) - f(x_0) \right) \,\diff t \right| \\
+        &\leq \frac{1}{x-x_0} \cdot \varepsilon (x-x_0) = \varepsilon
+      \end{align*}
+      \todo[inline]{schwarze Magie}
+  \end{enumerate}
+\end{proof}
+
+\begin{note}
+  \begin{itemize}
+    \item Integrale können jetzt ohne Ober-/Untersummen beschrieben werden
+    \item Integrale können als "`Umkehrung"' der Differentiation aufgefasst werden $\leadsto$ Suche nach Stammfunktion
+  \end{itemize}
+\end{note}
