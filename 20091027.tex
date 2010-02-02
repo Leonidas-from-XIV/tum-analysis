@@ -89,8 +89,8 @@ Wunsch: in der Nähe von 1, d. h. $1+x$ für kleine $x$, soll der lineare Term d
 \begin{definition}[$n$-te Wurzel]\flush
  $x\in \mathbb{R}$
  \begin{align*}
-  x \geq 0,\; n \text{ gerade} &\Rightarrow \exists_{y \in \mathbb{R}} \left( y >= 0 \Rightarrow y^n = x \right) \\
-  x \text{ bel.},\; n \text{ ungerade} &\Rightarrow \exists_{y \in \mathbb{R}} \left( y^n = x \right) \\
+  x \geq 0,\; n \text{ gerade} &\implies \exists_{y \in \mathbb{R}} \left( y >= 0 \Rightarrow y^n = x \right) \\
+  x \text{ bel.},\; n \text{ ungerade} &\implies \exists_{y \in \mathbb{R}} \left( y^n = x \right) \\
  \end{align*}
 Bezeichnung: $y = \sqrt[n]{x} = x^\frac 1 n$\\
 Problem: $\sqrt{-1}$ sprengt $\mathbb{R}$, Definition der imaginären Einheit $\imag$\\$\leadsto$ komplexe Zahlen $\mathbb{C}$ (später)
@@ -125,21 +125,20 @@ Zusammenhang zwischen Addition von Zahlen und Potenzbildung: $(a+b)^n$
 %
 Aufbau der Koeffizienten: "`Pascalsches Dreieck"'
 
-\begin{definition} Binomialkoeffizient ("`$n$ über $k$"'):
- \begin{equation*} n,k \in \mathbb{N}_0: {n \choose k} := \frac{n!}{k!(n-k)!}\end{equation*}
+\begin{definition}[Binomialkoeffizient ("`$n$ über $k$"')]
+ \[ n,k \in \mathbb{N}_0: {n \choose k} := \frac{n!}{k!(n-k)!} \]
  (Bruch, aber ganzzahlig)
 \end{definition}
 
-\paragraph{rekursive Berechnung} $n,k \in \mathbb{N}, k < n$
-\begin{equation*} {n+1 \choose k} = {n \choose k-1} + {n \choose k} \end{equation*}
-%
-Beweis aus Definition/Pascalsches Dreieck
-
-\begin{proposition} Binomischer Lehrsatz:
- \begin{equation*} x,y \in \mathbb{R}, n \in \mathbb{N} \Rightarrow \sum_{k=0}^n \left( {n \choose k} \;\cdot\; x^{n-k}y^k \right) \end{equation*}
+\begin{proposition}[rekursive Berechnung] $n,k \in \mathbb{N}, k < n$
+  \[ {n+1 \choose k} = {n \choose k-1} + {n \choose k} \]
 \end{proposition}
-%
-Beweis: 2. Übung
+
+\noindent Beweis aus Definition/Pascalsches Dreieck
+
+\begin{proposition}[Binomischer Lehrsatz]
+ \[ x,y \in \mathbb{R}, n \in \mathbb{N} \implies (x+y)^n =  \sum_{k=0}^n \left( {n \choose k} x^{n-k}y^k \right) \]
+\end{proposition}
 
 \section{Komplexe Zahlen $\mathbb{C}$}
 
