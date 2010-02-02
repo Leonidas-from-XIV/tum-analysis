@@ -116,12 +116,12 @@ Die Stützstellen sind dabei (aus Bequemlichkeit) äquidistant. Betrachtet man n
 	f&: \text{ Integrand} \\
 	x&: \text{ Integrationsvariable}\\
 	a,b&: \text{ untere/obere Integrationsgrenze}\\	
-	\int_a^b \,\diff x &:\text{ Integrationssymbol}
+	\int\limits_a^b \,\diff x &:\text{ Integrationssymbol}
 \end{align*}
 
 \begin{example}[\mbox{$f(x)=x$ in $[0,b]$}]
 	\[
-		\int_0^b f(x) \,\diff x = \int_0^b x \,\diff x = I_f = b \cdot b \cdot \frac{1}{2} = \frac{1}{2} b^2
+		\int\limits_0^b f(x) \,\diff x = \int\limits_0^b x \,\diff x = I_f = b \cdot b \cdot \frac{1}{2} = \frac{1}{2} \cdot b^2
 	\]
 \end{example}
 
@@ -143,7 +143,7 @@ Die Stützstellen sind dabei (aus Bequemlichkeit) äquidistant. Betrachtet man n
 \subsubsection*{Riemann-Formalismus}
 Testfall:
 \begin{align*}
-	Z_n &= \left\{0,\frac{b}{n},\frac{2b}{n},\ldots,\frac{(n-1)b}{n}, b\right\} \\
+	Z_n &= \left\{0,\frac{b}{n},\frac{2b}{n},\ldots,\frac{(n-1)\cdot b}{n}, b\right\} \\
 	\quad h &= \frac{b}{n} \quad x_k=h \cdot k \quad k=0,\ldots,n \qquad \text{(äquidistante Stützstellen)} 
 \end{align*}
 
@@ -165,10 +165,10 @@ Testfall:
 
 \begin{note}
 	\begin{itemize}
-		\item gleiche Technik für \( \ds\int_0^b x^p\,\mathrm{d}x= \frac{b^{p+1}}{p+1}, \;p \geq 1 \)
+		\item gleiche Technik für \( \ds\int\limits_0^b x^p\,\mathrm{d}x= \frac{b^{p+1}}{p+1}, \;p \geq 1 \)
 		\newline Achtung (Umkehrschluss): Differentiation \( \ds\frac{x^{p+1}}{p+1} \rightarrow \underbrace{x^p}_{=\text{Integrand}} \)
 		\item monotone Funktion \( \leadsto \) integrabel
-		\item stetige Funktion \( \leadsto \) integrabel.
+		\item stetige Funktion \( \leadsto \) integrabel
 	\end{itemize}	
 \end{note} 
 
@@ -177,11 +177,13 @@ approximiere den Wert des Integrals\\
 (Stammfunktion-Suche über symbolische Verarbeitung (Maple, Bronstein))
 
 \begin{itemize}
-	\item brutal: \( y(t) = \int_0^t f(x) \,\diff x \implies \text{Differentialgleichung} \quad \dot{y} = f(t) \) \newline \( \leadsto \) ODE-Software Matlab/Mathematica
+	\item brutal: \( y(t) = \int\limits_0^t f(x) \,\diff x \implies \text{Differentialgleichung} \quad \dot{y} = f(t) \) \newline \( \leadsto \) ODE-Software Matlab/Mathematica
 	\item besser: Quadraturformeln
 \end{itemize}
 
-\minisec{1. Verfahren: Rechteckregel $[a,b]$}
+\begin{enumerate} % Einfügen der Trapezsumme hier, da es sich um eine einzige Aufzählung handelt
+  
+	\item Rechteckregel $[a,b]$
 \begin{align*}
 	x_k &= a+ k \cdot\frac{b-a}{n} \qquad h= \frac{b-a}{n} \qquad \text{(äquidistante Stützstellen)} \\
 	t_k &= x_{k-1}+\frac{x_k-x_{k-1}}{2}= \frac{x_k+x_{k-1}}{2}
@@ -216,16 +218,43 @@ approximiere den Wert des Integrals\\
 %\todo[inline]{Das letzte Rechteck scheint mir falsch gezeichnet, so stands aber an der Tafel.}
 % meiner Ansicht nach korrekt. Entspricht der Rechtecksregel --LH
 
-\[ \int_a^b f(x) \,\diff x \mathrel{\dot{=}} \underbrace{\frac{b-a}{n} \cdot\sum_{k=1}^n f(t_k)}_{\text{mittels Rechner auswerten}} \]
+\begin{definition}[Rechteckregel]
+\[ \int\limits_a^b f(x) \,\diff x \mathrel{\dot{=}} \underbrace{\frac{b-a}{n} \cdot\sum_{k=1}^n f(t_k)}_{\text{mittels Rechner auswerten}} \]
+\end{definition}
+
+	\item Trapezsummen
+	
+	\missingfigure{Grafik Trapezfläche}
+	
+	$h = \frac 1 2 (f_L + f_R)$\\
+	$F_\text{Trapez}  = \frac 1 2 (x_R - x_L) (f_L + f_R)$
+	
+	\missingfigure{Grafik Trapezsumme}
+	
+	\begin{definition}[Trapezregel]
+	\begin{align*}
+		\int\limits_a^b f(x) \,\diff x &
+		\mathrel{\dot{=}} \frac{b-a}{n}\cdot \frac 1 2 \sum_{k=1}^n \left( f(x_{k-1}) + f(x_k) \right) \\
+		&= \frac{b-a}{n} \left(\frac 1 2 \cdot f(a) + \left( \sum_{k=1}^n f(x_k) \right) + \frac 1 2 \cdot f(b) \right) \\
+	\end{align*}
+	\end{definition}
+	
+	\begin{note}
+		Die Trapezsumme ist für $2 \pi$-periodische Funktionen (z. B. Signalverarbeitung, Fourierentwicklung) die "`beste"' Quadraturformel.
+	\end{note}
 
 
-\minisec{Praxis}
+\end{enumerate}
+
+\subsubsection*{Praxis}
 Auswertungsreihe: \( n=8, 16, 32, 64, \ldots \) \newline
 vergleiche \( I_8,I_{16}, I_{32}, \ldots\) auf stehende führende Dezimale
 
+\begin{example}
 \begin{align*}
 	I_8 &= \underline{1},0578 \\
 	I_{16} &= \underline{1,2}569 \\
 	I_{32} &= \underline{1,24}87 \\
 	I_{64} &= \underline{1,249}3 \\
 \end{align*}
+\end{example}
