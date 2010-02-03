@@ -53,7 +53,7 @@ Hinweis: $\int\limits_0^b x^n\,\diff x = \frac{b^{n+1}}{n+1} \leadsto$ Ableitung
       \todo[inline]{der vorletzte Schritt war versehen mit "`da $y \geq x$ bzw. $y \leq x$"' -- prüfen}
     \item Differentialquotient
       \begin{align*}
-        \left| \underbrace{\frac{F(x)-F(x_0)}{x-x_0}}_{= \frac{\Delta F}{\Delta x}} - f(x_0) \right|
+        \biggl| \underbrace{\frac{F(x)-F(x_0)}{x-x_0}}_{= \frac{\Delta F}{\Delta x}} - f(x_0) \biggr|
         &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x f(t)\,\diff t - \textcolor{blue}{f(x_0)} \right|\\
         &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x f(t)\,\diff t - \textcolor{blue}{\frac 1 {x-x_0} \int\limits_{x_0}^x f(x_0)\,\diff t} \right| \\
         &= \left| \frac{1}{x-x_0} \int\limits_{x_0}^x \left( f(t) - f(x_0) \right) \,\diff t \right| \\
