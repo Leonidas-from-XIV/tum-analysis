@@ -1,59 +1,58 @@
-\lecture{2010-02-02}
+\lecture{2010-02-03}
+% Fortführung der example-Umgebung
 
-    \item $y_0 = 3,55 10^9$ Menschen
-  \end{itemize}
-
-\subsubsection{Umskalierung}
-
-Keine absoluten Zahlen, sondern Vielfache des Anfangswerts.
+\minisec{Umskalierung}
+keine absoluten Zahlen, sondern Vielfache des Anfangswerts
 
 \begin{align*}
-	y(t) &= y_0 \alpha (t) \\
-	N &= \beta y_0 \text{\hspace{10px}($\beta \approx 5$)} \\
-	\Rightarrow \dot u &= c_0 \left( \frac{\beta - n}{\beta - 1} \right)^k u \\
-	\text{dann ist\hspace{10px}} \dot y &= c y = \alpha (N - y)^k y = c_0 \frac{(N - y)^k}{(N - y_0)^k} y \\
-	y_0 \dot u &= c_0 \frac{ (\beta y_0 - y_0 u)^k }{ ( \beta y_0 - y_0 )^k } y_0 u
+	y(t) &= y_0 \cdot \alpha (t) \\
+	N &= \beta \cdot y_0 \qquad\text{(mit $\beta \approx 5$)} \\
+	\implies \dot u &= c_0 \left( \frac{\beta - u}{\beta - 1} \right)^k u \\
+	\text{denn}\quad \dot y &= c y = \alpha (N - y)^k \cdot y \\
+	&= c_0 \cdot \frac{(N - y)^k}{(N - y_0)^k} \cdot y \\
+	&= c_0 \cdot \frac{(\beta y_0 - y_0 u)^k}{(\beta y_0 - y_0)^k} \cdot y_0 u \\
+	y_0 \dot u &= c_0 \cdot \frac{ (\beta - u)^k }{ ( \beta - 1 )^k } \cdot y_0 u \\
+	\dot u &= c_0 \cdot \frac{ (\beta - u)^k }{ ( \beta - 1 )^k } \cdot u
 \end{align*}
-\begin{note}$\dot u$ ist separable DGL\end{note}
-
-\subsubsection{DGL-Diskussion}
+\minisec{Diskussion der DGL}
+$\dot u$ ist separabel
 \begin{align*}
 \dot u(t) &= c_0 \left( \frac{ \beta - u }{\beta - 1} \right)^k u \\
-u(0) &= 1 \text{\hspace{10px}(1969-Anfangswert)} \\
+u(0) &= 1 \qquad\text{(Anfangswert von 1969)} \\
 c_0 &= 0,02 \\
 \beta &= 5
 \end{align*}
 
-\subsubsection{1. Spiel: $ k = 0 $}
+\begin{description}
+  \item[1. Spiel: $ k = 0 $]
 \begin{equation*}
-	\dot u = 0,02 u \Rightarrow u(t) = e^{0,02 t}
+	\dot u = 0,02 \cdot u \implies u(t) = e^{0,02 \cdot t}
 \end{equation*}
-zu "primitiv" \\
-\begin{note}Achtung: lineare Modelle sind für Prognosen untauglich!\end{note}
+zu "`primitiv"'
+\begin{note}lineare Modelle sind für Prognosen untauglich\end{note}
 
-\subsubsection{2. Spiel: $ k = 1 $}
+  \item[2. Spiel: $ k = 1 $]
 \begin{equation*}
-	\dot u = c_0 \frac{\beta - u}{\beta - 1} u
+	\dot u = c_0 \cdot \frac{\beta - u}{\beta - 1} \cdot u
 \end{equation*}
-"nicht linear" $\Rightarrow$ Kandidat für Prognose
+nicht linear $\leadsto$ Kandidat für Prognose
 
 \begin{align*}
-	(\beta - 1) \int_1^u \frac{ds}{(\beta - s) s} &= \int_0^t c_0 dx %\\
-	%\frac{1}{\beta} \left( \frac{1}{\beta - s} &+ \frac{1}{s} \right) \\
-\end{align*}
-\begin{align*}
-\Rightarrow &\frac{\beta - 1}{\beta} \left( \int_1^u \frac{ds}{\beta - s} + \int_1^u \frac{ds}{s}\right) = c_0 \int_0^t dx \\
-\Rightarrow &\frac{\beta - 1}{\beta} \left( ln(\beta - s) | + ln s| \right) = c_0 x| \\
-\Rightarrow &\frac{\beta - 1}{\beta} \left( ln(\beta-n) - ln(\beta -1) + ln u - ln 1 \right) = c_0 t \\
-= &\frac{\beta - 1}{\beta} ln \frac{u (\beta -u) }{\beta - 1} = c_0 t
+(\beta - 1) \cdot\frac{\diff u}{(\beta - u) u} &= c_0 \diff t \\
+(\beta - 1) \int\limits_1^u \underbrace{\frac{\diff s}{(\beta - s) s}}_{= \frac 1 \beta \left( \frac 1 {\beta - s} + \frac 1 s \right)} &= \int\limits_0^t c_0 \diff x \\
+\frac{\beta - 1}{\beta} \left( \int\limits_1^u \frac{\diff s}{\beta - s} + \int\limits_1^u \frac{\diff s}{s}\right) &= c_0 \int\limits_0^t \diff x \\
+\frac{\beta - 1}{\beta} \cdot \left( \ln(\beta - s) \big\vert_1^u + \ln s\big\vert_1^u \right) &= c_0 \left( x\big\vert_0^t \right) \\
+\frac{\beta - 1}{\beta} \cdot \left( \ln(\beta-n) - \ln(\beta -1) + \ln u - \ln 1 \right) &= c_0 t \\
+\frac{\beta - 1}{\beta} \cdot \ln \left( \frac{u (\beta -u) }{\beta - 1} \right) &= c_0 t
 \end{align*}
 
-Implizite Lösung der DGL!
+implizite Lösung der DGL
 
-\subsubsection{3. Spiel: $ k = 2 $}
-Zum Selbststudium.
+  \item[3. Spiel: $ k = 2 $] (Selbststudium)
 
-\subsubsection{Plots}
+\end{description}
+
+\minisec{Plots}
 \missingfigure{Plots}
 \end{example}
 
