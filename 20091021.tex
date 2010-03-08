@@ -93,21 +93,18 @@ zu zeigen: $|a+b| \leq |a|+|b|$
   \begin{align*}
     -|a|&\leq a &\leq |a| \\
     -|b|&\leq b &\leq |b| \\
-    \Rightarrow -(|a|+|b|)&\leq a+b &\leq |a|+|b| \\
+    \implies -(|a|+|b|)&\leq a+b &\leq |a|+|b| \\
     -(|a|+|b|)&\leq |a+b| &\leq |a|+|b|
   \end{align*}
 \end{proof}
 
-%Abstandsmessung $|x-a| \leq \epsilon$\todo{unklar}
-
 \subsubsection*{Rechenbeispiel}
 
 \begin{example}
-%%% Rechenbeispiel in der vorh. Version war offensichtlich falsch. Ich hab die Aufgabenstellung so
-%%% angepasst, dass die Lösungsmenge nun korrekt sein sollte.
-%%% --janosch
-% $x\in \mathbb{R}$ gesucht mit $\frac{3}{x-9} \leq \frac{2}{x+2}$. Nenner $x\neq9 \land x\neq -2$
-$x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$, Nenner $x\neq9 \land x\neq -2$
+% Rechenbeispiel in der vorh. Version war offensichtlich falsch. Ich hab die Aufgabenstellung so
+% angepasst, dass die Lösungsmenge nun korrekt sein sollte.
+% --janosch
+$x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$, Nenner $x\neq9 \wedge x\neq -2$
 
 \begin{center}
  \begin{tikzpicture}[line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
@@ -132,26 +129,26 @@ $x\in \mathbb{R}$ gesucht mit $\frac{3}{|x-9|} > \frac{2}{x+2}$, Nenner $x\neq9 
 \begin{itemize}
  \item Diskussion von $M_1: x < -2$
 \begin{align*}
-|x-9|>0 &\Rightarrow \frac{3}{|x-9|} > 0 \\
-x<-2 &\Rightarrow x+2<0 \Rightarrow \frac{2}{x+2}<0
+|x-9|>0 &\implies \frac{3}{|x-9|} > 0 \\
+x<-2 &\implies x+2<0 \implies \frac{2}{x+2}<0
 \end{align*}
 ganz $M_1$ zulässig
  \item Diskussion von $M_2: -2<x<9$
 \begin{align*}
-\Rightarrow x+2 &> 0 \\
-x-9&<0 \Rightarrow |x-9|=9-x \\
-\textrm{zu prüfen:} \\
+\implies x+2 &> 0 \\
+x-9&<0 \implies |x-9|=9-x
+\intertext{zu prüfen:}
 \frac{3}{9-x} &> \frac{2}{x+2} \textrm{ (Betrag entfernt)} \\
 3x+6 &> 18-2x \\
-x &> \frac{12}{5} = 2 \frac{2}{5} \\
+x &> \frac{12}{5} = 2 + \frac{2}{5} \\
 \end{align*}
 erlaubt: $\frac{12}{5}<x<9$
 
  \item Diskussion von $M_3: x>9$
 \begin{align*}
- \Rightarrow \overbrace{|x-9|}^{>0} = x-9 \\
+ \Rightarrow \underbrace{|x-9|}_{>0} = x-9 \\
 \frac{3}{x-9} > \frac{2}{x+2} \\
-\Rightarrow x>-24
+\implies x>-24
 \end{align*}
 $M_3$ zulässig
 
@@ -190,10 +187,10 @@ Ergebnis: $\{x|x<-2, \frac{12}{5}<x<9, 9<x\}$
     \end{center}
 
     \begin{align*}
-    |x|+|y| \leq 1 \implies &x \geq 0, y \geq 0: x+y \leq 1 \Rightarrow y \leq 1-x \\
-            &x \geq 0, y < 0: x-y \leq 1 \Rightarrow y \geq -1+x \\
-            &x < 0, y \geq 0: -x+y \leq 1 \Rightarrow y \leq 1+x \\
-            &x < 0, y < 0: -x-y \leq 1 \Rightarrow y \geq -1-x \\
+    |x|+|y| \leq 1 \implies &x \geq 0, y \geq 0: x+y \leq 1 \implies y \leq 1-x \\
+            &x \geq 0, y < 0: x-y \leq 1 \implies y \geq -1+x \\
+            &x < 0, y \geq 0: -x+y \leq 1 \implies y \leq 1+x \\
+            &x < 0, y < 0: -x-y \leq 1 \implies y \geq -1-x \\
     \end{align*}
   
   \item

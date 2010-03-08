@@ -84,10 +84,10 @@
   \theoremstyle{ourthmstyle_#1}
 }
 
-% JP: Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
-% damit der erste Punkt nicht neben "Beispiel X" steht, sondern darunter.
+% Falls ein Beispiel direkt mit einer Auflistung anfängt, wird eine neue Zeile eingefügt,
+% damit der erste Punkt nicht neben "Beispiel X" steht, sondern darunter. --janosch
 
-% LH: Auf beliebige amsthm-Umgebungen erweitert
+% Auf beliebige amsthm-Umgebungen erweitert --lars
 \newcommand{\newtheoremenv@flush}{\leavevmode\newline\vspace*{-1.5em}}
 \newcommand{\newtheoremenv@noflush}{}
 \newcommand{\newtheoremenv@autoflush}{\@ifnextchar\begin \newtheoremenv@flush \newtheoremenv@noflush}
@@ -106,8 +106,9 @@
 
 %%% amsthm styles
 
-% LH: Anpassung von AMS-Theorem an den Style der Überschriften
+% Anpassung von AMS-Theorem an den Style der Überschriften
 % von http://en.wikibooks.org/w/index.php?title=LaTeX/Theorems&oldid=1645789
+% --lars
 \newtheoremstyle{ourthmstyle_default} % means AMS default (itseries)
 { }% measure of space to leave above the theorem. E.g.: 3pt
 { }% measure of space to leave below the theorem. E.g.: 3pt
@@ -179,8 +180,8 @@ basicstyle=\small\ttfamily , identifierstyle=, xleftmargin=0pt, xrightmargin=0pt
 
 %%% matrix column alignment
 
-% JP: Mit folgendem neu definierten matrix-command, können die
-% Elemente einer Matrix nun ausgerichtet werden [l,r,c]
+% Mit folgendem neu definierten matrix-command, können die
+% Elemente einer Matrix nun ausgerichtet werden [l,r,c] --janosch
 \makeatletter
 \renewcommand*\env@matrix[1][c]{\hskip -\arraycolsep
   \let\@ifnextchar\new@ifnextchar
