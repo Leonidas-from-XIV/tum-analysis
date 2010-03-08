@@ -115,27 +115,27 @@ Es existiert ein $x_0$ mit $a < x_0 < b$ so, dass die Sekantensteigung an den En
 		\intertext{Wie leicht zu sehen ist gilt:}
 		h(a) &= f(a)\text{ und }h(b) = f(a) \\
 		\intertext{aus dem Satz von Rolle folgt:}
-		&\exists x_0 : h'(x_0) = 0 \Rightarrow f'(x_0) = \frac{f(b) - f(a)}{b - a}
+		&\exists x_0 : h'(x_0) = 0 \implies f'(x_0) = \frac{f(b) - f(a)}{b - a}
 	\end{align*}
 \end{proof}
 Folgerung für Differentialgleichungen:
 \begin{equation*}
-	\forall x : a < x < b \land f'(x) = 0 \Rightarrow f(x) = const \text{ einzige Lösung}
+	\forall x : a < x < b \land f'(x) = 0 \implies f(x) = const \text{ einzige Lösung}
 \end{equation*}
 \begin{proof}[Beweis für 1. MWS]
 	\begin{equation*}
-		\exists x_0 : 0 = f'(x_0) = \frac{f(x) - f(a)}{x - a} \Rightarrow f(x) = f(a) = const
+		\exists x_0 : 0 = f'(x_0) = \frac{f(x) - f(a)}{x - a} \implies f(x) = f(a) = const
 	\end{equation*}
-	$\Rightarrow$ Konstante löst allgemein: $\dot s = 0 \Rightarrow s = c$.
+	$\implies$ Konstante löst allgemein: $\dot s = 0 \implies s = c$.
 \end{proof}
 
 \subsubsection*{Monotone Funktionen}
 \begin{enumerate}
-	\item $f'(x) \geq 0 \Rightarrow f$ ist monoton wachsend
-	\item $f'(x) \leq 0 \Rightarrow f$ ist monoton fallend
+	\item $f'(x) \geq 0 \implies f$ ist monoton wachsend
+	\item $f'(x) \leq 0 \implies f$ ist monoton fallend
 \end{enumerate}
 \begin{example}
-	z. z. \[f'(x_0) < 0 \Rightarrow x_1 > x_2 \Rightarrow f(x_1) < f(x_2)\]
+	z. z. \[f'(x_0) < 0 \implies x_1 > x_2 \implies f(x_1) < f(x_2)\]
 	\[\cfrac{f(x_1) - f(x_2)}{\underbrace{x_1 - x_2}_{> 0}} = f'(x_0) < 0\]
 \end{example}
 
@@ -144,8 +144,8 @@ Folgerung für Differentialgleichungen:
 	Die zweite Ableitung von $f$ beschreibt die Krümmung.
 \end{note}
 \begin{enumerate}
-	\item $f''(x) > 0 \Rightarrow y = f(x)$ ist konvex (Linkskrümmung)
-	\item $f''(x) < 0 \Rightarrow y = f(x)$ ist konkav (Rechtsskrümmung)
+	\item $f''(x) > 0 \implies y = f(x)$ ist konvex (Linkskrümmung)
+	\item $f''(x) < 0 \implies y = f(x)$ ist konkav (Rechtsskrümmung)
 \end{enumerate}
 Für den Wendepunkt gilt: $f''(x_0) = 0$ ist notwendig ($f'''(x_0) \neq 0$ ist hinreichend).
 \begin{example}

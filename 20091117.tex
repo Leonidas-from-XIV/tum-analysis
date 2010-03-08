@@ -41,10 +41,10 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
   \begin{enumerate}
     \item nach unten durch $0$ beschränkt
     \item monoton fallende Folge
-    \item[$\Rightarrow$] es existiert ein Infimum $\inf p_n$ $\equals$ Grenzwert
+    \item[$\implies$] es existiert ein Infimum $\inf p_n$ $\equals$ Grenzwert
     \item
       \begin{equation*}
-        \liminfty{p_n} = \frac{\ds \liminfty{p_{n-1}V}+p_0R}{V+R+Z} \Rightarrow
+        \liminfty{p_n} = \frac{\ds \liminfty{p_{n-1}V}+p_0R}{V+R+Z} \implies
         p^\ast = \frac{p^\ast V+p_0R}{V+R+Z} = \frac{p_0R}{R+Z}
       \end{equation*}
   \end{enumerate}
@@ -66,9 +66,9 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
 \end{note}
 
 \begin{enumerate}
-  \item $a_n, b_n$ Nullfolgen $\Rightarrow$ $a_n+b_n$ Nullfolge
-  \item $a_n$ Nullfolge, $b_n$ beschränkt $\Rightarrow$ $a_n\cdot b_n$ Nullfolge
-  \item $\left|b_n\right| < \left|a_n\right|$, $a_n$ Nullfolge  $\Rightarrow$ $b_n$ Nullfolge
+  \item $a_n, b_n$ Nullfolgen $\implies$ $a_n+b_n$ Nullfolge
+  \item $a_n$ Nullfolge, $b_n$ beschränkt $\implies$ $a_n\cdot b_n$ Nullfolge
+  \item $\left|b_n\right| < \left|a_n\right|$, $a_n$ Nullfolge  $\implies$ $b_n$ Nullfolge
 \end{enumerate}
 
 \begin{lemma}[Eindeutigkeit des Grenzwerts]
@@ -84,7 +84,7 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
     & \leq \underbrace{\left| \widehat a - a_n \right|}_{< \varepsilon} + \underbrace{\left| a_n - \overline a \right|}_{< \varepsilon} \\
     & < \varepsilon + \varepsilon = 2\varepsilon
   \end{align*}
-  $\Rightarrow \overline a = \widehat a$, da $\varepsilon$ beliebig klein aber $> 0$
+  $\implies \overline a = \widehat a$, da $\varepsilon$ beliebig klein aber $> 0$
 \end{proof}
 
 \begin{example}[Anwendungen]
@@ -124,7 +124,7 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
       s_{2k+1} &= 1 + \frac 1 2 + \left( \frac 1 3 + \frac 1 4 \right) + \left( \frac 1 5 + \ldots \frac 1 8 \right) + \ldots + \left(\frac 1 {2^k+1} + \ldots + \frac 1 {2^{k+1}}\right) \\
       &\geq 1 + \frac 1 2 + 2 \cdot \frac 1 4 + 4 \cdot \frac 1 8 + \ldots + 2^k \cdot\frac 1 {2^{k+1}}\\
       &= \frac{k+3} 2 \\
-      \Rightarrow \liminfty[k]{s_{2k+1}} &= \infty
+      \implies \liminfty[k]{s_{2k+1}} &= \infty
     \end{align*}
     %
     \begin{note}
@@ -148,7 +148,7 @@ zu jedem $\varepsilon > 0$ ex. $n_\varepsilon$ mit $\alpha-\varepsilon < a_{n_\v
         \begin{equation*}
           b_{n+1} = 1 + \frac 1 {1!} + \ldots + \frac 1 {(n+1)!} = b_n + \frac 1 {(n+1)!} > b_n
         \end{equation*}
-      \item[$\Rightarrow$] konvergent, Grenzwert $\leq 3$
+      \item[$\implies$] konvergent, Grenzwert $\leq 3$
     \end{enumerate}
 
 \end{enumerate}

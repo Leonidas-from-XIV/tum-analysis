@@ -4,7 +4,7 @@
 \begin{align*}
 	z &= |z|(\cos \varphi + \imag \sin \varphi) \\
 	w &= |w|(\cos \psi + \imag \sin \psi) \\
-	\Rightarrow zw &= |z||w|\left((\cos \varphi \cos \psi - \sin \varphi \sin \psi) + \imag (\cos \varphi \sin \psi + \sin\varphi \cos \psi)\right) \\
+	\implies zw &= |z||w|\left((\cos \varphi \cos \psi - \sin \varphi \sin \psi) + \imag (\cos \varphi \sin \psi + \sin\varphi \cos \psi)\right) \\
 	\intertext{Aus den Additionstheoremen für trigonometrische Funktionen folgt:}
 	&= |z||w|\left(\cos(\varphi + \psi) + \imag \sin(\varphi + \psi)\right)
 \end{align*}
@@ -47,7 +47,7 @@ Produkt $z \cdot w$: Produkt der Beträge und Addition der Winkel
 	z^2 &= |z|^2(\cos 2\varphi + \imag \sin 2\varphi) \\
 	\vdots \\
 	z^n &= |z|^n(\cos n\varphi + \imag \sin n\varphi) \\
-	\text{für } |z| = 1 \Rightarrow z^n &= (\cos \varphi + \imag \sin \varphi)^n = \cos n\varphi + \imag \sin n\varphi \text{ (Formel von Moivre)}
+	\text{für } |z| = 1 \implies z^n &= (\cos \varphi + \imag \sin \varphi)^n = \cos \left(n\varphi\right) + \imag \sin \left(n\varphi\right) \text{ (Formel von Moivre)}
 \end{align*}
 %
 Rückwärts gelesen als "`Wurzel ziehen"'
@@ -62,14 +62,14 @@ Rückwärts gelesen als "`Wurzel ziehen"'
 	\begin{align*}
 		\omega_k &:= \cos\frac{2\pi k}{n} + \imag \sin\frac{2\pi k}{n} \\
 		\text{mit } k &= 0, 1, 2, \ldots, n - 1 \\
-		\Rightarrow \omega_k^n &= 1
+		\implies \omega_k^n &= 1
 	\end{align*}
 	(mit $\cos \left(2\pi k\right) = 1 \text{ und } \sin \left(2\pi k\right) = 0$)
 \end{definition}
 
 \begin{example}
 	\begin{equation*}
-		\omega^6 = 1 \Rightarrow \omega = \sqrt[6]{1}
+		\omega^6 = 1 \implies \omega = \sqrt[6]{1}
 	\end{equation*}
 	\begin{center}
 		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
@@ -106,23 +106,28 @@ Rückwärts gelesen als "`Wurzel ziehen"'
 			\draw [color=xdxdff] (1.2,0.1) node {$\omega_6$};
 		\end{tikzpicture}
 	\end{center}
-	$n = 6$ d.h. teile Einheitskreis (mit Unfang $2\pi$) in 6 Teile. 1 Teil $\equals \frac{2\pi}{6} = \frac\pi 3 (60^\circ)$ (hier: $k = 1 \ldots n$ (statt $0 \ldots n - 1$))
+	$n = 6$, d. h. teile Einheitskreis (mit Unfang $2\pi$) in 6 Teile. 1 Teil $\equals \frac{2\pi}{6} = \frac\pi 3 (60^\circ)$ (hier: $k = 1, \ldots, n$ (statt $0, \ldots, n - 1$))
 \end{example}
 %
 \noindent Ohne Beschränkung auf Länge 1:
 \begin{gather*}
 	a = |a|(\cos \alpha + \imag \sin \alpha) \in \mathbb{C} \\
-	\Rightarrow z_n = \sqrt[n]{|a|}\left(\cos \frac{\alpha + 2\pi k}{n} + \imag \sin \frac{\alpha + 2\pi k}{n}\right) \text{ mit } k = 0\dotsc n - 1 \text{ $\ldots$"`$n$-Wurzeln"'}
+	\implies z_n = \sqrt[n]{|a|}\left(\cos \frac{\alpha + 2\pi k}{n} + \imag \sin \frac{\alpha + 2\pi k}{n}\right) \text{ mit } k = 0, \ldots, n - 1 \text{ $\ldots$ "`$n$-Wurzeln"'}
 \end{gather*}
 \begin{note}
 	Ist das reelle $\sqrt{}$-ziehen eingebettet?
+	\[
+		a \in \mathbb{R} \implies \alpha = 0
+	\]
+	\[
+		\begin{aligned}
+			\cos 0 &= 1 \text{, } & \sin 0 &= 0 && (k = 0) \\
+			\cos \pi &= -1 \text{, } & \sin \pi &= 0 && (k = 1)
+		\end{aligned}
+	\]
+	Daher ergeben sich folgende Lösungen:
 	\begin{align*}
-		a \in \mathbb{R} &\Rightarrow \alpha = 0 \Rightarrow \\
-		&\Rightarrow \left\{\begin{aligned}
-			\cos 0 &= 1 \text{, } & \sin 0 &= 0 && (k &= 0) \\
-			\cos \pi &= -1 \text{, } & \sin \pi &= 0 && (k &= 1)
-		\end{aligned}\right. \\
-		\text{2 Lösungen: } x_1 &= \sqrt{|a|} \cdot 1 \\
+		x_1 &= \sqrt{|a|} \cdot 1 \\
 		x_2 &= \sqrt{|a|} \cdot (-1)
 	\end{align*}
 \end{note}
@@ -192,7 +197,7 @@ Im rechtwinkligen Dreieck gilt:
 	\item $\sin \alpha = \frac a c$
 	\item $\cos \alpha = \frac b c$
 	\item $a^2 + b^2 = c^2$
-	\item falls $c = 1 \Rightarrow \text{Bogenmaß}$
+	\item falls $c = 1 \leadsto \text{Bogenmaß}$
 \end{itemize}
 
 \begin{center}
@@ -237,5 +242,5 @@ Standardvektorraum ist der $\mathbb{R}^2$ bzw. $\mathbb{R}^n$ über dem Zahlenk�
 	\item skalare Multiplikation ($\lambda \in \mathbb{R}$): $\lambda \vec{x} = \lambda \begin{pmatrix}x_1 \\ x_2\end{pmatrix} = \begin{pmatrix}\lambda x_1 \\ \lambda x_2\end{pmatrix}$
 \end{itemize}
 \begin{note}
-	Drehen von Vektoren $\Rightarrow$ Matrizeneinführung $Q = \begin{pmatrix}\cos \alpha & \sin \alpha \\ -\sin \alpha & \cos \alpha\end{pmatrix}$
+	Drehen von Vektoren $\leadsto$ Matrizeneinführung $Q = \begin{pmatrix}\cos \alpha & \sin \alpha \\ -\sin \alpha & \cos \alpha\end{pmatrix}$
 \end{note}

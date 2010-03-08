@@ -5,8 +5,8 @@
 bisherige Beweistechniken:
 
 \begin{enumerate}
- \item direkter Beweis: $A \Rightarrow B$
- \item indirekter Beweis: $\neg B \Rightarrow \neg A$
+ \item direkter Beweis: $A \implies B$
+ \item indirekter Beweis: $\neg B \implies \neg A$
 \end{enumerate}
 jetzt: vollständige Induktion
 
@@ -60,11 +60,11 @@ Eng verwandt mit der vollständigen Induktion ist die Rekursion:
    \item $x^nx^m = x^{n+m}$
    \item $(x^n)^m = x^{nm}$
    \item $(xy)^n = x^ny^n$
-   \item $y \neq 0 \Rightarrow \left(\frac x y\right)^n = \frac{x^n}{y^n}$
-   \item $0 < x < y \Rightarrow 0 < x^n < y^n$
-   \item $n \geq 2, 0<x<1 \Rightarrow x^n<x<1$
-   \item $n \geq 2, x > 1 \Rightarrow x^n>x>1$
-   \item $x > 1, m > n \Rightarrow x^m > x^n$
+   \item $y \neq 0 \implies \left(\frac x y\right)^n = \frac{x^n}{y^n}$
+   \item $0 < x < y \implies 0 < x^n < y^n$
+   \item $n \geq 2, 0<x<1 \implies x^n<x<1$
+   \item $n \geq 2, x > 1 \implies x^n>x>1$
+   \item $x > 1, m > n \implies x^m > x^n$
   \end{enumerate}
   (\induction)
 \end{theorem}
@@ -80,16 +80,15 @@ Eng verwandt mit der vollständigen Induktion ist die Rekursion:
 Wunsch: in der Nähe von 1, d. h. $1+x$ für kleine $x$, soll der lineare Term den nichtlinearen Term ersetzen (Abschätzungstechnik)
 
 \begin{theorem}[Elementare Summenformel]\flush
- $q \in \mathbb{R}, n \in \mathbb{N}$
- \begin{equation*} \sum_{k=0}^n \left( q^k\right) = \begin{cases}\frac{1-q^{n+1}}{1-q} & q \neq 1 \\ n+1 & q = 1\end{cases} \end{equation*}
+  $q \in \mathbb{R}, n \in \mathbb{N}$
+  \begin{equation*} \sum_{k=0}^n \left( q^k\right) = \begin{cases}\frac{1-q^{n+1}}{1-q} & q \neq 1 \\ n+1 & q = 1\end{cases} \end{equation*}
+  \induction
 \end{theorem}
 
-\induction
-
-\begin{definition}[$n$-te Wurzel]\flush
+\begin{definition}[$n$-te Wurzel]
  $x\in \mathbb{R}$
  \begin{align*}
-  x \geq 0,\; n \text{ gerade} &\implies \exists_{y \in \mathbb{R}} \left( y >= 0 \Rightarrow y^n = x \right) \\
+  x \geq 0,\; n \text{ gerade} &\implies \exists_{y \in \mathbb{R}} \left( y \geq 0 \implies y^n = x \right) \\
   x \text{ bel.},\; n \text{ ungerade} &\implies \exists_{y \in \mathbb{R}} \left( y^n = x \right) \\
  \end{align*}
 Bezeichnung: $y = \sqrt[n]{x} = x^\frac 1 n$\\

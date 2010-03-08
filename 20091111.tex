@@ -24,11 +24,11 @@ A =
 \end{pmatrix} \quad
 b = \begin{pmatrix}	y_0 \\	y_1 \\	\vdots \\	y_n \end{pmatrix} \quad
 \vec{x} = \begin{pmatrix}	a_0 \\	a_1 \\	\vdots \\	a_n \end{pmatrix}
-\Rightarrow
+\implies
 A \cdot \vec{x} = b
 \]
 
-\noindent $\det(\text{van der Monde-Matrix}) \neq 0 \Rightarrow A\text{ regulär}$
+\noindent $\det(\text{van der Monde-Matrix}) \neq 0 \implies A\text{ regulär}$
 
 \begin{proposition}
 	Zu $(n + 1)$ Daten existiert ein Polynom vom Grad $\le n$, welches interpoliert. (Praxis: $n < 5$)
@@ -39,7 +39,7 @@ A \cdot \vec{x} = b
     \item $n$ Daten: $\mathcal O (n^3)$ Operationen (lineares Gleichungssystem)
     \item 1. Basiswechsel: Monome $x^j$ zu Lagrange-Polynome $L_n(x)$: $\mathcal O (n^2)$-Komplexität (siehe Numerikvorlesung Th. Huckle)
     \item 2. Basiswechsel: Bernsteinpolynome: $\mathcal O (n)$-Komplexität
-    \item[$\Rightarrow$] Bezier-Techniken/Bezier-Splines (Kontrollpunkte)
+    \item[$\leadsto$] Bezier-Techniken/Bezier-Splines (Kontrollpunkte)
     \todo{schön zeichnen}
   \end{itemize}
 \end{note}
@@ -53,10 +53,8 @@ analytische Lösung wie Abschnitt "`Interpolation"' (siehe S. \pageref{interpola
 
 \subsection{Zahlenfolgen, Grenzwerte}
 
-%\paragraph{Beispiel für eine Folge: Evakuierungspumpe}
-
 \begin{example}[Evakuierungspumpe]
-%Beispiel für eine Folge: Evakuierungspumpe
+
 \begin{center}
 \includegraphics[width=0.8\textwidth]{include/evakuierungspumpe.pdf}
 \begin{align*}
@@ -248,4 +246,4 @@ p_n &\text{ analog}
 Eine reelle Folge heißt monoton wachsend, wenn $\forall n \in \mathbb N : a_n \le a_{n+1}$ und
 streng monoton wachsend, wenn $a_n < a_{n+1}$. Analog: (streng) monoton fallend.
 \end{definition}
-Anschaulich: monoton wachsend + obere Schranke $\Rightarrow$ Grenzwert existiert $\equiv$ Supremumaxiom $\mathbb R$
+Anschaulich: monoton wachsend + obere Schranke $\implies$ Grenzwert existiert $\equiv$ Supremumaxiom $\mathbb R$

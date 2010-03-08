@@ -65,7 +65,7 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
     \text{linksseitiger Grenzwert} & x \longrightarrow a^+ & \displaystyle\lim_{x \rightarrow a^+} f(x) = c \\*[5mm]
     \text{rechtsseitiger Grenzwert} & x \longrightarrow a^- & \displaystyle\lim_{x \rightarrow a^-} f(x) = c
   \end{matrix}
-  \right\}\Rightarrow \text{stetig}
+  \right\}\implies \text{stetig}
 \end{equation*}
 
 \begin{definition}[Stetigkeit]
@@ -139,7 +139,7 @@ Idee: Übertrage Grenzwerte im Definitionsbereich auf den Wertebereich\\
     \item
       \begin{equation*}
         \forall \varepsilon > 0\; \exists \delta > 0\; \forall x \in I\; \left(
-          \underbrace{\left| x-x_0\right| < \delta}_{\text{Definitionsbereich}} \Rightarrow
+          \underbrace{\left| x-x_0\right| < \delta}_{\text{Definitionsbereich}} \implies
           \underbrace{\left| f(x)-f(x_0)\right| < \epsilon}_{\text{Wertebereich}}
         \right)
       \end{equation*}
@@ -209,9 +209,9 @@ Beweise per $\delta-\epsilon$-Charakterisierung, siehe \cite{bornemann}
       Argumentation:
       \begin{itemize}
         \item[] $f(x) = x$ stetig
-        \item[$\Rightarrow$] $x^2, \ldots, x^k$ stetig
-        \item[$\Rightarrow$] $a_k x^k, \ldots, a_1 x$ stetig
-        \item[$\Rightarrow$] Summe stetig
+        \item[$\implies$] $x^2, \ldots, x^k$ stetig
+        \item[$\implies$] $a_k x^k, \ldots, a_1 x$ stetig
+        \item[$\implies$] Summe stetig
       \end{itemize}
     \item jede rationale Funktion $r(x) = \frac{p(x)}{q(x)}$ ist bis auf Nullstellen im Nenner stetig
   \end{enumerate}
@@ -224,7 +224,7 @@ $f$ stetig auf dem Intervall $\left[a,b\right]$
       \begin{note}
         Zentral hierbei ist, dass es sich um ein abgeschlossenes Intervall handeln muss.
 
-        Bsp.: $f(x) = \frac 1 x$, halboffenes Intervall $\left]0,1\right]$, $\displaystyle\lim_{x\rightarrow 0^+} = \infty$ $\Rightarrow$ Polstelle $\Rightarrow$ nicht beschränkt
+        Bsp.: $f(x) = \frac 1 x$, halboffenes Intervall $\left]0,1\right]$, $\displaystyle\lim_{x\rightarrow 0^+} = \infty$ $\implies$ Polstelle $\implies$ nicht beschränkt
       \end{note}
     \item $f$ nimmt Minimum/Maximum in diesem Intervall an (Extremwertsatz)
     \item falls $f(a) < 0$ und $f(b) > 0$, dann existiert ein $x^\ast$ mit $f(x^\ast) = 0$ (Zwischenwertsatz)
