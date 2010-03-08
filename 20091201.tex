@@ -11,12 +11,12 @@
 	\end{note}
 	\begin{example}
 		\begin{itemize}
-			\item Wärmeleitung: $u_t = \alpha^2 u_{xx}$\annotation{zur Notation: $u_{xx} \equals \frac{\partial^2}{\partial x^2}u(x,t)$, $u_t$ entsprechend.}
+			\item Wärmeleitung: $u_t = \alpha^2 u_{xx}$\annotation{zur Notation: $u_{xx} \equals \frac{\partial^2}{\partial x^2}u(x,t)$, $u_t$ entsprechend}
 			\item Wellengleichung: $u_{tt} = c^2 u_{xx}$
 			\item Laplace-Gleichung: $\Delta u = u_{xx} + u_{yy} + u_{zz} = f(t, u)$
 		\end{itemize}
 	\end{example}
-	\item $\ddot s + k^2s = 0$ ist eine Dgl. zweiter Ordnung, da die höchste enthaltene Ableitung zweiter Ordnung ist.
+	\item $\ddot s + k^2s = 0$ ist eine DGL zweiter Ordnung, da die höchste enthaltene Ableitung zweiter Ordnung ist.
 \end{itemize}
 
 \subsubsection*{Fragen}
@@ -29,20 +29,20 @@ Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE-Welt"
 
 %%% LARS: REVIEWSTATE
 
-\paragraph{Spezielle Herangehensweise:} $\ddot s(t) + k^2s(t) = 0 \rightarrow$ Technik des intelligenten Ratens!
+\paragraph{Spezielle Herangehensweise:} $\ddot s(t) + k^2s(t) = 0 \rightarrow$ Technik des intelligenten Ratens
 
-\subparagraph{für $k = 1$}
+\begin{example}[für $k = 1$]
 \begin{align*}
 	& \ddot s + s = 0 \\
-	\rightarrow &\text{ geraten: z. B. $s_1(t) = \sin(t)$, $s_2(t) = \cos(t)$}\\
-	\Rightarrow &s_1(t) = \sin kt \\
-	\Rightarrow &s_2(t) = \cos kt \\
+	\leadsto &\text{ geraten: z. B. $s_1(t) = \sin(t)$, $s_2(t) = \cos(t)$}\\
+	\implies &s_1(t) = \sin kt \\
+	\implies &s_2(t) = \cos kt \\
 	& \ddot s(t) + k^2s(t) = 0 \text { ist linear } \leadsto \text{ Überlagern ($Ax = 0$, $Ax = b$)} \\
-	\Rightarrow &s(t) = c_1 \sin kt + c_2 \cos kt \text{ allgemeine Lösung, $c_1, c_2 \in \mathbb{R}$} \\
-	\intertext{Parameter $c_1$, $c_2$ an Anfagswerte adaptieren.}
+	\implies &s(t) = c_1 \sin kt + c_2 \cos kt \text{ allgemeine Lösung, $c_1, c_2 \in \mathbb{R}$} \\
+	\intertext{Parameter $c_1$, $c_2$ an Anfagswerte adaptieren}
 	&\left. \begin{aligned}
-		\rightarrow s(0) &= 0 \Rightarrow c_2 = 0 \\
-		\rightarrow \dot s(0) &= v_0 \Rightarrow c_1k = v_0 \Rightarrow c_1 = \frac{v_0}{k}
+		\leadsto s(0) &= 0 \implies c_2 = 0 \\
+		\leadsto \dot s(0) &= v_0 \implies c_1k = v_0 \implies c_1 = \frac{v_0}{k}
 	\end{aligned} \right\} \text {AWT $s(t) = \frac{v_0}{k}$ sinkt} \\
 	&\left. \begin{aligned}
 		s(t) &= c_1 \sin kt \\
@@ -50,6 +50,7 @@ Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE-Welt"
 		\ddot s(t) &= c_1k^2 \sin kt
 	\end{aligned} \right\}\ddot s(t) + k^2s(t) = 0
 \end{align*}
+\end{example}
 
 \subsubsection*{Schwingungsgleichung in $\mathbb{C}$: $\ddot s + k^2s = 0$}
 
