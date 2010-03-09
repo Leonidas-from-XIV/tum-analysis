@@ -63,123 +63,122 @@ Hilfsmittel: Umformung von Differentiationsregeln
 
 \begin{enumerate}
 	\item Integranden der Form $\frac{f'}{f}$ \\
-	\begin{align*}
-		&f: [a, b] \text{\hspace{10px}stetig differenzierbar, $f \neq 0$}\\
-		&\int \frac{f'}{f} dx = \ln |f(x)| + c \\
-	\end{align*}
+	\[
+		f: [a, b] \quad\text{stetig differenzierbar, } f \neq 0
+	\]
+	\[
+		\int \frac{f'}{f} \,\diff x = \ln \left|f(x)\right| + c
+	\]
 	
 	\begin{example}
 		\begin{align*}
-			\int \tan x dx &= \int \frac{\sin x}{\cos x} dx =\\
-			- \ln |\cos x| + c &= \ln |\frac{1}{\cos x}| + c \\
-			\text{mit \hspace{10px}} (\cos x)' &= - \sin x
+			\int \tan x \,\diff x &= \int \frac{\sin x}{\cos x} \,\diff x \\
+			&= - \ln \left|\cos x\right| + c \\
+			&= \ln \left|\frac{1}{\cos x}\right| + c \\
+			\text{wobei } (\cos x)' &= - \sin x
 		\end{align*}
 	\end{example}
 	
-	\item Partielle Integration (aus Produktregel)
+	\item partielle Integration (aus Produktregel)
 	\begin{align*}
-		\frac{d}{dx} (f g) &= f' g + f g' \\
-		\Rightarrow \int f'(x) g(x) dx &= f(x) g(x) - \int f(x) g'(x) dx
+		\frac{\diff}{\diff x} (f g) &= f' g + f g' \\
+		\leadsto \int f'(x) g(x) \,\diff x &= f(x) g(x) - \int f(x) g'(x) \,\diff x
 	\end{align*}
 	
 	\begin{example}
 		\begin{align*}
-			\int x \sin x dx = \\
-			x (- \cos x) - \int 1 (- \cos x) dx = \\
-			-x \cos x + \int \cos x dx = \\
-			-x \cos x + \sin x + c
+			\int \underbrace{x}_g \underbrace{\sin x}_{f'} \,\diff x &= \underbrace{x}_g \underbrace{(- \cos x)}_f - \int \underbrace{1}_{g'} \underbrace{(- \cos x)}_f \,\diff x \\
+			&= -x \cos x + \int \cos x \,\diff x \\
+			&= -x \cos x + \sin x + c
 		\end{align*}
 	\end{example}
 	
 	\item Substitutionsregel
 		\begin{align*}
-			g: [a, b] \rightarrow \mathbb{R} \text{ stetig differenzierbar} \\
-			f: g(\mathbb{I}) \rightarrow \mathbb{R} \text{ stetig differenzierbar}
+			g: [a, b] \to \mathbb{R} \text{ stetig differenzierbar} \\
+			f: g(I) \to \mathbb{R} \text{ stetig differenzierbar}
 		\end{align*}
 		
-		Stammfunktion: $F(y) = \int f(y) dy$
+		Stammfunktion: $F(y) = \int f(y) \,\diff y$
 		
 		\begin{equation*}
-			\left[ \int f(g(x)) g'(x) dx = F(g(x)) \right]
+			\left[ \int f(g(x)) g'(x) \,\diff x = F(g(x)) \right]
 		\end{equation*}
 		
 		handlicher:
 		\begin{equation*}
-			\int f(x) dx = \int f(g(u)) g'(u) du
+			\int f(x) \,\diff x = \int f(g(u)) g'(u) \,\diff u
 		\end{equation*}	
 		
 		Merkregel:
 		\begin{equation*}
-			\int f(g(x)) g'(x) dx = \int f(g) \frac{dg}{dx} dx = \int f(g) dg
+			\int f(g(x)) g'(x) \,\diff x = \int f(g) \frac{\diff g}{\diff x} \,\diff x = \int f(g) \,\diff g
 		\end{equation*}
 		
 		\begin{example}
-			Streckung $\int_a^b f(x) dx$ mit neuer Variable $t = k x$
+			Streckung $\int\limits_a^b f(x) \,\diff x$ mit neuer Variablen $t = k x$
 			\begin{align*}
-				x &= a \Rightarrow t = ka \\
-				x &= b \Rightarrow t = kb \\
+				x = a &\implies t = ka \\
+				x = b &\implies t = kb
 			\end{align*}
 			\begin{equation*}
-				\int_a^b f(x) dx = \int_{ka}^{kb} f(t) \frac{dt}{k} = \frac{1}{k} \int_{ka}^{kb} f(t) dt
+				\int\limits_a^b f(x) \,\diff x = \int\limits_{ka}^{kb} f(t) \frac{\diff t}{k} = \frac{1}{k} \int\limits_{ka}^{kb} f(t) \,\diff t
 			\end{equation*}
 		\end{example}
 		
-	\item Spezialfälle mit Integranden $ \frac{1}{1\pm x^2}$, $\frac{1}{\sqrt{1-x^2}}$, usw. \\
-		führen zu Lösungen mit Arc-, Area-Funktionen
+	\item Spezialfälle mit Integranden $ \cfrac{1}{1\pm x^2}$, $\cfrac{1}{\sqrt{1-x^2}}$ usw. \\
+		führen zu Lösungen mit Arcus-, Area-Funktionen
 		
 	\item rationale Nenner: Partialbruchzerlegung \\
 		in diesen Fällen: Formelsammlungen
 \end{enumerate}
 		
 \subsection{Restglieder: Taylorformel}
+\label{sec:integr_taylor}
 \emph{Hilfaussage:} Mittelwertsatz der Integralrechnung
 \begin{equation*}
 	f, g \text{ stetig auf } [a, b], g(x) \geq 0
 \end{equation*}
-es existiert mindestens eine Zwischenstelle $\xi$
+$\implies$ es existiert mindestens eine Zwischenstelle $\xi$
 \begin{equation*}
-	\int_a^b f(x) g(x) dx = f(\xi) \int_a^b g(x) dx
+	\int\limits_a^b f(x) g(x) \,\diff x = f(\xi) \int\limits_a^b g(x) \,\diff x
 \end{equation*}
-
-Beweisidee: $f$ stetig $\Rightarrow$ es existieren:
-\begin{align*}
-	m, M: m \leq f \leq M \\
-	g \geq 0: mg \leq fg \leq Mg \\
-	m \int g dx \leq f \int g dx \leq M \int g dx
-\end{align*}
-es existiert
-\begin{equation*}
-	c = f(\xi): \int_a^b fg dx = c \int_a^b g dx \text{\hspace{10px} (Zwischenwertsatz)}
-\end{equation*}
+%
+\emph{Beweisidee:} $f$ stetig $\implies$ es existieren:
+\[ m, M: m \leq f \leq M \]
+\[ g \geq 0: mg \leq fg \leq Mg \]
+\[ m \int g \,\diff x \leq f \int g \,\diff x \leq M \int g \,\diff x \]
+es existiert $c = f(\xi)$:
+\[ \int\limits_a^b fg \,\diff x = c \int_a^b g \,\diff x \quad\text{(Zwischenwertsatz)} \]
 	
 \begin{align*}
-	f&: [a, b] \rightarrow \mathbb{R} \text{\hspace{10px} $(n+1)$-fach stetig differenzierbar} \\
+	f&: [a, b] \to \mathbb{R} \quad\text{$(n+1)$-fach stetig differenzierbar} \\
 	x_0&: \text{Entwicklungspunkt}
 \end{align*}
 
 Behauptung:
 \begin{equation*}
-	f(x) = \sum_{\nu}^n \frac{f^{(\nu)} (x_0)}{\nu !} (x - x_0)^{\nu} + \underbrace{\frac{1}{n!} \int_{x_0}^x (x - t)^n f^{(n+1)} (t) dt}_{\Rightarrow \text{Lagrange} R_{n+1}(x)}
+	f(x) = \sum_{\nu = 0}^n \frac{f^{(\nu)} (x_0)}{\nu !} (x - x_0)^{\nu} + \underbrace{\frac{1}{n!} \int\limits_{x_0}^x (x - t)^n f^{(n+1)} (t) \,\diff t}_{\leadsto \text{Lagrange } R_{n+1}(x)}
 \end{equation*}
 
-$n=0:$
+$n=0$:
 \begin{equation*}
-	f(x) = f(x_0) + \int_{x_0}^x 1 f'(t) dt = f(x_0) + f(t) |_{x_0}^x = f(x)
+	f(x) = f(x_0) + \int\limits_{x_0}^x 1 f'(t) \,\diff t = f(x_0) + f(t) \big|_{x_0}^x = f(x)
 \end{equation*}
 
-$n = n+1:$
+$n = n+1$:
 \begin{align*}
-	R_n(x) &= \frac{1}{(n-1)!} \int_{x_0}^x \underbrace{(x-t)^{n-1}}_{\nu '} \underbrace{f^{(n)}(t)}_{\nu} dt\\
-	&= - \frac{(x-x_0)^n}{n!} f^{(n)} (x_0) + \underbrace{\frac{1}{n!} \int_x0^x (x-t)^n f^{(n+1)} (t) dt}_{R_{n+1}}
+	R_n(x) &= \frac{1}{(n-1)!} \int\limits_{x_0}^x \underbrace{(x-t)^{n-1}}_{\nu '} \underbrace{f^{(n)}(t)}_{\nu} \,\diff t\\
+	&= - \frac{(x-x_0)^n}{n!} f^{(n)} (x_0) + \underbrace{\frac{1}{n!} \int_x0^x (x-t)^n f^{(n+1)} (t) \,\diff t}_{R_{n+1}}
 \end{align*}
-
+\todo{Beweis nachvollziehen}
 \begin{note}
-	Restglied nach Lagrange: MWS Integralrechnung
+	Restglied nach Lagrange: MWS der Integralrechnung
 	\begin{align*}
-		R_{n+1} (x) &= \frac{1}{n!} \int_{x_0}^x \underbrace{(x-t)^n}_{\geq 0} f^{(n+1)} (t) dt \\
-		&= \frac{f^{(n+1)}(\xi)}{n!} - \int_{x_0}^x (x-t)^n dt \\
-		&= f^{n+1} (\xi) (-1) \frac{(x-t)^n+1}{(n+1)!}|_{x_0}^x \\
-		&= f^{n+1} (\xi) \frac{(x-x_0)^{n+1}}{(n+1)!}
+		R_{n+1} (x) &= \frac{1}{n!} \int\limits_{x_0}^x \underbrace{(x-t)^n}_{\geq 0} f^{(n+1)} (t) \,\diff t \\
+		&= \frac{f^{(n+1)}(\xi)}{n!} - \int_{x_0}^x (x-t)^n \,\diff t \\
+		&= f^{(n+1)} (\xi) (-1) \frac{(x-t)^n+1}{(n+1)!}\Bigg|_{x_0}^x \\
+		&= f^{(n+1)} (\xi) \frac{(x-x_0)^{n+1}}{(n+1)!}
 	\end{align*}
 \end{note}
 
