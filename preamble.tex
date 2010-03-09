@@ -19,13 +19,9 @@
 \usepackage{ziffer}
 \usepackage[subfigure]{tocloft}
 \usepackage{float}
-\usepackage[plainpages=false,pdfpagelabels]{hyperref}
+\usepackage[plainpages=false,pdfpagelabels,hyperfootnotes=false]{hyperref}
 \usepackage{wrapfig}
 \usepackage[bottom]{footmisc}
-
-%%% fonts
-
-%\usepackage[bitstream-charter]{mathdesign}
 
 %%% tikz
 
@@ -39,7 +35,7 @@
 
 %%% geogebra
 
-% geogebra farbcodes unschoen, aber zu aufwendig um die haendisch auszubessern -.-
+% geogebra farbcodes unschoen, aber zu aufwendig um die haendisch auszubessern -.- --markus
 \definecolor{qqqqff}{rgb}{0,0,1}
 \definecolor{xdxdff}{rgb}{0.49,0.49,1}
 \definecolor{uququq}{rgb}{0.25,0.25,0.25}
@@ -53,8 +49,6 @@
 \definecolor{lightbluegray}{rgb}{0.9,0.9,1.0}
 
 %%% amsthm macros
-
-%%% TODO: use xkeyval to simplify usage ;)
 
 \makeatletter
 \newcommand{\newtheoremenv}[3]{

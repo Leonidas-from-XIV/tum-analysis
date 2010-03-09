@@ -39,10 +39,17 @@ A \cdot \vec{x} = b
     \item $n$ Daten: $\mathcal O (n^3)$ Operationen (lineares Gleichungssystem)
     \item 1. Basiswechsel: Monome $x^j$ zu Lagrange-Polynome $L_n(x)$: $\mathcal O (n^2)$-Komplexität (siehe Numerikvorlesung Th. Huckle)
     \item 2. Basiswechsel: Bernsteinpolynome: $\mathcal O (n)$-Komplexität
-    \item[$\leadsto$] Bezier-Techniken/Bezier-Splines (Kontrollpunkte)
-    \todo{schön zeichnen}
+    \item[$\leadsto$] Bézier-Techniken/Bézier-Splines, Kontrollpunkte (siehe Abbildung \ref{fig:bezier_ex} auf Seite \pageref{fig:bezier_ex})
   \end{itemize}
 \end{note}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{include/Bezier_curve.pdf}
+  \caption{Beispiel einer Bézier-Kurve \cite{src:fig:bezier_ex}}
+  \label{fig:bezier_ex}
+\end{figure}
+
 
 \subsubsection*{Approximation}
 gegeben: unbekanntes $f(x)$ über Messungen \\

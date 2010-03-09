@@ -15,7 +15,7 @@
 \newpage
 
 \phantomsection
-\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
+\pdfbookmark[0]{Inhaltsverzeichnis}{toc}
 \tableofcontents
 
 \newpage
@@ -51,7 +51,14 @@
 \input{20100203.tex}
 
 \newpage
+\phantomsection
+\pdfbookmark[0]{Literaturverzeichnis}{bib}
 \bibliography{bibliography}
+
+\newpage
+\phantomsection
+\pdfbookmark[0]{Bildnachweis}{fig-src}
+\input{sources.tex}
 
 \end{document}
 

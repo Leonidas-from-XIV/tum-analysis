@@ -63,9 +63,25 @@ $f: I \to \mathbb{R}$ stetig (evtl. auch etwas weniger stückweise stetig oder a
     \end{center}
 \end{enumerate}
 \end{example}
-offensichtlich \todo{Graph}: (streng) monotone Funktionen erlauben Umkehrung
 
-monotone Funktionen werden an $y=x$ gespiegelt. $\leadsto g=f^{-1}$
+\noindent offensichtlich: (streng) monotone Funktionen erlauben Umkehrung\\
+monotone Funktionen werden an $y=x$ gespiegelt $\leadsto g=f^{-1}$ (siehe Abbildung \ref{fig:monoton_umkehr} auf Seite \pageref{fig:monoton_umkehr})
+
+\begin{figure}[htp]
+  \centering
+  \begin{tikzpicture}[]
+    \draw[->,semithick] (-2.5,0) -- (2.5,0) node[right]{x};
+    \draw[->,semithick] (0,-2.5) -- (0,2.5) node[left]{y};
+    \draw [dashed] (-2.5,-2.5) -- (2.5,2.5);
+    \draw[domain=-2.3:2.3,color=blue] plot [id=monoton, samples=50] function {sinh(x)/2};
+    \draw[domain=-2.4:2.4,color=red] plot [id=monoton_umkehr, samples=50] function {asinh(2*x)};
+    \node[right] at (.5,-1) {\color{blue}$y=\frac{\sinh x}{2}$};
+    \node[right] at (.5,-1.8) {\color{red}$y=\arsinh 2x$};
+  \end{tikzpicture}
+  \caption{streng monotone Funktion und zugehörige Umkehrfunktion}
+  \label{fig:monoton_umkehr}
+\end{figure}
+
 
 \subsubsection*{Hauptsatz zu Umkehrfunktionen}
 \begin{enumerate}
