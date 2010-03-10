@@ -7,12 +7,13 @@
     \item Verschiebung \[ \int\limits_a^b f(x)\,\diff x = \int\limits_{a+c}^{b+c} f(x-c)\,\diff x \]
     \item Streckung  \[ \int\limits_a^b f(x)\,\diff x = \frac 1 k \int\limits_{ka}^{kb} f\left(\frac x k\right)\,\diff x \]
     \item Orientierung \[ \int\limits_a^b f(x)\,\diff x = - \int\limits_b^a f(x)\,\diff x \]
-    \item \emph{lineares Funktional}\todo{umstruk\-turieren}\ $\int: C^0[a,b] \to \mathbb{R}$
+    \item 
       \[ \int\limits_a^b (f+g)(x)\,\diff x = \int\limits_a^b f(x)\,\diff x + \int\limits_a^b g(x)\,\diff x \]
       \[ \lambda \in \mathbb{R}: \quad \int\limits_a^b \lambda f(x)\,\diff x  = \lambda \int\limits_a^b f(x)\,\diff x \]
+      $\leadsto$ $\int$ ist ein \emph{lineares Funktional} mit $\int: C^0[a,b] \to \mathbb{R}$
     \item $(f \cdot g)$ (Produkt) ist integrierbar
-    \item $\left| f \right|$ ist integrierbar mit
-      \[ \left| \int\limits_a^b f(x)\,\diff x\right| = \int\limits_a^b \left| f(x) \right| \,\diff x \]
+    \item $\left| f \right|$ ist integrierbar
+      \[ \left| \int\limits_a^b f(x)\,\diff x\right| \leq \int\limits_a^b \left| f(x) \right| \,\diff x \]
     \item $f(x) \geq 0$ auf $[a,b]$ $\implies$ $\ds \int\limits_a^b f(x)\,\diff x \geq 0$
     \item $f(x) \geq g(x)$ auf $[a,b]$ $\implies$ $\ds \int\limits_a^b f(x)\,\diff x \geq \int\limits_a^b g(x)\,\diff x$
     \item $m \leq f(x) \leq M$ auf $[a,b]$ $\implies$ $\ds m(b-a) \leq \int\limits_a^b f(x)\,\diff x \leq M(b-a)$
@@ -41,16 +42,16 @@ Hinweis: $\int\limits_0^b x^n\,\diff x = \frac{b^{n+1}}{n+1} \leadsto$ Ableitung
   \begin{enumerate}
     \item $f$ integrierbar $\implies$ $f$ beschränkt, d. h. es existiert ein $L \in \mathbb R$ mit $\left|f(x)\right| \leq L$ in $a\leq x \leq b$
       \begin{align*}
-        \left| F(x) - F(y) \right| &= \left| \int\limits_a^y f(t)\,\diff t - \int\limits_a^x f(t)\,\diff t \right|\\
-        &= \left| \int\limits_x^y f(t)\,\diff t \right |\\
-        &\leq \int\limits_x^y \left| f(t) \right| \,\diff t\\
-        &\leq \int\limits_x^y L\,\diff t\\
-        &= L\cdot (y-x)
-      \end{align*}
-      Sei nun $\delta = y-x$. Wähle $\varepsilon = \frac \delta L$, dann folgt mittels Satz \ref{thm:delta_epsilon} (Seite \pageref{thm:delta_epsilon}) die Behauptung, da:
+        \left| F(y) - F(x) \right| &= \left| \int\limits_a^y f(t)\,\diff t - \int\limits_a^x f(t)\,\diff t \right|
+        = \left| \int\limits_x^y f(t)\,\diff t \right| \\
+        &\leq \int\limits_x^y \left| f(t) \right| \,\diff t
+        \leq \int\limits_x^y L\,\diff t\\
+        &= L\cdot (y-x) \text{, mit $y \geq x$:\footnotemark} \\
+        &= L \underbrace{\left|y - x\right|}_{< \delta}
+      \end{align*}\footnotetext{\textannotation{falls $x > y$ ist, so müssen lediglich noch Betragsstriche ergänzt werden}}
+      Wähle $\varepsilon = \frac \delta L$, dann folgt mittels Satz \ref{thm:delta_epsilon} (Seite \pageref{thm:delta_epsilon}) die Behauptung, da:
       \[ \left| y - x \right| < \delta \implies \left| F(y) - F(x) \right| < \varepsilon \]
       Ergebnis: $F$ ist stetig
-      \todo[inline]{der vorletzte Schritt war versehen mit "`da $y \geq x$ bzw. $y \leq x$"' -- prüfen}
     \item zu zeigen: $F'(x) = f(x)$\\
       Differentialquotient: $\ds F'(x)= \lim_{x \to x_0}\frac{F(x)-F(x_0)}{x-x_0}$\\
       bekannt: $f(x)$ stetig
