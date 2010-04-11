@@ -54,9 +54,9 @@ Obige Fragen sind in der "`ODE-Welt"' beantwortbar, erfordern in der "`PDE-Welt"
 
 \paragraph{Euler-Formel: $\euler^{\imag\varphi} = \cos \varphi + \imag \sin \varphi$}
 \begin{align*}
-	\frac{d}{d\varphi}\euler^{\imag\varphi} &= \frac{d}{d\varphi}(\cos \varphi + \imag \sin \varphi) = -\sin \varphi + \imag\cos \varphi \\
-	\frac{d}{d\varphi}\euler^{\imag k\varphi} &= \frac{d}{d\varphi}(\cos k\varphi + \imag \sin k\varphi) =\\ &= -k\sin k\varphi + \imag k\cos k\varphi = \imag k(\cos k\varphi + \imag\sin k\varphi) = \imag k\euler^{\imag k\varphi} \\
-	\frac{d^2}{d\varphi^2}\euler^{\imag k\varphi} &= \imag^2k^2\euler^{\imag k\varphi} = -k^2 \euler^{\imag k\varphi} \\
+	\frac{\diff}{\diff\varphi}\euler^{\imag\varphi} &= \frac{\diff}{\diff\varphi}(\cos \varphi + \imag \sin \varphi) = -\sin \varphi + \imag\cos \varphi \\
+	\frac{\diff}{\diff\varphi}\euler^{\imag k\varphi} &= \frac{\diff}{\diff\varphi}(\cos k\varphi + \imag \sin k\varphi) =\\ &= -k\sin k\varphi + \imag k\cos k\varphi = \imag k(\cos k\varphi + \imag\sin k\varphi) = \imag k\euler^{\imag k\varphi} \\
+	\frac{\diff^2}{\diff\varphi^2}\euler^{\imag k\varphi} &= \imag^2k^2\euler^{\imag k\varphi} = -k^2 \euler^{\imag k\varphi} \\
 	S(t) &= C_1s_1(t) + C_2s_2(t) = C_1\euler^{\imag kt} + C_2\euler^{-\imag kt} \\&\text{ mit $C_1 = c_1 + \imag c_2$ und $C_2 = d_1 + \imag d_2$}
 \end{align*}
 Es gilt: $s(t) = \Re(S(t))$
