@@ -1,0 +1,14 @@
+*.aux
+*.log
+*.backup
+*.out
+*.lec
+*.toc
+*.tdo
+*.bbl
+*.blg
+*.kilepr
+main.pdf
+*.gnuplot
+*.table
+
